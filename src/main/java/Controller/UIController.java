@@ -1,4 +1,4 @@
-package controllers;
+package Controller;
 
 import com.google.common.collect.ImmutableList;
 import javafx.fxml.FXML;
