@@ -20,7 +20,7 @@ public final class Main extends Application {
     public void start(final Stage windowStage) throws Exception {
         //final View view = new ViewImpl(windowStage);
         final Model model = new ModelImpl();
-        //final Controller controller = new ControllerImpl(model, view);
+        final Controller controller = new ControllerImpl(model, view);
         //view.launch(controller);
     }
 
