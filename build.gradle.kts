@@ -65,5 +65,5 @@ checkstyle {
 }
 
 application {
-    mainClassName = "bubbleShooter.application.Launcher"
+    mainClassName = "bubbleshooter.application.Launcher"
 }
