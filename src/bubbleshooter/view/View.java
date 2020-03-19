@@ -1,4 +1,4 @@
-package View;
+package bubbleshooter.view;
 
 public interface View {
 

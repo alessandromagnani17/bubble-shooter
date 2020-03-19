@@ -1,6 +1,7 @@
-// Declaration of the Gradle extension to use
 plugins {
     java
+    checkstyle
+    pmd
     application
     /*
      * Adds tasks to export a runnable jar.
@@ -9,6 +10,15 @@ plugins {
      */
     id("com.github.johnrengelman.shadow") version "5.2.0"
 }
+
+sourceSets {
+	main {
+		java {
+			srcDirs("src")
+			}
+		}
+	}
+	
 repositories {
     jcenter() // Contains the whole Maven Central + other stuff
 }
@@ -26,13 +36,14 @@ val supportedPlatforms = listOf("linux", "mac", "win")
 dependencies {
     // Example library: Guava. Add what you need (and remove Guava if you don't use it)
     implementation("com.google.guava:guava:28.1-jre")
+	implementation("org.locationtech.jts:jts-core:1.15.0")
     // JavaFX: comment out if you do not need them
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:13:$platform")
         }
     }
-    // JUnit API and testing engine
+        // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
 }
@@ -42,6 +53,17 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+pmd {
+	
+    ruleSets = listOf()
+    ruleSetConfig = resources.text.fromFile("${project.rootProject.projectDir}/config/pmd/pmd.xml")
+    isIgnoreFailures = true
+}
+
+checkstyle {
+    isIgnoreFailures = true
+}
+
 application {
-    mainClassName = "Application.Launcher"
+    mainClassName = "bubbleShooter.application.Launcher"
 }

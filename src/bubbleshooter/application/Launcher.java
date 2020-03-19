@@ -1,4 +1,4 @@
-package Application;
+package bubbleshooter.application;
 
 /**
  * This class represents the Launcher of the system, to bypass JAVA 11 modules constraints.
