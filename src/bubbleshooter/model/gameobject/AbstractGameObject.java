@@ -33,6 +33,16 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
+    public void setHeigth(final double heigth) {
+        this.heigth = heigth;
+    }
+
+    @Override
+    public void setWidth(final double width) {
+        this.width = width;
+    }
+
+    @Override
     public boolean isOver() {
         return this.isOver;
     }
@@ -51,6 +61,4 @@ public abstract class AbstractGameObject implements GameObject {
     public void setType(final GameObjectsTypes type) {
         this.type = type;
     }
-
-
 }

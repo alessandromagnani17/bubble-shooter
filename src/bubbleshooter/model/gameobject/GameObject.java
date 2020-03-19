@@ -9,6 +9,10 @@ public interface GameObject {
     double getHeight();
 
     double getWidth();
+    
+    void setHeigth(double heigth);
+    
+    void setWidth(double width);
 
     Point2D getPosition();
 

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.util.GeometricShapeFactory;
@@ -21,6 +22,8 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
     public BasicBubble(final Point2D position, final Color color) {
         super.setPosition(position);
         this.color = color;
+        super.setHeigth(20); //DA MODIFICARE
+        super.setWidth(20); //DA MODIFICARE
         this.shape = this.setCollisionBox();
     }
 
@@ -48,32 +51,31 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
 
     @Override
     public boolean hasBubbleAt(final Direction direction) {
-        // TODO Auto-generated method stub
-        return false;
+        return this.connections.get(direction).isPresent();
     }
 
     @Override
     public void setColor(final Color bubbleColor) {
-        // TODO Auto-generated method stub
-        
+        this.color = bubbleColor;
     }
 
     @Override
     public Color getColor() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.color;
     }
 
     @Override
     public Collection<Bubble> getNeighbours() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.connections.values()
+                .stream()
+                .filter(a -> a.isPresent())
+                .map(a -> a.get())
+                .collect(Collectors.toSet());
     }
 
     @Override
     public Map<Direction, Optional<Bubble>> getConnections() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.connections;
     }
 
     @Override
