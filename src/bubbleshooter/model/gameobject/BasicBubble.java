@@ -23,23 +23,27 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
         this.color = color;
         this.shape = this.setCollisionBox();
     }
-    
+
     @Override
     public void connectBoth(final Direction direction, final Optional<Bubble> bubbleToConnect) {
-        // TODO Auto-generated method stub
-        
+        this.setBubbleAt(direction, bubbleToConnect);
+        if (bubbleToConnect.isPresent()) {
+            bubbleToConnect.get().setBubbleAt(direction.opposite(), Optional.of(this));
+        }
     }
 
     @Override
-    public Optional<Bubble> getBubbleAt(final Direction direction) {
-        // TODO Auto-generated method stub
-        return null;
+    public  Optional<Bubble> getBubbleAt(final Direction direction) {
+        return this.connections.get(direction).isPresent() ? this.connections.get(direction) : Optional.empty(); 
     }
 
     @Override
     public void setBubbleAt(final Direction direction, final Optional<Bubble> bubble) {
-        // TODO Auto-generated method stub
-        
+        if (!bubble.isPresent()) {
+            this.connections.put(direction, Optional.empty());
+        } else {
+            this.connections.put(direction, bubble);
+        }
     }
 
     @Override
