@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="900.0" maxWidth="700.0" minHeight="900.0" minWidth="700.0" prefHeight="900.0" prefWidth="700.0" style="-fx-background-color: LIGHTCYAN;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleShooter.View.scene.controller.GameSceneController">
+<AnchorPane maxHeight="900.0" maxWidth="700.0" minHeight="900.0" minWidth="700.0" prefHeight="900.0" prefWidth="700.0" style="-fx-background-color: LIGHTCYAN;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.GameController">
    	
    <children>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
