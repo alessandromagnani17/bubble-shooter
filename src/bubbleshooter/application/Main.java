@@ -18,10 +18,10 @@ public final class Main extends Application {
 
     @Override
     public void start(final Stage windowStage) throws Exception {
-        //final View view = new ViewImpl(windowStage);
+        final View view = new ViewImpl(windowStage);
         final Model model = new ModelImpl();
         final Controller controller = new ControllerImpl(model, view);
-        //view.launch(controller);
+        view.launch(controller);
     }
 
     /**
