@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.util.GeometricShapeFactory;
 
@@ -19,7 +20,7 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
     private Color color;
     private Geometry shape;
 
-    public BasicBubble(final Point2D position, final Color color) {
+    public BasicBubble(final Coordinate position, final Color color) {
         super.setPosition(position);
         this.color = color;
         super.setHeigth(20); //DA MODIFICARE
@@ -90,5 +91,6 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
     public Geometry getCollisionBox() {
         return this.shape;
     }
+
 
 }

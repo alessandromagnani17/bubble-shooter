@@ -1,8 +1,8 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.Coordinate;
 
-import javafx.geometry.Point2D;
+import org.locationtech.jts.geom.Geometry;
 
 public interface GameObject {
 
@@ -14,9 +14,9 @@ public interface GameObject {
     
     void setWidth(double width);
 
-    Point2D getPosition();
+    Coordinate getPosition();
 
-    void setPosition(Point2D position);
+    void setPosition(Coordinate position);
 
     boolean isOver();
 

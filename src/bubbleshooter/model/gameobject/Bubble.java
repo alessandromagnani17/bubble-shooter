@@ -19,8 +19,6 @@ public interface Bubble {
 
     void setColor(Color bubbleColor);
 
-    void setPosition(Point2D position);
-
     void update(double elapsed);
 
     Color getColor();
@@ -30,7 +28,5 @@ public interface Bubble {
     Map<Direction, Optional<Bubble>> getConnections();
 
     String toString();
-
-    Point2D getPosition();
 
 }
