@@ -1,5 +1,7 @@
 package bubbleshooter.model.gameobject;
 
+import org.locationtech.jts.geom.Geometry;
+
 import javafx.geometry.Point2D;
 
 public interface GameObject {
@@ -19,5 +21,9 @@ public interface GameObject {
     GameObjectsTypes getType();
 
     void setType(GameObjectsTypes type);
+    
+    Geometry setCollisionBox();
+    
+    Geometry getCollisionBox();
 
 }

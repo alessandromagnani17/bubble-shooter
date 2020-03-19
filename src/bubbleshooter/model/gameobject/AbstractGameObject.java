@@ -1,8 +1,10 @@
 package bubbleshooter.model.gameobject;
 
+import org.locationtech.jts.geom.Geometry;
+
 import javafx.geometry.Point2D;
 
-public class AbstractGameObject implements GameObject {
+public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
     private Point2D position;
@@ -49,5 +51,6 @@ public class AbstractGameObject implements GameObject {
     public void setType(final GameObjectsTypes type) {
         this.type = type;
     }
+
 
 }
