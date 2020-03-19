@@ -6,3 +6,4 @@ out/
 reports
 # Ignored, as Gradle Buildship generates it on import / refresh
 .classpath
+.settings/org.eclipse.jdt.core.prefs
