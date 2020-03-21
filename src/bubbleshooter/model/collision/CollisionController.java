@@ -6,9 +6,6 @@ import bubbleshooter.model.gameobject.GameObject;
 
 public interface CollisionController {
 
-   void checkCollisions(List<GameObject> gameObjects);
+   void checkAllCollisions(List<GameObject> gameObjects);
 
-   boolean hasCollided(GameObject a, GameObject b);
-
-   List<GameObject> getCollidedObjects();
 }
