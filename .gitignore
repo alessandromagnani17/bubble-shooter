@@ -7,3 +7,7 @@ reports
 # Ignored, as Gradle Buildship generates it on import / refresh
 .classpath
 .settings/org.eclipse.jdt.core.prefs
+.DS_Store
+resources/.DS_Store
+resources/view/.DS_Store
+resources/view/background/.DS_Store
