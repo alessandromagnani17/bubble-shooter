@@ -8,7 +8,9 @@ import bubbleshooter.model.gameobject.GameObject;
 
 public interface Model {
 
-    void startGame();
+    void startBasicGame();
+    
+    void startSurvivalGame();
     
     List<GameObject> getGameObjects();
 
