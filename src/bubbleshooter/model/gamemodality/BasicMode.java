@@ -44,7 +44,7 @@ public class BasicMode implements GameModality{
     }
 
     @Override
-    public List<GameObject> getCurrentGameObject() {
+    public List<GameObject> getCurrentGameObjects() {
         return this.currentGameObjects;
     }
 
@@ -56,6 +56,11 @@ public class BasicMode implements GameModality{
     @Override
     public CollisionController getCollisionController() {
         return this.collisionController;
+    }
+
+    @Override
+    public GameStatus getGameStatus() {
+        return this.status;
     }
 
 }

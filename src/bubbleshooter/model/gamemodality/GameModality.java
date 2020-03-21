@@ -1,7 +1,6 @@
 package bubbleshooter.model.gamemodality;
 
 import java.util.List;
-
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.GameObject;
 
@@ -13,11 +12,14 @@ public interface GameModality {
     
     void setGameStatus(GameStatus status);
     
-    List<GameObject> getCurrentGameObject();
-    
     void setGameOver();
     
+    List<GameObject> getCurrentGameObjects();
+    
     CollisionController getCollisionController();
+    
+    GameStatus getGameStatus();
+
     
     
 }
