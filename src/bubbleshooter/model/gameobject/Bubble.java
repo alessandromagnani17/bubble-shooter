@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import bubbleshooter.view.images.Color;
-import javafx.geometry.Point2D;
 
 public interface Bubble {
 
