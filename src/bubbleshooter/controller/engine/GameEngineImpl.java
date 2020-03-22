@@ -21,26 +21,24 @@ public class GameEngineImpl extends Thread implements GameEngine  {
         this.model = model;
         this.isRunning = false;
         this.isPaused=true;
-        
     }
-    
+
     @Override
     public void startLoop() {
         if (!this.isRunning()) {
-            this.isRunning=true;
-            this.isPaused=false;
-            this.loopThread = new Thread(this,"loop");
+            this.isRunning = true;
+            this.isPaused = false;
+            this.loopThread = new Thread(this ,"loop");
             this.loopThread.start();
         }
     }
-    
+
     public void run(){
         long lastFrameTime = System.currentTimeMillis();
-        while(this.isRunning()) {
+        while (this.isRunning()) {
             final long currentFrameTime = System.currentTimeMillis();
             //this.processInput();
-            if(!this.isPaused()) {
-                System.out.println("running");
+            if (!this.isPaused()) {
                 final long elapsed = currentFrameTime - lastFrameTime;
                 this.updateAll(elapsed);
                 this.waitForNextFrame(currentFrameTime);
@@ -54,8 +52,8 @@ public class GameEngineImpl extends Thread implements GameEngine  {
 
     @Override
     public final synchronized void stopLoop() {
-        this.isRunning=false;
-        this.loopThread.interrupt();// per fermare il thread se si trova in sleep
+        this.isRunning = false;
+        this.loopThread.interrupt(); // per fermare il thread se si trova in sleep
     }
     
     @Override
@@ -73,7 +71,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
     }
     
     private boolean isRunning() {
-        return this.isRunning || !this.model.getGameStatus().equals(GameStatus.GAMEOVER);
+        return this.isRunning;
     }
     
     private void waitForNextFrame(final long currentFrameTime) {
@@ -86,7 +84,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
        }
        try {
            Thread.sleep(sleepTime);
-       }catch (InterruptedException e) {
+       } catch (InterruptedException e) {
            e.printStackTrace();
        }
     }
