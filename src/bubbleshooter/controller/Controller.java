@@ -1,8 +1,10 @@
 package bubbleshooter.controller;
 
+import bubbleshooter.model.gamemodality.LevelTypes;
+
 public interface Controller {
 
-    void startGame();
+    void startGame(LevelTypes levelType);
     
     void pause();
     
