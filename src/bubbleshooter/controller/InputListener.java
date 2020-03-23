@@ -1,4 +1,4 @@
-package src.bubbleshooter.controller;
+package bubbleshooter.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
