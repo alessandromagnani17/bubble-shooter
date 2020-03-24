@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+ package bubbleshooter.model.gameobject;
 
 import org.locationtech.jts.geom.Coordinate;
 
@@ -6,9 +6,19 @@ public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
     private Coordinate position;
-    private boolean isOver;
     private double width;
     private double heigth;
+    private boolean isAvailable; 
+    
+    
+
+    public AbstractGameObject(GameObjectsTypes type, Coordinate position, double width, double heigth) {
+        this.type = type;
+        this.position = position; 
+        this.width = width; 
+        this.heigth = heigth; 
+    }
+    
 
     @Override
     public double getHeight() {
@@ -41,16 +51,6 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public boolean isOver() {
-        return this.isOver;
-    }
-
-    @Override
-    public void update(final double elapsed) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
     public GameObjectsTypes getType() {
         return this.type;
     }
@@ -59,4 +59,13 @@ public abstract class AbstractGameObject implements GameObject {
     public void setType(final GameObjectsTypes type) {
         this.type = type;
     }
+    
+    public final boolean isDestroyed() {
+        return !this.isAvailable; 
+    }
+    
+    public final void destroy() {
+        this.isAvailable = false; 
+    }
+    
 }
