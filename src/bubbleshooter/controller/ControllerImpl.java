@@ -1,10 +1,13 @@
 package bubbleshooter.controller;
 
+import java.util.List;
+
 import bubbleshooter.controller.engine.GameEngine;
 import bubbleshooter.controller.engine.GameEngineImpl;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
+import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.view.View;
 
 public class ControllerImpl implements Controller {
@@ -50,5 +53,9 @@ public class ControllerImpl implements Controller {
         } else if (levelType.equals(LevelTypes.SURVIVALMODE)) {
             this.model.startSurvivalGame();
         }
+    }
+    
+    public final List<GameObject> getGameObjects(){
+        return this.model.getGameObjects();  
     }
 }
