@@ -15,18 +15,18 @@ public class ModelImpl implements Model {
     @Override
     public void startBasicGame() {
         this.gameMode = new BasicMode();
-        this.gameMode.startLevel();
+        this.gameMode.start();
     }
 
     @Override
     public void startSurvivalGame() {
         this.gameMode = new SurvivalMode();
-        this.gameMode.startLevel();
+        this.gameMode.start();
     }
     
     @Override
     public List<GameObject> getGameObjects() {
-        return this.gameMode.getCurrentGameObjects();
+        return this.gameMode.getGameObjectManager().getGameObjects();
     }
 
     @Override
