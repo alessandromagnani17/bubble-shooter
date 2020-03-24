@@ -17,11 +17,7 @@ public interface GameObject {
     Coordinate getPosition();
 
     void setPosition(Coordinate position);
-
-    boolean isOver();
-
-    void update(double elapsed);
-
+    
     GameObjectsTypes getType();
 
     void setType(GameObjectsTypes type);
@@ -29,5 +25,13 @@ public interface GameObject {
     Geometry setCollisionBox();
     
     Geometry getCollisionBox();
+    
+    void update(double elapsed); 
+    
+    void destroy(); 
+    
+    boolean isDestroyed(); 
+    
+    
 
 }
