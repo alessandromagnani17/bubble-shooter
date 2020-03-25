@@ -20,10 +20,12 @@ public class Cannon extends AbstractGameObject implements GameObject {
     private Geometry shape;
     private Line shootingDirection;
     private ShootingBubble readyToShoot;
-    //private Vector2D shootingDirection;
+    private double angle;
+    private double bubbleSpeed = 0.1;
+    private double xVel,yVel;
 
     public Cannon() {
-     super.setPosition(new Coordinate(50, 0)); //DA MODIFICARE E METTERE A META' GUI
+     super.setPosition(new Vector2D(50, 0)); //DA MODIFICARE E METTERE A META' GUI
      super.setHeigth(30); //DA MODIFICARE CON ALTEZZA DEL CANNONE -- UTILE PER COLLISION BOX
      super.setWidth(20); //DA MODIFICARE CON LARGHEZZA DEL CANNONE - UTILE PER COLLISION BOX
      this.shootingDirection = new Line();
@@ -64,12 +66,16 @@ public class Cannon extends AbstractGameObject implements GameObject {
        //DOPO IL CLICK DEL MOUSE NELLA GUI SI CHIAMA IL METODO SHOOT CHE IMPOSTA LA DIREZIONE POI 
        //SI FA PARTIRE IL GAME LOOP CHE RICHIAMA UPDATE OGNI TOT MS E IN QUESTO METODO 
        //BISOGNA AGGIORNARE LA POSIZIONE DELLA SHOOTING BUBBLE A SECONDA DELLA DIREZIONE IMPOSTATA
+       this.readyToShoot.update(elapsed);
     }
     
     //VIENE INVOCATO CON IL CLICK DEL MOUSE NELLA GUI MA ALLO STESSO TEMPO PARTE ANCHE IL GAME LOOP
     // CHE FA FARE UPDATE 
     public final void shoot(final Coordinate position) {
-        this.readyToShoot.setDirection(new Vector2D(position.x - this.shootingDirection.getStartX(), position.y));
+        this.angle = Math.atan2(position.y, position.x);
+        this.xVel = bubbleSpeed * Math.cos(angle);
+        this.yVel = bubbleSpeed * Math.sin(angle);
+        this.readyToShoot.setDirection(new Vector2D(this.xVel, this.yVel));
         this.load();
     }
     
