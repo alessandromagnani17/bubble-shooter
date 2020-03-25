@@ -1,13 +1,20 @@
 package bubbleshooter.model.collision;
 
 import java.util.List;
+
+import org.locationtech.jts.math.Vector2D;
+
+import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
 
 public class CollisionControllerImpl implements CollisionController {
-
     
-    //SERVIRA' UN COLLISION HANDLER PER GESTIRE TUTTE LE COLLISIONI
+    private GameModality level;
+    
+    public CollisionControllerImpl(final GameModality level) {
+        this.level = level;
+    }
     
     @Override
     public void checkAllCollisions(final List<GameObject> gameObjects) {
@@ -15,9 +22,15 @@ public class CollisionControllerImpl implements CollisionController {
         GameObject bubbleGrid = this.getElem(gameObjects, GameObjectsTypes.GRID);
         GameObject cannon = this.getElem(gameObjects, GameObjectsTypes.CANNON);
         GameObject wall = this.getElem(gameObjects, GameObjectsTypes.WALL);
-        //this.hasCollided(movingBubble, wall) ? cambiaSegnoXbubble : continue;
-        //this.hasCollided(movingBubble, bubbleGrid) ? gestisci scoppio/link : continue;
-        //this.hasCollided(bubblegrid, cannon) ? GAMEOVER : continue;
+        if (this.hasCollided(movingBubble, wall)){
+           movingBubble.setPosition(new Vector2D(movingBubble.getPosition().getX()*-1,movingBubble.getPosition().getY()));
+        }
+        if (this.hasCollided(movingBubble, bubbleGrid)) {
+            //SCOPPIO O ATTACCO
+        }
+        if (this.hasCollided(bubbleGrid, cannon)){
+            this.level.setGameOver();
+        }
     }
 
     private GameObject getElem(final List<GameObject> gameObjects, final GameObjectsTypes type) {
