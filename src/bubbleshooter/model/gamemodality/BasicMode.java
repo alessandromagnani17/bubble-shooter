@@ -19,7 +19,7 @@ public class BasicMode implements GameModality{
     @Override
     public void startLevel() {
         this.currentGameObjects = new LinkedList<GameObject>();
-        this.collisionController = new CollisionControllerImpl();
+        this.collisionController = new CollisionControllerImpl(this);
         this.status = GameStatus.RUNNING;
         this.initGameObjects();
     }
