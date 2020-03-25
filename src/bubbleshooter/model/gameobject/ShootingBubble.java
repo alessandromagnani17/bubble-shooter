@@ -6,7 +6,7 @@ import org.locationtech.jts.math.Vector2D;
 
 import bubbleshooter.view.images.Color;
 
-public class ShootingBubble extends BasicBubble  {
+public class ShootingBubble extends BasicBubble implements Bubble  {
 
     private Vector2D direction;
     

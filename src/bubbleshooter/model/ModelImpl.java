@@ -39,5 +39,10 @@ public class ModelImpl implements Model {
         return this.gameMode.getGameStatus();
     }
 
+    @Override
+    public GameModality getGameModality() {
+        return this.gameMode;
+    }
+
 
 }
