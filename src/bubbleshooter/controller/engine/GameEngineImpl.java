@@ -37,7 +37,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
         long lastFrameTime = System.currentTimeMillis();
         while (this.isRunning()) {
             final long currentFrameTime = System.currentTimeMillis();
-            //this.processInput();
+            //process input
             if (!this.isPaused()) {
                 final long elapsed = currentFrameTime - lastFrameTime;
                 this.updateAll(elapsed);
