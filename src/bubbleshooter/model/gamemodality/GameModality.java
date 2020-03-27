@@ -3,6 +3,7 @@ package bubbleshooter.model.gamemodality;
 import java.util.List;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.GameObjectManager;
 
 public interface GameModality {
 
@@ -20,6 +21,6 @@ public interface GameModality {
     
     GameStatus getGameStatus();
 
-    
+    GameObjectManager getGameObjectManager();
     
 }
