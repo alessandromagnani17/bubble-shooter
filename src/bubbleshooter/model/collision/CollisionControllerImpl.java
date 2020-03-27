@@ -1,47 +1,48 @@
 package bubbleshooter.model.collision;
 
-import java.util.List;
-
-import org.locationtech.jts.math.Vector2D;
 
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
 
+
+
 public class CollisionControllerImpl implements CollisionController {
-    
+
     private GameModality level;
-    
-    public CollisionControllerImpl(final GameModality level) {
+    private GameObjectManager gameObjectManager;
+    private CollisionManager collisionManager;
+
+    public CollisionControllerImpl(final GameModality level, final GameObjectManager gameObjectManager) {
         this.level = level;
+        this.gameObjectManager = gameObjectManager;
+    }
+
+    @Override
+    public void checkCollisions() {
+        GameObject movingBubble = this.gameObjectManager.getGameObjectFromList(GameObjectsTypes.MOVINGBUBBLE);
+        GameObject bubbleGrid =  this.gameObjectManager.getGameObjectFromList(GameObjectsTypes.GRID);
+        GameObject wall = this.gameObjectManager.getGameObjectFromList(GameObjectsTypes.WALL);
+        if (this.hasCollided(movingBubble, wall)) {
+            this.collisionManager.resolveCollsion(new Collision(movingBubble, wall, CollisionType.bubbleToWall));
+        }
+
+        if (this.hasCollided(movingBubble, bubbleGrid)) {
+            this.collisionManager.resolveCollsion(new Collision(movingBubble, bubbleGrid, CollisionType.bubbleToGrid));
+        }
+
+        if (this.hasCollided(bubbleGrid, wall)) {
+            this.collisionManager.resolveCollsion(new Collision(bubbleGrid, wall, CollisionType.gridToCannon));
+        }
+    }
+
+    public final CollisionManager getCollisionManager() {
+        return this.collisionManager;
     }
     
-    @Override
-    public void checkAllCollisions(final List<GameObject> gameObjects) {
-        GameObject movingBubble = this.getElem(gameObjects, GameObjectsTypes.MOVINGBUBBLE);
-        GameObject bubbleGrid = this.getElem(gameObjects, GameObjectsTypes.GRID);
-        GameObject cannon = this.getElem(gameObjects, GameObjectsTypes.CANNON);
-        GameObject wall = this.getElem(gameObjects, GameObjectsTypes.WALL);
-        if (this.hasCollided(movingBubble, wall)){
-           movingBubble.setPosition(new Vector2D(movingBubble.getPosition().getX()*-1,movingBubble.getPosition().getY()));
-        }
-        if (this.hasCollided(movingBubble, bubbleGrid)) {
-            //SCOPPIO O ATTACCO
-        }
-        if (this.hasCollided(bubbleGrid, cannon)){
-            this.level.setGameOver();
-        }
-    }
-
-    private GameObject getElem(final List<GameObject> gameObjects, final GameObjectsTypes type) {
-        return gameObjects.stream()
-                .filter(a -> a.getType().equals(GameObjectsTypes.MOVINGBUBBLE))
-                .iterator().next();
-    }
-
     private boolean hasCollided(final GameObject a, final GameObject b) {
         return a.getCollisionBox().intersects(b.getCollisionBox());
     }
-
 
 }
