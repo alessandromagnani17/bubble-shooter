@@ -1,7 +1,9 @@
 package bubbleshooter.model.gameobject;
 
 import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.math.Vector2D;
+
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 
 public interface GameObject {
 
@@ -13,9 +15,9 @@ public interface GameObject {
     
     void setWidth(double width);
 
-    Vector2D getPosition();
+    Point2D getPosition();
 
-    void setPosition(Vector2D position);
+    void setPosition(Point2D position);
 
     boolean isOver();
 
@@ -24,9 +26,7 @@ public interface GameObject {
     GameObjectsTypes getType();
 
     void setType(GameObjectsTypes type);
-    
-    Geometry setCollisionBox();
-    
-    Geometry getCollisionBox();
+
+    Bounds getCollisionBox();
 
 }

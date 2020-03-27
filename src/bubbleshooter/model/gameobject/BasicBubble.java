@@ -2,32 +2,40 @@ package bubbleshooter.model.gameobject;
 
 import java.util.Collection;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.math.Vector2D;
-import org.locationtech.jts.util.GeometricShapeFactory;
-
 import bubbleshooter.view.images.Color;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
+import javafx.scene.shape.Circle;
 
 public class BasicBubble extends AbstractGameObject implements Bubble {
 
     private final double radius = 10;
     private Map<Direction, Optional<Bubble>> connections = new HashMap<>();
     private Color color;
-    private Geometry shape;
+    private Circle circle;
 
-    public BasicBubble(final Vector2D position, final Color color) {
+    public BasicBubble(final Point2D position, final Color color) {
         super.setPosition(position);
         this.color = color;
         super.setHeigth(20); //DA MODIFICARE
         super.setWidth(20); //DA MODIFICARE
-        this.shape = this.setCollisionBox();
+        this.circle = new Circle(super.getPosition().getX(), super.getPosition().getY(), this.radius);
     }
 
+    @Override
+    public void setPosition(final Point2D position) {
+        super.setPosition(position);
+        this.circle.setCenterX(position.getX());
+        this.circle.setCenterY(position.getY());
+    }
+
+    
     @Override
     public void connectBoth(final Direction direction, final Optional<Bubble> bubbleToConnect) {
         this.setBubbleAt(direction, bubbleToConnect);
@@ -79,17 +87,10 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
         return this.connections;
     }
 
-    @Override
-    public Geometry setCollisionBox() {
-        final GeometricShapeFactory shapeFactory = new GeometricShapeFactory();
-        shapeFactory.setWidth(super.getWidth());
-        shapeFactory.setHeight(super.getHeight());
-        return shapeFactory.createCircle();
-    }
 
     @Override
-    public Geometry getCollisionBox() {
-        return this.shape;
+    public Bounds getCollisionBox() {
+        return this.circle.getBoundsInParent();
     }
 
 

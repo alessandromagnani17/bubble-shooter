@@ -1,6 +1,7 @@
 package bubbleshooter.model.gameobject;
 
 import java.util.LinkedList;
+
 import java.util.List;
 
 
@@ -10,27 +11,27 @@ import org.locationtech.jts.math.Vector2D;
 import org.locationtech.jts.util.GeometricShapeFactory;
 
 import bubbleshooter.view.images.Color;
-import javafx.event.EventType;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 public class Cannon extends AbstractGameObject implements GameObject {
 
     private List<ShootingBubble> ammo;
-    private Geometry shape;
-    private Line shootingDirection;
+    private Rectangle shape;
+    private Point2D shootingDirection;
     private ShootingBubble readyToShoot;
     private double angle;
     private double bubbleSpeed = 0.1;
-    private double xVel,yVel;
+    private double xVel, yVel;
 
     public Cannon() {
-     super.setPosition(new Vector2D(50, 0)); //DA MODIFICARE E METTERE A META' GUI
+     super.setType(GameObjectsTypes.CANNON);
+     super.setPosition(new Point2D(50, 0)); //DA MODIFICARE E METTERE A META' GUI
      super.setHeigth(30); //DA MODIFICARE CON ALTEZZA DEL CANNONE -- UTILE PER COLLISION BOX
      super.setWidth(20); //DA MODIFICARE CON LARGHEZZA DEL CANNONE - UTILE PER COLLISION BOX
-     this.shootingDirection = new Line();
-     this.shootingDirection.setStartX(50);// LA X DELLA GUI / 2 
-     this.shootingDirection.setStartY(0);
+     this.shape = new Rectangle(super.getPosition().getX(),super.getPosition().getY(), super.getWidth(), super.getHeight()) ;
      this.readyToShoot = new ShootingBubble(super.getPosition(), Color.getRandomColor());
      this.ammo = new LinkedList<ShootingBubble>();
      this.initAmmo();
@@ -43,16 +44,6 @@ public class Cannon extends AbstractGameObject implements GameObject {
         this.ammo.add(new ShootingBubble(super.getPosition(), Color.getRandomColor()));
     }
 
-    public final void setShootingDirection(final Point2D direction) {
-        this.shootingDirection.setEndX(direction.getX());
-        this.shootingDirection.setEndX(direction.getY());
-        this.shootingDirection.autosize();
-    }
-    
-    public final Line getShootingDirection() {
-        return this.shootingDirection;
-    }
-    
     public final List<ShootingBubble> getAmmo() {
        return this.ammo;
     }
@@ -68,28 +59,22 @@ public class Cannon extends AbstractGameObject implements GameObject {
        //BISOGNA AGGIORNARE LA POSIZIONE DELLA SHOOTING BUBBLE A SECONDA DELLA DIREZIONE IMPOSTATA
        this.readyToShoot.update(elapsed);
     }
-    
+
     //VIENE INVOCATO CON IL CLICK DEL MOUSE NELLA GUI MA ALLO STESSO TEMPO PARTE ANCHE IL GAME LOOP
     // CHE FA FARE UPDATE 
-    public final void shoot(final Coordinate position) {
-        this.angle = Math.atan2(position.y, position.x);
+    public final void shoot(final Point2D mousePosition) {
+        this.shootingDirection = mousePosition;
+        this.angle = Math.atan2(this.shootingDirection.getY(), this.shootingDirection.getX());
         this.xVel = bubbleSpeed * Math.cos(angle);
         this.yVel = bubbleSpeed * Math.sin(angle);
-        this.readyToShoot.setDirection(new Vector2D(this.xVel, this.yVel));
+        this.readyToShoot.setDirection(new Point2D(this.xVel, this.yVel));
         this.load();
     }
-    
-    @Override
-    public Geometry setCollisionBox() {
-        final GeometricShapeFactory shapeFactory = new GeometricShapeFactory();
-        shapeFactory.setWidth(super.getWidth());
-        shapeFactory.setHeight(super.getHeight());
-        return shapeFactory.createRectangle();
-    }
+
 
     @Override
-    public Geometry getCollisionBox() {
-        return this.shape;
+    public Bounds getCollisionBox() {
+        return this.shape.getBoundsInParent();
     }
 
 }

@@ -1,26 +1,27 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.math.Vector2D;
 import bubbleshooter.view.images.Color;
+import javafx.geometry.Point2D;
 
 
 public class ShootingBubble extends BasicBubble implements Bubble  {
 
-    private Vector2D direction;
+    private Point2D direction;
 
-    public ShootingBubble(final Vector2D position, final Color color) {
+    public ShootingBubble(final Point2D position, final Color color) {
         super(position, color);
+        super.setType(GameObjectsTypes.MOVINGBUBBLE);
     }
 
-    public final void setDirection(final Vector2D direction) {
+    public final void setDirection(final Point2D direction) {
         this.direction = direction;
     }
 
-    public final Vector2D getDirection() {
+    public final Point2D getDirection() {
         return this.direction;
     }
 
     public final void update(final double elapsed) {
-        this.setPosition(new Vector2D(this.getPosition().add(direction)));
+        this.setPosition(this.getPosition().add(this.direction).multiply(elapsed));
     }
 }

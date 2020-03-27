@@ -1,12 +1,12 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.math.Vector2D;
+
+import javafx.geometry.Point2D;
 
 public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
-    private Vector2D position;
+    private Point2D position;
     private boolean isOver;
     private double width;
     private double heigth;
@@ -22,12 +22,12 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public Vector2D getPosition() {
+    public Point2D getPosition() {
         return this.position;
     }
 
     @Override
-    public void setPosition(final Vector2D position) {
+    public void setPosition(final Point2D position) {
         this.position = position;
     }
 
