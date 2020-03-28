@@ -1,19 +1,27 @@
 package bubbleshooter.model.gamemodality;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Stream;
+
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.collision.CollisionControllerImpl;
+import bubbleshooter.model.gameobject.CreateGameObject;
+import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectManager;
 
 public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
     private CollisionController collisionController;
+    private CreateGameObject creator; 
     private GameStatus status = GameStatus.PAUSE;
     // gameDataManager per gestire punteggio
 
     public BasicMode() {
         this.gameObjectManager = new GameObjectManager();
         this.collisionController = new CollisionControllerImpl();
+        this.creator = new CreateGameObject(); 
         this.status = GameStatus.PAUSE;
     }
 
@@ -22,6 +30,12 @@ public class BasicMode implements GameModality {
         this.status = GameStatus.RUNNING;
         this.initGameObjectsManager();
     }
+    
+    public List<GameObject>createGameObject() {
+        List<GameObject> object = new LinkedList<>(); 
+        object.addAll(creator.createBubbleGrid()); 
+        return object; 
+   }
 
     private void initGameObjectsManager() {
         this.gameObjectManager.update(0);
