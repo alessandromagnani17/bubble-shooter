@@ -13,5 +13,4 @@ public class GameController extends AbstractController{
     protected FXMLPath getPreviousScene() {
         return FXMLPath.MAIN; 
     }
-
 }
