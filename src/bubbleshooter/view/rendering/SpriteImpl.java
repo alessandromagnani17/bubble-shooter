@@ -25,7 +25,7 @@ public class SpriteImpl implements Sprite{
         super();
         this.gc = gc;
         this.gameObject = gameObject;
-        this.position = new Coordinate(0, 0); 
+        this.position = new Coordinate(0, 0);
         this.gameObjectHeight = DEFAULT; 
         this.gameObjectWidth = DEFAULT; 
         this.gameObjectPosition = null; 
