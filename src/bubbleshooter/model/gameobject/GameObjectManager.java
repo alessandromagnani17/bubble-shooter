@@ -11,7 +11,7 @@ public class GameObjectManager {
     private List<GameObject> newGameObjects ;
 
     public GameObjectManager() {
-        this.gameObjects = new LinkedList< >();
+        this.gameObjects = new LinkedList<>();
         this.newGameObjects = new LinkedList<>(); 
     } 
     

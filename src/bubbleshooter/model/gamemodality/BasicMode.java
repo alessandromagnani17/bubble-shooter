@@ -34,6 +34,7 @@ public class BasicMode implements GameModality {
     public List<GameObject>createGameObject() {
         List<GameObject> object = new LinkedList<>(); 
         object.addAll(creator.createBubbleGrid()); 
+        //da aggiungere il resto dei gameObject
         return object; 
    }
 
