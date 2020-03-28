@@ -2,7 +2,7 @@ package bubbleshooter.model.highscore;
 
 import java.io.Serializable;
 
-public class Score implements Comparable<Score>, Serializable {
+public class Score implements Serializable {
 
     /**
      * 
@@ -13,7 +13,7 @@ public class Score implements Comparable<Score>, Serializable {
     protected long end;   // For survival mode
     
     /**
-     * Construct for a SurvivalMode Game.
+     * Construct a SurvivalMode Game.
      * @param score
      *              Score of this game
      * @param start
@@ -27,14 +27,13 @@ public class Score implements Comparable<Score>, Serializable {
         this.end = end;
     }
     
+    /**
+     * Construct a BasicMode Game.
+     * @param score
+     *              Score of this game
+     */
     public Score(final long score) { 
         this.score = score;
-    }
-
-    @Override
-    public int compareTo(Score o) {
-        // TODO Auto-generated method stub
-        return 0;
     }
 
 }
