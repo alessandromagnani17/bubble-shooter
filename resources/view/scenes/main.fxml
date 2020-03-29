@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
+<AnchorPane maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
    <children>
-      <ImageView fitHeight="741.0" fitWidth="683.0" layoutX="6.0" layoutY="-4.0">
-         <image>
-            <Image url="@../background/Picture_Frame.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="538.0" fitWidth="485.0" layoutX="105.0" layoutY="98.0">
-         <image>
-            <Image url="@../background/Red_Background.jpg" />
-         </image>
-      </ImageView>
-      <Button alignment="CENTER" layoutX="270.0" layoutY="252.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="134.0" text="Play" textFill="RED">
+      <Button alignment="CENTER" layoutX="270.0" layoutY="252.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="134.0" text="Play" textFill="RED" 	onMouseClicked="#btnOnClickHandler" >
          <font>
             <Font name="Ananda" size="35.0" />
          </font>
@@ -31,25 +15,5 @@
             <Glow />
          </effect>
       </Button>
-      <Button layoutX="-260.0" layoutY="777.0" mnemonicParsing="false" prefHeight="103.0" prefWidth="332.0" text="How to play" textAlignment="CENTER" textFill="RED">
-         <font>
-            <Font name="IM FELL DW Pica Roman" size="45.0" />
-         </font>
-      </Button>
-      <Button layoutX="-464.0" layoutY="860.0" mnemonicParsing="false" text="High scores" textAlignment="CENTER" textFill="RED">
-         <font>
-            <Font name="IM FELL DW Pica Roman" size="45.0" />
-         </font>
-      </Button>
-      <Button layoutX="-335.0" layoutY="664.0" mnemonicParsing="false" text="Quit" textFill="RED">
-         <font>
-            <Font name="IM FELL DW Pica Roman" size="45.0" />
-         </font>
-      </Button>
-      <Label layoutX="124.0" layoutY="132.0" prefHeight="64.0" prefWidth="433.0" text="Bubble Shooter" textFill="YELLOW">
-         <font>
-            <Font name="Ananda" size="64.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
