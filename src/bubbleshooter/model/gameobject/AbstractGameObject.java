@@ -7,7 +7,7 @@ public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
     private Point2D position;
-    private boolean isOver;
+    private boolean isOver = false;
     private double width;
     private double heigth;
 
@@ -25,10 +25,20 @@ public abstract class AbstractGameObject implements GameObject {
     public Point2D getPosition() {
         return this.position;
     }
+    
+    @Override
+    public Point2D getDirection() {
+        return this.position;
+    }
 
     @Override
     public void setPosition(final Point2D position) {
         this.position = position;
+    }
+    
+    @Override
+    public  void setDirection(final Point2D direction) {
+        this.position = direction;
     }
 
     @Override

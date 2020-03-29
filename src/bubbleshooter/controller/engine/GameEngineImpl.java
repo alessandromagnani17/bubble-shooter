@@ -20,7 +20,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
         this.view = view;
         this.model = model;
         this.isRunning = false;
-        this.isPaused=true;
+        this.isPaused = true;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
         if (!this.isRunning()) {
             this.isRunning = true;
             this.isPaused = false;
-            this.loopThread = new Thread(this ,"loop");
+            this.loopThread = new Thread(this , "loop");
             this.loopThread.start();
         }
     }

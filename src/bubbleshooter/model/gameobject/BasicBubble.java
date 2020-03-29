@@ -12,6 +12,7 @@ import bubbleshooter.view.images.Color;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 
 public class BasicBubble extends AbstractGameObject implements Bubble {
 
@@ -89,8 +90,8 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
 
 
     @Override
-    public Bounds getCollisionBox() {
-        return this.circle.getBoundsInParent();
+    public Shape getShape() {
+        return this.circle;
     }
 
 

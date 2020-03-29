@@ -15,6 +15,7 @@ import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 public class Cannon extends AbstractGameObject implements GameObject {
 
@@ -73,8 +74,8 @@ public class Cannon extends AbstractGameObject implements GameObject {
 
 
     @Override
-    public Bounds getCollisionBox() {
-        return this.shape.getBoundsInParent();
+    public Shape getShape() {
+        return this.shape;
     }
 
 }

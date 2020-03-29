@@ -1,6 +1,8 @@
 package bubbleshooter.view.scene;
 
 import java.io.IOException;
+
+import bubbleshooter.application.Launcher;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,7 +28,7 @@ public final class SceneLoader {
      */
     public SceneWrapper getScene(final FXMLPath scene) throws IOException {
         final FXMLLoader loader = new FXMLLoader();
-        final Parent parent = FXMLLoader.load(getClass().getResource(scene.getPath()));
+        final Parent parent = loader.load(SceneLoader.class.getResourceAsStream(scene.getPath()));
         return new SceneWrapperImpl(new Scene(parent), loader.getController());
     }
 
