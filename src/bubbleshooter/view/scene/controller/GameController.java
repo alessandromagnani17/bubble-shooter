@@ -19,7 +19,7 @@ public class GameController extends AbstractController{
     @Override
     public void init(final Controller controller, final View view) {
         super.init(controller, view);
-        this.canvasDrawer = new CanvasDrawer(canvas); 
+        this.canvasDrawer = new CanvasDrawer(this.canvas);   
         canvasDrawer.draw(this.getController().getGameObjects()); 
     }
 
@@ -31,5 +31,20 @@ public class GameController extends AbstractController{
     @Override
     protected FXMLPath getPreviousScene() {
         return FXMLPath.MAIN; 
+    }
+    
+    public boolean isGameOver() {
+        return this.isGameOver; 
+    }
+    
+    // Clear the canvas after every render. It avoids ghosting effect.
+    private void clearCanvas() {
+        this.canvas.getGraphicsContext2D().restore();
+        this.resetGameCanvasCoordinates();
+    }
+
+    private void resetGameCanvasCoordinates() {
+        
+        
     }
 }

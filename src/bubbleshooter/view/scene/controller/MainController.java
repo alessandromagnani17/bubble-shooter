@@ -1,5 +1,6 @@
 package bubbleshooter.view.scene.controller;
 
+import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.view.scene.FXMLPath;
 /**
  * The Controller related to the main.fxml GUI.
@@ -11,8 +12,9 @@ public final class MainController extends AbstractController {
      */
     
     public void btnOnClickHandler() {
+            this.getController().startGame(LevelTypes.BASICMODE);
             this.nextScene();
-           }
+    }
 
     @Override
     public FXMLPath getNextScene() {
