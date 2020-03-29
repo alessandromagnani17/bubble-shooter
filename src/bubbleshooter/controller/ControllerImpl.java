@@ -28,7 +28,7 @@ public class ControllerImpl implements Controller {
     public void startGame(final LevelTypes levelType) {
      this.engine = new GameEngineImpl(this.view, this.model);
      this.startSelectedGame(levelType);
-     this.engine.startLoop();
+     //this.engine.startLoop();
      //far partire la musica
     }
 
