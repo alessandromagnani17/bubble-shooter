@@ -13,7 +13,6 @@ public class ShootingBubble extends BasicBubble implements Bubble  {
         super.setType(GameObjectsTypes.MOVINGBUBBLE);
     }
 
-    
     public final void setDirection(final Point2D direction) {
         this.direction = direction;
     }

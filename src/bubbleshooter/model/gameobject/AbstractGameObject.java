@@ -1,7 +1,7 @@
 package bubbleshooter.model.gameobject;
 
-
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public abstract class AbstractGameObject implements GameObject {
 
@@ -10,22 +10,23 @@ public abstract class AbstractGameObject implements GameObject {
     private boolean isOver = false;
     private double width;
     private double heigth;
+    private Shape shape;
 
     @Override
-    public double getHeight() {
+    public final double getHeight() {
         return this.heigth;
     }
 
     @Override
-    public double getWidth() {
+    public final double getWidth() {
         return this.width;
     }
 
     @Override
-    public Point2D getPosition() {
+    public final Point2D getPosition() {
         return this.position;
     }
-    
+
     @Override
     public Point2D getDirection() {
         return this.position;
@@ -35,24 +36,24 @@ public abstract class AbstractGameObject implements GameObject {
     public void setPosition(final Point2D position) {
         this.position = position;
     }
-    
+
     @Override
     public  void setDirection(final Point2D direction) {
         this.position = direction;
     }
 
     @Override
-    public void setHeigth(final double heigth) {
+    public final void setHeigth(final double heigth) {
         this.heigth = heigth;
     }
 
     @Override
-    public void setWidth(final double width) {
+    public final void setWidth(final double width) {
         this.width = width;
     }
 
     @Override
-    public boolean isOver() {
+    public final boolean isOver() {
         return this.isOver;
     }
 
@@ -62,12 +63,22 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public GameObjectsTypes getType() {
+    public final GameObjectsTypes getType() {
         return this.type;
     }
 
     @Override
-    public void setType(final GameObjectsTypes type) {
+    public final void setType(final GameObjectsTypes type) {
         this.type = type;
+    }
+
+    @Override
+    public final Shape getShape() {
+        return this.shape;
+    }
+
+    @Override
+    public final void setShape(final Shape shape) {
+        this.shape = shape;
     }
 }

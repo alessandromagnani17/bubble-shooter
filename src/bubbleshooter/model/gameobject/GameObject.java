@@ -31,5 +31,7 @@ public interface GameObject {
     void setType(GameObjectsTypes type);
 
     Shape getShape();
+    
+    void setShape(Shape shape);
 
 }

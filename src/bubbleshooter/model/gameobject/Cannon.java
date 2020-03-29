@@ -10,6 +10,7 @@ import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.math.Vector2D;
 import org.locationtech.jts.util.GeometricShapeFactory;
 
+import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.Color;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -20,11 +21,9 @@ import javafx.scene.shape.Shape;
 public class Cannon extends AbstractGameObject implements GameObject {
 
     private List<ShootingBubble> ammo;
-    private Rectangle shape;
     private Point2D shootingDirection;
     private ShootingBubble readyToShoot;
     private double angle;
-    private double bubbleSpeed = 0.1;
     private double xVel, yVel;
 
     public Cannon() {
@@ -32,7 +31,7 @@ public class Cannon extends AbstractGameObject implements GameObject {
      super.setPosition(new Point2D(50, 0)); //DA MODIFICARE E METTERE A META' GUI
      super.setHeigth(30); //DA MODIFICARE CON ALTEZZA DEL CANNONE -- UTILE PER COLLISION BOX
      super.setWidth(20); //DA MODIFICARE CON LARGHEZZA DEL CANNONE - UTILE PER COLLISION BOX
-     this.shape = new Rectangle(super.getPosition().getX(),super.getPosition().getY(), super.getWidth(), super.getHeight()) ;
+     super.setShape(new Rectangle(super.getPosition().getX(), super.getPosition().getY(), super.getWidth(), super.getHeight())) ;
      this.readyToShoot = new ShootingBubble(super.getPosition(), Color.getRandomColor());
      this.ammo = new LinkedList<ShootingBubble>();
      this.initAmmo();
@@ -66,16 +65,10 @@ public class Cannon extends AbstractGameObject implements GameObject {
     public final void shoot(final Point2D mousePosition) {
         this.shootingDirection = mousePosition;
         this.angle = Math.atan2(this.shootingDirection.getY(), this.shootingDirection.getX());
-        this.xVel = bubbleSpeed * Math.cos(angle);
-        this.yVel = bubbleSpeed * Math.sin(angle);
+        this.xVel = GameCostants.BUBBLESPEED.getValue() * Math.cos(angle);
+        this.yVel = GameCostants.BUBBLESPEED.getValue() * Math.sin(angle);
         this.readyToShoot.setDirection(new Point2D(this.xVel, this.yVel));
         this.load();
-    }
-
-
-    @Override
-    public Shape getShape() {
-        return this.shape;
     }
 
 }

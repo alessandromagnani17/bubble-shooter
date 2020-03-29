@@ -22,15 +22,9 @@ public class GameObjectManager {
     }
     
     
-    public final List<GameObject> getGameObjects(){
+    public final List<GameObject> getGameObjects() {
         return Collections.unmodifiableList(gameObjects); 
     }
     
-    public final  GameObject getGameObjectFromList(final GameObjectsTypes type) {
-        return  this.gameObjects
-                .stream()
-                .filter(a -> a.getType().equals(type))
-                .iterator().next();
-    }
 }
-    
+
