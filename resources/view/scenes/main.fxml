@@ -13,6 +13,16 @@
 
 <AnchorPane maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
    <children>
+   <ImageView fitHeight="741.0" fitWidth="683.0" layoutX="6.0" layoutY="-4.0">
+         <image>
+            <Image url="/view/background/Picture_Frame.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="538.0" fitWidth="485.0" layoutX="105.0" layoutY="98.0">
+         <image>
+            <Image url="/view/background/Red_Background.jpg" />
+         </image>
+      </ImageView>
       <Button alignment="CENTER" layoutX="270.0" layoutY="252.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="134.0" text="Play" textFill="RED">
          <font>
             <Font name="Ananda" size="35.0" />
