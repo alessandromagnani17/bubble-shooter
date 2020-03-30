@@ -2,9 +2,7 @@ package bubbleshooter.model.highscore;
 
 import java.io.File;
 import java.io.Serializable;
-
 import com.google.common.collect.ImmutableSortedSet;
-
 import bubbleshooter.model.gamemodality.GameModality;
 
 public interface HighscoreStore extends Serializable{
