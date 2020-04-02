@@ -10,7 +10,30 @@ import javafx.geometry.Point2D;
 
 public class Cannon extends AbstractGameObject {
 
-    private List<Bubble> ammo;
+    public Cannon(GameObjectsTypes type, Point2D position, double width, double heigth) {
+        super(type, position, width, heigth);
+        // TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public Geometry setCollisionBox() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Geometry getCollisionBox() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void update(double elapsed) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    /*private List<Bubble> ammo;
     private Geometry shape;
     private Vector2D shootingDirection;
 
@@ -54,6 +77,6 @@ public class Cannon extends AbstractGameObject {
     @Override
     public Geometry getCollisionBox() {
         return this.shape;
-    }
+    }*/
 
 }

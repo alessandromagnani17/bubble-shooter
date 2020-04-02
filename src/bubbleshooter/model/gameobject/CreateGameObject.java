@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.locationtech.jts.geom.Coordinate;
+import javafx.geometry.Point2D;
 
 public class CreateGameObject {
     
@@ -17,16 +18,16 @@ public class CreateGameObject {
     
     
     
-    public BasicBubble createBasicBubble(Coordinate position) {
+    public BasicBubble createBasicBubble(Point2D position) {
         return new BasicBubble(position, BUBBLE_WIDTH, BUBBLE_HEIGTH); 
         
     }
     
-    public List<BasicBubble> createBubbleGrid(){
-        List<BasicBubble> grid = new LinkedList<>(); 
+    public List<GameObject> createBubbleGrid(){
+        List<GameObject> grid = new LinkedList<>(); 
         for(int x = 0; x <=  ROW_BUBBLES*BUBBLE_WIDTH; x += BUBBLE_WIDTH) {
             for (int y = 0; y <= ROWS_NUMBER*ROW_BUBBLES; y += BUBBLE_WIDTH) {
-                grid.add(this.createBasicBubble(new Coordinate(x, y))); 
+                grid.add(this.createBasicBubble(new Point2D(x, y))); 
             }
         }
         return grid; 

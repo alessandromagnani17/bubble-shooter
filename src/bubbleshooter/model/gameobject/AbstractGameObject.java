@@ -2,21 +2,24 @@
 
 import org.locationtech.jts.geom.Coordinate;
 
+import javafx.geometry.Point2D;
+
 public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
-    private Coordinate position;
+    private Point2D position;
     private double width;
     private double heigth;
-    private boolean isAvailable; 
+    private boolean isDestroyed; 
     
     
 
-    public AbstractGameObject(GameObjectsTypes type, Coordinate position, double width, double heigth) {
+    public AbstractGameObject(GameObjectsTypes type,  Point2D position, double width, double heigth) {
         this.type = type;
         this.position = position; 
         this.width = width; 
         this.heigth = heigth; 
+        this.isDestroyed = false; 
     }
     
 
@@ -31,12 +34,12 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public Coordinate getPosition() {
+    public Point2D getPosition() {
         return this.position;
     }
 
     @Override
-    public void setPosition(final Coordinate position) {
+    public void setPosition(final Point2D position) {
         this.position = position;
     }
 
@@ -61,11 +64,11 @@ public abstract class AbstractGameObject implements GameObject {
     }
     
     public final boolean isDestroyed() {
-        return !this.isAvailable; 
+        return this.isDestroyed; 
     }
     
     public final void destroy() {
-        this.isAvailable = false; 
+        this.isDestroyed = true; 
     }
     
 }

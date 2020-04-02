@@ -4,6 +4,8 @@ import org.locationtech.jts.geom.Coordinate;
 
 import org.locationtech.jts.geom.Geometry;
 
+import javafx.geometry.Point2D;
+
 public interface GameObject {
 
     double getHeight();
@@ -14,9 +16,9 @@ public interface GameObject {
     
     void setWidth(double width);
 
-    Coordinate getPosition();
+    Point2D getPosition();
 
-    void setPosition(Coordinate position);
+    void setPosition(Point2D position);
     
     GameObjectsTypes getType();
 
