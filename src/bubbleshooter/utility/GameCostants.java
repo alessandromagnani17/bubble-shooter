@@ -11,6 +11,10 @@ public enum GameCostants {
     BUBBLESPEED(0.1),
 
     FPS(60),
+    
+    CANNONHEIGTH(100), 
+    
+    CANNONWIDTH(1000),
 
     SECONDS(1000);
 
