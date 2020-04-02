@@ -54,8 +54,8 @@ public enum Color {
      * @return A random {@link BallColors} color.
      */
     
-    public static Color getRandomColor() {
-        return VALUES.get(RANDOM.nextInt(SIZE));
+    public static String getRandomColor() {
+        return VALUES.get(RANDOM.nextInt(SIZE)).getBallPath(); 
     }
 
     /**
