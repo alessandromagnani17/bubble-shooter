@@ -10,16 +10,15 @@ import bubbleshooter.model.gameobject.GameObject;
 public interface Model {
 
     void startBasicGame();
-    
+
     void startSurvivalGame();
-    
+
     List<GameObject> getGameObjects();
 
     void update(double elapsed);
 
     GameStatus getGameStatus();
-    
+
     GameModality getGameModality();
 
-    
 }

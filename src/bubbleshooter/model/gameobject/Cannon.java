@@ -53,7 +53,7 @@ public class Cannon extends AbstractGameObject implements GameObject {
         this.ammo.add(new ShootingBubble(super.getPosition(), Color.getRandomColor()));
     }
 
-    public final void update(final double elapsed){
+    public final void update(final double elapsed) {
        //DOPO IL CLICK DEL MOUSE NELLA GUI SI CHIAMA IL METODO SHOOT CHE IMPOSTA LA DIREZIONE POI 
        //SI FA PARTIRE IL GAME LOOP CHE RICHIAMA UPDATE OGNI TOT MS E IN QUESTO METODO 
        //BISOGNA AGGIORNARE LA POSIZIONE DELLA SHOOTING BUBBLE A SECONDA DELLA DIREZIONE IMPOSTATA

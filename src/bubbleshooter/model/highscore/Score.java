@@ -11,7 +11,7 @@ public class Score implements Serializable {
     protected final long score;
     protected long start; // For survival mode
     protected long end;   // For survival mode
-    
+
     /**
      * Construct a SurvivalMode Game.
      * @param score
@@ -26,7 +26,7 @@ public class Score implements Serializable {
         this.start = start;
         this.end = end;
     }
-    
+
     /**
      * Construct a BasicMode Game.
      * @param score

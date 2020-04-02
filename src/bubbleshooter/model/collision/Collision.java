@@ -29,7 +29,7 @@ public class Collision {
     public final GameObject getSecondCollided() {
         return this.secondGameObj;
     }
-    
+
     public final CollisionType getCollistionType() {
         return this.type;
     }

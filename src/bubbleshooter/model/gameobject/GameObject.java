@@ -9,19 +9,19 @@ public interface GameObject {
     double getHeight();
 
     double getWidth();
-    
+
     void setHeigth(double heigth);
-    
+
     void setWidth(double width);
 
     Point2D getPosition();
-    
+
     Point2D getDirection();
 
     void setPosition(Point2D position);
 
     void setDirection(Point2D direction);
-    
+
     boolean isOver();
 
     void update(double elapsed);
@@ -31,7 +31,7 @@ public interface GameObject {
     void setType(GameObjectsTypes type);
 
     Shape getShape();
-    
+
     void setShape(Shape shape);
 
 }

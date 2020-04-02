@@ -53,7 +53,7 @@ public enum Color {
      * 
      * @return A random {@link BallColors} color.
      */
-    
+
     public static Color getRandomColor() {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
@@ -65,5 +65,5 @@ public enum Color {
     public String getBallPath() {
         return this.bubblePath;
     }
-    
+
 }

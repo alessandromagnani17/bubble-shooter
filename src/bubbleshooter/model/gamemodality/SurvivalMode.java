@@ -1,6 +1,6 @@
 package bubbleshooter.model.gamemodality;
 
-public class SurvivalMode extends BasicMode{
+public class SurvivalMode extends BasicMode {
 
     //TO DO
 }
