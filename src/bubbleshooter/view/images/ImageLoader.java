@@ -36,7 +36,11 @@ public class ImageLoader {
      * @return the image of the object required.
      */
     public Image getImage(final ImagePath imagePath) {
-            return this.imageMap.get(imagePath);
+        if (imagePath.equals(ImagePath.BUBBLE) && !this.imageMap.containsKey(imagePath)) {
+            final Image img = this.loadImage(Color.getRandomColor()); 
+            this.imageMap.put(imagePath, img); 
+        }
+        return this.imageMap.get(imagePath);
     }
 
     /**

@@ -2,6 +2,8 @@ package bubbleshooter.view.images;
 
 public enum ImagePath {
 
+    
+        BUBBLE(""),
         /**
          * The image for Player.
          */
