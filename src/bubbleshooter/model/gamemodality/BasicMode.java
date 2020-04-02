@@ -28,13 +28,14 @@ public class BasicMode implements GameModality {
     @Override
     public void start() {
         this.status = GameStatus.RUNNING;
+        this.gameObjectManager.addGameObject(this.createGameObject());
         this.initGameObjectsManager();
+        System.out.println("object = " + this.gameObjectManager.getGameObjects());
     }
     
     public List<GameObject>createGameObject() {
         List<GameObject> object = new LinkedList<>(); 
         object.addAll(creator.createBubbleGrid()); 
-        //da aggiungere il resto dei gameObject
         return object; 
    }
 
