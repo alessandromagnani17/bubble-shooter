@@ -16,10 +16,14 @@ public class GameObjectManager {
     } 
     
     public final void update(final double elapsed) {
-        this.gameObjects.forEach(x -> x.update(elapsed));
+        //this.gameObjects.forEach(x -> x.update(elapsed));
+
         this.addNewGameObjectstToOld(); 
+        
+     
         this.removeGameObject(); 
     }
+    
 
     private void addNewGameObjectstToOld() {
         this.gameObjects.addAll(this.newGameObjects); 
@@ -32,7 +36,7 @@ public class GameObjectManager {
                 .collect(Collectors.toList());        
     }
 
-    private void addGameObject(final List<GameObject> gameObjects) {
+    public void addGameObject(final List<GameObject> gameObjects) {
          this.newGameObjects.addAll(gameObjects); 
     }
     
