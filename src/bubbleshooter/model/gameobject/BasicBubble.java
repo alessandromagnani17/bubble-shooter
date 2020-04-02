@@ -4,15 +4,18 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.util.GeometricShapeFactory;
 
+import javafx.geometry.Point2D;
+
 public class BasicBubble extends AbstractGameObject  {
 
     
     
-    private Geometry shape; 
+    private Geometry shape;
+    
 
     
 
-    public BasicBubble(Coordinate position, double width, double heigth){
+    public BasicBubble(Point2D position, double width, double heigth){
         super(GameObjectsTypes.BASICBUBBLE, position, width, heigth);
         this.shape = this.setCollisionBox(); 
     }
