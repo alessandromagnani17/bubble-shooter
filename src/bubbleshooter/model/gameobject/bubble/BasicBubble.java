@@ -1,18 +1,20 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.gameobject.bubble;
 
+import bubbleshooter.model.collision.CollisionAcceptor;
+import bubbleshooter.model.collision.Visitor;
+import bubbleshooter.model.gameobject.AbstractGameObject;
+import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.utility.GameCostants;
-import bubbleshooter.view.images.Color;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Circle;
 
-public class BasicBubble extends AbstractGameObject implements Bubble {
+public class BasicBubble extends AbstractGameObject implements CollisionAcceptor {
 
-    private Color color;
-
-    public BasicBubble(final Point2D position, final Color color) {
+    public BasicBubble(final Point2D position) {
         super.setType(GameObjectsTypes.BASICBUBBLE);
         super.setPosition(position);
-        this.color = color;
         super.setHeigth(GameCostants.RADIUS.getValue() * 2);
         super.setWidth(super.getHeight()); 
         super.setShape(new Circle(super.getPosition().getX(), super.getPosition().getY(), GameCostants.RADIUS.getValue()));
@@ -26,13 +28,8 @@ public class BasicBubble extends AbstractGameObject implements Bubble {
     }
 
     @Override
-    public final void setColor(final Color bubbleColor) {
-        this.color = bubbleColor;
-    }
-
-    @Override
-    public final Color getColor() {
-        return this.color;
+    public final void accept(final Visitor visitor, final GameObjectManager gameObjectManager) {
+        visitor.visit(this, GameObjectsTypes.BASICBUBBLE, gameObjectManager);
     }
 
 }

@@ -81,4 +81,5 @@ public abstract class AbstractGameObject implements GameObject {
     public final void setShape(final Shape shape) {
         this.shape = shape;
     }
+    
 }
