@@ -1,8 +1,10 @@
 package bubbleshooter.model.gameobject;
 
 
+import bubbleshooter.model.collision.Visitor;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
+
 
 public interface GameObject {
 
@@ -33,5 +35,7 @@ public interface GameObject {
     Shape getShape();
 
     void setShape(Shape shape);
+    
+    void accept(Visitor visitor, GameObjectManager gameObjectManager);
 
 }

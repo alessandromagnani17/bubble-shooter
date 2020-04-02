@@ -1,17 +1,12 @@
 package bubbleshooter.model.gamemodality;
 
-import java.util.LinkedList;
 import java.util.List;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.collision.CollisionControllerImpl;
-
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.Cannon;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectManager;
 
 
-public class BasicMode implements GameModality{
+public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
     private CollisionController collisionController;
@@ -20,8 +15,8 @@ public class BasicMode implements GameModality{
 
     @Override
     public void startLevel() {
-        this.collisionController = new CollisionControllerImpl(this, this.gameObjectManager);
         this.gameObjectManager = new GameObjectManager();
+        this.collisionController = new CollisionController(this, this.gameObjectManager);
         this.status = GameStatus.RUNNING;
     }
 

@@ -1,6 +1,7 @@
 package bubbleshooter.model.gamemodality;
 
 import java.util.List;
+
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectManager;
