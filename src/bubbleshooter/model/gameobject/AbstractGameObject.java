@@ -6,19 +6,15 @@ import javafx.geometry.Point2D;
 
 public abstract class AbstractGameObject implements GameObject {
 
-    private GameObjectsTypes type;
+    
     private Point2D position;
     private double width;
     private double heigth;
     private boolean isDestroyed; 
     
-    
 
-    public AbstractGameObject(GameObjectsTypes type,  Point2D position, double width, double heigth) {
-        this.type = type;
+    public AbstractGameObject(Point2D position) {
         this.position = position; 
-        this.width = width; 
-        this.heigth = heigth; 
         this.isDestroyed = false; 
     }
     
@@ -51,16 +47,6 @@ public abstract class AbstractGameObject implements GameObject {
     @Override
     public void setWidth(final double width) {
         this.width = width;
-    }
-
-    @Override
-    public GameObjectsTypes getType() {
-        return this.type;
-    }
-
-    @Override
-    public void setType(final GameObjectsTypes type) {
-        this.type = type;
     }
     
     public final boolean isDestroyed() {

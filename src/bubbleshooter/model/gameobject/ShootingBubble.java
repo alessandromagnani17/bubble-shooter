@@ -8,9 +8,23 @@ import bubbleshooter.view.images.Color;
 
 public class ShootingBubble extends BasicBubble  {
 
-    public ShootingBubble(Point2D position, double width, double heigth) {
-        super(position, width, heigth);
+    
+    private GameObjectsTypes type; 
+    
+    public ShootingBubble(Point2D position) {
+        super(position);
+        this.type = GameObjectsTypes.MOVINGBUBBLE; 
         // TODO Auto-generated constructor stub
+    }
+    
+    @Override
+    public GameObjectsTypes getType() {
+        return this.type;
+    }
+
+    @Override
+    public void setType(final GameObjectsTypes type) {
+        this.type = type;
     }
 
     /*private Vector2D direction;

@@ -10,9 +10,13 @@ import javafx.geometry.Point2D;
 
 public class Cannon extends AbstractGameObject {
 
-    public Cannon(GameObjectsTypes type, Point2D position, double width, double heigth) {
-        super(type, position, width, heigth);
-        // TODO Auto-generated constructor stub
+    
+    private GameObjectsTypes type;
+    
+    public Cannon(Point2D position) {
+        super(position);
+        this.type = GameObjectsTypes.CANNON; 
+        
     }
 
     @Override
@@ -31,6 +35,15 @@ public class Cannon extends AbstractGameObject {
     public void update(double elapsed) {
         // TODO Auto-generated method stub
         
+    }
+    @Override
+    public GameObjectsTypes getType() {
+        return this.type;
+    }
+
+    @Override
+    public void setType(final GameObjectsTypes type) {
+        this.type = type;
     }
 
     /*private List<Bubble> ammo;
