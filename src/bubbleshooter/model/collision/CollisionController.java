@@ -1,22 +1,16 @@
 package bubbleshooter.model.collision;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.model.gameobject.bubble.ShootingBubble;
-import javafx.scene.shape.Shape;
+import bubbleshooter.utility.GameCostants;
 
 public class CollisionController {
 
     private GameModality level;
-    private GameObjectManager gameObjectManager;
 
-    public CollisionController(final GameModality level, final GameObjectManager gameObjectManager) {
+    public CollisionController(final GameModality level) {
         this.level = level;
-        this.gameObjectManager = gameObjectManager;
     }
 
     public final void checkCollisions() {
@@ -25,30 +19,36 @@ public class CollisionController {
     }
 
     private void checkGameCollisions() {
-        GameObject shootingBubble = this.gameObjectManager.getShootingBubble().get();
-        for (GameObject gObj : this.getHittables()) {
-            if (this.hasCollided(gObj, shootingBubble)) {
-                gObj.accept((ShootingBubble) shootingBubble, gameObjectManager);
+        this.checkBounceCollision();
+        this.checkGridCollision();
+    }
+
+    private void checkBounceCollision() {
+        GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        double xPos = shootingBubble.getPosition().getX() + GameCostants.RADIUS.getValue();
+        if (xPos >= GameCostants.GUIWIDTH.getValue() || xPos <= 0) {
+            CollisionHandler handler = new BoundsCollisionHandler((ShootingBubble) shootingBubble, this.level.getGridManager());
+            handler.handle();
+        }
+    }
+
+    private void checkGridCollision() {
+        GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        for (GameObject basicbubble : this.level.getGridManager().getBubbleGrid()) {
+            if (this.hasCollided(shootingBubble, basicbubble)) {
+              CollisionAcceptor collided = new GameObjectCollided(basicbubble);
+              collided.accept((ShootingBubble) shootingBubble, this.level.getGridManager());
             }
+            break;
         }
     }
 
     private void checkGameOver() {
 
-    }
+       } 
 
-    private boolean hasCollided(final GameObject a, final GameObject b) {
-        Shape intersection = Shape.intersect(a.getShape(), b.getShape());
-        return intersection.getBoundsInLocal().getWidth() != -1;
-    }
-
-    private List<GameObject> getHittables() {
-        return this.gameObjectManager.getGameObjects()
-                                     .stream()
-                                     .filter(a -> a.getType().equals(GameObjectsTypes.BASICBUBBLE)
-                                     || a.getType().equals(GameObjectsTypes.LEFTWALL) 
-                                     || a.getType().equals(GameObjectsTypes.RIGHTWALL))
-                                     .collect(Collectors.toList());
+    private boolean hasCollided(final GameObject bubbleAt, final GameObject bubbleTo) {
+        return this.level.getGridManager().getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.RADIUS.getValue() * 2;
     }
 
 }
