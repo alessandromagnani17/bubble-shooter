@@ -29,8 +29,6 @@ public class ViewImpl implements View {
       this.controller = controller;
       this.initalize();
       ImageLoader.getLoader().loadAll();
-      
-
     }
 
     private void initalize() {
@@ -79,6 +77,12 @@ public class ViewImpl implements View {
 
     @Override
     public void showGameOver() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void update(double elapsed) {
         // TODO Auto-generated method stub
         
     }
