@@ -1,23 +1,22 @@
 package bubbleshooter.model.gameobject.bubble;
 
-import bubbleshooter.model.collision.BubbleToBoundsHandler;
-import bubbleshooter.model.collision.BubbleToGridHandler;
+
+import bubbleshooter.model.collision.GridCollisionHandler;
 import bubbleshooter.model.collision.CollisionHandler;
 import bubbleshooter.model.collision.Visitor;
 import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 
 
-public class ShootingBubble extends BasicBubble implements Visitor{
+public class ShootingBubble extends BasicBubble implements Visitor {
 
     private Point2D shootingDirection;
 
     public ShootingBubble(final Point2D position) {
         super(position);
-        super.setType(GameObjectsTypes.MOVINGBUBBLE);
+        super.setType(GameObjectsTypes.SHOOTINGBUBBLE);
         this.shootingDirection = this.getPosition();
     }
 
@@ -46,22 +45,8 @@ public class ShootingBubble extends BasicBubble implements Visitor{
 
 
     @Override
-    public void visit(final GameObject gameObject, final GameObjectsTypes type, final GameObjectManager gameObjectManager) {
-        CollisionHandler handler;
-        switch (type) {
-        case LEFTWALL:
-            handler = new BubbleToBoundsHandler(this);
-            break;
-        case RIGHTWALL:
-            handler = new BubbleToBoundsHandler(this);
-            break;
-        case BASICBUBBLE:
-            handler = new BubbleToGridHandler(this, gameObject);
-            break;
-        default:
-            handler = new BubbleToGridHandler(this, gameObject);
-            break;
-        }
+    public final void visit(final GameObject gameObject, final GameObjectsTypes type, final BubbleGridManager gridManager) {
+        CollisionHandler handler = new GridCollisionHandler(this, gameObject, gridManager);
         handler.handle();
     }
 }

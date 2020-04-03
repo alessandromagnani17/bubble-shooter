@@ -1,5 +1,6 @@
 package bubbleshooter.model.gameobject;
 
+import bubbleshooter.model.gameobject.bubble.Property;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
@@ -7,11 +8,12 @@ public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
     private Point2D position;
-    private boolean isOver = false;
+    private boolean isDestroyed = false;
     private double width;
     private double heigth;
     private Shape shape;
-
+    private Property property;
+    
     @Override
     public final double getHeight() {
         return this.heigth;
@@ -53,8 +55,8 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public final boolean isOver() {
-        return this.isOver;
+    public final boolean isDestroyed() {
+        return this.isDestroyed;
     }
 
     @Override
@@ -73,13 +75,15 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public final Shape getShape() {
-        return this.shape;
+    public void setProperty(final Property property) {
+        this.property = property;
     }
 
-    @Override
-    public final void setShape(final Shape shape) {
-        this.shape = shape;
+    public final Property getProperty() {
+        return this.property;
     }
-    
+
+    public final void destroy() {
+        this.isDestroyed = true;
+    }
 }

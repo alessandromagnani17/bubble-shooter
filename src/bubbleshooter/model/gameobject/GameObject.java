@@ -2,6 +2,7 @@ package bubbleshooter.model.gameobject;
 
 
 import bubbleshooter.model.collision.Visitor;
+import bubbleshooter.model.gameobject.bubble.Property;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
@@ -23,8 +24,6 @@ public interface GameObject {
     void setPosition(Point2D position);
 
     void setDirection(Point2D direction);
-    
-    boolean isOver();
 
     void update(double elapsed);
 
@@ -32,10 +31,11 @@ public interface GameObject {
 
     void setType(GameObjectsTypes type);
 
-    Shape getShape();
-    
-    void setShape(Shape shape);
-    
-    void accept(Visitor visitor, GameObjectManager gameObjectManager);
+    void setProperty(Property property);
 
+    Property getProperty();
+
+    boolean isDestroyed();
+
+    void destroy();
 }

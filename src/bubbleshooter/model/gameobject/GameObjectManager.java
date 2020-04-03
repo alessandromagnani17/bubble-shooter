@@ -7,13 +7,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GameObjectManager {
-    
+
     private List<GameObject> gameObjects;
 
     public GameObjectManager() {
         this.gameObjects = new LinkedList<>();
     } 
-    
+
     public final void update(final double elapsed) {
         this.gameObjects.forEach(x -> x.update(elapsed));
     }
@@ -21,14 +21,18 @@ public class GameObjectManager {
     public final void addGameObject(final GameObject gObj) {
         this.gameObjects.add(gObj);
     }
-    
-    public final Optional<GameObject> getShootingBubble(){
-        return this.gameObjects.stream().filter(a -> a.getType().equals(GameObjectsTypes.MOVINGBUBBLE)).findAny();
+
+    public final void removeGameObject(final GameObject gObj) {
+        this.gameObjects.remove(gObj);
     }
     
+    public final GameObject getShootingBubble() {
+        return this.gameObjects.stream().filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE)).findAny().get();
+    }
+
     public final List<GameObject> getGameObjects() {
         return Collections.unmodifiableList(gameObjects); 
     }
-    
+
 }
 
