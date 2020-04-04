@@ -35,24 +35,19 @@ import javafx.stage.Stage;
 public class InputController extends Application {
 
     Pane root = new Pane();
-    //private Point2D shootingDirection;
-    //private double angle;
-
     private ImageView cannon = new ImageView(new Image("bubbles/cannon.png"));
+
+    public InputController (Pane root) {
+        this.root = root;
+    }
 
     public final void start(final Stage stage) throws Exception {
 
-        cannon.setScaleX(0.4);
-        cannon.setScaleY(0.3);
-        cannon.setLayoutX(350);
-        cannon.setLayoutY(360);
+        Scene scene = new Scene(root, 960, 700);
+        stage.setScene(scene);
+        stage.show();
 
-
-    Scene scene = new Scene(root, 960, 700);
-    stage.setTitle("Collision example");
-    stage.setScene(scene);
-    stage.show();
-    scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
+        scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
 
         @Override
         public void handle(final MouseEvent event) {
