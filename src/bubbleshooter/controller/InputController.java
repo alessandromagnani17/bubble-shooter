@@ -30,7 +30,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
-import javafx.stage.Stage;
+import javafx.stage.Stage; 
 
 public class InputController extends Application {
 
