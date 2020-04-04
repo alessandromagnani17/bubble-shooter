@@ -41,6 +41,13 @@ public class InputController extends Application {
         this.root = root;
     }
 
+    public final void setCannonInitiallyPosition () {
+        cannon.setScaleX(0.4);
+        cannon.setScaleY(0.3);
+        cannon.setLayoutX(350);
+        cannon.setLayoutY(360);
+    }
+
     public final void start(final Stage stage) throws Exception {
 
         Scene scene = new Scene(root, 960, 700);
@@ -54,5 +61,9 @@ public class InputController extends Application {
             cannon.setRotate(event.getX() - cannon.getLayoutX());
         }
     });
+    }
+
+    public final void stop() {
+        cannon.setRotate(0);
     }
 }
