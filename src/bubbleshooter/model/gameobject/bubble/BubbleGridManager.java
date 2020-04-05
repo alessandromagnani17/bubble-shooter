@@ -19,9 +19,7 @@ public class BubbleGridManager {
     private boolean offsetRow; 
     private GameObjectManager gameObjectManager; 
     private GameObjectFactory gameObjectFactory; 
-    
-    
-    
+
     public BubbleGridManager(final GameObjectManager gameObjectManager) {
         this.gameObjectManager = gameObjectManager;
         this.createdRows = 0;
@@ -37,19 +35,18 @@ public class BubbleGridManager {
         return grid; 
     }
     
-    public final List<GameObject> getBubbleNeighbours(final GameObject bubble){
-        //todo
-        return null; 
+    public final List<GameObject> getBubbleNeighbours(final GameObject bubble) {
+       return this.getBubbleGrid().stream().filter(a -> this.isNear(a, bubble))
+                                    .collect(Collectors.toList());
     }
     
     //crea una nuova riga in cima
-    private List<GameObject> createNewRow(){
+    public final List<GameObject> createNewRow(){
         List<GameObject> newRow = new LinkedList<>();
         double offset = this.offsetRow ? 45 : 30;
         this.dropBubble();
         for (double x = 0; x < 10 ; x++) {
-            newRow.add(gameObjectFactory.createBasicBubble
-                    (new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset, GameCostants.BUBBLE_HEIGTH.getValue()))); 
+            newRow.add(gameObjectFactory.createBasicBubble(new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset, GameCostants.BUBBLE_HEIGTH.getValue()))); 
         }
         this.offsetRow = !this.offsetRow;
         return newRow; 
@@ -68,6 +65,11 @@ public class BubbleGridManager {
         .forEach(b -> b.setPosition(new Point2D(b.getPosition().getX(), b.getPosition().getY() + GameCostants.BUBBLE_HEIGTH.getValue())));
     }
     
+    private boolean isNear(final GameObject bubbleAt, final GameObject bubbleTo) {
+        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.RADIUS.getValue() * 2 
+                && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
+    }
+    
     //ritorna le pallina della griglia
     public final List<GameObject> getBubbleGrid(){
         return this.gameObjectManager.getGameObjects().stream()
@@ -77,5 +79,13 @@ public class BubbleGridManager {
 
     public final int getCreatedRows() {
         return this.createdRows; 
+    }
+    
+    public final void removeBubble(final GameObject bubble) {
+        this.gameObjectManager.removeGameObject(bubble);
+    }
+    
+    public final boolean areEquals(final GameObject a, final GameObject b) {
+        return a.getProperty().equals(b.getProperty());
     }
 }

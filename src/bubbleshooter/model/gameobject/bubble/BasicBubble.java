@@ -5,7 +5,7 @@ import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 
-public class BasicBubble extends AbstractGameObject{
+public class BasicBubble extends AbstractGameObject {
 
     public BasicBubble(final Point2D position) {
         super.setType(GameObjectsTypes.BASICBUBBLE);

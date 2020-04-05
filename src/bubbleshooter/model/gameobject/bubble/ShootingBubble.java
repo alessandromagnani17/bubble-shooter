@@ -10,7 +10,7 @@ import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 
 
-public class ShootingBubble extends BasicBubble implements Visitor {
+public class ShootingBubble extends BasicBubble{
 
     private Point2D shootingDirection;
 
@@ -41,12 +41,5 @@ public class ShootingBubble extends BasicBubble implements Visitor {
         double xVel = GameCostants.BUBBLESPEED.getValue() * Math.cos(angle);
         double yVel = GameCostants.BUBBLESPEED.getValue() * Math.sin(angle);
         return new Point2D(xVel, yVel);
-    }
-
-
-    @Override
-    public final void visit(final GameObject gameObject, final GameObjectsTypes type, final BubbleGridManager gridManager) {
-        CollisionHandler handler = new GridCollisionHandler(this, gameObject, gridManager);
-        handler.handle();
     }
 }
