@@ -20,8 +20,6 @@ public class InputController extends Application {
     }
 
     public final void setCannonInitiallyPosition() {
-        cannon.setScaleX(0.4);
-        cannon.setScaleY(0.3);
         cannon.setLayoutX(350);
         cannon.setLayoutY(360);
     }
@@ -36,11 +34,22 @@ public class InputController extends Application {
 
         @Override
         public void handle(final MouseEvent event) {
-            cannon.setRotate(event.getX() - cannon.getLayoutX());
+            cannon.setRotate(calculateAngle(event));
+
         }
     });
     }
 
+    public double calculateAngle (MouseEvent event) {
+        double ipotenuse = Math.sqrt(Math.pow(event.getX() - cannon.getLayoutX(), 2) + Math.pow(event.getY() - cannon.getLayoutY(), 2));
+        double x = (event.getX() - cannon.getLayoutX());
+        double angle = Math.toDegrees(Math.asin(x/ipotenuse));
+
+        System.out.println(event.getX() + ", " + event.getY() + "    " + cannon.getLayoutX() + ", " + cannon.getLayoutY() + "    " + x + "    . " + angle + ", " + ipotenuse);
+
+        return angle;
+    }
+    
     public final void stop() {
         cannon.setRotate(0);
     }
