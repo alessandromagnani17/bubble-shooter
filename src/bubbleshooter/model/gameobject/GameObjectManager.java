@@ -23,7 +23,7 @@ public class GameObjectManager {
     public final void removeGameObject(final GameObject gObj) {
         this.gameObjects.remove(gObj);
     }
-    
+
     public final GameObject getShootingBubble() {
         return this.gameObjects.stream().filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE)).findAny().get();
     }

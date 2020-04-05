@@ -23,6 +23,7 @@ public class InputListener implements MouseListener, MouseMotionListener {
     @Override
     public void mouseMoved(final MouseEvent e) {
         //repaint();
+        
     }
 
     @Override

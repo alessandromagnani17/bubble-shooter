@@ -1,24 +1,20 @@
 package bubbleshooter.model.gameobject;
 
-
-import bubbleshooter.model.collision.Visitor;
 import bubbleshooter.model.gameobject.bubble.Property;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
-
 
 public interface GameObject {
 
     double getHeight();
 
     double getWidth();
-    
+
     void setHeigth(double heigth);
-    
+
     void setWidth(double width);
 
     Point2D getPosition();
-    
+
     Point2D getDirection();
 
     void setPosition(Point2D position);
