@@ -20,8 +20,8 @@ public class InputController extends Application {
     }
 
     public final void setCannonInitiallyPosition() {
-        cannon.setLayoutX(350);
-        cannon.setLayoutY(360);
+        cannon.setLayoutX(457);
+        cannon.setLayoutY(550);
     }
 
     public final void start(final Stage stage) throws Exception {
