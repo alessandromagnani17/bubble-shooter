@@ -19,7 +19,6 @@ public class BoundsCollisionHandler implements CollisionHandler {
         //SE IL MURO È UNO DEI 2 DI LATO 
         Point2D newDirection = new Point2D(this.shootingBubble.getDirection().getX() * -1, this.shootingBubble.getDirection().getY());
         this.shootingBubble.setDirection(newDirection);
-        
         //GESTIRE MURO IN ALTO
     }
 
