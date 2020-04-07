@@ -2,9 +2,7 @@ package bubbleshooter.view.scene.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import bubbleshooter.model.highscore.HighscoreStructure;
-import bubbleshooter.model.highscore.Score;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,22 +26,9 @@ public class HighscoreController extends AbstractController implements Initializ
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        this.nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
-        this.scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Long>("Score"));
+        nameBaseColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Long>("Score"));
         
-        this.nameSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
-        this.scoreSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Long>("Name"));
-        
-        
-        
-        //nameBaseColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        
-        /*nameBaseColumn.setCellValueFactory(new PropertyValueFactory<Score, String>("Name"));
-        scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<Score, Integer>("Score"));
-        
-        nameSurvivalColumn.setCellValueFactory(new PropertyValueFactory<Score, String>("Name"));
-        scoreSurvivalColumn.setCellValueFactory(new PropertyValueFactory<Score, Integer>("Time"));
-        */
         tableView.setItems(getScores());
     }
 
