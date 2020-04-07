@@ -3,7 +3,8 @@ package bubbleshooter.view.scene;
 public enum FXMLPath {
 
     MAIN("/view/scenes/main.fxml"),
-    GAME("/view/scenes/game.fxml");
+    GAME("/view/scenes/game.fxml"),
+    HIGHSCORE("/view/scenes/highscores.fxml");
     
     private final String scene;
 
