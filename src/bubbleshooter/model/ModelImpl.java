@@ -23,7 +23,7 @@ public class ModelImpl implements Model {
         this.gameMode = new SurvivalMode();
         this.gameMode.startLevel();
     }
-    
+
     @Override
     public List<GameObject> getGameObjects() {
         return this.gameMode.getCurrentGameObjects();

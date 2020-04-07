@@ -8,11 +8,11 @@ public enum FXMLPath {
     
     private final String scene;
 
-    
+
     FXMLPath(final String scene) {
         this.scene = scene;
     }
-    
+
     public String getPath() {
         return this.scene;
     }

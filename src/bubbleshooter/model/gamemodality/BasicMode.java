@@ -1,27 +1,25 @@
 package bubbleshooter.model.gamemodality;
 
-import java.util.LinkedList;
 import java.util.List;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.collision.CollisionControllerImpl;
-
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.Cannon;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
 
 
-public class BasicMode implements GameModality{
+public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
+    private BubbleGridManager gridManager;
     private CollisionController collisionController;
     private GameStatus status = GameStatus.PAUSE;
     //gameDataManager per gestire punteggio
 
     @Override
     public void startLevel() {
-        this.collisionController = new CollisionControllerImpl(this, this.gameObjectManager);
         this.gameObjectManager = new GameObjectManager();
+        this.gridManager = new BubbleGridManager(this.gameObjectManager);
+        this.collisionController = new CollisionController(this);
         this.status = GameStatus.RUNNING;
     }
 
@@ -60,5 +58,12 @@ public class BasicMode implements GameModality{
     public GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
+
+    @Override
+    public BubbleGridManager getGridManager() {
+        return this.gridManager;
+    }
+    
+    
 
 }

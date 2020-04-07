@@ -13,8 +13,8 @@ import java.util.TreeSet;
 import com.google.common.collect.ImmutableSortedSet;
 import bubbleshooter.model.gamemodality.GameModality;
 
-public class HighscoreStoreImpl implements HighscoreStore{
-    
+public class HighscoreStoreImpl implements HighscoreStore {
+
     private static final long serialVersionUID = -3738961252432967724L;
     private static final String FILE_NAME = "Highscores";
     private static final File FILE = new File(System.getProperty("user.home"), "BubbleShooter");
@@ -25,8 +25,8 @@ public class HighscoreStoreImpl implements HighscoreStore{
     public HighscoreStoreImpl() {
         this(new File(FILE, FILE_NAME));
     }
-    
-    public HighscoreStoreImpl(File file) {
+
+    public HighscoreStoreImpl(final File file) {
         this.file = file;
         this.mapOfItems = new HashMap<>();
     }
@@ -37,14 +37,14 @@ public class HighscoreStoreImpl implements HighscoreStore{
     }
 
     @Override
-    public void addScore(GameModality gameMode, HighscoreStructure score) {
+    public void addScore(final GameModality gameMode, final HighscoreStructure score) {
         SortedSet<HighscoreStructure> itemsSet = this.mapOfItems.get(gameMode);
-        
-        if(itemsSet == null) {
+
+        if (itemsSet == null) {
             itemsSet = new TreeSet<>();
             this.mapOfItems.put(gameMode, itemsSet);
         } 
-        
+
         itemsSet.add(score);
         clean(itemsSet);
         saveModify();
@@ -60,8 +60,8 @@ public class HighscoreStoreImpl implements HighscoreStore{
     @Override
     public void clear() {
         this.mapOfItems.clear();
-        
-        if(this.file.exists()) this.file.delete();
+
+        if (this.file.exists()) this.file.delete();
     }
 
     @Override
@@ -71,38 +71,34 @@ public class HighscoreStoreImpl implements HighscoreStore{
         } catch (IOException e) {
             System.out.println("ERROR ( can't write on file )");
         }
-        
     }
 
     @Override
     public void read() {
-        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream(file))) {
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(file))) {
             Object object = input.readObject();
-            
-            if(HighscoreStoreImpl.class.isInstance(object)) {
+
+            if (HighscoreStoreImpl.class.isInstance(object)) {
                 HighscoreStoreImpl highscore = HighscoreStoreImpl.class.cast(object);
                 this.mapOfItems.putAll(highscore.mapOfItems);
-            }
-            else {
+            } else {
                 System.out.println("ERROR ( Object is not expected type )");
             }
-        }
-        catch (ClassNotFoundException | IOException e) {
+        } catch (ClassNotFoundException | IOException e) {
             System.out.println("ERROR ( can't read from the file )");
         }
     }
 
     @Override
-    public ImmutableSortedSet<HighscoreStructure> getHighscoresForModality(GameModality gameMode) {
+    public ImmutableSortedSet<HighscoreStructure> getHighscoresForModality(final GameModality gameMode) {
         ImmutableSortedSet<HighscoreStructure> result;
-        
-        if(this.mapOfItems.containsKey(gameMode)) {
+
+        if (this.mapOfItems.containsKey(gameMode)) {
             result = ImmutableSortedSet.copyOf(this.mapOfItems.get(gameMode));
         } else {
             result = ImmutableSortedSet.of();
         }
-        
+
         return result;
     }
-    
 }
