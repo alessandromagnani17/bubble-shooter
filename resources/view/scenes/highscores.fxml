@@ -7,17 +7,33 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.HighscoreController">
    <children>
-      <TableView layoutX="61.0" layoutY="104.0" prefHeight="338.0" prefWidth="278.0">
+      <TableView id="tableView" layoutX="16.0" layoutY="211.0" prefHeight="386.0" prefWidth="303.0">
         <columns>
-          <TableColumn id="nameColumn" prefWidth="156.0" text="Name" />
-          <TableColumn id="scoreColumn" prefWidth="121.0" text="Score" />
+          <TableColumn id="nameBaseColumn" prefWidth="158.76572227478027" text="Name" />
+          <TableColumn id="scoreBaseColumn" prefWidth="144.2342987060547" text="Score" />
         </columns>
       </TableView>
-      <Label layoutX="77.0" layoutY="-8.0" prefHeight="101.0" prefWidth="246.0" text="Highscores" textFill="RED">
+      <Label layoutX="174.0" layoutY="12.0" prefHeight="112.0" prefWidth="348.0" text="Highscores" textFill="RED">
          <font>
-            <Font name="Ananda" size="50.0" />
+            <Font name="Ananda" size="70.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="158.0" text="Basic Mode" textFill="RED">
+         <font>
+            <Font name="Ananda" size="30.0" />
+         </font>
+      </Label>
+      <TableView id="tableSurvivalView" layoutX="366.0" layoutY="211.0" prefHeight="387.0" prefWidth="303.0">
+         <columns>
+            <TableColumn id="nameSurvivalColumn" prefWidth="158.76572227478027" text="Name" />
+            <TableColumn id="scoreSurvivalColumn" prefWidth="144.2342987060547" text="Time" />
+         </columns>
+      </TableView>
+      <Label layoutX="422.0" layoutY="159.0" text="Survival Mode" textFill="RED">
+         <font>
+            <Font name="Ananda" size="30.0" />
          </font>
       </Label>
    </children>
