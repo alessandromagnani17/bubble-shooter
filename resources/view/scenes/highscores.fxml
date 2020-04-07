@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="anchorPaneID" maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.HighscoreController">
    <children>
-      <TableView fx:id="tableView" layoutX="16.0" layoutY="211.0" prefHeight="386.0" prefWidth="303.0">
+      <TableView fx:id="tableBaseView" layoutX="16.0" layoutY="211.0" prefHeight="386.0" prefWidth="303.0">
         <columns>
           <TableColumn fx:id="nameBaseColumn" prefWidth="158.76572227478027" text="Name" />
           <TableColumn fx:id="scoreBaseColumn" prefWidth="144.2342987060547" text="Score" />
