@@ -12,7 +12,11 @@ public enum Color {
      */
     BLUE("/view/bubbles/blue.png"),
     /**
-     * Ball color red.
+     * Ball color Lightblue.
+     */
+    LIGHT_BLUE("/view/bubbles/lightBlue.png"),
+    /**
+    * Ball color red.
      */
     RED("/view/bubbles/red.png"),
     /**
@@ -24,17 +28,9 @@ public enum Color {
      */
     YELLOW("/view/bubbles/yellow.png"),
     /**
-     * Ball color bordeaux.
-     */
-    //BORDEAUX("/view/bubbles/bordeaux.png"),
-    /**
-     * Ball color light blue.
-     */
-    LIGHTBLUE("/view/bubbles/lightblue.png"); 
-    /**
      * Ball color purple.
      */
-    //PURPLE("/view/bubbles/purple.png"),
+    PURPLE("/view/bubbles/purple.png"); 
     /**
      * Ball color orange.
      */
