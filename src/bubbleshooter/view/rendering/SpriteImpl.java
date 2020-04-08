@@ -7,6 +7,7 @@ import org.locationtech.jts.geom.Coordinate;
 import javafx.geometry.Point2D;
 
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,7 +15,7 @@ import javafx.scene.image.Image;
 
 public class SpriteImpl implements Sprite{
 
-    private static final double DEFAULT = 60;
+    private static final double DEFAULT = GameCostants.RADIUS.getValue()*2;
     private final GraphicsContext gc;
     private final GameObject gameObject;
     private Point2D gameObjectPosition;
@@ -38,6 +39,7 @@ public class SpriteImpl implements Sprite{
     public void draw() throws FileNotFoundException {
        
         this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(), this.getTopLeftFromCenter(this.getPosition()).getY(), this.getGameObjectWidth(), this.getGameObjectHeight() );
+        //this.gc.drawImage(this.image,this.getPosition().getX(), this.getPosition().getY(), this.getGameObjectWidth(), this.getGameObjectHeight() );
     }
     
     private Point2D getTopLeftFromCenter(Point2D center) {
@@ -57,9 +59,8 @@ public class SpriteImpl implements Sprite{
 
     @Override
     public void setSource(ImagePath source) throws FileNotFoundException {
-        System.out.println("image path = " + source.getPath());
+       
         this.image = ImageLoader.getLoader().getImage(source); 
-        System.out.println("image = " + ImageLoader.getLoader().getImage(source));
     }
     
     public Image getSource(){
