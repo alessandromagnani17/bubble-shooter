@@ -65,7 +65,7 @@ public class ViewImpl implements View {
        // final double oldHeigth = this.stage.getHeight();
         this.stage.setScene(wrapper.getScene());
         this.stage.setWidth(700);
-        this.stage.setHeight(900);
+        this.stage.setHeight(800);
         
         
         
