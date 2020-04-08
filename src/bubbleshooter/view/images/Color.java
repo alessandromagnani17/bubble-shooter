@@ -22,7 +22,7 @@ public enum Color {
     /**
      * Ball color yellow.
      */
-    //YELLOW("/view/bubbles/yellow.png"),
+    YELLOW("/view/bubbles/yellow.png"),
     /**
      * Ball color bordeaux.
      */
@@ -30,7 +30,7 @@ public enum Color {
     /**
      * Ball color light blue.
      */
-    //LIGHTBLUE("/view/bubbles/lightblue.png"),
+    LIGHTBLUE("/view/bubbles/lightblue.png"); 
     /**
      * Ball color purple.
      */
@@ -38,7 +38,7 @@ public enum Color {
     /**
      * Ball color orange.
      */
-    ORANGE("/view/bubbles/orange.png");
+    //ORANGE("/view/bubbles/orange.png");
 
     private static final List<Color> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
@@ -47,7 +47,7 @@ public enum Color {
 
     Color(final String bubblePath) {
         this.bubblePath = bubblePath;
-       }
+    }
 
     /**
      * 
