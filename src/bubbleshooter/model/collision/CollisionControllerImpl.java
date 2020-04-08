@@ -26,9 +26,9 @@ public class CollisionControllerImpl implements CollisionController {
                 .iterator().next();
     }
 
-    private boolean hasCollided(final GameObject a, final GameObject b) {
+   /* private boolean hasCollided(final GameObject a, final GameObject b) {
         return a.getCollisionBox().intersects(b.getCollisionBox());
     }
-
+*/
 
 }
