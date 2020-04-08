@@ -28,6 +28,7 @@ public class CanvasDrawer {
         this.spriteList = new LinkedList<>(); 
     }
     
+    
     public void createSpriteList(List<GameObject> gameObjects) {
         gameObjects.forEach(o -> {
             try {
@@ -39,8 +40,6 @@ public class CanvasDrawer {
         });
     }
     
-
-
     public void draw(final List<GameObject> gameObjects) throws FileNotFoundException {
        this.createSpriteList(gameObjects);
         this.spriteList.forEach(s -> {
