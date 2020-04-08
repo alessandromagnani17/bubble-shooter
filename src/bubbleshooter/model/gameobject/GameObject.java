@@ -7,7 +7,9 @@ import org.locationtech.jts.geom.Geometry;
 import javafx.geometry.Point2D;
 
 public interface GameObject {
-
+ 
+    
+    
     double getHeight();
 
     double getWidth();
@@ -24,15 +26,15 @@ public interface GameObject {
 
     void setType(GameObjectsTypes type);
     
-    Geometry setCollisionBox();
-    
-    Geometry getCollisionBox();
-    
     void update(double elapsed); 
     
     void destroy(); 
     
     boolean isDestroyed(); 
+    
+    Property getProperty(); 
+    
+    public void setProperty(Property property); 
     
     
 

@@ -8,26 +8,14 @@ import java.util.stream.Collectors;
 public class GameObjectManager {
     
     private List<GameObject> gameObjects;
-    private List<GameObject> newGameObjects ;
-
+    
     public GameObjectManager() {
-        this.gameObjects = new LinkedList<>();
-        this.newGameObjects = new LinkedList<>(); 
+        this.gameObjects = new LinkedList<>();    
     } 
     
     public final void update(final double elapsed) {
-        //this.gameObjects.forEach(x -> x.update(elapsed));
-
-        this.addNewGameObjectstToOld(); 
-        
-     
+        //this.gameObjects.forEach(x -> x.update(elapsed));     
         this.removeGameObject(); 
-    }
-    
-
-    private void addNewGameObjectstToOld() {
-        this.gameObjects.addAll(this.newGameObjects); 
-        this.newGameObjects = Collections.emptyList();  
     }
 
     private void removeGameObject() {
@@ -37,14 +25,11 @@ public class GameObjectManager {
     }
 
     public void addGameObject(final List<GameObject> gameObjects) {
-         this.newGameObjects.addAll(gameObjects); 
+         this.gameObjects.addAll(gameObjects); 
     }
     
     public final List<GameObject> getGameObjects(){
         return Collections.unmodifiableList(gameObjects); 
     }
-    
-    
-    
 
 }

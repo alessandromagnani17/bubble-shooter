@@ -1,20 +1,16 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Coordinate;
-
-import org.locationtech.jts.math.Vector2D;
 import javafx.geometry.Point2D;
-import bubbleshooter.view.images.Color;
+
 
 public class ShootingBubble extends BasicBubble  {
 
     
     private GameObjectsTypes type; 
     
-    public ShootingBubble(Point2D position) {
-        super(position);
-        this.type = GameObjectsTypes.MOVINGBUBBLE; 
-        // TODO Auto-generated constructor stub
+    public ShootingBubble(Point2D position, Property property) {
+        super(position, property);
+        super.setType(GameObjectsTypes.MOVINGBUBBLE); 
     }
     
     @Override

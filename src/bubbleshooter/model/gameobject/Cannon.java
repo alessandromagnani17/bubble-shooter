@@ -1,11 +1,5 @@
 package bubbleshooter.model.gameobject;
 
-import java.util.List;
-
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.math.Vector2D;
-import org.locationtech.jts.util.GeometricShapeFactory;
 import javafx.geometry.Point2D;
 
 public class Cannon extends AbstractGameObject {
@@ -13,22 +7,10 @@ public class Cannon extends AbstractGameObject {
     
     private GameObjectsTypes type;
     
-    public Cannon(Point2D position) {
-        super(position);
+    public Cannon(Point2D position, Property property) {
+        super(position, property);
         this.type = GameObjectsTypes.CANNON; 
         
-    }
-
-    @Override
-    public Geometry setCollisionBox() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Geometry getCollisionBox() {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
