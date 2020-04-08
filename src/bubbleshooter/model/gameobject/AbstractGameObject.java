@@ -1,6 +1,4 @@
- package bubbleshooter.model.gameobject;
-
-import org.locationtech.jts.geom.Coordinate;
+ package bubbleshooter.model.gameobject; 
 
 import javafx.geometry.Point2D;
 
@@ -11,13 +9,34 @@ public abstract class AbstractGameObject implements GameObject {
     private double width;
     private double heigth;
     private boolean isDestroyed; 
+    private Property property; 
+    private GameObjectsTypes type; 
     
 
-    public AbstractGameObject(Point2D position) {
-        this.position = position; 
+    public AbstractGameObject(Point2D position, Property property) {
+        this.position = position;
+        this.property = property; 
         this.isDestroyed = false; 
     }
+
     
+    public GameObjectsTypes getType() {
+        return type;
+    }
+    
+    public void setType(GameObjectsTypes type) {
+        this.type = type;
+    }
+
+    
+    @Override
+    public Property getProperty() {
+        return this.property; 
+    }
+    
+    public void setProperty(Property property) {
+        this.property = property;
+    }
 
     @Override
     public double getHeight() {
