@@ -1,43 +1,52 @@
 package bubbleshooter.model.gamemodality;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.collision.CollisionControllerImpl;
-import bubbleshooter.model.gameobject.CreateGameObject;
+import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.GameObjectFactory;
 import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.utility.GameCostants;
+import javafx.geometry.Point2D;
 
 public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
     private CollisionController collisionController;
-    private CreateGameObject creator; 
+    private BubbleGridManager bubbleGridManager; 
+    private GameObjectFactory gameObjectFactory; 
     private GameStatus status = GameStatus.PAUSE;
     // gameDataManager per gestire punteggio
 
     public BasicMode() {
         this.gameObjectManager = new GameObjectManager();
         this.collisionController = new CollisionControllerImpl();
-        this.creator = new CreateGameObject(); 
+        this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager); 
+        
         this.status = GameStatus.PAUSE;
     }
 
     @Override
     public void start() {
         this.status = GameStatus.RUNNING;
-        this.gameObjectManager.addGameObject(this.createGameObject());
         this.initGameObjectsManager();
-        System.out.println("object = " + this.gameObjectManager.getGameObjects());
+        this.initGameObject(); 
+        
     }
     
-    public List<GameObject>createGameObject() {
+    public void initGameObject() {
+       
         List<GameObject> object = new LinkedList<>(); 
-        object.addAll(creator.createBubbleGrid()); 
-        return object; 
-   }
+       for (int i = 0; i < GameCostants.ROWS.getValue(); i++) {
+           this.gameObjectManager.addGameObject(this.bubbleGridManager.createNewRow());
+       }
+    }
 
     private void initGameObjectsManager() {
         this.gameObjectManager.update(0);
