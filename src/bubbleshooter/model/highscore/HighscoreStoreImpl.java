@@ -20,7 +20,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final File FILE = new File(System.getProperty("user.home"), "BubbleShooter");
     private final File file;
     private final Map<GameModality, SortedSet<HighscoreStructure>> mapOfItems;
-
+    private final static int CAPACITY = 10;
+    
     public HighscoreStoreImpl() {
         this(new File(FILE, FILE_NAME));
     }
@@ -45,7 +46,15 @@ public class HighscoreStoreImpl implements HighscoreStore {
         } 
 
         itemsSet.add(score);
+        clean(itemsSet);
         saveModify();
+    }
+
+    private void clean(SortedSet<HighscoreStructure> itemsSet) {
+        while(itemsSet.size() > CAPACITY) {
+            itemsSet.remove(itemsSet.last());
+        }
+        
     }
 
     @Override
