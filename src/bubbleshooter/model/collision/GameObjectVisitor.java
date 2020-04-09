@@ -6,7 +6,7 @@ import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
 
 public class GameObjectVisitor implements Visitor{
 
-    private GameObject visitor;
+    private final GameObject visitor;
     
     public GameObjectVisitor(final GameObject visitor) {
         this.visitor = visitor;
@@ -14,7 +14,7 @@ public class GameObjectVisitor implements Visitor{
 
     @Override
     public final void visit(final GameObject gameObject, final GameObjectsTypes type, final BubbleGridManager gridManager) {
-        CollisionHandler handler = new GridCollisionHandler(this.visitor, gameObject, gridManager);
+        final CollisionHandler handler = new GridCollisionHandler(this.visitor, gameObject, gridManager);
         handler.handle();
     }
 

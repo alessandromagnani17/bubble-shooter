@@ -1,11 +1,9 @@
 package bubbleshooter.application;
 
-
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.ControllerImpl;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.ModelImpl;
-import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.view.View;
 import bubbleshooter.view.ViewImpl;
 import javafx.application.Application;

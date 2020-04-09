@@ -5,7 +5,7 @@ import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
 
 public class GameObjectAcceptor implements Acceptor {
 
-    private GameObject gameObjectCollided;
+    private final GameObject gameObjectCollided;
 
     public GameObjectAcceptor(final GameObject collided) {
         this.gameObjectCollided = collided;

@@ -2,8 +2,8 @@ package bubbleshooter.model.gameobject.bubble;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectFactory;
@@ -70,13 +70,22 @@ public class BubbleGridManager {
                 && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
     }
     
-    //ritorna le pallina della griglia
     public final List<GameObject> getBubbleGrid(){
         return this.gameObjectManager.getGameObjects().stream()
                 .filter(o -> o.getType().equals(GameObjectsTypes.BASICBUBBLE))
                 .collect(Collectors.toList()); 
     }
 
+    public final Set<Point2D> getNeighbourPosition(final GameObject bubble){
+        Point2D bubblePos = bubble.getPosition();
+        return Set.of(new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
+                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
+                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_HEIGTH.getValue()),
+                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_HEIGTH.getValue()),
+                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()),
+                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()));
+    }
+    
     public final int getCreatedRows() {
         return this.createdRows; 
     }
@@ -87,5 +96,10 @@ public class BubbleGridManager {
     
     public final boolean areEquals(final GameObject a, final GameObject b) {
         return a.getProperty().equals(b.getProperty());
+    }
+
+    public final void addToGrid(final GameObject bubble, final Point2D position) {
+        this.gameObjectManager.removeGameObject(bubble);
+        this.gameObjectManager.addGameObject(new BasicBubble(position));
     }
 }

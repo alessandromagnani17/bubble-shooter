@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
+import javafx.geometry.Point2D;
 
 public class GridCollisionHandler implements CollisionHandler {
 
-    private GameObject visitor;
-    private GameObject acceptor;
-    private BubbleGridManager gridManager;
+    private final GameObject visitor;
+    private final GameObject acceptor;
+    private final BubbleGridManager gridManager;
 
     public GridCollisionHandler(final GameObject visitor, final GameObject acceptor, final BubbleGridManager gridManager) {
         this.visitor = visitor;
@@ -31,7 +31,23 @@ public class GridCollisionHandler implements CollisionHandler {
     }
 
     private void linkToGrid() {
-        
+        this.gridManager.addToGrid(this.visitor, this.getPositionToLink());
+    }
+
+    private Point2D getPositionToLink() {
+      return this.getFreePlacesToLink()
+                                .stream()
+                                .min((a, b) -> Math.abs(visitor.getPosition().getX() - a.getX()) + Math.abs(visitor.getPosition().getY() - a.getY())
+                                             < Math.abs(visitor.getPosition().getX() - b.getX()) + Math.abs(visitor.getPosition().getY() - b.getY()) ? -1 : 1)
+                                .get();
+    }
+
+    private Set<Point2D> getFreePlacesToLink(){
+       return this.gridManager.getNeighbourPosition(acceptor)
+                                                       .stream()
+                                                       .filter(a -> !this.gridManager.getBubbleNeighbours(acceptor)
+                                                       .stream().anyMatch(b -> b.getPosition().equals(a)))
+                                                       .collect(Collectors.toSet());
     }
 
     private void explode() {
@@ -41,7 +57,7 @@ public class GridCollisionHandler implements CollisionHandler {
 
     private Set<GameObject> recursiveExplosion(final GameObject bubble, final Set<GameObject> bubblesToExplode) {
          if (this.getNeighboursToExplode(bubble).isPresent()) {
-             for (GameObject toExplode : this.getNeighboursToExplode(bubble).get()) {
+             for (final GameObject toExplode : this.getNeighboursToExplode(bubble).get()) {
                  bubblesToExplode.add(toExplode);
                  this.recursiveExplosion(toExplode, bubblesToExplode);
              }
@@ -59,4 +75,5 @@ public class GridCollisionHandler implements CollisionHandler {
         return this.gridManager.areEquals(acceptor, visitor) 
                && this.getNeighboursToExplode(acceptor).isPresent();
     }
+
 }
