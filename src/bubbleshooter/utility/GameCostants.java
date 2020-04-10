@@ -12,9 +12,9 @@ public enum GameCostants {
     
     BUBBLE_HEIGTH(40), 
 
-    GUIWIDTH(1000),
+    GUIWIDTH(705),
 
-    GUIHEIGTH(800),
+    GUIHEIGTH(700),
     
     BUBBLESPEED(0.1),
 
