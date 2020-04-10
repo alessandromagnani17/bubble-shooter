@@ -1,48 +1,62 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Coordinate;
+import bubbleshooter.model.gameobject.bubble.Property;
+import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public abstract class AbstractGameObject implements GameObject {
 
     private GameObjectsTypes type;
-    private Coordinate position;
-    private boolean isOver;
+    private Point2D position;
+    private boolean isDestroyed = false;
     private double width;
     private double heigth;
-
+    private Shape shape;
+    private Property property;
+    
     @Override
-    public double getHeight() {
+    public final double getHeight() {
         return this.heigth;
     }
 
     @Override
-    public double getWidth() {
+    public final double getWidth() {
         return this.width;
     }
 
     @Override
-    public Coordinate getPosition() {
+    public final Point2D getPosition() {
         return this.position;
     }
 
     @Override
-    public void setPosition(final Coordinate position) {
+    public Point2D getDirection() {
+        return this.position;
+    }
+
+    @Override
+    public void setPosition(final Point2D position) {
         this.position = position;
     }
 
     @Override
-    public void setHeigth(final double heigth) {
+    public  void setDirection(final Point2D direction) {
+        this.position = direction;
+    }
+
+    @Override
+    public final void setHeigth(final double heigth) {
         this.heigth = heigth;
     }
 
     @Override
-    public void setWidth(final double width) {
+    public final void setWidth(final double width) {
         this.width = width;
     }
 
     @Override
-    public boolean isOver() {
-        return this.isOver;
+    public final boolean isDestroyed() {
+        return this.isDestroyed;
     }
 
     @Override
@@ -51,12 +65,25 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public GameObjectsTypes getType() {
+    public final GameObjectsTypes getType() {
         return this.type;
     }
 
     @Override
-    public void setType(final GameObjectsTypes type) {
+    public final void setType(final GameObjectsTypes type) {
         this.type = type;
+    }
+
+    @Override
+    public void setProperty(final Property property) {
+        this.property = property;
+    }
+
+    public final Property getProperty() {
+        return this.property;
+    }
+
+    public final void destroy() {
+        this.isDestroyed = true;
     }
 }

@@ -1,33 +1,37 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Coordinate;
-
-import org.locationtech.jts.geom.Geometry;
+import bubbleshooter.model.gameobject.bubble.Property;
+import javafx.geometry.Point2D;
 
 public interface GameObject {
 
     double getHeight();
 
     double getWidth();
-    
+
     void setHeigth(double heigth);
-    
+
     void setWidth(double width);
 
-    Coordinate getPosition();
+    Point2D getPosition();
 
-    void setPosition(Coordinate position);
+    Point2D getDirection();
 
-    boolean isOver();
+    void setPosition(Point2D position);
+
+    void setDirection(Point2D direction);
 
     void update(double elapsed);
 
     GameObjectsTypes getType();
 
     void setType(GameObjectsTypes type);
-    
-    Geometry setCollisionBox();
-    
-    Geometry getCollisionBox();
 
+    void setProperty(Property property);
+
+    Property getProperty();
+
+    boolean isDestroyed();
+
+    void destroy();
 }
