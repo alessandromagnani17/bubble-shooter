@@ -1,9 +1,6 @@
 package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
-
-import org.locationtech.jts.geom.Coordinate;
-
 import javafx.geometry.Point2D;
 
 import bubbleshooter.model.gameobject.GameObject;
@@ -37,7 +34,6 @@ public class SpriteImpl implements Sprite{
     
     @Override
     public void draw() throws FileNotFoundException {
-       
         this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(), this.getTopLeftFromCenter(this.getPosition()).getY(), this.getGameObjectWidth(), this.getGameObjectHeight() );
         //this.gc.drawImage(this.image,this.getPosition().getX(), this.getPosition().getY(), this.getGameObjectWidth(), this.getGameObjectHeight() );
     }
@@ -61,6 +57,7 @@ public class SpriteImpl implements Sprite{
     public void setSource(ImagePath source) throws FileNotFoundException {
        
         this.image = ImageLoader.getLoader().getImage(source); 
+        
     }
     
     public Image getSource(){
