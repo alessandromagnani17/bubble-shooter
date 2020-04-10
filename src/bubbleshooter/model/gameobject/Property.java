@@ -7,7 +7,7 @@ import java.util.Random;
 
 public enum Property {
     
-    RED, GREEN, BLUE, YELLOW, LIGHTBLUE; 
+    RED, GREEN, BLUE, YELLOW, LIGHTBLUE, PURPLE; 
     
     private static final List<Property> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
