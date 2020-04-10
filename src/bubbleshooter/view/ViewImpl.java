@@ -1,6 +1,7 @@
 package bubbleshooter.view;
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.scene.SceneLoader;
@@ -64,8 +65,8 @@ public class ViewImpl implements View {
        // final double oldWidth = this.stage.getWidth();
        // final double oldHeigth = this.stage.getHeight();
         this.stage.setScene(wrapper.getScene());
-        this.stage.setWidth(705);
-        this.stage.setHeight(800);
+        this.stage.setWidth(GameCostants.GUIWIDTH.getValue());
+        this.stage.setHeight(GameCostants.GUIHEIGTH.getValue());
         
         
         
