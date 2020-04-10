@@ -9,6 +9,7 @@ import javafx.geometry.Point2D;
 public interface GameObject {
  
     
+    Property getColor(); 
     
     double getHeight();
 

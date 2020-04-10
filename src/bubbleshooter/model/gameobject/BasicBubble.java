@@ -1,21 +1,23 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.util.GeometricShapeFactory;
+
 import javafx.geometry.Point2D;
 
 public class BasicBubble extends AbstractGameObject {
-
-
-    public BasicBubble(Point2D position, Property property) {
-        super(position, property);
+    
+    public BasicBubble(Point2D position) {
+        super(position); 
         super.setType(GameObjectsTypes.BASICBUBBLE);
     }
 
     @Override
+    public GameObjectsTypes getType() {
+        return super.getType();
+    }
+
+    
+    @Override
     public void update(double elapsed) {
         // todo
     }
-
-
 }

@@ -7,8 +7,8 @@ public class Cannon extends AbstractGameObject {
     
     private GameObjectsTypes type;
     
-    public Cannon(Point2D position, Property property) {
-        super(position, property);
+    public Cannon(Point2D position) {
+        super(position);
         this.type = GameObjectsTypes.CANNON; 
         
     }

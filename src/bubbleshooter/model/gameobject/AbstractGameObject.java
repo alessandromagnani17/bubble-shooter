@@ -1,5 +1,4 @@
- package bubbleshooter.model.gameobject; 
-
+package bubbleshooter.model.gameobject; 
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameObject implements GameObject {
@@ -13,10 +12,15 @@ public abstract class AbstractGameObject implements GameObject {
     private GameObjectsTypes type; 
     
 
-    public AbstractGameObject(Point2D position, Property property) {
+    public AbstractGameObject(Point2D position) {
         this.position = position;
-        this.property = property; 
+        this.property = Property.getRandomColor(); 
         this.isDestroyed = false; 
+    }
+    
+    @Override
+    public Property getColor() {
+        return this.property;  
     }
 
     
