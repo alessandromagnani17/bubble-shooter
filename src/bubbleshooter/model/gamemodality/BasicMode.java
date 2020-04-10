@@ -28,6 +28,7 @@ public class BasicMode implements GameModality {
         this.gameObjectManager = new GameObjectManager();
         this.collisionController = new CollisionControllerImpl();
         this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager); 
+        this.gameObjectFactory = new GameObjectFactory(); 
         
         this.status = GameStatus.PAUSE;
     }
@@ -41,11 +42,13 @@ public class BasicMode implements GameModality {
     }
     
     public void initGameObject() {
-       
-        List<GameObject> object = new LinkedList<>(); 
        for (int i = 0; i < GameCostants.ROWS.getValue(); i++) {
            this.gameObjectManager.addGameObject(this.bubbleGridManager.createNewRow());
        }
+       this.gameObjectManager.addGameObject
+                       (Collections.singletonList
+                                  (this.gameObjectFactory.createShootingBubble
+                                          (new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600))));
     }
 
     private void initGameObjectsManager() {
