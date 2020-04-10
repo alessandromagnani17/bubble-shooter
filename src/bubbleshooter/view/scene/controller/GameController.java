@@ -24,6 +24,11 @@ public class GameController extends AbstractController {
         canvasDrawer.draw(this.getController().getGameObjects());
 
     }
+    
+    public void render() {
+        this.clearCanvas();
+        canvasDrawer.draw(this.getController().getGameObjects());
+    }
 
     @Override
     public FXMLPath getNextScene() {
