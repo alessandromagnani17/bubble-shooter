@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 public interface SceneWrapper {
 
     Scene getScene();
-    
+
     AbstractController getController();
-    
+
 }

@@ -1,8 +1,6 @@
 package bubbleshooter.model.gameobject;
 
-import org.locationtech.jts.geom.Coordinate;
-
-import org.locationtech.jts.geom.Geometry;
+import javafx.geometry.Point2D;
 
 import javafx.geometry.Point2D;
 
@@ -14,12 +12,16 @@ public interface GameObject {
     double getHeight();
 
     double getWidth();
-    
+
     void setHeigth(double heigth);
-    
+
     void setWidth(double width);
 
     Point2D getPosition();
+
+    Point2D getDirection();
+
+    void setDirection(Point2D direction);
 
     void setPosition(Point2D position);
     
@@ -29,14 +31,11 @@ public interface GameObject {
     
     void update(double elapsed); 
     
-    void destroy(); 
-    
-    boolean isDestroyed(); 
-    
-    Property getProperty(); 
-    
-    public void setProperty(Property property); 
-    
-    
+    void setProperty(Property property);
 
+    Property getProperty();
+
+    boolean isDestroyed();
+
+    void destroy();
 }

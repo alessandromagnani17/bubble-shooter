@@ -39,7 +39,7 @@ public enum ImagePath {
          * The image for explosion.
          */
         ARROW("/view/arrow/arrow.png");
-    
+
         private final String path;
 
         ImagePath(final String path) {
@@ -54,4 +54,4 @@ public enum ImagePath {
             return this.path;
         }
 }
-    
+

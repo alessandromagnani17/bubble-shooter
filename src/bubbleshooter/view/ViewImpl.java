@@ -30,8 +30,6 @@ public class ViewImpl implements View {
       this.controller = controller;
       this.initalize();
       ImageLoader.getLoader().loadAll();
-      
-
     }
 
     private void initalize() {
@@ -61,17 +59,15 @@ public class ViewImpl implements View {
         }
     }
 
-    private void initStage(SceneWrapper wrapper) {
+    private void initStage(final SceneWrapper wrapper) {
        // final double oldWidth = this.stage.getWidth();
        // final double oldHeigth = this.stage.getHeight();
         this.stage.setScene(wrapper.getScene());
         this.stage.setWidth(GameCostants.GUIWIDTH.getValue());
         this.stage.setHeight(GameCostants.GUIHEIGTH.getValue());
-        
-        
-        
+
         if (!this.viewStarted) {
-            
+
             this.stage.setResizable(false);
             this.stage.show();
             this.viewStarted = true;
@@ -80,6 +76,12 @@ public class ViewImpl implements View {
 
     @Override
     public void showGameOver() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void update(double elapsed) {
         // TODO Auto-generated method stub
         
     }

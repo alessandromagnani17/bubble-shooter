@@ -1,59 +1,40 @@
-package bubbleshooter.model.gameobject; 
+package bubbleshooter.model.gameobject;
+
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public abstract class AbstractGameObject implements GameObject {
 
-    
+    private GameObjectsTypes type;
     private Point2D position;
+    private boolean isDestroyed = false;
     private double width;
     private double heigth;
-    private boolean isDestroyed; 
-    private Property property; 
-    private GameObjectsTypes type; 
-    
+    private Shape shape;
+    private Property property;
 
     public AbstractGameObject(Point2D position) {
         this.position = position;
-        this.property = Property.getRandomColor(); 
-        this.isDestroyed = false; 
-    }
-    
-    @Override
-    public Property getColor() {
-        return this.property;  
-    }
-
-    
-    public GameObjectsTypes getType() {
-        return type;
-    }
-    
-    public void setType(GameObjectsTypes type) {
-        this.type = type;
-    }
-
-    
-    @Override
-    public Property getProperty() {
-        return this.property; 
-    }
-    
-    public void setProperty(Property property) {
-        this.property = property;
-    }
+        this.isDestroyed = false;
+   }
 
     @Override
-    public double getHeight() {
+    public final double getHeight() {
         return this.heigth;
     }
 
     @Override
-    public double getWidth() {
+    public final double getWidth() {
         return this.width;
     }
 
     @Override
-    public Point2D getPosition() {
+    public final Point2D getPosition() {
+        return this.position;
+    }
+
+    @Override
+    public Point2D getDirection() {
         return this.position;
     }
 
@@ -63,21 +44,49 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public void setHeigth(final double heigth) {
+    public  void setDirection(final Point2D direction) {
+        this.position = direction;
+    }
+
+    @Override
+    public final void setHeigth(final double heigth) {
         this.heigth = heigth;
     }
 
     @Override
-    public void setWidth(final double width) {
+    public final void setWidth(final double width) {
         this.width = width;
     }
-    
+    @Override
     public final boolean isDestroyed() {
-        return this.isDestroyed; 
+        return this.isDestroyed;
     }
-    
+
+    @Override
+    public void update(final double elapsed) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public GameObjectsTypes getType() {
+        return this.type;
+    }
+
+    @Override
+    public void setType(final GameObjectsTypes type) {
+        this.type = type;
+    }
+
+    @Override
+    public void setProperty(final Property property) {
+        this.property = property;
+    }
+
+    public final Property getProperty() {
+        return this.property;
+    }
+
     public final void destroy() {
-        this.isDestroyed = true; 
+        this.isDestroyed = true;
     }
-    
 }

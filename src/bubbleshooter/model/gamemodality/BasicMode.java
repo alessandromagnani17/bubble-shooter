@@ -7,17 +7,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.collision.CollisionControllerImpl;
-import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectFactory;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.gameobject.BubbleGridManager;
+
+
 
 public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
+    private BubbleGridManager gridManager;
     private CollisionController collisionController;
     private BubbleGridManager bubbleGridManager; 
     private GameObjectFactory gameObjectFactory; 
@@ -25,8 +27,7 @@ public class BasicMode implements GameModality {
     // gameDataManager per gestire punteggio
 
     public BasicMode() {
-        this.gameObjectManager = new GameObjectManager();
-        this.collisionController = new CollisionControllerImpl();
+        this.gameObjectManager = new GameObjectManager(); 
         this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager); 
         this.gameObjectFactory = new GameObjectFactory(); 
         
@@ -58,6 +59,12 @@ public class BasicMode implements GameModality {
     public GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
+    public void startLevel() {
+        this.gameObjectManager = new GameObjectManager();
+        this.gridManager = new BubbleGridManager(this.gameObjectManager);
+        this.collisionController = new CollisionController(this);
+        this.status = GameStatus.RUNNING;
+    }
 
     @Override
     public void update(final double elapsed) {
@@ -65,11 +72,18 @@ public class BasicMode implements GameModality {
             this.gameObjectManager.update(elapsed);
 
         }
+       this.gameObjectManager.update(elapsed);
+       this.collisionController.checkCollisions();
     }
 
     @Override
     public void setGameStatus(final GameStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public List<GameObject> getCurrentGameObjects() {
+        return this.gameObjectManager.getGameObjects();
     }
 
     @Override
@@ -86,5 +100,12 @@ public class BasicMode implements GameModality {
     public GameStatus getGameStatus() {
         return this.status;
     }
+
+    @Override
+    public BubbleGridManager getGridManager() {
+        return this.gridManager;
+    }
+    
+    
 
 }

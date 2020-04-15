@@ -1,9 +1,10 @@
 package bubbleshooter.model.gameobject;
 
+import bubbleshooter.utility.GameCostants;
+
 import javafx.geometry.Point2D;
 
 public class Cannon extends AbstractGameObject {
-
     
     private GameObjectsTypes type;
     
@@ -24,54 +25,22 @@ public class Cannon extends AbstractGameObject {
     }
 
     @Override
-    public void setType(final GameObjectsTypes type) {
+    public void setType(GameObjectsTypes type) {
         this.type = type;
     }
 
-    /*private List<Bubble> ammo;
-    private Geometry shape;
-    private Vector2D shootingDirection;
 
-    public Cannon() {
-     super.setPosition(new Coordinate(100, 100)); //DA MODIFICARE E METTERE A META' GUI
-     super.setHeigth(30); //DA MODIFICARE CON ALTEZZA DEL CANNONE
-     super.setWidth(20); //DA MODIFICARE CON LARGHEZZA DEL CANNONE
-     this.shootingDirection = new Vector2D(super.getPosition());
-    }
-
-    public final void setShootingDirection(final Vector2D direction) {
-        this.shootingDirection = direction;
-    }
-    
-    public final Vector2D getShootingDirection() {
-        return this.shootingDirection;
-    }
-    
-    public final List<Bubble> getAmmo() {
-       return this.ammo;
-    }
-
-    public final Bubble load() {
-        // TO-DO !!!!!!
-        return null;
-    }
-
-    public final Bubble shoot() {
-        //TO-DO !!!!!!!!!!!!!!
-        return null;
-    }
-    
-    @Override
-    public Geometry setCollisionBox() {
-        final GeometricShapeFactory shapeFactory = new GeometricShapeFactory();
-        shapeFactory.setWidth(super.getWidth());
-        shapeFactory.setHeight(super.getHeight());
-        return shapeFactory.createRectangle();
-    }
+    private void initCannon() {
+        super.setType(GameObjectsTypes.CANNON);
+        super.setPosition(new Point2D(0, GameCostants.GUIHEIGTH.getValue() - GameCostants.CANNONHEIGTH.getValue()));
+        super.setHeigth(GameCostants.CANNONHEIGTH.getValue());
+        super.setWidth(GameCostants.GUIWIDTH.getValue());
+        }
 
     @Override
-    public Geometry getCollisionBox() {
-        return this.shape;
-    }*/
+    public Property getColor() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

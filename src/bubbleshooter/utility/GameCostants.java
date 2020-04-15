@@ -15,7 +15,7 @@ public enum GameCostants {
     GUIWIDTH(705),
 
     GUIHEIGTH(700),
-    
+
     BUBBLESPEED(0.1),
 
     FPS(60),
@@ -24,11 +24,13 @@ public enum GameCostants {
     
     CANNONWIDTH(1000),
 
-    SECONDS(1000);
+    SECONDS(1000),
+    
+    GAMEOVERLINE(600);
 
     private double val;
 
-    GameCostants(double val) {
+    GameCostants(final double val) {
         this.val = val;
     }
 

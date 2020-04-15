@@ -6,9 +6,11 @@ import bubbleshooter.controller.Controller;
 public interface View {
 
     void launch(Controller controller);
-    
+
     void loadScene(FXMLPath scene);
-    
+
     void showGameOver();
+    
+    void update(double elapsed);
 
 }

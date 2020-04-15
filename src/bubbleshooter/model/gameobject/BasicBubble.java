@@ -1,6 +1,4 @@
 package bubbleshooter.model.gameobject;
-
-
 import javafx.geometry.Point2D;
 
 public class BasicBubble extends AbstractGameObject {
@@ -15,9 +13,9 @@ public class BasicBubble extends AbstractGameObject {
         return super.getType();
     }
 
-    
     @Override
-    public void update(double elapsed) {
-        // todo
+    public Property getColor() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
 
 public abstract class AbstractController {
-    
+
     private Controller controller;
     private View view;
 
@@ -65,7 +65,7 @@ public abstract class AbstractController {
      * 
      * @param event the information about the event.
      */
-    
+
     @FXML
     public void backScene() {
         this.view.loadScene(this.getPreviousScene());
@@ -88,7 +88,7 @@ public abstract class AbstractController {
     public void setGameover(final boolean gameover) {
         // Empty for subclasses.
     }
-    
+
     @FXML
     public void onKeyPressed(KeyEvent event) {
         //empty
