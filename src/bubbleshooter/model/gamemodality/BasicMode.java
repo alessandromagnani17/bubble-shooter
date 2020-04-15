@@ -19,7 +19,6 @@ import bubbleshooter.model.gameobject.BubbleGridManager;
 public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
-    private BubbleGridManager gridManager;
     private CollisionController collisionController;
     private BubbleGridManager bubbleGridManager; 
     private GameObjectFactory gameObjectFactory; 
@@ -37,7 +36,6 @@ public class BasicMode implements GameModality {
     @Override
     public void start() {
         this.status = GameStatus.RUNNING;
-        this.initGameObjectsManager();
         this.initGameObject(); 
         
     }
@@ -52,11 +50,7 @@ public class BasicMode implements GameModality {
                                           (new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600))));
     }
 
-    private void initGameObjectsManager() {
-        this.gameObjectManager.update(0);
-    }
-
-    public GameObjectManager getGameObjectManager() {
+    public final GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
     
@@ -93,7 +87,7 @@ public class BasicMode implements GameModality {
 
     @Override
     public BubbleGridManager getGridManager() {
-        return this.gridManager;
+        return this.bubbleGridManager;
     }
     
     

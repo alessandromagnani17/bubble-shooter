@@ -26,24 +26,19 @@ public class GameEngineImpl extends Thread implements GameEngine  {
     @Override
     public void startLoop() {
         if (!this.isRunning()) {
-        	System.out.println("starting loop");
             this.isRunning = true;
             this.isPaused = true;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
-        	System.out.println("starting loop thread");
-
         }
     }
 
 
     public final void run() {
         long lastFrameTime = System.currentTimeMillis();
-    	System.out.println("run");
         while (this.isRunning()) {
             final long currentFrameTime = System.currentTimeMillis();
             if (!this.isPaused()) {
-            	System.out.println("gameLoop");
                 final long elapsed = currentFrameTime - lastFrameTime;
                 this.updateAll(elapsed);
                 this.waitForNextFrame(currentFrameTime);

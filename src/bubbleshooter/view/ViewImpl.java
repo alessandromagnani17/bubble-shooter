@@ -84,7 +84,7 @@ public class ViewImpl implements View {
 
     @Override
     public void update() {
-       // this.stage.rende
+       this.render();
     }
 
  

@@ -4,11 +4,14 @@ import java.io.FileNotFoundException;
 
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.model.gameobject.GameObjectsTypes;
+import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 
@@ -31,15 +34,14 @@ public class GameController extends AbstractController {
 
 			@Override
 			public void handle(final MouseEvent event) {
-			/*getController().getGameObjects().stream()
+			getController().getGameObjects().stream()
 									   .filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE))
 									   .iterator().next()
-									   .setDirection(new Point2D(event.getX(), event.getY()));*/
+									   .setDirection(new Point2D(event.getX(), event.getY()));
 			getController().resume();
 			}
 		});
     }
-
 
 
     public void render() {

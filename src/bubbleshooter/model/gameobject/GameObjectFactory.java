@@ -8,7 +8,7 @@ public class GameObjectFactory {
         return new BasicBubble(position); 
     }
     public final GameObject createShootingBubble(final Point2D position) {
-        return new BasicBubble(position); 
+        return new ShootingBubble(position); 
 
     }
 
