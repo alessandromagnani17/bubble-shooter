@@ -56,6 +56,11 @@ public class ViewImpl implements View {
             e.printStackTrace();
         }
     }
+    
+    @Override
+    public final void render() {
+        Platform.runLater(() -> this.currentGuiController.render());
+    }
 
     private void initStage(final SceneWrapper wrapper) {
        // final double oldWidth = this.stage.getWidth();

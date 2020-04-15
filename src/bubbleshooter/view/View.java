@@ -13,4 +13,6 @@ public interface View {
     
     void update();
 
+    void render();
+
 }

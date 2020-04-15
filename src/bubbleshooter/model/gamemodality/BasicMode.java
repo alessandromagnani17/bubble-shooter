@@ -59,7 +59,7 @@ public class BasicMode implements GameModality {
     public GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
-
+    
     @Override
     public void update(final double elapsed) {
        this.gameObjectManager.update(elapsed);
