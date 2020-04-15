@@ -55,11 +55,13 @@ public class ImageLoader {
      */
     public void loadAll() {
         Arrays.stream(ImagePath.values()).forEach(this::getImage);
+        
     }
 
 
     private Image loadImage(final String imagePath) {
+        
         System.out.println(ImageLoader.class.getResourceAsStream(imagePath));
-        return new Image(/*ImageLoader.class.getResourceAsStream*/(imagePath));
+        return new Image(ImageLoader.class.getResourceAsStream(imagePath));
     }
 }
