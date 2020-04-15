@@ -24,9 +24,9 @@ public class CollisionController {
 
     private void checkBounceCollision() {
         final GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
-        final double xPos = shootingBubble.getPosition().getX() + GameCostants.RADIUS.getValue();
-        if (xPos >= GameCostants.GUIWIDTH.getValue() || xPos <= 0) {
-            final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager());
+        final double xPos = shootingBubble.getPosition().getX();
+        if (xPos + GameCostants.BUBBLE_WIDTH.getValue()/2 >= GameCostants.GUIWIDTH.getValue() || xPos +  GameCostants.BUBBLE_WIDTH.getValue()/2 <= 30) {
+        	final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager());
             handler.handle();
         }
     }

@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
@@ -34,10 +35,10 @@ public class GameController extends AbstractController {
 
 			@Override
 			public void handle(final MouseEvent event) {
-			getController().getGameObjects().stream()
+			GameObject shootingBubble = getController().getGameObjects().stream()
 									   .filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE))
-									   .iterator().next()
-									   .setDirection(new Point2D(event.getX(), event.getY()));
+									   .iterator().next();
+			shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 			getController().resume();
 			}
 		});

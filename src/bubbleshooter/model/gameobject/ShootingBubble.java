@@ -14,8 +14,8 @@ public class ShootingBubble extends BasicBubble {
         this.shootingDirection = this.getPosition();
     }
 
-    public final void setDirection(final Point2D inputPosition) {
-        this.shootingDirection = PhysicHelper.calculateShootingDirection(inputPosition, super.getPosition());
+    public final void setDirection(final Point2D direction) {
+        this.shootingDirection = direction;
     }
 
     public final Point2D getDirection() {
