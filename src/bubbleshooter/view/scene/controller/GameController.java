@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 
 public class GameController extends AbstractController {
@@ -67,10 +68,8 @@ public class GameController extends AbstractController {
     // Clear the canvas after every render. It avoids ghosting effect.
     private void clearCanvas() {
         this.canvas.getGraphicsContext2D().restore();
-        this.resetGameCanvasCoordinates();
-    }
-
-    private void resetGameCanvasCoordinates() {
+    	this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
     }
+
 }
