@@ -70,7 +70,7 @@ public class BubbleGridManager {
                 && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
     }
     
-    public final List<GameObject> getBubbleGrid(){
+    public final List<GameObject> getBubbleGrid() {
         return this.gameObjectManager.getGameObjects().stream()
                 .filter(o -> o.getType().equals(GameObjectsTypes.BASICBUBBLE))
                 .collect(Collectors.toList()); 
@@ -85,15 +85,15 @@ public class BubbleGridManager {
                       new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()),
                       new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()));
     }
-    
+
     public final int getCreatedRows() {
         return this.createdRows; 
     }
-    
+
     public final void removeBubble(final GameObject bubble) {
         this.gameObjectManager.removeGameObject(bubble);
     }
-    
+
     public final boolean areEquals(final GameObject a, final GameObject b) {
         return a.getProperty().equals(b.getProperty());
     }

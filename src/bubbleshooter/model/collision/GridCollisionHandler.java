@@ -42,7 +42,7 @@ public class GridCollisionHandler implements CollisionHandler {
                                 .get();
     }
 
-    private Set<Point2D> getFreePlacesToLink(){
+    private Set<Point2D> getFreePlacesToLink() {
        return this.gridManager.getNeighbourPosition(acceptor)
                                                        .stream()
                                                        .filter(a -> !this.gridManager.getBubbleNeighbours(acceptor)
@@ -52,7 +52,7 @@ public class GridCollisionHandler implements CollisionHandler {
 
     private void explode() {
     this.recursiveExplosion(acceptor, new HashSet<>()).stream()
-                                                      .forEach(a -> this.gridManager.removeBubble(a));
+                                                      .forEach(a -> a.destroy());
     }
 
     private Set<GameObject> recursiveExplosion(final GameObject bubble, final Set<GameObject> bubblesToExplode) {

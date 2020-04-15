@@ -1,16 +1,13 @@
 package bubbleshooter.model.gameobject.bubble;
 
 
-import bubbleshooter.model.collision.GridCollisionHandler;
-import bubbleshooter.model.collision.CollisionHandler;
-import bubbleshooter.model.collision.Visitor;
-import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.PhysicHelper;
 import javafx.geometry.Point2D;
 
 
-public class ShootingBubble extends BasicBubble{
+public class ShootingBubble extends BasicBubble {
 
     private Point2D shootingDirection;
 
@@ -20,12 +17,8 @@ public class ShootingBubble extends BasicBubble{
         this.shootingDirection = this.getPosition();
     }
 
-
-    //IL METODO CHE DEVE CHIAMARE IL CONTROLLER QUANDO C'E IL CLICK 
-    //IL CONTROLLER MI PASSA IL PUNTO CLICCATO DAL MOUSE
-    //E IO MI CALCOLO LA DIREZIONE GIUSTA COL METODO PRIVATO
     public final void setDirection(final Point2D inputPosition) {
-        this.shootingDirection = this.calculateDirection(inputPosition);
+        this.shootingDirection = PhysicHelper.calculateShootingDirection(inputPosition);
     }
 
     public final Point2D getDirection() {
@@ -36,10 +29,4 @@ public class ShootingBubble extends BasicBubble{
         this.setPosition(this.getPosition().add(this.shootingDirection));
     }
 
-    public final Point2D calculateDirection(final Point2D inputPosition) {
-        double angle = Math.atan2(inputPosition.getY(), inputPosition.getX());
-        double xVel = GameCostants.BUBBLESPEED.getValue() * Math.cos(angle);
-        double yVel = GameCostants.BUBBLESPEED.getValue() * Math.sin(angle);
-        return new Point2D(xVel, yVel);
-    }
 }
