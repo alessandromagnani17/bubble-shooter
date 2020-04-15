@@ -1,7 +1,7 @@
 package bubbleshooter.model.collision;
 
 import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
+import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public class GameObjectAcceptor implements Acceptor {
 

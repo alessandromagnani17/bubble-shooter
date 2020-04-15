@@ -1,8 +1,9 @@
 package bubbleshooter.model.collision;
 
 import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.model.gameobject.BubbleGridManager;
+
 import javafx.geometry.Point2D;
 
 public class BoundsCollisionHandler implements CollisionHandler {

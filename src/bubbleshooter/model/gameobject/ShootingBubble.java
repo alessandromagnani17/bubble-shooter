@@ -1,8 +1,5 @@
-package bubbleshooter.model.gameobject.bubble;
+package bubbleshooter.model.gameobject;
 
-
-import bubbleshooter.model.gameobject.GameObjectsTypes;
-import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
 import javafx.geometry.Point2D;
 

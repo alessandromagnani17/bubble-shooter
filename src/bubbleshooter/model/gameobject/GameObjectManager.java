@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class GameObjectManager {
 
     private List<GameObject> gameObjects;
@@ -16,8 +17,8 @@ public class GameObjectManager {
         this.gameObjects.forEach(x -> x.update(elapsed));
     }
 
-    public final void addGameObject(final GameObject gObj) {
-        this.gameObjects.add(gObj);
+    public final void addGameObject(final List<GameObject> gObj) {
+        this.gameObjects.addAll(gObj);
     }
 
     public final void removeGameObject(final GameObject gObj) {

@@ -1,10 +1,14 @@
 package bubbleshooter.model.gameobject;
 
-import bubbleshooter.model.gameobject.bubble.Property;
+import javafx.geometry.Point2D;
+
 import javafx.geometry.Point2D;
 
 public interface GameObject {
-
+ 
+    
+    Property getColor(); 
+    
     double getHeight();
 
     double getWidth();
@@ -17,19 +21,17 @@ public interface GameObject {
 
     Point2D getDirection();
 
-    void setPosition(Point2D position);
-
     void setDirection(Point2D direction);
 
-    void update(double elapsed);
-
+    void setPosition(Point2D position);
+    
     GameObjectsTypes getType();
 
     void setType(GameObjectsTypes type);
-
+    
+    void update(double elapsed); 
+    
     void setProperty(Property property);
-
-    Property getProperty();
 
     boolean isDestroyed();
 

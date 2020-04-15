@@ -6,8 +6,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.bubble.BubbleGridManager;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public class GridCollisionHandler implements CollisionHandler {
 

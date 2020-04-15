@@ -1,16 +1,40 @@
 package bubbleshooter.view.images;
 
 public enum ImagePath {
-
+        /**
+         * Ball color blue.
+         */
+        BLUE_BUBBLE("/view/bubbles/blue.png"),
+        /**
+         * Ball color lightblue.
+         */
+        LIGHT_BLUE_BUBBLE("/view/bubbles/lightBlue.png"),
+        /**
+         * Ball color red.
+         */
+        RED_BUBBLE("/view/bubbles/red.png"),
+        /**
+         * Ball color green.
+         */
+        GREEN_BUBBLE("/view/bubbles/green.png"),
+        /**
+         * Ball color yellow.
+         */
+        YELLOW_BUBBLE("/view/bubbles/yellow.png"),
+        /**
+         * Ball color purple.
+         */
+        PURPLE_BUBBLE("/view/bubbles/purple.png"),
+    
         /**
          * The image for Player.
          */
-        CANNON("resources/view/cannon/cannon.png"),
+        CANNON("/view/cannon/cannon.png"),
 
         /**
          * The image for background.
          */
-        BACKGROUND("resources/view/background/background.png"),
+        BACKGROUND("/view/background/background.png"),
         /**
          * The image for explosion.
          */

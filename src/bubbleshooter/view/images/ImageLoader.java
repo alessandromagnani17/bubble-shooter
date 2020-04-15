@@ -36,7 +36,18 @@ public class ImageLoader {
      * @return the image of the object required.
      */
     public Image getImage(final ImagePath imagePath) {
-            return this.imageMap.get(imagePath);
+        /*if (imagePath.equals(ImagePath.BUBBLE) && !this.imageMap.containsKey(imagePath)) {
+            final Image img = this.loadImage(Color.getRandomColor()); 
+            this.imageMap.put(imagePath, img); 
+        }
+        */
+        if (!this.imageMap.containsKey(imagePath)) {
+            final Image img = this.loadImage(imagePath.getPath());
+            this.imageMap.put(imagePath, img);
+            return img;
+        } 
+        return this.imageMap.get(imagePath);
+
     }
 
     /**
@@ -44,10 +55,13 @@ public class ImageLoader {
      */
     public void loadAll() {
         Arrays.stream(ImagePath.values()).forEach(this::getImage);
+        
     }
 
 
     private Image loadImage(final String imagePath) {
+        
+        System.out.println(ImageLoader.class.getResourceAsStream(imagePath));
         return new Image(ImageLoader.class.getResourceAsStream(imagePath));
     }
 }

@@ -1,6 +1,5 @@
 package bubbleshooter.model.gameobject;
 
-import bubbleshooter.model.gameobject.bubble.Property;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
@@ -13,7 +12,13 @@ public abstract class AbstractGameObject implements GameObject {
     private double heigth;
     private Shape shape;
     private Property property;
-    
+
+    public AbstractGameObject(Point2D position) {
+        this.position = position;
+        this.isDestroyed = false;
+        this.property = Property.getRandomColor(); 
+   }
+
     @Override
     public final double getHeight() {
         return this.heigth;
@@ -53,7 +58,6 @@ public abstract class AbstractGameObject implements GameObject {
     public final void setWidth(final double width) {
         this.width = width;
     }
-
     @Override
     public final boolean isDestroyed() {
         return this.isDestroyed;
@@ -65,12 +69,12 @@ public abstract class AbstractGameObject implements GameObject {
     }
 
     @Override
-    public final GameObjectsTypes getType() {
+    public GameObjectsTypes getType() {
         return this.type;
     }
 
     @Override
-    public final void setType(final GameObjectsTypes type) {
+    public void setType(final GameObjectsTypes type) {
         this.type = type;
     }
 
@@ -79,7 +83,7 @@ public abstract class AbstractGameObject implements GameObject {
         this.property = property;
     }
 
-    public final Property getProperty() {
+    public final Property getColor() {
         return this.property;
     }
 

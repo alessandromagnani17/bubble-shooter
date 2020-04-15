@@ -4,17 +4,17 @@ public enum GameCostants {
 
     ROWS(8),
     
-    ROW_BUBBLE(15),
+    ROW_BUBBLE(17),
     
-    RADIUS(28),
+    RADIUS(19),
     
-    BUBBLE_WIDTH(30),
+    BUBBLE_WIDTH(40), 
     
-    BUBBLE_HEIGTH(30),
+    BUBBLE_HEIGTH(40), 
 
-    GUIWIDTH(1000),
+    GUIWIDTH(705),
 
-    GUIHEIGTH(800),
+    GUIHEIGTH(700),
 
     BUBBLESPEED(0.1),
 

@@ -1,8 +1,6 @@
 package bubbleshooter.view.scene;
 
 import java.io.IOException;
-
-import bubbleshooter.application.Launcher;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
