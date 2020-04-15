@@ -2,6 +2,7 @@ package bubbleshooter.view.scene.controller;
 
 import java.io.FileNotFoundException;
 
+
 import bubbleshooter.controller.Controller;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
@@ -15,16 +16,15 @@ public class GameController extends AbstractController {
     private Canvas canvas;
 
     private CanvasDrawer canvasDrawer;
-    private boolean isGameOver;
+    private boolean isGameOver; 
 
     @Override
     public void init(final Controller controller, final View view) throws FileNotFoundException {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         canvasDrawer.draw(this.getController().getGameObjects());
-
     }
-    
+
     public void render() {
         this.clearCanvas();
         canvasDrawer.draw(this.getController().getGameObjects());
