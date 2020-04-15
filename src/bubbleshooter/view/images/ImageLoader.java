@@ -60,8 +60,6 @@ public class ImageLoader {
 
 
     private Image loadImage(final String imagePath) {
-        
-        System.out.println(ImageLoader.class.getResourceAsStream(imagePath));
-        return new Image(ImageLoader.class.getResourceAsStream(imagePath));
+                return new Image(ImageLoader.class.getResourceAsStream(imagePath));
     }
 }

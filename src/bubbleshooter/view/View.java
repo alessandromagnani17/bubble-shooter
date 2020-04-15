@@ -11,6 +11,6 @@ public interface View {
 
     void showGameOver();
     
-    void update(double elapsed);
+    void update();
 
 }

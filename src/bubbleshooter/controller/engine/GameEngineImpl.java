@@ -26,20 +26,24 @@ public class GameEngineImpl extends Thread implements GameEngine  {
     @Override
     public void startLoop() {
         if (!this.isRunning()) {
+        	System.out.println("starting loop");
             this.isRunning = true;
-            this.isPaused = false;
+            this.isPaused = true;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
+        	System.out.println("starting loop thread");
+
         }
     }
 
 
-    public void run(){
+    public final void run() {
         long lastFrameTime = System.currentTimeMillis();
+    	System.out.println("run");
         while (this.isRunning()) {
             final long currentFrameTime = System.currentTimeMillis();
-            //process input
             if (!this.isPaused()) {
+            	System.out.println("gameLoop");
                 final long elapsed = currentFrameTime - lastFrameTime;
                 this.updateAll(elapsed);
                 this.waitForNextFrame(currentFrameTime);
@@ -64,7 +68,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
 
     @Override
     public final synchronized void resumeLoop() {
-        this.isPaused = true;
+        this.isPaused = false;
     }
 
     private boolean isPaused() {
@@ -92,6 +96,6 @@ public class GameEngineImpl extends Thread implements GameEngine  {
 
     private void updateAll(final double elapsed) {
         this.model.update(elapsed);
-        //this.view.update();
+        this.view.update();
     }
 }

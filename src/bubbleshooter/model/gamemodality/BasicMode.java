@@ -29,8 +29,8 @@ public class BasicMode implements GameModality {
     public BasicMode() {
         this.gameObjectManager = new GameObjectManager(); 
         this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager); 
+        this.collisionController = new CollisionController(this);
         this.gameObjectFactory = new GameObjectFactory(); 
-        
         this.status = GameStatus.PAUSE;
     }
 
@@ -41,7 +41,7 @@ public class BasicMode implements GameModality {
         this.initGameObject(); 
         
     }
-    
+
     public void initGameObject() {
        for (int i = 0; i < GameCostants.ROWS.getValue(); i++) {
            this.gameObjectManager.addGameObject(this.bubbleGridManager.createNewRow());
@@ -59,19 +59,9 @@ public class BasicMode implements GameModality {
     public GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
-    public void startLevel() {
-        this.gameObjectManager = new GameObjectManager();
-        this.gridManager = new BubbleGridManager(this.gameObjectManager);
-        this.collisionController = new CollisionController(this);
-        this.status = GameStatus.RUNNING;
-    }
 
     @Override
     public void update(final double elapsed) {
-        if (this.status == GameStatus.RUNNING) {
-            this.gameObjectManager.update(elapsed);
-
-        }
        this.gameObjectManager.update(elapsed);
        this.collisionController.checkCollisions();
     }

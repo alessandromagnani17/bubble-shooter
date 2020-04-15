@@ -27,9 +27,10 @@ public class ControllerImpl implements Controller {
      //IL PULSANTE PLAY TRAMITE GETCONTROLLER CHE RESTITUISCE IL CONTROLLER DELLA GUI .startGame()
     @Override
     public void startGame(final LevelTypes levelType) {
+     System.out.println("starting game");
      this.engine = new GameEngineImpl(this.view, this.model);
      this.startSelectedGame(levelType);
-     //this.engine.startLoop();
+     this.engine.startLoop();
      //far partire la musica
     }
 
@@ -55,8 +56,8 @@ public class ControllerImpl implements Controller {
             this.model.startSurvivalGame();
         }
     }
-    
-    public final List<GameObject> getGameObjects(){
-        return this.model.getGameObjects();  
+
+    public final List<GameObject> getGameObjects() {
+    	return this.model.getGameObjects();
     }
 }

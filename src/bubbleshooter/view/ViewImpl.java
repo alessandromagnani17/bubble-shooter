@@ -39,8 +39,6 @@ public class ViewImpl implements View {
         this.loadScene(FXMLPath.MAIN);
     }
 
-
-
     @Override
     public void loadScene(final FXMLPath scene) {
         try {
@@ -67,7 +65,6 @@ public class ViewImpl implements View {
         this.stage.setHeight(GameCostants.GUIHEIGTH.getValue());
 
         if (!this.viewStarted) {
-
             this.stage.setResizable(false);
             this.stage.show();
             this.viewStarted = true;
@@ -81,9 +78,8 @@ public class ViewImpl implements View {
     }
 
     @Override
-    public void update(double elapsed) {
-        // TODO Auto-generated method stub
-        
+    public void update() {
+       // this.stage.rende
     }
 
  

@@ -3,11 +3,15 @@ package bubbleshooter.view.scene.controller;
 import java.io.FileNotFoundException;
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
 import bubbleshooter.view.scene.FXMLPath;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.MouseEvent;
 
 public class GameController extends AbstractController {
 
@@ -16,15 +20,26 @@ public class GameController extends AbstractController {
 
     private CanvasDrawer canvasDrawer;
     private boolean isGameOver;
-
+    
     @Override
     public void init(final Controller controller, final View view) throws FileNotFoundException {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         canvasDrawer.draw(this.getController().getGameObjects());
+        this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(final MouseEvent event) {
+			/*getController().getGameObjects().stream()
+									   .filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE))
+									   .iterator().next()
+									   .setDirection(new Point2D(event.getX(), event.getY()));*/
+			getController().resume();
+			}
+		});
     }
-    
+
+
     public void render() {
         this.clearCanvas();
         canvasDrawer.draw(this.getController().getGameObjects());
