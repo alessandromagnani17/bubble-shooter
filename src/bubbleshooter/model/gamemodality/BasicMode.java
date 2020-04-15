@@ -59,13 +59,7 @@ public class BasicMode implements GameModality {
     public GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
-    public void startLevel() {
-        this.gameObjectManager = new GameObjectManager();
-        this.gridManager = new BubbleGridManager(this.gameObjectManager);
-        this.collisionController = new CollisionController(this);
-        this.status = GameStatus.RUNNING;
-    }
-
+    
     @Override
     public void update(final double elapsed) {
         if (this.status == GameStatus.RUNNING) {
