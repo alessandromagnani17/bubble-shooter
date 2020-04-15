@@ -13,9 +13,4 @@ public class BasicBubble extends AbstractGameObject {
         return super.getType();
     }
 
-    @Override
-    public Property getColor() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }

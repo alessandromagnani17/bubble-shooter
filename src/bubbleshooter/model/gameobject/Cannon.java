@@ -37,10 +37,4 @@ public class Cannon extends AbstractGameObject {
         super.setWidth(GameCostants.GUIWIDTH.getValue());
         }
 
-    @Override
-    public Property getColor() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

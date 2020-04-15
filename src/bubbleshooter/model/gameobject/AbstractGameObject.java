@@ -16,6 +16,7 @@ public abstract class AbstractGameObject implements GameObject {
     public AbstractGameObject(Point2D position) {
         this.position = position;
         this.isDestroyed = false;
+        this.property = Property.getRandomColor(); 
    }
 
     @Override
@@ -82,7 +83,7 @@ public abstract class AbstractGameObject implements GameObject {
         this.property = property;
     }
 
-    public final Property getProperty() {
+    public final Property getColor() {
         return this.property;
     }
 

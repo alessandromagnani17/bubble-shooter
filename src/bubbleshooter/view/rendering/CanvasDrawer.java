@@ -31,6 +31,7 @@ public class CanvasDrawer {
     
     private ImagePath getImagePath(GameObject gameObject) {
         if (gameObject.getType() == GameObjectsTypes.BASICBUBBLE || gameObject.getType() == GameObjectsTypes.SHOOTINGBUBBLE) {
+           
             if(gameObject.getColor() == Property.BLUE) {
                 return ImagePath.BLUE_BUBBLE; 
             }

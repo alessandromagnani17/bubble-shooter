@@ -33,8 +33,6 @@ public interface GameObject {
     
     void setProperty(Property property);
 
-    Property getProperty();
-
     boolean isDestroyed();
 
     void destroy();
