@@ -77,6 +77,6 @@ public class BubbleGridManager {
     }
     
     public final boolean areEquals(final GameObject a, final GameObject b) {
-        return a.getProperty().equals(b.getProperty());
+        return a.getColor().equals(b.getColor());
     }
 }
