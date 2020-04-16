@@ -138,8 +138,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
             }
         }
         
-        System.out.println("!!! ---> USERNAME LETTO --> " + name);
-        System.out.println("!!! ---> SCORE LETTO --> " + score);
+        //System.out.println("!!! ---> USERNAME LETTO --> " + name);
+        //System.out.println("!!! ---> SCORE LETTO --> " + score);
         
         return new HighscoreStructure(name,Integer.parseInt(score),gameMode);
     }
