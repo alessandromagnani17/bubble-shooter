@@ -71,10 +71,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
     	this.mapOfItems.get(gameMode).add(score);
     	
     	sort(this.mapOfItems.get(gameMode));
-
-        itemsSet.add(score);
-        clean(itemsSet);
-        saveModify();
+    	
+    	clean(this.mapOfItems.get(gameMode));
     }
     
     private Map<LevelTypes, List<HighscoreStructure>> readFile() {
@@ -138,11 +136,10 @@ public class HighscoreStoreImpl implements HighscoreStore {
         Collections.sort(itemsSet, comp);
     }
 
-    private void clean(SortedSet<HighscoreStructure> itemsSet) {
-        while(itemsSet.size() > CAPACITY) {
-            itemsSet.remove(itemsSet.last());
+    private void clean(List<HighscoreStructure> itemsSet) {
+        for(int i = 0; i < itemsSet.size(); i++) {
+            if(i >= CAPACITY) itemsSet.remove(i);
         }
-        
     }
 
     
