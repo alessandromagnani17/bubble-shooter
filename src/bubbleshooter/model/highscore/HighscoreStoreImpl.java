@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import com.google.common.collect.ImmutableSortedSet;
+
+import application.HighscoreStructure;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import javafx.collections.FXCollections;
@@ -126,6 +128,30 @@ public class HighscoreStoreImpl implements HighscoreStore {
             case SURVIVALMODE: return "SURVIVAL_MODE_HIGHSCORES...";
         }
         return null;
+    }
+    
+    private HighscoreStructure generateHighscore(String stringa, LevelTypes gameMode) {
+        String name = "", score = "";
+        char spazio = ' ';
+        boolean flag = true;
+        
+        for(int i = 0; i < stringa.length(); i++) {
+            
+            if(!flag) {
+                score = score + stringa.charAt(i);
+            }
+            
+            if(!(stringa.charAt(i) == spazio) && flag) {
+                name = name + stringa.charAt(i);
+            } else {
+                flag = false;
+            }
+        }
+        
+        System.out.println("!!! ---> USERNAME LETTO --> " + name);
+        System.out.println("!!! ---> SCORE LETTO --> " + score);
+        
+        return new HighscoreStructure(name,Integer.parseInt(score),gameMode);
     }
     
     private void sort(List<HighscoreStructure> itemsSet) {
