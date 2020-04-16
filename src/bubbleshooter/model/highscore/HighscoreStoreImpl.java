@@ -1,8 +1,10 @@
 package bubbleshooter.model.highscore;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,22 +14,39 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import com.google.common.collect.ImmutableSortedSet;
 import bubbleshooter.model.gamemodality.GameModality;
+import bubbleshooter.model.gamemodality.LevelTypes;
 
 public class HighscoreStoreImpl implements HighscoreStore {
 
     private static final long serialVersionUID = -3738961252432967724L;
-    private static final String FILE_NAME = "Highscores";
-    private static final File FILE = new File(System.getProperty("user.home"), "BubbleShooter");
+    private static final String FILE_PATH = System.getProperty("user.home") + "/Highscores.txt";
     private final File file;
     private final Map<GameModality, SortedSet<HighscoreStructure>> mapOfItems;
     private final static int CAPACITY = 10;
     
     public HighscoreStoreImpl() {
-        this(new File(FILE, FILE_NAME));
-    }
-
-    public HighscoreStoreImpl(final File file) {
-        this.file = file;
+    	this.file =  new File(FILE_PATH);
+        try {
+            System.out.println("!!! ---> Creating file ...");
+            file.createNewFile();
+            
+            System.out.println("!!! ---> Writing BASIC and SURVIVAL ...");
+            FileWriter fw = new FileWriter(this.file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            bw.write("HIGHSCORES!!\n\n");
+            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
+            bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
+            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
+            bw.write("END_OF_FILE_END_OF_FILE");
+            
+            bw.flush();
+            bw.close();
+            
+        } catch (IOException e) {
+            System.out.println("ERROR !!! Can't create file...");
+            e.printStackTrace();
+        }
         this.mapOfItems = new HashMap<>();
     }
 
@@ -90,7 +109,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
     }
 
     @Override
-    public ImmutableSortedSet<HighscoreStructure> getHighscoresForModality(final GameModality gameMode) {
+    public ImmutableSortedSet<HighscoreStructure> getHighscoresForModality(final LevelTypes gameMode) {
         ImmutableSortedSet<HighscoreStructure> result;
 
         if (this.mapOfItems.containsKey(gameMode)) {
