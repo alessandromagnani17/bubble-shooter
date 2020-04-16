@@ -14,6 +14,8 @@ public interface GameModality {
 
     void setGameStatus(GameStatus status);
     
+    void loadShootingBubble();
+    
     CollisionController getCollisionController();
 
     void setGameOver();

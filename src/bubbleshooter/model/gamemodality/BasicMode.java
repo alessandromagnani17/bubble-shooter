@@ -40,14 +40,18 @@ public class BasicMode implements GameModality {
         
     }
 
-    public void initGameObject() {
+    public final void initGameObject() {
        for (int i = 0; i < GameCostants.ROWS.getValue(); i++) {
            this.gameObjectManager.addGameObject(this.bubbleGridManager.createNewRow());
        }
-       this.gameObjectManager.addGameObject
-                       (Collections.singletonList
-                                  (this.gameObjectFactory.createShootingBubble
-                                          (new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600))));
+       this.loadShootingBubble();
+    }
+    
+    public void loadShootingBubble() {
+    	this.gameObjectManager.addGameObject
+        (Collections.singletonList
+                   (this.gameObjectFactory.createShootingBubble
+                           (new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600))));
     }
 
     public final GameObjectManager getGameObjectManager() {
@@ -89,7 +93,5 @@ public class BasicMode implements GameModality {
     public BubbleGridManager getGridManager() {
         return this.bubbleGridManager;
     }
-    
-    
 
 }

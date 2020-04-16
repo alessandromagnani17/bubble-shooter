@@ -1,8 +1,12 @@
 package bubbleshooter.model.collision;
 
+import java.util.Collections;
+
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.GameCostants;
+import javafx.geometry.Point2D;
 
 public class CollisionController {
 
@@ -25,7 +29,8 @@ public class CollisionController {
     private void checkBounceCollision() {
         final GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
         final double xPos = shootingBubble.getPosition().getX();
-        if (xPos + GameCostants.BUBBLE_WIDTH.getValue()/2 >= GameCostants.GUIWIDTH.getValue() || xPos +  GameCostants.BUBBLE_WIDTH.getValue()/2 <= 30) {
+        if (xPos + GameCostants.BUBBLE_WIDTH.getValue()/2 >= GameCostants.GUIWIDTH.getValue() ||
+           xPos +  GameCostants.BUBBLE_WIDTH.getValue()/2 <= GameCostants.BUBBLE_WIDTH.getValue()/2) {
         	final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager());
             handler.handle();
         }
@@ -38,6 +43,7 @@ public class CollisionController {
                 final Acceptor acceptor = new GameObjectAcceptor(basicbubble);
                 final Visitor visitor = new GameObjectVisitor(shootingBubble);
               acceptor.accept(visitor, this.level.getGridManager());
+              this.level.loadShootingBubble();
             }
         }
     }

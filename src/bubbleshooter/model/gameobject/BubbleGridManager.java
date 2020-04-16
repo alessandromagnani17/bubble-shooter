@@ -94,7 +94,8 @@ public class BubbleGridManager {
 
     public final void addToGrid(final GameObject bubble, final Point2D position) {
         this.gameObjectManager.removeGameObject(bubble);
-        this.gameObjectManager.addGameObject(Collections.singletonList(new BasicBubble(position)));
-
+        GameObject bubbleToAdd = new BasicBubble(position);
+        bubbleToAdd.setProperty(bubble.getColor());
+        this.gameObjectManager.addGameObject(Collections.singletonList(bubbleToAdd));
     }
 }

@@ -51,6 +51,7 @@ public class GridCollisionHandler implements CollisionHandler {
     }
 
     private void explode() {
+    System.out.println("here");
     this.recursiveExplosion(acceptor, new HashSet<>()).stream()
                                                       .forEach(a -> a.destroy());
     }

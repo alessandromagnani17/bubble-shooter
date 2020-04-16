@@ -1,6 +1,5 @@
 package bubbleshooter.model.gameobject;
 
-import bubbleshooter.utility.PhysicHelper;
 import javafx.geometry.Point2D;
 
 
@@ -23,7 +22,6 @@ public class ShootingBubble extends BasicBubble {
     }
 
     public final void update(final double elapsed) {
-    	System.out.println(super.getPosition());
     	super.setPosition(super.getPosition().add(this.shootingDirection));
     }
 

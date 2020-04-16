@@ -31,6 +31,7 @@ public class GameController extends AbstractController {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         canvasDrawer.draw(this.getController().getGameObjects());
+        
 
         this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
