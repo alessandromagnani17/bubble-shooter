@@ -1,18 +1,24 @@
 package bubbleshooter.model.highscore;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import com.google.common.collect.ImmutableSortedSet;
+
+import application.HighscoreStructure;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
 
@@ -56,17 +62,63 @@ public class HighscoreStoreImpl implements HighscoreStore {
     }
 
     @Override
-    public void addScore(final GameModality gameMode, final HighscoreStructure score) {
-        SortedSet<HighscoreStructure> itemsSet = this.mapOfItems.get(gameMode);
-
-        if (itemsSet == null) {
-            itemsSet = new TreeSet<>();
-            this.mapOfItems.put(gameMode, itemsSet);
-        } 
+    public void addScore(final LevelTypes gameMode, final HighscoreStructure score) {
+    	this.mapOfItems = readFile();
 
         itemsSet.add(score);
         clean(itemsSet);
         saveModify();
+    }
+    
+    private Map<LevelTypes, List<HighscoreStructure>> readFile() {
+        Map<LevelTypes, List<HighscoreStructure>> map = new HashMap<>();
+        for(LevelTypes tipo: LevelTypes.values()) {
+            map.put(tipo, readFromFile(tipo));
+        }
+        return map;
+    }
+    
+    private List<HighscoreStructure> readFromFile(LevelTypes gameMode) {
+        
+        List<HighscoreStructure> itemsSet = new ArrayList<>();
+        String modality = whichMod(gameMode);
+        String stringaLetta;
+        
+        try {
+            System.out.println("!!! ---> Reading from file ...");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            
+            stringaLetta = br.readLine();
+            while(!stringaLetta.equals("END_OF_FILE_END_OF_FILE")) {
+                stringaLetta = br.readLine();
+                //System.out.println("Stringa letta --> " + stringaLetta);
+                if(stringaLetta.equals(modality)) {
+                    stringaLetta = br.readLine();
+                    while(!stringaLetta.equals("END_OF_HIGH_END_OF_HIGH")) {
+                        itemsSet.add(generateHighscore(stringaLetta, gameMode));
+                        stringaLetta = br.readLine();
+                    }
+                }
+                
+            }
+            
+            br.close();
+            
+        } catch (IOException e) {
+            System.out.println("ERROR !!! Can't create file...");
+            e.printStackTrace();
+        }
+        
+        return itemsSet;
+    }
+    
+    private String whichMod(LevelTypes gameMode) {
+        switch(gameMode) {
+            case BASICMODE: return "BASIC_MODE_HIGHSCORES...";
+            case SURVIVALMODE: return "SURVIVAL_MODE_HIGHSCORES...";
+        }
+        return null;
     }
 
     private void clean(SortedSet<HighscoreStructure> itemsSet) {
