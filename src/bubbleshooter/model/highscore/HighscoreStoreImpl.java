@@ -19,10 +19,10 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import com.google.common.collect.ImmutableSortedSet;
-
-import application.HighscoreStructure;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class HighscoreStoreImpl implements HighscoreStore {
 
@@ -177,17 +177,13 @@ public class HighscoreStoreImpl implements HighscoreStore {
         
     }
 
-    
-
     @Override
-    public ImmutableSortedSet<HighscoreStructure> getHighscoresForModality(final LevelTypes gameMode) {
-        ImmutableSortedSet<HighscoreStructure> result;
+    public ObservableList<HighscoreStructure> getHighscoresForModality(final LevelTypes gameMode) {
+        ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();;
 
         if (this.mapOfItems.containsKey(gameMode)) {
-            result = ImmutableSortedSet.copyOf(this.mapOfItems.get(gameMode));
-        } else {
-            result = ImmutableSortedSet.of();
-        }
+            result.addAll(this.mapOfItems.get(gameMode));
+        } 
 
         return result;
     }
