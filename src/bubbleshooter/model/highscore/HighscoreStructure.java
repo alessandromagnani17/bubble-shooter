@@ -1,9 +1,11 @@
 package bubbleshooter.model.highscore;
 
+import bubbleshooter.model.gamemodality.LevelTypes;
+import javafx.beans.property.SimpleStringProperty;
+
 public class HighscoreStructure extends Score {
 
-    private static final long serialVersionUID = -4128959199732910429L;
-    private final String username;
+    protected final SimpleStringProperty name;
 
     /**
      * Construct a new HighscoreStructure
@@ -12,16 +14,17 @@ public class HighscoreStructure extends Score {
      * @param score 
      *              the score made by the player
      */
-    public HighscoreStructure(final String name, final long score) {
-        super(score);
-        this.username = name;
+    public HighscoreStructure(final String name, final Integer score, final LevelTypes gameMode) {
+        super(score, gameMode);
+        this.name = new SimpleStringProperty(name) ;
     }
 
-    /**
-     * @return the current username of the player
-     */
-    public String getUsername() {
-        return this.username;
+    public String getName() {
+        return name.get();
+    }
+
+    public String toString() {
+        return "Player:" + this.getName() + " Score:" + super.getScore();
     }
 
 }
