@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final long serialVersionUID = -3738961252432967724L;
     private static final String FILE_PATH = System.getProperty("user.home") + "/Highscores.txt";
     private final File file;
-    private final Map<GameModality, SortedSet<HighscoreStructure>> mapOfItems;
+    private Map<LevelTypes, List<HighscoreStructure>> mapOfItems;
     private final static int CAPACITY = 10;
     
     public HighscoreStoreImpl() {
@@ -63,7 +65,12 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     @Override
     public void addScore(final LevelTypes gameMode, final HighscoreStructure score) {
+    	
     	this.mapOfItems = readFile();
+    	
+    	this.mapOfItems.get(gameMode).add(score);
+    	
+    	sort(this.mapOfItems.get(gameMode));
 
         itemsSet.add(score);
         clean(itemsSet);
@@ -120,6 +127,16 @@ public class HighscoreStoreImpl implements HighscoreStore {
         }
         return null;
     }
+    
+    private void sort(List<HighscoreStructure> itemsSet) {
+        Comparator<HighscoreStructure> comp = new Comparator<>() {
+            @Override
+            public int compare(HighscoreStructure o1, HighscoreStructure o2) {
+                return o2.getScore() - o1.getScore();
+            }
+        };
+        Collections.sort(itemsSet, comp);
+    }
 
     private void clean(SortedSet<HighscoreStructure> itemsSet) {
         while(itemsSet.size() > CAPACITY) {
@@ -128,37 +145,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
         
     }
 
-    @Override
-    public void clear() {
-        this.mapOfItems.clear();
-
-        if (this.file.exists()) this.file.delete();
-    }
-
-    @Override
-    public void saveModify() {
-        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(file))) {
-            output.writeObject(this);
-        } catch (IOException e) {
-            System.out.println("ERROR ( can't write on file )");
-        }
-    }
-
-    @Override
-    public void read() {
-        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(file))) {
-            Object object = input.readObject();
-
-            if (HighscoreStoreImpl.class.isInstance(object)) {
-                HighscoreStoreImpl highscore = HighscoreStoreImpl.class.cast(object);
-                this.mapOfItems.putAll(highscore.mapOfItems);
-            } else {
-                System.out.println("ERROR ( Object is not expected type )");
-            }
-        } catch (ClassNotFoundException | IOException e) {
-            System.out.println("ERROR ( can't read from the file )");
-        }
-    }
+    
 
     @Override
     public ImmutableSortedSet<HighscoreStructure> getHighscoresForModality(final LevelTypes gameMode) {
