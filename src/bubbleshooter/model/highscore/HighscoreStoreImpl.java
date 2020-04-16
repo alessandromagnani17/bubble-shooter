@@ -73,6 +73,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
     	sort(this.mapOfItems.get(gameMode));
     	
     	clean(this.mapOfItems.get(gameMode));
+    	
+    	reWriteFile();
     }
     
     private Map<LevelTypes, List<HighscoreStructure>> readFile() {
@@ -140,6 +142,39 @@ public class HighscoreStoreImpl implements HighscoreStore {
         for(int i = 0; i < itemsSet.size(); i++) {
             if(i >= CAPACITY) itemsSet.remove(i);
         }
+    }
+    
+    private void reWriteFile() {
+        String appoggio;
+        try {
+            this.file.delete();
+            this.file.createNewFile();
+            FileWriter fw = new FileWriter(this.file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            bw.write("HIGHSCORES!!\n\n");
+            bw.write("BASIC_MODE_HIGHSCORES...\n");
+            for(HighscoreStructure o: this.mapOfItems.get(LevelTypes.BASICMODE)) {
+                appoggio = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
+                bw.write(appoggio);
+            }
+            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
+            bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
+            for(HighscoreStructure o: this.mapOfItems.get(LevelTypes.SURVIVALMODE)) {
+                appoggio = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
+                bw.write(appoggio);
+            }
+            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
+            bw.write("END_OF_FILE_END_OF_FILE");
+            
+            bw.flush();
+            bw.close();
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
     }
 
     
