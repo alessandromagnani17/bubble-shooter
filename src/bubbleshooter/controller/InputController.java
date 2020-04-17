@@ -22,6 +22,8 @@ public class InputController extends Application {
 
     Pane root = new Pane();
     
+    
+    
     //private Cannon cannon = new Cannon(new Point2D(CANNON_POSITIONX, CANNON_POSITIONY));
     private ImageView cannon = new ImageView(new Image("bubbles/cannon.png"));
     private ShootingBubble shootingBubble = new ShootingBubble(new Point2D(SHOOTINGBUBBLE_CENTERX, SHOOTINGBUBBLE_CENTERY));
@@ -57,8 +59,8 @@ public class InputController extends Application {
         double ipotenuse = Math.sqrt(Math.pow(event.getX() - SHOOTINGBUBBLE_CENTERX, 2) + Math.pow(event.getY() - SHOOTINGBUBBLE_CENTERY, 2));
         return Math.toDegrees(Math.asin((event.getX() - SHOOTINGBUBBLE_CENTERX)/ipotenuse));
     }
-    
+
     public final void stop() {
-        cannon.setRotate(0);
+        //cannon.setRotate(0);
     }
 }
