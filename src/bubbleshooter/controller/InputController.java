@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage; 
 
 public class InputController extends Application {
@@ -23,8 +24,9 @@ public class InputController extends Application {
     
     //private Cannon cannon = new Cannon(new Point2D(CANNON_POSITIONX, CANNON_POSITIONY));
     private ImageView cannon = new ImageView(new Image("bubbles/cannon.png"));
-    
     private ShootingBubble shootingBubble = new ShootingBubble(new Point2D(SHOOTINGBUBBLE_CENTERX, SHOOTINGBUBBLE_CENTERY));
+
+    private Rotate rotation = new Rotate();
 
     public InputController(Pane root) {
         this.root = root;
