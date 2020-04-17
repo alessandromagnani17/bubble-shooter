@@ -15,6 +15,9 @@ public class InputController extends Application {
 	//POSIZIONI TEMPORANEE
 	public static final double CANNON_POSITIONX = 458;
 	public static final double CANNON_POSITIONY = 490;
+	public static final double SHOOTINGBUBBLE_CENTERX = 498;
+	public static final double SHOOTINGBUBBLE_CENTERY = 650;
+
 
 	
     Pane root = new Pane();
