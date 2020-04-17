@@ -38,6 +38,9 @@ public class InputController extends Application {
         stage.setScene(scene);
         stage.show();
 
+        rotation.setPivotX(SHOOTINGBUBBLE_CENTERX - CANNON_POSITIONX);
+        rotation.setPivotY(SHOOTINGBUBBLE_CENTERY - CANNON_POSITIONY);
+
         scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
 
         @Override
