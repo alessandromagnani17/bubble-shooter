@@ -40,6 +40,7 @@ public class InputController extends Application {
 
         rotation.setPivotX(SHOOTINGBUBBLE_CENTERX - CANNON_POSITIONX);
         rotation.setPivotY(SHOOTINGBUBBLE_CENTERY - CANNON_POSITIONY);
+        cannon.getTransforms().add(rotation);
 
         scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
 
