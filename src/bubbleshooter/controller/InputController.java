@@ -1,10 +1,7 @@
 package bubbleshooter.controller;
-
 import javafx.scene.image.ImageView;
-import bubbleshooter.model.gameobject.ShootingBubble;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -20,17 +17,15 @@ public class InputController extends Application {
 	public static final double SHOOTINGBUBBLE_CENTERX = 498;
 	public static final double SHOOTINGBUBBLE_CENTERY = 650;
 
-    Pane root = new Pane();
-    
-    
-    
+    private Pane root = new Pane();
+
     //private Cannon cannon = new Cannon(new Point2D(CANNON_POSITIONX, CANNON_POSITIONY));
     private ImageView cannon = new ImageView(new Image("bubbles/cannon.png"));
-    private ShootingBubble shootingBubble = new ShootingBubble(new Point2D(SHOOTINGBUBBLE_CENTERX, SHOOTINGBUBBLE_CENTERY));
+    //private ShootingBubble shootingBubble = new ShootingBubble(new Point2D(SHOOTINGBUBBLE_CENTERX, SHOOTINGBUBBLE_CENTERY));
 
     private Rotate rotation = new Rotate();
 
-    public InputController(Pane root) {
+    public InputController(final Pane root) {
         this.root = root;
     }
 
@@ -55,9 +50,9 @@ public class InputController extends Application {
     });
     }
 
-    public double calculateAngle (MouseEvent event) {
+    public final double calculateAngle(final MouseEvent event) {
         double ipotenuse = Math.sqrt(Math.pow(event.getX() - SHOOTINGBUBBLE_CENTERX, 2) + Math.pow(event.getY() - SHOOTINGBUBBLE_CENTERY, 2));
-        return Math.toDegrees(Math.asin((event.getX() - SHOOTINGBUBBLE_CENTERX)/ipotenuse));
+        return Math.toDegrees(Math.asin((event.getX() - SHOOTINGBUBBLE_CENTERX) / ipotenuse));
     }
 
     public final void stop() {
