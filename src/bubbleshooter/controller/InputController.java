@@ -54,10 +54,7 @@ public class InputController extends Application {
 
     public double calculateAngle (MouseEvent event) {
         double ipotenuse = Math.sqrt(Math.pow(event.getX() - SHOOTINGBUBBLE_CENTERX, 2) + Math.pow(event.getY() - SHOOTINGBUBBLE_CENTERY, 2));
-        double x = (event.getX() - SHOOTINGBUBBLE_CENTERX);
-
-        return Math.toDegrees(Math.asin(x/ipotenuse));
-
+        return Math.toDegrees(Math.asin((event.getX() - SHOOTINGBUBBLE_CENTERX)/ipotenuse));
     }
     
     public final void stop() {
