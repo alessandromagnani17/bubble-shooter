@@ -1,9 +1,10 @@
 package bubbleshooter.controller;
 
 import javafx.scene.image.ImageView;
-
+import bubbleshooter.model.gameobject.ShootingBubble;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -18,10 +19,12 @@ public class InputController extends Application {
 	public static final double SHOOTINGBUBBLE_CENTERX = 498;
 	public static final double SHOOTINGBUBBLE_CENTERY = 650;
 
-
-	
     Pane root = new Pane();
+    
+    //private Cannon cannon = new Cannon(new Point2D(CANNON_POSITIONX, CANNON_POSITIONY));
     private ImageView cannon = new ImageView(new Image("bubbles/cannon.png"));
+    
+    private ShootingBubble shootingBubble = new ShootingBubble(new Point2D(SHOOTINGBUBBLE_CENTERX, SHOOTINGBUBBLE_CENTERY));
 
     public InputController(Pane root) {
         this.root = root;
