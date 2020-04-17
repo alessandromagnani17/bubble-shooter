@@ -32,11 +32,6 @@ public class InputController extends Application {
         this.root = root;
     }
 
-    public final void setCannonInitiallyPosition() {
-        cannon.setLayoutX(457);
-        cannon.setLayoutY(550);
-    }
-
     public final void start(final Stage stage) throws Exception {
 
         Scene scene = new Scene(root, 960, 700);
