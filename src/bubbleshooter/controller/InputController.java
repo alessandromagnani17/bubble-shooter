@@ -12,6 +12,11 @@ import javafx.stage.Stage;
 
 public class InputController extends Application {
 
+	//POSIZIONI TEMPORANEE
+	public static final double CANNON_POSITIONX = 458;
+	public static final double CANNON_POSITIONY = 490;
+
+	
     Pane root = new Pane();
     private ImageView cannon = new ImageView(new Image("bubbles/cannon.png"));
 
@@ -43,11 +48,9 @@ public class InputController extends Application {
     public double calculateAngle (MouseEvent event) {
         double ipotenuse = Math.sqrt(Math.pow(event.getX() - cannon.getLayoutX(), 2) + Math.pow(event.getY() - cannon.getLayoutY(), 2));
         double x = (event.getX() - cannon.getLayoutX());
-        double angle = Math.toDegrees(Math.asin(x/ipotenuse));
 
-        System.out.println(event.getX() + ", " + event.getY() + "    " + cannon.getLayoutX() + ", " + cannon.getLayoutY() + "    " + x + "    . " + angle + ", " + ipotenuse);
+        return Math.toDegrees(Math.asin(x/ipotenuse));
 
-        return angle;
     }
     
     public final void stop() {
