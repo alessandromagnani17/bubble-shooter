@@ -2,7 +2,7 @@ package bubbleshooter.model.gameobject;
 
 
 import java.util.Collections;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -26,19 +26,20 @@ public class BubbleGridManager {
     }
 
     public final List<GameObject> getBubbleNeighbours(final GameObject bubble) {
-       return this.getBubbleGrid().stream().filter(a -> this.isNear(a, bubble))
-                                    .collect(Collectors.toList());
+       return this.getBubbleGrid().stream()
+                                  .filter(a -> this.isNear(a, bubble))
+                                  .collect(Collectors.toList());
     }
 
- // crea una nuova riga in cima
+    // crea una nuova riga in cima
     public final List<GameObject> createNewRow() {
         List<GameObject> newRow = new LinkedList<>();
         this.dropBubble();
-        double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue() : GameCostants.BUBBLE_WIDTH.getValue()/2;
+        double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue() : GameCostants.BUBBLE_WIDTH.getValue() / 2;
         for (double x = 0; x < GameCostants.ROW_BUBBLE.getValue(); x++) {
             newRow.add((GameObject) (gameObjectFactory.createBasicBubble(
                     new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset,
-                            GameCostants.BUBBLE_HEIGTH.getValue()/2))));
+                            GameCostants.BUBBLE_HEIGTH.getValue() / 2))));
         }
 
         this.createdRows++;
@@ -59,9 +60,31 @@ public class BubbleGridManager {
         .forEach(b -> b.setPosition(new Point2D(b.getPosition().getX(), b.getPosition().getY() + GameCostants.BUBBLE_HEIGTH.getValue())));
     }
 
-    private boolean isNear(final GameObject bubbleAt, final GameObject bubbleTo) {
-        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.RADIUS.getValue() * 2 
+    public final boolean isNear(final GameObject bubbleAt, final GameObject bubbleTo) {
+        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= 45
                 && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
+    }
+
+    private List<GameObject> getLinkedBubbles(final GameObject starting, final List<GameObject> linkedBubbles) {
+    	this.getBubbleNeighbours(starting).stream()
+    		                              .filter(a -> !linkedBubbles.contains(a) && !a.isDestroyed() && linkedBubbles.add(a))
+    				                      .forEach(a -> this.getLinkedBubbles(a, linkedBubbles));
+    	return linkedBubbles;
+    }
+    
+    public final List<GameObject> getIsolatedBubbles() {
+    	List<GameObject> firstLineBubbles = this.getBubbleGrid().stream()
+    												   .filter(a ->  a.getPosition().getY() == GameCostants.BUBBLE_HEIGTH.getValue() / 2
+    												    && !a.isDestroyed())
+    									               .collect(Collectors.toList());
+    	Set<GameObject> linkedBubbles = new HashSet<GameObject>();
+    	linkedBubbles.addAll(firstLineBubbles);
+    	for (GameObject bubble : firstLineBubbles) {
+    		linkedBubbles.addAll(this.getLinkedBubbles(bubble, new LinkedList<GameObject>()));
+    	}
+    	return this.getBubbleGrid().stream()
+    				               .filter(a -> !linkedBubbles.contains(a))
+    						       .collect(Collectors.toList());
     }
 
     public final List<GameObject> getBubbleGrid() {
@@ -92,10 +115,15 @@ public class BubbleGridManager {
         return a.getColor().equals(b.getColor());
     }
 
-    public final void addToGrid(final GameObject bubble, final Point2D position) {
-        this.gameObjectManager.removeGameObject(bubble);
+    public final GameObject addToGrid(final GameObject bubble, final Point2D position) {
         GameObject bubbleToAdd = new BasicBubble(position);
         bubbleToAdd.setProperty(bubble.getColor());
         this.gameObjectManager.addGameObject(Collections.singletonList(bubbleToAdd));
+    	this.gameObjectManager.reloadShootingBubble();
+        return bubbleToAdd;
+    }
+    
+    public final boolean isOffsetRaw() {
+    	return this.offsetRow;
     }
 }
