@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectFactory;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
+import bubbleshooter.controller.collision.CollisionController;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 
@@ -19,9 +19,9 @@ import bubbleshooter.model.gameobject.BubbleGridManager;
 public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
-    private CollisionController collisionController;
     private BubbleGridManager bubbleGridManager; 
     private GameObjectFactory gameObjectFactory; 
+    private CollisionController collisionController;
     private GameStatus status = GameStatus.PAUSE;
     // gameDataManager per gestire punteggio
 
@@ -37,7 +37,6 @@ public class BasicMode implements GameModality {
     public void start() {
         this.status = GameStatus.RUNNING;
         this.initGameObject(); 
-        
     }
 
     public final void initGameObject() {
@@ -77,11 +76,6 @@ public class BasicMode implements GameModality {
     @Override
     public void setGameOver() {
         this.setGameStatus(GameStatus.GAMEOVER);
-    }
-
-    @Override
-    public CollisionController getCollisionController() {
-        return this.collisionController;
     }
 
     @Override
