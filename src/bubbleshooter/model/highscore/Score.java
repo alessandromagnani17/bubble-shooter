@@ -1,39 +1,35 @@
 package bubbleshooter.model.highscore;
 
-import java.io.Serializable;
 
-public class Score implements Serializable {
+import bubbleshooter.model.gamemodality.LevelTypes;
+import javafx.beans.property.SimpleIntegerProperty;
+
+// HAI TOLTO IMPLEMENTS SERIALIZABLE
+
+public class Score {
+
+    protected final SimpleIntegerProperty score;
+    protected final LevelTypes gameMode;
+    //protected final SimpleIntegerProperty start; // For survival mode
+    //protected final SimpleIntegerProperty end;   // For survival mode
 
     /**
-     * 
-     */
-    private static final long serialVersionUID = -334117974678079971L;
-    protected final long score;
-    protected long start; // For survival mode
-    protected long end;   // For survival mode
-
-    /**
-     * Construct a SurvivalMode Game.
+     * Construct a new score specifying the modality.
      * @param score
      *              Score of this game
-     * @param start
-     *              Current timeMillis when the game started
-     * @param end
-     *              Current timeMillis when the game ended
+     * @param gameMode
+     *              The modality
      */
-    public Score(final long score, final long start, final long end) {
-        this.score = score;
-        this.start = start;
-        this.end = end;
+    public Score(final Integer score, final LevelTypes gameMode) {
+        this.score = new SimpleIntegerProperty(score);
+        this.gameMode = gameMode;
     }
-
     /**
-     * Construct a BasicMode Game.
-     * @param score
-     *              Score of this game
+     * Getter for score
+     * @return the Integer value of score
      */
-    public Score(final long score) { 
-        this.score = score;
+    public Integer getScore() {
+        return score.get();
     }
 
 }
