@@ -2,6 +2,8 @@ package bubbleshooter.view.scene.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.collections.FXCollections;
@@ -37,7 +39,7 @@ public class HighscoreController extends AbstractController implements Initializ
         
         ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
         
-        scoreList.add(new HighscoreStructure("Zimon", 500));
+        scoreList.add(new HighscoreStructure("Zimon", 500, LevelTypes.BASICMODE));
         
         return scoreList;
     }
