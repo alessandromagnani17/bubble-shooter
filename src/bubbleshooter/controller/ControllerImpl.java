@@ -2,6 +2,7 @@ package bubbleshooter.controller;
 
 import java.util.List;
 
+import bubbleshooter.controller.collision.CollisionController;
 import bubbleshooter.controller.engine.GameEngine;
 
 import bubbleshooter.controller.engine.GameEngineImpl;
