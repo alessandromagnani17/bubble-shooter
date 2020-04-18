@@ -16,8 +16,10 @@ public enum GameCostants {
 
     GUIHEIGTH(700),
 
-    BUBBLESPEED(10),
+    BUBBLESPEED(0.5),
 
+    COLLISIONDISTANCE(35),
+    
     FPS(60),
     
     CANNONHEIGTH(100), 
