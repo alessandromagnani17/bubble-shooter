@@ -7,6 +7,7 @@ import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.model.gamemodality.SurvivalMode;
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.GameObjectManager;
 
 public class ModelImpl implements Model {
 
@@ -43,6 +44,11 @@ public class ModelImpl implements Model {
     public GameModality getGameModality() {
         return this.gameMode;
     }
+
+	@Override
+	public GameObjectManager getGameObjectManager() {
+		return this.gameMode.getGameObjectManager();
+	}
 
 
 }
