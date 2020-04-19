@@ -1,8 +1,6 @@
 package bubbleshooter.view.scene.controller;
 
 import java.io.FileNotFoundException;
-
-
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
@@ -14,7 +12,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 
 public class GameController extends AbstractController {
@@ -23,15 +20,21 @@ public class GameController extends AbstractController {
     private Canvas canvas;
 
     private CanvasDrawer canvasDrawer;
-    private boolean isGameOver;
+    private boolean gameOver;
 
 
+    
     @Override
     public void init(final Controller controller, final View view) throws FileNotFoundException {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
-        canvasDrawer.draw(this.getController().getGameObjects());
-
+        //canvasDrawer.draw(this.getController().getGameObjects());  se il gameLoop cicla dall'inizio non serve perch lo aggiorna render()
+        
+        /**
+        *	Da aggiungere quando verranno creati gli stati della gui e mettere come stato corrente lo stato di gioco 
+        */
+        
+        
         this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			@Override
@@ -47,6 +50,10 @@ public class GameController extends AbstractController {
 
 
     public void render() {
+    	if (this.isGameOver()) {
+    		this.nextScene();
+    	}
+    	//da aggiungere anche la chiamata al controller per sapere lo score corrente
         this.clearCanvas();
         canvasDrawer.draw(this.getController().getGameObjects());
     }
@@ -61,15 +68,21 @@ public class GameController extends AbstractController {
         return FXMLPath.MAIN;
     }
 
-    public boolean isGameOver() {
-        return this.isGameOver;
-    }
+    
 
     // Clear the canvas after every render. It avoids ghosting effect.
     private void clearCanvas() {
         this.canvas.getGraphicsContext2D().restore();
     	this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
+    }
+    
+    public boolean isGameOver() {
+        return this.gameOver;
+    }
+    
+    public void setGameOver() {
+    	this.gameOver = true; 
     }
 
 }
