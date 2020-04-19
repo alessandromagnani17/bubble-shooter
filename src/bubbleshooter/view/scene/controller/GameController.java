@@ -25,10 +25,10 @@ public class GameController extends AbstractController {
 
     
     @Override
-    public void init(final Controller controller, final View view) throws FileNotFoundException {
+    public void init(final Controller controller, final View view){
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
-        //canvasDrawer.draw(this.getController().getGameObjects());  se il gameLoop cicla dall'inizio non serve perch lo aggiorna render()
+        //canvasDrawer.draw(this.getController().getGameObjects());  se il gameLoop cicla dall'inizio non serve perchè lo aggiorna render()
         
         /**
         *	Da aggiungere quando verranno creati gli stati della gui e mettere come stato corrente lo stato di gioco 
@@ -67,8 +67,6 @@ public class GameController extends AbstractController {
     protected FXMLPath getPreviousScene() {
         return FXMLPath.MAIN;
     }
-
-    
 
     // Clear the canvas after every render. It avoids ghosting effect.
     private void clearCanvas() {
