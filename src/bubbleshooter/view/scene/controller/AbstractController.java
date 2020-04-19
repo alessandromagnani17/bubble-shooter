@@ -81,11 +81,8 @@ public abstract class AbstractController {
         // Empty for subclasses.
     }*/
 
-    /**
-     * 
-     * @param gameover true if the player lose.
-     */
-    public void setGameover(final boolean gameover) {
+    
+    public void setGameover() {
         // Empty for subclasses.
     }
 
