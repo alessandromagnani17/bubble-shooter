@@ -78,7 +78,8 @@ public class ViewImpl implements View {
 
     @Override
     public void showGameOver() {
-        // TODO Auto-generated method stub
+    	this.currentGuiController.setGameover();
+    	this.currentGuiController.nextScene();
 
     }
 
