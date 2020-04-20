@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.Map;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.Property;
+import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -32,12 +33,18 @@ public class CanvasDrawer {
     
 
     private Sprite generateSprite(final GameObject gameObject){
+        Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
         try {
-            return new SpriteImpl(this.canvas.getGraphicsContext2D(), gameObject, gameObject.getPosition(), COLOR_MAP.get(gameObject.getColor()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
+			sprite.setSource(COLOR_MAP.get(gameObject.getColor()));
+			sprite.setPosition(gameObject.getPosition());
+			sprite.setHeigth(GameCostants.RADIUS.getValue()*2);
+			sprite.setWidth(GameCostants.RADIUS.getValue()*2);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        return sprite; 
+
+        
     }
 
     public Canvas getCanvas() {
@@ -47,14 +54,16 @@ public class CanvasDrawer {
     public void draw(final List<GameObject> gameObjects) {
         final GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
         this.createSpriteList(gameObjects).forEach(s -> {
-            gc.save();
             try {
-                s.draw();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            gc.restore();
+            	gc.save();
+				s.draw();
+				gc.restore();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
         });; 
+        
+       
     }
 
     private List<Sprite> createSpriteList(List<GameObject> gameObjects) {
