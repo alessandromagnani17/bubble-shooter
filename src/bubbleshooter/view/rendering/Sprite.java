@@ -11,24 +11,20 @@ public interface Sprite {
     Point2D getPosition(); 
     
     void setSource(ImagePath source) throws FileNotFoundException;
-    
-    double getImageSourceHeight();
-    
-    double getImageSourceWidth();
-    
-    void setGameObjectWidth(double width);
-    
-    double getGameObjectWidth();
-    
-    void setGameObjectHeight(double height);
-    
-    double getGameObjectHeight();
-    
-    void setGameObjectPosition(Point2D position);
-    
-    Point2D getGameObjectPosition();
-    
+
     void draw() throws FileNotFoundException; 
+    
+    double getWidth(); 
+    
+    double getHeigth(); 
+    
+    
+    
+    void setHeigth(double heigth); 
+    
+    void setWidth(double width); 
+    
+    
     
     
     
