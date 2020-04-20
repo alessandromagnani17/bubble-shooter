@@ -1,11 +1,11 @@
 package bubbleshooter.controller.collision;
 
-
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
 
 public class CollisionController {
@@ -30,7 +30,8 @@ public class CollisionController {
         final GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
         for (final GameObject basicbubble : this.level.getGridManager().getBubbleGrid()) {
             if (this.hasCollided(shootingBubble, basicbubble)) {
-                CollisionHandler handler = new GridCollisionHandler(shootingBubble, basicbubble, this.level.getGridManager());
+                Collision collision = new Collision(shootingBubble, basicbubble);
+                CollisionHandler handler = new GridCollisionHandler(collision, this.level.getGridManager(), this.level.getLevelType());
                 handler.handle();
             }
         }
@@ -42,7 +43,7 @@ public class CollisionController {
         if ((pos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2) >= (GameCostants.GUIWIDTH.getValue())
            || (pos.getX() <= (GameCostants.BUBBLE_WIDTH.getValue() / 2)
             || pos.getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2)) {
-            final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager());
+            final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager(),this.level.getLevelType());
             handler.handle();
         }
     }

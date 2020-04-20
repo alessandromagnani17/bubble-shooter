@@ -27,4 +27,5 @@ public interface GameModality {
  
     BubbleGridManager getGridManager();
 
+    LevelTypes getLevelType();
 }

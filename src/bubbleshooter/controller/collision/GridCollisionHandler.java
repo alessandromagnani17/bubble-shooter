@@ -1,13 +1,14 @@
 package bubbleshooter.controller.collision;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public class GridCollisionHandler implements CollisionHandler {
@@ -15,11 +16,13 @@ public class GridCollisionHandler implements CollisionHandler {
     private GameObject shootingBubble;
     private final GameObject basicBubble;
     private final BubbleGridManager gridManager;
+    private final LevelTypes levelType;
 
-    public GridCollisionHandler(final GameObject shootingBubble, final GameObject basicBubble, final BubbleGridManager gridManager) {
-        this.shootingBubble = shootingBubble;
-        this.basicBubble  = basicBubble;
+    public GridCollisionHandler(final Collision collision, final BubbleGridManager gridManager, final LevelTypes levelType) {
+        this.shootingBubble = collision.getShootingBubble();
+        this.basicBubble  = collision.getCollided();
         this.gridManager = gridManager;
+        this.levelType = levelType;
        }
 
     @Override

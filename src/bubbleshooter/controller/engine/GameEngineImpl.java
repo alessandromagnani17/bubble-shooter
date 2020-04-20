@@ -2,12 +2,13 @@ package bubbleshooter.controller.engine;
 
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.GameStatus;
+import bubbleshooter.utility.Utility;
 import bubbleshooter.view.View;
 
 public class GameEngineImpl extends Thread implements GameEngine  {
 
-    public static final int FPS = 60;
-    private static final int SECOND = 1000;
+    public static final int FPS = Utility.getFPS();
+    private static final int SECOND = Utility.getSeconds();
     private static final int PERIOD = SECOND / FPS;
     private final View view;
     private final Model model;
@@ -24,7 +25,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
     }
 
     @Override
-    public void startLoop() {
+    public final void startLoop() {
         if (!this.isRunning()) {
             this.isRunning = true;
             this.isPaused = true;

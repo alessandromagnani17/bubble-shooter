@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
 
 
@@ -35,11 +37,10 @@ public class BubbleGridManager {
     public final List<GameObject> createNewRow() {
         List<GameObject> newRow = new LinkedList<>();
         this.dropBubble();
-        double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue() : GameCostants.BUBBLE_WIDTH.getValue() / 2;
-        for (double x = 0; x < GameCostants.ROW_BUBBLE.getValue(); x++) {
+        double offset = this.offsetRow ? Utility.getBubbleWidth() : Utility.getBubbleWidth() / 2;
+        for (double x = 0; x < Utility.getRowBubble(); x++) {
             newRow.add((GameObject) (gameObjectFactory.createBasicBubble(
-                    new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset,
-                            GameCostants.BUBBLE_HEIGTH.getValue() / 2))));
+                    new Point2D(x * Utility.getBubbleWidth() + offset, Utility.getBubbleWidth() / 2))));
         }
 
         this.createdRows++;
@@ -51,17 +52,17 @@ public class BubbleGridManager {
         Point2D bubbleAtPos = bubbleAt.getPosition();
         Point2D bubbleToPos = bubbleTo.getPosition();
         return  Math.sqrt(Math.pow(bubbleAtPos.getX() - bubbleToPos.getX(), 2) 
-                + (Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2)));
+                           + (Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2)));
     }
 
     //tira le palline una riga più in giù
     private void dropBubble() {
         this.getBubbleGrid().stream()
-        .forEach(b -> b.setPosition(new Point2D(b.getPosition().getX(), b.getPosition().getY() + GameCostants.BUBBLE_HEIGTH.getValue())));
+        .forEach(b -> b.setPosition(new Point2D(b.getPosition().getX(), b.getPosition().getY() + Utility.getBubbleWidth())));
     }
 
     public final boolean isNear(final GameObject bubbleAt, final GameObject bubbleTo) {
-        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= 45
+        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= Utility.getDiagonalDistance()
                 && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
     }
 
@@ -74,7 +75,7 @@ public class BubbleGridManager {
     
     public final List<GameObject> getIsolatedBubbles() {
     	List<GameObject> firstLineBubbles = this.getBubbleGrid().stream()
-    												   .filter(a ->  a.getPosition().getY() == GameCostants.BUBBLE_HEIGTH.getValue() / 2
+    												   .filter(a ->  a.getPosition().getY() == Utility.getBubbleWidth() / 2
     												    && !a.isDestroyed())
     									               .collect(Collectors.toList());
     	Set<GameObject> linkedBubbles = new HashSet<GameObject>();
@@ -95,12 +96,12 @@ public class BubbleGridManager {
 
     public final Set<Point2D> getNeighbourPosition(final GameObject bubble) {
         Point2D bubblePos = bubble.getPosition();
-        return Set.of(new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
-                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
-                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_HEIGTH.getValue()),
-                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_HEIGTH.getValue()),
-                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()),
-                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()));
+        return Set.of(new Point2D(bubblePos.getX() - Utility.getBubbleWidth(), bubblePos.getY()),
+                      new Point2D(bubblePos.getX() + Utility.getBubbleWidth(), bubblePos.getY()),
+                      new Point2D(bubblePos.getX() - Utility.getBubbleWidth() / 2, bubblePos.getY() - Utility.getBubbleWidth()),
+                      new Point2D(bubblePos.getX() + Utility.getBubbleWidth() / 2, bubblePos.getY() - Utility.getBubbleWidth()),
+                      new Point2D(bubblePos.getX() - Utility.getBubbleWidth() / 2, bubblePos.getY() + Utility.getBubbleWidth()),
+                      new Point2D(bubblePos.getX() + Utility.getBubbleWidth() / 2, bubblePos.getY() + Utility.getBubbleWidth()));
     }
 
     public final int getCreatedRows() {

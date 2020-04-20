@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
 
 
@@ -36,7 +36,7 @@ public class GameObjectManager {
     
     public final void reloadShootingBubble() {
         GameObject shootingBubble = this.getShootingBubble();
-        shootingBubble.setPosition(new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600));
+        shootingBubble.setPosition(new Point2D(Utility.getGuiWidth() / 2, 600));
         shootingBubble.setDirection(shootingBubble.getPosition());
         shootingBubble.setProperty(Property.getRandomColor());
     }

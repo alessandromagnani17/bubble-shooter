@@ -10,6 +10,7 @@ import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectFactory;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
 import bubbleshooter.controller.collision.CollisionController;
 import bubbleshooter.model.gameobject.BubbleGridManager;
@@ -87,5 +88,10 @@ public class BasicMode implements GameModality {
     public BubbleGridManager getGridManager() {
         return this.bubbleGridManager;
     }
+
+	@Override
+	public LevelTypes getLevelType() {
+		return LevelTypes.BASICMODE;
+	}
 
 }
