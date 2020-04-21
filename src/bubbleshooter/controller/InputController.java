@@ -43,7 +43,7 @@ public class InputController extends Application {
 
         @Override
         public void handle(final MouseEvent event) {
-            cannon.setRotate(calculateAngle(event));
+            rotation.setAngle(calculateAngle(event));
             System.out.println(event.getX() + ",  " + event.getY() + "     " + rotation.getPivotX() 
              					+ ", " + rotation.getPivotY() + "     " + calculateAngle(event));
         }
