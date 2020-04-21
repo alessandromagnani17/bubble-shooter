@@ -2,9 +2,6 @@ package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
-
-import java.io.FileNotFoundException;
-
 import bubbleshooter.controller.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
@@ -20,7 +17,7 @@ public abstract class AbstractController {
      * @param controller the controller of the game.
      * @param view       the controller of the view.
      */
-    public void init(final Controller controller, final View view) throws FileNotFoundException{
+    public void init(final Controller controller, final View view){
         this.controller = controller;
         this.view = view;
     }
