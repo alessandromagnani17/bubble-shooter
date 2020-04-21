@@ -5,7 +5,7 @@ import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.utility.Utility;
 import bubbleshooter.view.View;
 
-public class GameEngineImpl extends Thread implements GameEngine  {
+public class BasicGameLoop extends Thread implements GameLoop  {
 
     public static final int FPS = Utility.getFPS();
     private static final int SECOND = Utility.getSeconds();
@@ -16,8 +16,9 @@ public class GameEngineImpl extends Thread implements GameEngine  {
     private volatile boolean isPaused;
     private Thread loopThread;
 
-    public GameEngineImpl(final View view, final Model model) {
+    public BasicGameLoop(final View view, final Model model) {
         super();
+        this.setDaemon(true);
         this.view = view;
         this.model = model;
         this.isRunning = false;
@@ -33,7 +34,6 @@ public class GameEngineImpl extends Thread implements GameEngine  {
             this.loopThread.start();
         }
     }
-
 
     public final void run() {
         long lastFrameTime = System.currentTimeMillis();
@@ -51,7 +51,7 @@ public class GameEngineImpl extends Thread implements GameEngine  {
         //score e classifica
     }
 
-    @Override
+	@Override
     public final synchronized void stopLoop() {
         this.isRunning = false;
         this.loopThread.interrupt(); // per fermare il thread se si trova in sleep

@@ -1,6 +1,6 @@
 package bubbleshooter.controller.engine;
 
-public interface GameEngine {
+public interface GameLoop {
 
 
     void startLoop();

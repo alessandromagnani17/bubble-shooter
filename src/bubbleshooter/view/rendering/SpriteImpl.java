@@ -21,6 +21,7 @@ public class SpriteImpl implements Sprite{
     private double gameObjectHeight;
     private Point2D position;
     private Image image;
+    
   
     public SpriteImpl(final GraphicsContext gc, final GameObject gameObject, Point2D position, ImagePath imageSource) throws FileNotFoundException {
      

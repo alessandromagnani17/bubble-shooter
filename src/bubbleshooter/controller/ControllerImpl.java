@@ -3,9 +3,9 @@ package bubbleshooter.controller;
 import java.util.List;
 
 import bubbleshooter.controller.collision.CollisionController;
-import bubbleshooter.controller.engine.GameEngine;
+import bubbleshooter.controller.engine.GameLoop;
 
-import bubbleshooter.controller.engine.GameEngineImpl;
+import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
@@ -16,7 +16,7 @@ public class ControllerImpl implements Controller {
 
     private final Model model;
     private final View view;
-    private GameEngine engine;
+    private GameLoop engine;
     //GESTIRE LA PARTE DELL INPUT PER STOPPARE E FAR PARTIRE IL GAME LOOP
 
     public ControllerImpl(final Model model, final View view) {
@@ -28,7 +28,7 @@ public class ControllerImpl implements Controller {
      //IL PULSANTE PLAY TRAMITE GETCONTROLLER CHE RESTITUISCE IL CONTROLLER DELLA GUI .startGame()
     @Override
     public void startGame(final LevelTypes levelType) {
-     this.engine = new GameEngineImpl(this.view, this.model);
+     this.engine = new BasicGameLoop(this.view, this.model);
      this.startSelectedGame(levelType);
      this.engine.startLoop();
      //far partire la musica

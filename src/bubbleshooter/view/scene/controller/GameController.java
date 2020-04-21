@@ -3,6 +3,7 @@ package bubbleshooter.view.scene.controller;
 import java.io.FileNotFoundException;
 
 
+
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
@@ -33,20 +34,17 @@ public class GameController extends AbstractController {
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         canvasDrawer.draw(this.getController().getGameObjects());
         getController().resume();
-
-
+        
         this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
+        
 			@Override
 			public void handle(final MouseEvent event) {
 			ShootingBubble shootingBubble = (ShootingBubble) getController().getGameObjects().stream()
 									   .filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE))
 									   .iterator().next();
 			shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
-			//getController().resume();
 			}
 		});
-        
     }
 
     public void render() {
