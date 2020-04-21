@@ -4,20 +4,22 @@ public enum GameCostants {
 
     ROWS(8),
     
-    ROW_BUBBLE(17),
+    ROW_BUBBLE(19),
     
-    RADIUS(19),
+    RADIUS(17),
     
-    BUBBLE_WIDTH(40), 
+    BUBBLE_WIDTH(36), 
     
-    BUBBLE_HEIGTH(40), 
+    BUBBLE_HEIGTH(36), 
 
     GUIWIDTH(705),
 
     GUIHEIGTH(700),
 
-    BUBBLESPEED(10),
+    BUBBLESPEED(1),
 
+    COLLISIONDISTANCE(31),
+    
     FPS(60),
     
     CANNONHEIGTH(100), 

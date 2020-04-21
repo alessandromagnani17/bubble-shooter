@@ -5,6 +5,7 @@ import java.util.List;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.GameObjectManager;
 
 
 public interface Model {
@@ -21,4 +22,5 @@ public interface Model {
 
     GameModality getGameModality();
 
+    GameObjectManager getGameObjectManager();
 }

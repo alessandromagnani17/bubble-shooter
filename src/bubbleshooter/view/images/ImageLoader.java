@@ -55,7 +55,6 @@ public class ImageLoader {
      */
     public void loadAll() {
         Arrays.stream(ImagePath.values()).forEach(this::getImage);
-        
     }
 
 

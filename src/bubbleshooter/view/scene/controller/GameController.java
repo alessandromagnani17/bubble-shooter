@@ -20,18 +20,21 @@ public class GameController extends AbstractController {
 
 	private CanvasDrawer canvasDrawer;
 	private boolean gameOver;
-
-	@Override
-	public void init(final Controller controller, final View view) {
-		super.init(controller, view);
-		this.canvasDrawer = new CanvasDrawer(this.canvas);
-		// canvasDrawer.draw(this.getController().getGameObjects()); se il gameLoop
 		// cicla dall'inizio non serve perchè lo aggiorna render()
+
 
 		/**
 		 * Da aggiungere quando verranno creati gli stati della gui e mettere come stato
 		 * corrente lo stato di gioco
 		 */
+    @Override
+    public void init(final Controller controller, final View view){
+        super.init(controller, view);
+        this.canvasDrawer = new CanvasDrawer(this.canvas);
+        // canvasDrawer.draw(this.getController().getGameObjects()); se il gameLoop
+        getController().resume();
+
+
 
 		this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -79,5 +82,10 @@ public class GameController extends AbstractController {
 	public void setGameOver() {
 		this.gameOver = true;
 	}
+
+  
+
+    
+
 
 }
