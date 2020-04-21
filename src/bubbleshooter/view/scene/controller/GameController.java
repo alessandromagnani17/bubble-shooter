@@ -28,7 +28,7 @@ public class GameController extends AbstractController {
 		 * corrente lo stato di gioco
 		 */
     @Override
-    public void init(final Controller controller, final View view){
+    public void init(final Controller controller, final View view) {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         // canvasDrawer.draw(this.getController().getGameObjects()); se il gameLoop
