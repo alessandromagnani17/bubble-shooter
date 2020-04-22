@@ -1,16 +1,14 @@
 package bubbleshooter.model.gameobject;
 
-import bubbleshooter.utility.GameCostants;
 
-import javafx.geometry.Point2D;
-
-public class Cannon extends AbstractGameObject {
+public class Cannon {
     
-    private GameObjectsTypes type;
+    
+  /*  private BubbleType type;
     
     public Cannon(Point2D position) {
         super(position);
-        this.type = GameObjectsTypes.CANNON; 
+        this.type = BubbleType.CANNON; 
         
     }
 
@@ -20,21 +18,23 @@ public class Cannon extends AbstractGameObject {
         
     }
     @Override
-    public GameObjectsTypes getType() {
+    public BubbleType getType() {
         return this.type;
     }
 
     @Override
-    public void setType(GameObjectsTypes type) {
+    public void setType(BubbleType type) {
         this.type = type;
     }
 
 
     private void initCannon() {
-        super.setType(GameObjectsTypes.CANNON);
+        super.setType(BubbleType.CANNON);
         super.setPosition(new Point2D(0, GameCostants.GUIHEIGTH.getValue() - GameCostants.CANNONHEIGTH.getValue()));
         super.setHeigth(GameCostants.CANNONHEIGTH.getValue());
         super.setWidth(GameCostants.GUIWIDTH.getValue());
         }
+        
+   */
 
 }
