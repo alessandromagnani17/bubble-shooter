@@ -1,4 +1,4 @@
-package bubbleshooter.controller.collision;
+package bubbleshooter.model.collision;
 
 public interface CollisionHandler {
 

@@ -1,4 +1,4 @@
-package bubbleshooter.controller.collision;
+package bubbleshooter.model.collision;
 
 import java.util.HashSet;
 import java.util.List;
@@ -8,6 +8,8 @@ import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
+import bubbleshooter.controller.engine.Sound;
+import bubbleshooter.controller.engine.SoundNames;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
@@ -29,8 +31,8 @@ public class GridCollisionHandler implements CollisionHandler {
     public final void handle() {
         this.linkToGrid();
         if (this.canExplode()) {
-        this.explode();
-        }
+            this.explode();
+            }
     }
 
     private void linkToGrid() {

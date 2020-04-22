@@ -2,11 +2,11 @@ package bubbleshooter.controller;
 
 import java.util.List;
 
-import bubbleshooter.controller.collision.CollisionController;
 import bubbleshooter.controller.engine.GameLoop;
 
 import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
+import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.GameObject;

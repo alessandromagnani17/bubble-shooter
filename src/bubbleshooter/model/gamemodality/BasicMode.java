@@ -12,7 +12,7 @@ import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
-import bubbleshooter.controller.collision.CollisionController;
+import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 

@@ -1,6 +1,8 @@
 package bubbleshooter.controller.engine;
 
+
 import bubbleshooter.model.Model;
+
 import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.utility.Utility;
 import bubbleshooter.view.View;
@@ -32,6 +34,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
             this.isPaused = true;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
+            Sound.playSound(SoundNames.BACKGROUND.getPath());
         }
     }
 

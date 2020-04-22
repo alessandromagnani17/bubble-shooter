@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.controller.engine.Sound;
+import bubbleshooter.controller.engine.SoundNames;
 import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectsTypes;
 import bubbleshooter.model.gameobject.ShootingBubble;
@@ -39,6 +41,7 @@ public class GameController extends AbstractController {
         
 			@Override
 			public void handle(final MouseEvent event) {
+			Sound.playSound(SoundNames.SHOT.getPath());
 			ShootingBubble shootingBubble = (ShootingBubble) getController().getGameObjects().stream()
 									   .filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE))
 									   .iterator().next();
@@ -70,7 +73,6 @@ public class GameController extends AbstractController {
     private void clearCanvas() {
         this.canvas.getGraphicsContext2D().restore();
     	this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
     }
 
 }

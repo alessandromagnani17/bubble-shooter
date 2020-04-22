@@ -2,7 +2,7 @@ package bubbleshooter.controller;
 
 import java.util.List;
 
-import bubbleshooter.controller.collision.CollisionController;
+import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.GameObject;
 

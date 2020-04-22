@@ -1,4 +1,4 @@
-package bubbleshooter.controller.collision;
+package bubbleshooter.model.collision;
 
 import bubbleshooter.model.gameobject.GameObject;
 
