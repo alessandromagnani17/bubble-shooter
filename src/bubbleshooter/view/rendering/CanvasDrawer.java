@@ -4,8 +4,9 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
-import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.Property;
+
+import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleColor;
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.Canvas;
@@ -14,16 +15,16 @@ import javafx.scene.canvas.GraphicsContext;
 public class CanvasDrawer {
     
     private final Canvas canvas; 
-    private static final Map<Property, ImagePath> COLOR_MAP;  
+    private static final Map<BubbleColor, ImagePath> COLOR_MAP;  
     		
     static {
     	COLOR_MAP = Map.of(
-    			Property.BLUE, ImagePath.BLUE_BUBBLE,
-    			Property.GREEN, ImagePath.GREEN_BUBBLE, 
-    			Property.PURPLE, ImagePath.PURPLE_BUBBLE, 
-    			Property.RED, ImagePath.RED_BUBBLE, 
-    			Property.LIGHTBLUE, ImagePath.LIGHT_BLUE_BUBBLE, 
-    			Property.YELLOW, ImagePath.YELLOW_BUBBLE); 	
+    			BubbleColor.BLUE, ImagePath.BLUE_BUBBLE,
+    			BubbleColor.GREEN, ImagePath.GREEN_BUBBLE, 
+    			BubbleColor.PURPLE, ImagePath.PURPLE_BUBBLE, 
+    			BubbleColor.RED, ImagePath.RED_BUBBLE, 
+    			BubbleColor.LIGHT_BLUE, ImagePath.LIGHT_BLUE_BUBBLE, 
+    			BubbleColor.YELLOW, ImagePath.YELLOW_BUBBLE); 	
     }
     
 
@@ -32,11 +33,11 @@ public class CanvasDrawer {
     }
     
 
-    private Sprite generateSprite(final GameObject gameObject){
+    private Sprite generateSprite(final Bubble bubble){
         Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
         try {
-			sprite.setSource(COLOR_MAP.get(gameObject.getColor()));
-			sprite.setPosition(gameObject.getPosition());
+			sprite.setSource(COLOR_MAP.get(bubble.getColor()));
+			sprite.setPosition(bubble.getPosition());
 			sprite.setHeigth(GameCostants.RADIUS.getValue()*2);
 			sprite.setWidth(GameCostants.RADIUS.getValue()*2);
 		} catch (FileNotFoundException e) {
@@ -51,9 +52,9 @@ public class CanvasDrawer {
         return canvas;
     }
     
-    public void draw(final List<GameObject> gameObjects) {
+    public void draw(final List<Bubble> bubbles) {
         final GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
-        this.createSpriteList(gameObjects).forEach(s -> {
+        this.createSpriteList(bubbles).forEach(s -> {
             try {
             	gc.save();
 				s.draw();
@@ -66,8 +67,8 @@ public class CanvasDrawer {
        
     }
 
-    private List<Sprite> createSpriteList(List<GameObject> gameObjects) {
-       return gameObjects.stream().map(this::generateSprite).collect(Collectors.toList()); 
+    private List<Sprite> createSpriteList(List<Bubble> bubbles) {
+       return bubbles.stream().map(this::generateSprite).collect(Collectors.toList()); 
         
     }
     

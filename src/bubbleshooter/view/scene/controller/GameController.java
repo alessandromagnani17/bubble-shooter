@@ -2,7 +2,8 @@ package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.GameObjectsTypes;
+import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
@@ -40,8 +41,8 @@ public class GameController extends AbstractController {
 
 			@Override
 			public void handle(final MouseEvent event) {
-				GameObject shootingBubble = getController().getGameObjects().stream()
-						.filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE)).iterator().next();
+				Bubble shootingBubble = getController().getBubbles().stream()
+						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).iterator().next();
 				shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 						new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				getController().resume();

@@ -1,22 +1,21 @@
 package bubbleshooter.controller.collision;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public class GridCollisionHandler implements CollisionHandler {
 
-    private GameObject shootingBubble;
-    private final GameObject basicBubble;
+    private Bubble shootingBubble;
+    private final Bubble basicBubble;
     private final BubbleGridManager gridManager;
 
-    public GridCollisionHandler(final GameObject shootingBubble, final GameObject basicBubble, final BubbleGridManager gridManager) {
+    public GridCollisionHandler(final Bubble shootingBubble, final Bubble basicBubble, final BubbleGridManager gridManager) {
         this.shootingBubble = shootingBubble;
         this.basicBubble  = basicBubble;
         this.gridManager = gridManager;
@@ -62,21 +61,21 @@ public class GridCollisionHandler implements CollisionHandler {
     }
 
 
-    private Set<GameObject> getBubblesToExplode(final GameObject bubble, final Set<GameObject> bubblesToPop) {
+    private Set<Bubble> getBubblesToExplode(final Bubble bubble, final Set<Bubble> bubblesToPop) {
      this.getNeighboursToExplode(bubble).stream()
                                         .filter(a -> !bubblesToPop.contains(a) && bubblesToPop.add(a))
                                         .forEach(a -> getBubblesToExplode(a, bubblesToPop));
      return bubblesToPop;
     }
 
-    private List<GameObject> getNeighboursToExplode(final GameObject bubble) {
+    private List<Bubble> getNeighboursToExplode(final Bubble bubble) {
         return this.gridManager.getBubbleNeighbours(bubble).stream()
                                                            .filter(a -> this.gridManager.areEquals(a, bubble))
                                                            .collect(Collectors.toList());
      }
 
     private boolean canExplode() {
-        return  this.getBubblesToExplode(this.shootingBubble, new HashSet<GameObject>()).size() > 2;
+        return  this.getBubblesToExplode(this.shootingBubble, new HashSet<Bubble>()).size() > 2;
     }
 
 }
