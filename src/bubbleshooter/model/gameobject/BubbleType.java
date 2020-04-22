@@ -1,6 +1,6 @@
 package bubbleshooter.model.gameobject;
 
-public enum GameObjectsTypes {
+public enum BubbleType {
 
-    SHOOTINGBUBBLE, CANNON, BASICBUBBLE, LEFTWALL, RIGHTWALL;
+    GRID_BUBBLE, SHOOTING_BUBBLE; 
 }
