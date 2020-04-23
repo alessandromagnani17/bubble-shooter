@@ -1,6 +1,4 @@
 package bubbleshooter.model.collision;
-
-import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
