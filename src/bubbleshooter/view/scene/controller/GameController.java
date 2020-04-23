@@ -56,7 +56,7 @@ public class GameController extends AbstractController {
 		}
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();
-		canvasDrawer.draw(this.getController().getGameObjects());
+		canvasDrawer.draw(this.getController().getBubbles());
 	}
 
 	@Override
