@@ -1,11 +1,10 @@
 package bubbleshooter.model.collision;
 
+import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
-import bubbleshooter.utility.Utility;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
-
 import javafx.geometry.Point2D;
 
 public class BoundsCollisionHandler implements CollisionHandler {
@@ -32,7 +31,7 @@ public class BoundsCollisionHandler implements CollisionHandler {
     private void linkToTopWall() {
         this.shootingBubble.setPosition(this.getPositionToLink());
         if (!this.hasNeighbour()) {
-            this.shootingBubble = this.gridManager.addToGrid(shootingBubble, this.getPositionToLink());
+            this.gridManager.addToGrid(shootingBubble, this.getPositionToLink());
         } else {
             Collision collision = new Collision(shootingBubble, this.gridManager.getBubbleNeighbours(shootingBubble)
                                                                                 .stream()
@@ -43,7 +42,7 @@ public class BoundsCollisionHandler implements CollisionHandler {
         }
 
     private boolean isTopWall() {
-        return this.shootingBubble.getPosition().getY() <= Utility.getBubbleWidth() / 2;
+        return this.shootingBubble.getPosition().getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2;
     }
 
     private boolean hasNeighbour() {
@@ -51,17 +50,17 @@ public class BoundsCollisionHandler implements CollisionHandler {
     }
 
     private Point2D getPositionToLink() {
-       double min = Utility.getGuiWidth();
+       double min = GameCostants.GUIWIDTH.getValue();
        double finalPos = this.shootingBubble.getPosition().getX();
-       double offset = !this.gridManager.isOffsetRaw() ? Utility.getBubbleWidth() : Utility.getBubbleWidth() / 2;
-       for (double i = 0; i <= Utility.getRowBubble(); i++) {
-           double xPos = i * Utility.getBubbleWidth() + offset;
+       double offset = !this.gridManager.isOffsetRaw() ? GameCostants.BUBBLE_WIDTH.getValue() : GameCostants.BUBBLE_WIDTH.getValue() / 2;
+       for (double i = 0; i <= GameCostants.ROW_BUBBLE.getValue(); i++) {
+           double xPos = i * GameCostants.BUBBLE_WIDTH.getValue() + offset;
            double distance = Math.abs(xPos - shootingBubble.getPosition().getX());
            if (distance < min) {
                min = distance;
                finalPos = xPos;
            }
        }
-      return new Point2D(finalPos, Utility.getBubbleWidth() / 2);
+      return new Point2D(finalPos, GameCostants.BUBBLE_WIDTH.getValue() / 2);
     }
 }

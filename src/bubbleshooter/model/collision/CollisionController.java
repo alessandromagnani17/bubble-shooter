@@ -3,7 +3,6 @@ package bubbleshooter.model.collision;
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.GameCostants;
-import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
 
 public class CollisionController {
@@ -41,7 +40,7 @@ public class CollisionController {
         if ((pos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2) >= (GameCostants.GUIWIDTH.getValue())
            || (pos.getX() <= (GameCostants.BUBBLE_WIDTH.getValue() / 2)
             || pos.getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2)) {
-            final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager(),this.level.getLevelType());
+            final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level.getGridManager(), this.level.getLevelType());
             handler.handle();
         }
     }

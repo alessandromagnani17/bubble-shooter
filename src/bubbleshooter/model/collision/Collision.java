@@ -1,6 +1,8 @@
 package bubbleshooter.model.collision;
 
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.GridBubble;
+import bubbleshooter.model.gameobject.ShootingBubble;
 
 public class Collision {
 

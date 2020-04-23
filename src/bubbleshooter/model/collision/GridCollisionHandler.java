@@ -9,6 +9,8 @@ import javafx.geometry.Point2D;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
+import bubbleshooter.model.gameobject.GridBubble;
+import bubbleshooter.model.gameobject.ShootingBubble;
 
 public class GridCollisionHandler implements CollisionHandler {
 
