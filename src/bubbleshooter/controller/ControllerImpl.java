@@ -1,15 +1,11 @@
 package bubbleshooter.controller;
 
 import java.util.List;
-
 import bubbleshooter.controller.engine.GameLoop;
-
 import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
-import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.LevelTypes;
-import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.view.View;
 
 public class ControllerImpl implements Controller {
@@ -57,7 +53,8 @@ public class ControllerImpl implements Controller {
         }
     }
 
-    public final List<GameObject> getGameObjects() {
-    	return this.model.getGameObjects();
-    }
+	@Override
+	public List<Bubble> getBubbles() {
+		return this.model.getBubbles();
+	}
 }

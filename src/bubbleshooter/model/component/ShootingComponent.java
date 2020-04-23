@@ -6,13 +6,17 @@ public class ShootingComponent extends AbstractComponent {
 
     private Point2D shootingDirection;
 
-    public ShootingComponent(final ComponentType type) {
-        super(type);
-        this.shootingDirection = this.getContainer().getPosition();
+    public ShootingComponent() {
+        this.setType(ComponentType.SHOOTINGCOMPONENT);
+        //this.shootingDirection = this.getContainer().getPosition();
     }
 
     public final Point2D getDirection() {
         return this.shootingDirection;
+    }
+
+    public final void setDirection(final Point2D direction) {
+    	this.shootingDirection = direction;
     }
 
     @Override

@@ -1,21 +1,20 @@
 package bubbleshooter.model.collision;
 
-import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Utility;
 import bubbleshooter.model.gamemodality.LevelTypes;
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 import javafx.geometry.Point2D;
 
 public class BoundsCollisionHandler implements CollisionHandler {
 
-    private GameObject shootingBubble;
+    private Bubble shootingBubble;
     private final BubbleGridManager gridManager;
     private final LevelTypes levelType;
 
-    public BoundsCollisionHandler(final GameObject shootingBubble, final BubbleGridManager gridManager, final LevelTypes levelTypes) {
+    public BoundsCollisionHandler(final Bubble shootingBubble, final BubbleGridManager gridManager, final LevelTypes levelTypes) {
         this.shootingBubble = shootingBubble;
         this.gridManager = gridManager;
         this.levelType = levelTypes;

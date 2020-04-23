@@ -18,7 +18,7 @@ public enum GameCostants {
 
     BUBBLESPEED(0.55),
 
-    COLLISIONDISTANCE(35),
+    COLLISIONDISTANCE(31),
     
     FPS(60),
     

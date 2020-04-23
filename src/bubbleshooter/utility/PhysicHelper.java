@@ -1,6 +1,8 @@
 package bubbleshooter.utility;
 
-import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.component.ComponentType;
+import bubbleshooter.model.component.ShootingComponent;
+import bubbleshooter.model.gameobject.Bubble;
 import javafx.geometry.Point2D;
 
  public final class PhysicHelper {
@@ -15,7 +17,10 @@ import javafx.geometry.Point2D;
         return new Point2D(xVel, yVel);
     }
 
-    public static void bounce(final GameObject gameObject) {
-        gameObject.setDirection(new Point2D(gameObject.getDirection().getX() * -1, gameObject.getDirection().getY()));
+    public static void bounce(final Bubble shootingBubble) {
+        ShootingComponent shootingComponent = (ShootingComponent) shootingBubble.getComponents().stream()
+                                                                                .filter(a -> a.getComponentType().equals(ComponentType.SHOOTINGCOMPONENT))
+                                                                                .findFirst().get();
+        shootingComponent.setDirection(new Point2D(shootingComponent.getDirection().getX() * -1, shootingComponent.getDirection().getY()));
     }
 }

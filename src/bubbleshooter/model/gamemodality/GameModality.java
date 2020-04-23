@@ -1,10 +1,8 @@
 package bubbleshooter.model.gamemodality;
 
 import java.util.List;
-
-import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.model.collision.CollisionController;
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public interface GameModality {
@@ -19,7 +17,7 @@ public interface GameModality {
     
     void setGameOver();
 
-    List<GameObject> getCurrentGameObjects();
+    List<Bubble> getCurrentBubbles();
 
     GameStatus getGameStatus();
 

@@ -1,27 +1,23 @@
 package bubbleshooter.model.component;
 
-import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.Bubble;
 
 public abstract class AbstractComponent implements Component {
 
-    private GameObject container;
+    private Bubble container;
     private ComponentType type;
-
-    public AbstractComponent(final ComponentType type) {
-        this.type = type;
-    }
 
     @Override
     public void update(final double elapsed) {
     }
 
     @Override
-    public final void setContainer(final GameObject container) {
+    public final void setContainer(final Bubble container) {
         this.container = container;
     }
 
     @Override
-    public final GameObject getContainer() {
+    public final Bubble getContainer() {
         return this.container;
     }
 
@@ -29,4 +25,10 @@ public abstract class AbstractComponent implements Component {
     public final ComponentType getComponentType() {
         return this.type;
     }
+
+	@Override
+	public final void setType(final ComponentType type) {
+		this.type = type;
+	}
+
 }

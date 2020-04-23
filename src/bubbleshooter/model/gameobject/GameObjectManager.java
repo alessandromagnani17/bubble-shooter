@@ -1,48 +1,47 @@
 package bubbleshooter.model.gameobject;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
 
 
 public class GameObjectManager {
 
-    private List<GameObject> gameObjects;
-    
+    private List<Bubble> bubbles;
+
     public GameObjectManager() {
-        this.gameObjects = new LinkedList<>();
+        this.bubbles = new LinkedList<>();
     } 
 
     public final void update(final double elapsed) {
-        this.getShootingBubble().update(elapsed);
-        this.gameObjects.removeAll(this.gameObjects.stream().filter(a -> a.isDestroyed()).collect(Collectors.toList()));
+       // this.getShootingBubble().update(elapsed);
+        //this.bubbles.removeAll(this.bubbles.stream().filter(a -> a.isDestroyed()).collect(Collectors.toList()));
     }
 
-    public final void addGameObject(final List<GameObject> gObj) {
-        this.gameObjects.addAll(gObj);
+    public final void addGameObject(final List<Bubble> bubbles) {
+        this.bubbles.addAll(bubbles);
     }
 
-    public final void removeGameObject(final GameObject gObj) {
-        this.gameObjects.remove(gObj);
+    public final void removeGameObject(final Bubble bubble) {
+        this.bubbles.remove(bubble);
     }
 
-    public final GameObject getShootingBubble() {
-        return this.gameObjects.stream().filter(a -> a.getType().equals(GameObjectsTypes.SHOOTINGBUBBLE)).iterator().next();
+    public final ShootingBubble getShootingBubble() {
+        return (ShootingBubble) this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).iterator().next();
     }
-    
+
     public final void reloadShootingBubble() {
-        GameObject shootingBubble = this.getShootingBubble();
+
+        ShootingBubble shootingBubble = this.getShootingBubble();
         shootingBubble.setPosition(new Point2D(Utility.getGuiWidth() / 2, 600));
         shootingBubble.setDirection(shootingBubble.getPosition());
-        shootingBubble.setProperty(Property.getRandomColor());
+        shootingBubble.setColor(BubbleColor.getRandomColor());
     }
 
-    public final List<GameObject> getGameObjects() {
-        return Collections.unmodifiableList(gameObjects); 
+    public final List<Bubble> getBubbles() {
+        return this.bubbles; 
     }
 
 }

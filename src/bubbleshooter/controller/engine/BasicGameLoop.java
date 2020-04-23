@@ -34,7 +34,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
             this.isPaused = true;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
-            Sound.playSound(SoundNames.BACKGROUND.getPath());
+            //Sound.playSound(SoundNames.BACKGROUND.getPath());
         }
     }
 

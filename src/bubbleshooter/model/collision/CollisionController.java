@@ -1,9 +1,7 @@
 package bubbleshooter.model.collision;
 
 import bubbleshooter.model.gamemodality.GameModality;
-import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.model.gameobject.ShootingBubble;
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.Utility;
 import javafx.geometry.Point2D;
@@ -27,8 +25,8 @@ public class CollisionController {
     }
 
     private void checkGridCollision() {
-        final GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
-        for (final GameObject basicbubble : this.level.getGridManager().getBubbleGrid()) {
+        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        for (final Bubble basicbubble : this.level.getGridManager().getBubbleGrid()) {
             if (this.hasCollided(shootingBubble, basicbubble)) {
                 Collision collision = new Collision(shootingBubble, basicbubble);
                 CollisionHandler handler = new GridCollisionHandler(collision, this.level.getGridManager(), this.level.getLevelType());
@@ -38,7 +36,7 @@ public class CollisionController {
     }
 
     private void checkBounceCollision() {
-        final GameObject shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
         final Point2D pos = shootingBubble.getPosition();
         if ((pos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2) >= (GameCostants.GUIWIDTH.getValue())
            || (pos.getX() <= (GameCostants.BUBBLE_WIDTH.getValue() / 2)
@@ -52,7 +50,7 @@ public class CollisionController {
     private void checkGameOver() {
        } 
 
-    private boolean hasCollided(final GameObject bubbleAt, final GameObject bubbleTo) {
+    private boolean hasCollided(final Bubble bubbleAt, final Bubble bubbleTo) {
         return this.level.getGridManager().getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.COLLISIONDISTANCE.getValue();
     }
 
