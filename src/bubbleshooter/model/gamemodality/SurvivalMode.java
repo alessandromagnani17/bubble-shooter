@@ -1,6 +1,15 @@
 package bubbleshooter.model.gamemodality;
 
-public class SurvivalMode extends BasicMode {
+public class SurvivalMode extends AbstractGameMode {
 
-    //TO DO
+
+	@Override
+	public void updateScore(double elapsed) {
+		//todo
+	}
+
+	@Override
+	public boolean isTimeToNewRow(double elapsed) {
+		return false; 
+	}
 }
