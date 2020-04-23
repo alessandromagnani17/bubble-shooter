@@ -19,16 +19,19 @@ import javafx.collections.ObservableList;
 public class HighscoreStoreImpl implements HighscoreStore {
 
     private static final long serialVersionUID = -3738961252432967724L;
-    private static final String FILE_PATH = System.getProperty("user.home") + "/Highscores.txt";
+    private static final String SEP = System.getProperty("file.separator");
+    private static final String DIR_PATH = System.getProperty("user.home") + SEP +".Bubbleshooter";
+    private static final String FILE_PATH = SEP + "Highscores.txt";
     private final File file;
     private Map<LevelTypes, List<HighscoreStructure>> mapOfItems;
     private final static int CAPACITY = 10;
     
     public HighscoreStoreImpl() {
-    	this.file =  new File(FILE_PATH);
+    	this.file =  new File(DIR_PATH + FILE_PATH);
         try {
             System.out.println("!!! ---> Creating file ...");
-            file.createNewFile();
+            if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
+            if(!file.exists()) this.file.createNewFile();
             
             System.out.println("!!! ---> Writing BASIC and SURVIVAL ...");
             FileWriter fw = new FileWriter(this.file);
@@ -164,7 +167,9 @@ public class HighscoreStoreImpl implements HighscoreStore {
         String appoggio;
         try {
             this.file.delete();
-            this.file.createNewFile();
+            if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
+            if(!file.exists()) this.file.createNewFile();
+            
             FileWriter fw = new FileWriter(this.file);
             BufferedWriter bw = new BufferedWriter(fw);
             
