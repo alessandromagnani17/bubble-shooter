@@ -24,7 +24,6 @@ public abstract class AbstractGameMode {
 		this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager);
 		this.collisionController = new CollisionController(this.gameObjectManager, this.bubbleGridManager);
 		this.gameInfoManager = new GameInfoManager();
-
 		this.status = GameStatus.PAUSE;
 	}
 
