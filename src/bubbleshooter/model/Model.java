@@ -4,7 +4,7 @@ import java.util.List;
 
 import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.GameStatus;
-import bubbleshooter.model.gameobject.GameObject;
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.GameObjectManager;
 
 
@@ -14,7 +14,7 @@ public interface Model {
 
     void startSurvivalGame();
 
-    List<GameObject> getGameObjects();
+    List<Bubble> getBubbles();
 
     void update(double elapsed);
 

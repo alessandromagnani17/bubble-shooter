@@ -3,10 +3,11 @@ package bubbleshooter.view.rendering;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Map;
 
-import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.GameObjectsTypes;
-import bubbleshooter.model.gameobject.Property;
+import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleColor;
+import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,66 +15,60 @@ import javafx.scene.canvas.GraphicsContext;
 public class CanvasDrawer {
     
     private final Canvas canvas; 
+    private static final Map<BubbleColor, ImagePath> COLOR_MAP;  
+    		
+    static {
+    	COLOR_MAP = Map.of(
+    			BubbleColor.BLUE, ImagePath.BLUE_BUBBLE,
+    			BubbleColor.GREEN, ImagePath.GREEN_BUBBLE, 
+    			BubbleColor.PURPLE, ImagePath.PURPLE_BUBBLE, 
+    			BubbleColor.RED, ImagePath.RED_BUBBLE, 
+    			BubbleColor.LIGHT_BLUE, ImagePath.LIGHT_BLUE_BUBBLE, 
+    			BubbleColor.YELLOW, ImagePath.YELLOW_BUBBLE); 	
+    }
+    
 
     public CanvasDrawer(Canvas canvas) {
         this.canvas = canvas; 
     }
     
 
-    private Sprite generateSprite(final GameObject gameObject){
+    private Sprite generateSprite(final Bubble bubble){
+        Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
         try {
-            return new SpriteImpl(this.canvas.getGraphicsContext2D(), gameObject, gameObject.getPosition(), this.getImagePath(gameObject));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-    private ImagePath getImagePath(GameObject gameObject) {
-        if (gameObject.getType() == GameObjectsTypes.BASICBUBBLE || gameObject.getType() == GameObjectsTypes.SHOOTINGBUBBLE) {
-           
-            if(gameObject.getColor() == Property.BLUE) {
-                return ImagePath.BLUE_BUBBLE; 
-            }
-            else if(gameObject.getColor() == Property.GREEN) {
-                return ImagePath.GREEN_BUBBLE; 
-            }
-            else if(gameObject.getColor() == Property.LIGHTBLUE) {
-                return ImagePath.LIGHT_BLUE_BUBBLE; 
-            }
-            else if(gameObject.getColor() == Property.YELLOW) {
-                return ImagePath.YELLOW_BUBBLE; 
-            }
-            else if(gameObject.getColor() == Property.PURPLE) {
-                return ImagePath.PURPLE_BUBBLE; 
-            }
-            else if(gameObject.getColor() == Property.RED) {
-                return ImagePath.RED_BUBBLE; 
-            }
-        }
-        return null;
+			sprite.setSource(COLOR_MAP.get(bubble.getColor()));
+			sprite.setPosition(bubble.getPosition());
+			sprite.setHeigth(GameCostants.RADIUS.getValue()*2);
+			sprite.setWidth(GameCostants.RADIUS.getValue()*2);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        return sprite; 
 
+        
     }
 
     public Canvas getCanvas() {
         return canvas;
     }
     
-    public void draw(final List<GameObject> gameObjects) {
+    public void draw(final List<Bubble> bubbles) {
         final GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
-        this.createSpriteList(gameObjects).forEach(s -> {
-            gc.save();
+        this.createSpriteList(bubbles).forEach(s -> {
             try {
-                s.draw();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            gc.restore();
+            	gc.save();
+				s.draw();
+				gc.restore();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
         });; 
+        
+       
     }
 
-    private List<Sprite> createSpriteList(List<GameObject> gameObjects) {
-       return gameObjects.stream().map(this::generateSprite).collect(Collectors.toList()); 
+    private List<Sprite> createSpriteList(List<Bubble> bubbles) {
+       return bubbles.stream().map(this::generateSprite).collect(Collectors.toList()); 
         
     }
     

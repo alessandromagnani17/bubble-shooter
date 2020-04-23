@@ -5,13 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import bubbleshooter.model.gameobject.GameObject;
-import bubbleshooter.model.gameobject.GameObjectFactory;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 import bubbleshooter.controller.collision.CollisionController;
+import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleFactory;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 
@@ -20,7 +19,6 @@ public class BasicMode implements GameModality {
 
     private GameObjectManager gameObjectManager;
     private BubbleGridManager bubbleGridManager; 
-    private GameObjectFactory gameObjectFactory; 
     private CollisionController collisionController;
     private GameStatus status = GameStatus.PAUSE;
     // gameDataManager per gestire punteggio
@@ -28,8 +26,7 @@ public class BasicMode implements GameModality {
     public BasicMode() {
         this.gameObjectManager = new GameObjectManager(); 
         this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager); 
-        this.collisionController = new CollisionController(this);
-        this.gameObjectFactory = new GameObjectFactory(); 
+        this.collisionController = new CollisionController(this); 
         this.status = GameStatus.PAUSE;
     }
 
@@ -49,7 +46,7 @@ public class BasicMode implements GameModality {
     public void loadShootingBubble() {
     	this.gameObjectManager.addGameObject
         (Collections.singletonList
-                   (this.gameObjectFactory.createShootingBubble
+                   (BubbleFactory.createShootingBubble
                            (new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600))));
     }
 
@@ -69,8 +66,8 @@ public class BasicMode implements GameModality {
     }
 
     @Override
-    public List<GameObject> getCurrentGameObjects() {
-        return this.gameObjectManager.getGameObjects();
+    public List<Bubble> getCurrentBubbles() {
+        return this.gameObjectManager.getBubbles();
     }
 
     @Override
