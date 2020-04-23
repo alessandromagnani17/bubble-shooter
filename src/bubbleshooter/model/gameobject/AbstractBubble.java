@@ -17,24 +17,26 @@ public abstract class AbstractBubble implements Bubble {
 	private double radius;
 	private BubbleType type;
 	private BubbleColor color;
-    private List<Component> components;
-	
+	private List<Component> components;
+
 	public AbstractBubble(final BubbleType type, final Point2D position) {
 		this.type = type;
 		this.position = position;
 		this.direction = position;
 		this.isDestroyed = false;
 		this.radius = GameCostants.RADIUS.getValue();
-		this.components = new LinkedList<>();
 		this.color = BubbleColor.getRandomColor();
+		this.type = type;
+		this.position = position;
+		this.components = new LinkedList<>();
 	}
 
 	protected abstract void setComponents();
-	
+
 	public final List<Component> getComponents() {
 		return this.components;
 	}
-	
+
 	@Override
 	public final Point2D getPosition() {
 		return this.position;
