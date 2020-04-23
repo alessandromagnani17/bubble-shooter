@@ -1,6 +1,6 @@
 package bubbleshooter.model.gamemodality;
 
-public class GameInfo {
+public class GameInfoManager {
 
 	private double gameTime;
 	private int destroyedBubbles;
