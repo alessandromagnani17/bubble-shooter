@@ -14,7 +14,10 @@ public abstract class AbstractBubble implements Bubble {
 	public AbstractBubble(BubbleType type, Point2D position) {
 		this.isDestroyed = false;
 		this.radius = GameCostants.RADIUS.getValue();
-
+		this.color = BubbleColor.getRandomColor(); 
+		this.type = type; 
+		this.position = position; 
+		
 	}
 
 	@Override

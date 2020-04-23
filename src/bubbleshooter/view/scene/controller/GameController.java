@@ -1,7 +1,6 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
-import bubbleshooter.model.gameobject.GameObject;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
