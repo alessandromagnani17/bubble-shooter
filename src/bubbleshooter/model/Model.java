@@ -6,6 +6,8 @@ import bubbleshooter.model.gamemodality.GameModality;
 import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.model.gameobject.GridBubble;
+import bubbleshooter.model.gameobject.ShootingBubble;
 
 
 public interface Model {

@@ -3,6 +3,7 @@ package bubbleshooter.view.scene.controller;
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
+import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
@@ -20,34 +21,23 @@ public class GameController extends AbstractController {
 
 	private CanvasDrawer canvasDrawer;
 	private boolean gameOver;
-		// cicla dall'inizio non serve perchè lo aggiorna render()
 
-
-		/**
-		 * Da aggiungere quando verranno creati gli stati della gui e mettere come stato
-		 * corrente lo stato di gioco
-		 */
     @Override
     public void init(final Controller controller, final View view) {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
-        // canvasDrawer.draw(this.getController().getGameObjects()); se il gameLoop
+        //canvasDrawer.draw(this.getController().getBubbles());
         getController().resume();
-
-
-
 		this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
 			@Override
 			public void handle(final MouseEvent event) {
-				Bubble shootingBubble = getController().getBubbles().stream()
-						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).iterator().next();
+				Bubble shootingBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
 				shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 						new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
-				getController().resume();
 			}
 		});
 	}
+
 
 	public void render() {
 		if (this.isGameOver()) {
@@ -68,13 +58,6 @@ public class GameController extends AbstractController {
 		return FXMLPath.MAIN;
 	}
 
-	// Clear the canvas after every render. It avoids ghosting effect.
-	private void clearCanvas() {
-		this.canvas.getGraphicsContext2D().restore();
-		this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-	}
-
 	public boolean isGameOver() {
 		return this.gameOver;
 	}
@@ -83,9 +66,10 @@ public class GameController extends AbstractController {
 		this.gameOver = true;
 	}
 
-  
-
-    
-
+    // Clear the canvas after every render. It avoids ghosting effect.
+    private void clearCanvas() {
+        this.canvas.getGraphicsContext2D().restore();
+    	this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
 
 }

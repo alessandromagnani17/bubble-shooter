@@ -3,6 +3,8 @@ package bubbleshooter.controller;
 import java.util.List;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.GridBubble;
+import bubbleshooter.model.gameobject.ShootingBubble;
 
 public interface Controller {
 
@@ -13,9 +15,8 @@ public interface Controller {
     void resume();
 
     void setGameOver();
-        
-    List<Bubble> getBubbles(); 
 
+    List<Bubble> getBubbles();
     //DATA MANAGER FOR SCORE
 
     //INPUT MANAGER

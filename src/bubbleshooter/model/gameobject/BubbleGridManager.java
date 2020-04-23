@@ -35,7 +35,6 @@ public class BubbleGridManager {
 			newRow.add(BubbleFactory.createGridBubble(new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset,
 					GameCostants.BUBBLE_HEIGTH.getValue() / 2)));
 		}
-
 		this.createdRows++;
 		this.offsetRow = !this.offsetRow;
 		return newRow;
@@ -55,7 +54,7 @@ public class BubbleGridManager {
 	}
 
 	public final boolean isNear(final Bubble bubbleAt, final Bubble bubbleTo) {
-		return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= 45
+		return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.DIAGONALDISTANCE.getValue()
 				&& this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
 	}
 
@@ -79,23 +78,18 @@ public class BubbleGridManager {
 	}
 
 	public final List<Bubble> getBubbleGrid() {
-		return this.gameObjectManager.getBubbles().stream().filter(o -> o.getType().equals(BubbleType.GRID_BUBBLE))
-				.collect(Collectors.toList());
+		return this.gameObjectManager.getBubbleGrid();
 	}
-
+	
 	public final Set<Point2D> getNeighbourPosition(final Bubble bubble) {
-		Point2D bubblePos = bubble.getPosition();
-		return Set.of(new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
-				new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
-				new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2,
-						bubblePos.getY() - GameCostants.BUBBLE_HEIGTH.getValue()),
-				new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2,
-						bubblePos.getY() - GameCostants.BUBBLE_HEIGTH.getValue()),
-				new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2,
-						bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()),
-				new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2,
-						bubblePos.getY() + GameCostants.BUBBLE_HEIGTH.getValue()));
-	}
+        Point2D bubblePos = bubble.getPosition();
+        return Set.of(new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
+                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
+                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_WIDTH.getValue()),
+                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_WIDTH.getValue()),
+                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_WIDTH.getValue()),
+                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_WIDTH.getValue()));
+    }
 
 	public final int getCreatedRows() {
 		return this.createdRows;
@@ -112,7 +106,7 @@ public class BubbleGridManager {
 	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
 		Bubble bubbleToAdd = BubbleFactory.createGridBubble(position);
 		bubbleToAdd.setColor(bubble.getColor());
-		this.gameObjectManager.addGameObject(Collections.singletonList(bubbleToAdd));
+		this.gameObjectManager.addBubble(Collections.singletonList(bubbleToAdd));
 		this.gameObjectManager.reloadShootingBubble();
 		return bubbleToAdd;
 	}

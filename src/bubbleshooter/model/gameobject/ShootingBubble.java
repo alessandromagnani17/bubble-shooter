@@ -1,27 +1,20 @@
 package bubbleshooter.model.gameobject;
 
+import bubbleshooter.model.component.CollisionComponent;
+import bubbleshooter.model.component.ShootingComponent;
 import javafx.geometry.Point2D;
 
 public class ShootingBubble extends AbstractBubble {
-
-	private Point2D shootingDirection;
-
-	public ShootingBubble(Point2D position) {
+	
+	public ShootingBubble(final Point2D position) {
 		super(BubbleType.SHOOTING_BUBBLE, position);
+		this.setComponents();
 	}
 
-	public final void setDirection(final Point2D direction) {
-		this.shootingDirection = direction;
+	@Override
+	protected final void setComponents() {
+		this.addComponent(new CollisionComponent());
+		this.addComponent(new ShootingComponent());
 	}
-
-	public final Point2D getDirection() {
-		return this.shootingDirection;
-	}
-
-	public final void update(final double elapsed) {
-		if (!this.shootingDirection.equals(this.getPosition())) {
-			super.setPosition(super.getPosition().add(this.shootingDirection.multiply(elapsed)));
-		}
-	}
-
+	
 }

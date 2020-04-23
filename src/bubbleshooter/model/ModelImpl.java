@@ -8,6 +8,8 @@ import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.model.gamemodality.SurvivalMode;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.model.gameobject.GridBubble;
+import bubbleshooter.model.gameobject.ShootingBubble;
 
 public class ModelImpl implements Model {
 
@@ -48,8 +50,6 @@ public class ModelImpl implements Model {
 
 	@Override
 	public List<Bubble> getBubbles() {
-		return this.gameMode.getGameObjectManager().getBubbles();
+		return this.gameMode.getGameObjectManager().getAllBubbles();
 	}
-
-
 }

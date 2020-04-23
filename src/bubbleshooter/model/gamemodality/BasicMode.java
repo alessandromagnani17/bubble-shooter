@@ -1,19 +1,16 @@
 package bubbleshooter.model.gamemodality;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.model.gameobject.GridBubble;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
-import bubbleshooter.controller.collision.CollisionController;
+import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleFactory;
+
 import bubbleshooter.model.gameobject.BubbleGridManager;
-
-
 
 public class BasicMode implements GameModality {
 
@@ -38,22 +35,19 @@ public class BasicMode implements GameModality {
 
     public final void initGameObject() {
        for (int i = 0; i < GameCostants.ROWS.getValue(); i++) {
-           this.gameObjectManager.addGameObject(this.bubbleGridManager.createNewRow());
+           this.gameObjectManager.addBubble(this.bubbleGridManager.createNewRow());
        }
        this.loadShootingBubble();
     }
-    
-    public void loadShootingBubble() {
-    	this.gameObjectManager.addGameObject
-        (Collections.singletonList
-                   (BubbleFactory.createShootingBubble
-                           (new Point2D(GameCostants.GUIWIDTH.getValue()/2, 600))));
+
+    public final void loadShootingBubble() {
+        this.gameObjectManager.addBubble(Collections.singletonList(BubbleFactory.createShootingBubble(new Point2D(GameCostants.GUIWIDTH.getValue() / 2, 600))));
     }
 
     public final GameObjectManager getGameObjectManager() {
         return this.gameObjectManager;
     }
-    
+
     @Override
     public void update(final double elapsed) {
        this.gameObjectManager.update(elapsed);
@@ -66,8 +60,8 @@ public class BasicMode implements GameModality {
     }
 
     @Override
-    public List<Bubble> getCurrentBubbles() {
-        return this.gameObjectManager.getBubbles();
+    public List<Bubble> getBubbles() {
+        return this.gameObjectManager.getBubbleGrid();
     }
 
     @Override
@@ -84,5 +78,10 @@ public class BasicMode implements GameModality {
     public BubbleGridManager getGridManager() {
         return this.bubbleGridManager;
     }
+
+	@Override
+	public LevelTypes getLevelType() {
+		return LevelTypes.BASICMODE;
+	}
 
 }

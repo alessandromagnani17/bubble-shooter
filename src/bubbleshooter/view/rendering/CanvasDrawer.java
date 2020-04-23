@@ -33,14 +33,14 @@ public class CanvasDrawer {
     }
     
 
-    private Sprite generateSprite(final Bubble bubble){
+    private Sprite generateSprite(Bubble bubble){
         Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
         try {
 			sprite.setSource(COLOR_MAP.get(bubble.getColor()));
 			sprite.setPosition(bubble.getPosition());
 			sprite.setHeigth(GameCostants.RADIUS.getValue()*2);
 			sprite.setWidth(GameCostants.RADIUS.getValue()*2);
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
         return sprite; 
@@ -62,20 +62,11 @@ public class CanvasDrawer {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-        });; 
-        
-       
+        });
     }
 
     private List<Sprite> createSpriteList(List<Bubble> bubbles) {
        return bubbles.stream().map(this::generateSprite).collect(Collectors.toList()); 
-        
     }
-    
-    
-    
-    
-    
-    
 
 }

@@ -1,25 +1,24 @@
 package bubbleshooter.model.gamemodality;
 
 import java.util.List;
-
 import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.controller.collision.CollisionController;
+import bubbleshooter.model.gameobject.GridBubble;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public interface GameModality {
 
     void start();
-   
+
     void update(double elapsed);
 
     void setGameStatus(GameStatus status);
-    
+
     void loadShootingBubble();
-    
+
     void setGameOver();
 
-    List<Bubble> getCurrentBubbles();
+    List<Bubble> getBubbles();
 
     GameStatus getGameStatus();
 
@@ -27,4 +26,5 @@ public interface GameModality {
  
     BubbleGridManager getGridManager();
 
+    LevelTypes getLevelType();
 }
