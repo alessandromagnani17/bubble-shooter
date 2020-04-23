@@ -17,13 +17,11 @@ public class GridCollisionHandler implements CollisionHandler {
     private Bubble shootingBubble;
     private final Bubble basicBubble;
     private final BubbleGridManager gridManager;
-    private final LevelTypes levelType;
 
-    public GridCollisionHandler(final Collision collision, final BubbleGridManager gridManager, final LevelTypes levelType) {
+    public GridCollisionHandler(final Collision collision, final BubbleGridManager gridManager) {
         this.shootingBubble = collision.getShootingBubble();
         this.basicBubble  = collision.getCollided();
         this.gridManager = gridManager;
-        this.levelType = levelType;
        }
 
     @Override

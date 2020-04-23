@@ -11,12 +11,10 @@ public class BoundsCollisionHandler implements CollisionHandler {
 
     private Bubble shootingBubble;
     private final BubbleGridManager gridManager;
-    private final LevelTypes levelType;
 
-    public BoundsCollisionHandler(final Bubble shootingBubble, final BubbleGridManager gridManager, final LevelTypes levelTypes) {
+    public BoundsCollisionHandler(final Bubble shootingBubble, final BubbleGridManager gridManager) {
         this.shootingBubble = shootingBubble;
         this.gridManager = gridManager;
-        this.levelType = levelTypes;
     }
 
     @Override
@@ -36,7 +34,7 @@ public class BoundsCollisionHandler implements CollisionHandler {
             Collision collision = new Collision(shootingBubble, this.gridManager.getBubbleNeighbours(shootingBubble)
                                                                                 .stream()
                                                                                 .findFirst().get());
-            CollisionHandler handler = new GridCollisionHandler(collision, this.gridManager, this.levelType);
+            CollisionHandler handler = new GridCollisionHandler(collision, this.gridManager);
             handler.handle();
           }
         }

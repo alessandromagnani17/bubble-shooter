@@ -23,7 +23,7 @@ public class BasicMode implements GameModality {
     public BasicMode() {
         this.gameObjectManager = new GameObjectManager(); 
         this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager); 
-        this.collisionController = new CollisionController(this); 
+        this.collisionController = new CollisionController(this.gameObjectManager, this.bubbleGridManager); 
         this.status = GameStatus.PAUSE;
     }
 
