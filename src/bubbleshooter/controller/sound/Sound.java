@@ -1,10 +1,13 @@
-package bubbleshooter.controller.engine;
+package bubbleshooter.controller.sound;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Sound {
+public final class Sound {
+	
+	private Sound() {
+	}
 	
     public static synchronized void playSound(final String soundType) {
 
