@@ -2,10 +2,12 @@ package bubbleshooter.controller;
 
 import java.util.List;
 import bubbleshooter.controller.engine.GameLoop;
+import bubbleshooter.controller.sound.SoundGameEngine;
 import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
+
 import bubbleshooter.view.View;
 
 public class ControllerImpl implements Controller {
@@ -24,10 +26,9 @@ public class ControllerImpl implements Controller {
      //IL PULSANTE PLAY TRAMITE GETCONTROLLER CHE RESTITUISCE IL CONTROLLER DELLA GUI .startGame()
     @Override
     public void startGame(final LevelTypes levelType) {
-     this.engine = new BasicGameLoop(this.view, this.model);
+     this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
      this.engine.startLoop();
-     //far partire la musica
     }
 
     @Override
@@ -57,4 +58,5 @@ public class ControllerImpl implements Controller {
 	public List<Bubble> getBubbles() {
 		return this.model.getBubbles();
 	}
+
 }
