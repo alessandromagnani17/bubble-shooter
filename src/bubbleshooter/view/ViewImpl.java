@@ -1,8 +1,8 @@
 package bubbleshooter.view;
 
 import bubbleshooter.controller.Controller;
+
 import bubbleshooter.utility.GameCostants;
-import bubbleshooter.utility.Utility;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.scene.SceneLoader;

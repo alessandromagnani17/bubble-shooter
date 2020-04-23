@@ -40,7 +40,7 @@ public class CanvasDrawer {
 			sprite.setPosition(bubble.getPosition());
 			sprite.setHeigth(GameCostants.RADIUS.getValue()*2);
 			sprite.setWidth(GameCostants.RADIUS.getValue()*2);
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
         return sprite; 

@@ -1,10 +1,9 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
-import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.component.ShootingComponent;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
+import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
@@ -27,20 +26,14 @@ public class GameController extends AbstractController {
     public void init(final Controller controller, final View view) {
         super.init(controller, view);
         this.canvasDrawer = new CanvasDrawer(this.canvas);
-        // canvasDrawer.draw(this.getController().getGameObjects()); se il gameLoop
+        //canvasDrawer.draw(this.getController().getBubbles());
         getController().resume();
 		this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
 			@Override
 			public void handle(final MouseEvent event) {
-				Bubble shootingBubble = getController().getBubbles().stream()
-						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).iterator().next();
-				ShootingComponent shootingComponent = (ShootingComponent) shootingBubble.getComponents().stream()
-                        .filter(a -> a.getComponentType().equals(ComponentType.SHOOTINGCOMPONENT))
-                        .findFirst().get();
-				shootingComponent.setDirection(PhysicHelper.calculateShootingDirection(
+				Bubble shootingBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
+				shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 						new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
-				getController().resume();
 			}
 		});
 	}

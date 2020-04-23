@@ -1,9 +1,9 @@
 package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
+
 import javafx.geometry.Point2D;
 import bubbleshooter.utility.GameCostants;
-import bubbleshooter.utility.Utility;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
