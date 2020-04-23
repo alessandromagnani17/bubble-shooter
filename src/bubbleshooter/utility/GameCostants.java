@@ -20,6 +20,8 @@ public enum GameCostants {
 
     COLLISIONDISTANCE(31),
     
+    DIAGONALDISTANCE(41),
+    
     FPS(60),
     
     CANNONHEIGTH(100), 
