@@ -1,4 +1,4 @@
-package bubbleshooter.controller.engine;
+package bubbleshooter.controller.sound;
 
 public enum SoundNames {
 
