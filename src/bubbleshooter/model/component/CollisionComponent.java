@@ -10,13 +10,8 @@ public class CollisionComponent extends AbstractComponent {
         this.setType(ComponentType.COLLISIONCOMPONENT);
     }
 
-	@Override
-	public final void update(final double elapsed) {
-	 this.getShape();
-	}
-
-	public final Shape getShape() {
-		Point2D bubblePosition = super.getContainer().getPosition();
-		return new Circle(bubblePosition.getX(), bubblePosition.getY(), super.getContainer().getRadius());
-	}
+   public final Shape getCollisionShape() {
+        Point2D bubblePosition = super.getContainer().getPosition();
+        return new Circle(bubblePosition.getX(), bubblePosition.getY(), super.getContainer().getRadius());
+    }
 }

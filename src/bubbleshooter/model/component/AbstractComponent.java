@@ -26,9 +26,8 @@ public abstract class AbstractComponent implements Component {
         return this.type;
     }
 
-	@Override
-	public final void setType(final ComponentType type) {
-		this.type = type;
-	}
-
+    @Override
+    public final void setType(final ComponentType type) {
+        this.type = type;
+    }
 }
