@@ -1,10 +1,5 @@
 package bubbleshooter.model.gameobject;
 
-import java.util.List;
-import java.util.Optional;
-
-import bubbleshooter.model.component.Component;
-import bubbleshooter.model.component.ComponentType;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
@@ -14,9 +9,7 @@ public interface Bubble {
 	
 	Point2D getDirection();
 	
-	List<Component> getComponents();
-
-	void addComponent(Component component);
+	Shape getShape();
 
 	void setPosition(Point2D position);
 	

@@ -11,12 +11,12 @@ import javafx.geometry.Point2D;
 
 public class BubbleGridManager {
 
-	private int createdRows;
-	private boolean offsetRow;
-	private GameObjectManager gameObjectManager;
+    private int createdRows;
+    private boolean offsetRow;
+    private GameObjectManager gameObjectManager;
 
-	public BubbleGridManager(final GameObjectManager gameObjectManager) {
-		this.gameObjectManager = gameObjectManager;
+    public BubbleGridManager(final GameObjectManager gameObjectManager) {
+	    this.gameObjectManager = gameObjectManager;
 		this.createdRows = 0;
 		this.offsetRow = false;
 	}

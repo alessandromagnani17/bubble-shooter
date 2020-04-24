@@ -4,10 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.Component;
 import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public abstract class AbstractBubble implements Bubble {
 
@@ -17,8 +19,7 @@ public abstract class AbstractBubble implements Bubble {
 	private double radius;
 	private BubbleType type;
 	private BubbleColor color;
-	private List<Component> components;
-
+	
 	public AbstractBubble(final BubbleType type, final Point2D position) {
 		this.type = type;
 		this.position = position;
@@ -28,14 +29,10 @@ public abstract class AbstractBubble implements Bubble {
 		this.color = BubbleColor.getRandomColor();
 		this.type = type;
 		this.position = position;
-		this.components = new LinkedList<>();
+		this.setComponents();
 	}
 
 	protected abstract void setComponents();
-
-	public final List<Component> getComponents() {
-		return this.components;
-	}
 
 	@Override
 	public final Point2D getPosition() {
@@ -66,7 +63,6 @@ public abstract class AbstractBubble implements Bubble {
 	@Override
 	public final void setRadius(final double radius) {
 		this.radius = radius;
-
 	}
 
 	@Override
@@ -89,8 +85,7 @@ public abstract class AbstractBubble implements Bubble {
 	}
 
 	@Override
-	public void update(final double elapsed) {
-		this.components.forEach(a -> a.update(elapsed));
+	public void update(final double elapsed){
 	}
 
 	@Override
@@ -102,11 +97,4 @@ public abstract class AbstractBubble implements Bubble {
 	public void setDirection(final Point2D direction) {
 		this.direction = direction;
 	}
-
-	@Override
-	public void addComponent(final Component component) {
-		component.setContainer(this);
-		this.components.add(component);
-	}
-
 }
