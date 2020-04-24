@@ -2,6 +2,7 @@ package bubbleshooter.model.gameobject;
 
 import bubbleshooter.model.component.CollisionComponent;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public class GridBubble extends AbstractBubble {
 	
@@ -14,6 +15,4 @@ public class GridBubble extends AbstractBubble {
 	protected final void setComponents() {
         this.addComponent(new CollisionComponent());
 	}
-	
-
 }

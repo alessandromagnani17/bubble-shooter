@@ -6,6 +6,7 @@ import java.util.Optional;
 import bubbleshooter.model.component.Component;
 import bubbleshooter.model.component.ComponentType;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public interface Bubble {
 	
