@@ -2,14 +2,13 @@ package bubbleshooter.model.collision;
 
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
-import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import javafx.geometry.Point2D;
 
 public class BoundsCollisionHandler implements CollisionHandler {
 
-    private Bubble shootingBubble;
+    private final Bubble shootingBubble;
     private final BubbleGridManager gridManager;
 
     public BoundsCollisionHandler(final Bubble shootingBubble, final BubbleGridManager gridManager) {
@@ -26,6 +25,14 @@ public class BoundsCollisionHandler implements CollisionHandler {
         }
     }
 
+    private boolean isTopWall() {
+        return this.shootingBubble.getPosition().getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2;
+    }
+
+    private boolean hasNeighbour() {
+        return this.gridManager.getBubbleNeighbours(shootingBubble).size() > 0;
+    }
+
     private void linkToTopWall() {
         this.shootingBubble.setPosition(this.getPositionToLink());
         if (!this.hasNeighbour()) {
@@ -38,14 +45,6 @@ public class BoundsCollisionHandler implements CollisionHandler {
             handler.handle();
           }
         }
-
-    private boolean isTopWall() {
-        return this.shootingBubble.getPosition().getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2;
-    }
-
-    private boolean hasNeighbour() {
-        return this.gridManager.getBubbleNeighbours(shootingBubble).size() > 0;
-    }
 
     private Point2D getPositionToLink() {
        double min = GameCostants.GUIWIDTH.getValue();

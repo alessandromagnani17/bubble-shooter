@@ -5,6 +5,7 @@ import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Shape;
 
 public class CollisionController {
 
@@ -17,12 +18,8 @@ public class CollisionController {
     }
 
     public final void checkCollisions() {
-        this.checkGameCollisions();
-    }
-
-    private void checkGameCollisions() {
-        this.checkBounceCollision();
         this.checkGridCollision();
+        this.checkBounceCollision();
     }
 
     private void checkGridCollision() {
@@ -48,7 +45,7 @@ public class CollisionController {
     }
 
     private boolean hasCollided(final Bubble bubbleAt, final Bubble bubbleTo) {
-        return this.gridManager.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.COLLISIONDISTANCE.getValue();
+        return Shape.intersect(bubbleAt.getShape(), bubbleTo.getShape()).getBoundsInLocal().getWidth() != -1;
     }
 
 }
