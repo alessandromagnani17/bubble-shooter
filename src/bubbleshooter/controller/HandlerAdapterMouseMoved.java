@@ -17,10 +17,10 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     public final double calculateAngle(final MouseEvent event, final double xBubble, final double yBubble) {
-        double ipotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
-        double x = (event.getX() - xBubble);
+        double hypotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
+        double cathetus = (event.getX() - xBubble);
 
-        return Math.toDegrees(Math.asin(x / ipotenuse));
+        return Math.toDegrees(Math.asin(cathetus / hypotenuse));
     }
 
     @Override
