@@ -14,10 +14,12 @@ public class BasicMode extends AbstractGameMode {
 
 	@Override
 	public boolean isTimeToNewRow(double elapsed) {
-		if (this.getGameInfoManager().getDestroyedBubbles() < WRONG_SHOTS_BEFORE_NEW_ROW) {
-			return false;
+		GameInfoManager infoManager = this.getGameInfoManager();
+		if (infoManager.getWrongShoots() == WRONG_SHOTS_BEFORE_NEW_ROW) {
+			infoManager.clearWrongShoots();
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
