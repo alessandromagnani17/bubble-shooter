@@ -19,7 +19,7 @@ public final class MainController extends AbstractController {
     }
     
     public void highscores() {
-    	// Da fare
+    	this.getView().loadScene(FXMLPath.HIGHSCORE);
     }
     
     public void quit() {
