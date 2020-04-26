@@ -46,7 +46,7 @@ public class GameController extends AbstractController {
 			this.nextScene();
 		}
 		if(this.help.isSelected()) {
-			System.out.println("Selezionato");
+			//Disegnare la linea tratteggiata
 		}
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();
