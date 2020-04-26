@@ -14,12 +14,12 @@ public final class MainController extends AbstractController {
 
 
     public void play() {
-            this.getController().startGame(LevelTypes.BASICMODE);
-            this.nextScene();
+        this.getController().startGame(LevelTypes.BASICMODE);
+        this.nextScene();
     }
-    
+   
     public void highscores() {
-    	this.getView().loadScene(FXMLPath.HIGHSCORE);
+        this.getView().loadScene(FXMLPath.HIGHSCORE);
     }
     
     public void quit() {
