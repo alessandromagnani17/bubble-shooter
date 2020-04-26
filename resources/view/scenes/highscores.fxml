@@ -36,5 +36,10 @@
             <Font name="Ananda" size="30.0" />
          </font>
       </Label>
+      <Button layoutX="475.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="68.0" prefWidth="198.0" text="Back to menu" textFill="RED">
+         <font>
+            <Font name="Ananda" size="28.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
