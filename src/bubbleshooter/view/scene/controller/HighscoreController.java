@@ -58,6 +58,10 @@ public class HighscoreController extends AbstractController implements Initializ
         
         return scoreList;
     }
+    
+    public void backToMenu() {
+    	this.getView().loadScene(FXMLPath.MAIN);
+    }
 
     @Override
     public FXMLPath getNextScene() {
