@@ -39,28 +39,22 @@ public class GameController extends AbstractController {
         super.init(controller, view);
 
         ImageView cannon = new ImageView(new Image(ImagePath.CANNON.getPath()));
+        Rotate rotation = new Rotate();
+        double xBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX();
+        double yBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY();
 
         cannon.setLayoutX(315.5);
         cannon.setLayoutY(460.0);
 
-        double xBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX();
-
-        Rotate rotation = new Rotate();
-        rotation.setPivotX(this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX() - cannon.getLayoutX());
-        rotation.setPivotY(this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY() - cannon.getLayoutY());
+        rotation.setPivotX(xBubble - cannon.getLayoutX());
+        rotation.setPivotY(yBubble - cannon.getLayoutY());
         cannon.getTransforms().add(rotation);
 
         pane.getChildren().add(cannon);
 
-        canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
-        canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
-        canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
+        canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
+        canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
+        canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, xBubble, yBubble));
 
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         //canvasDrawer.draw(this.getController().getBubbles());
