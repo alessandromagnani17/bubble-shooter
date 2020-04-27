@@ -3,7 +3,6 @@ package bubbleshooter.view.scene.controller;
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
-import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.rendering.CanvasDrawer;
@@ -38,7 +37,8 @@ public class GameController extends AbstractController {
 						new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 			}
 		});
-	}
+		
+    }
 
 
 	public void render() {
@@ -50,7 +50,7 @@ public class GameController extends AbstractController {
 		}
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();
-		canvasDrawer.draw(this.getController().getBubbles());
+	    canvasDrawer.draw(this.getController().getBubbles());
 	}
 
 	@Override
