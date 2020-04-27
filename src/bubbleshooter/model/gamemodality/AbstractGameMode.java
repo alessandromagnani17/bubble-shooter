@@ -36,11 +36,11 @@ public abstract class AbstractGameMode {
 		this.gameObjectManager.update(elapsed);
 		this.collisionController.checkCollisions();
 		this.gameInfoManager.updateGameTime(elapsed);
-		this.checkGameOver();
 		this.updateScore(elapsed);
 		if (this.isTimeToNewRow(elapsed)) {
 			this.createNewRow();
 		}
+		this.checkGameOver();
 
 	}
 

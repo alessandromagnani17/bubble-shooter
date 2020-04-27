@@ -15,6 +15,7 @@ public class GameInfoManager {
 		this.destroyedBubbles += 1;
 	}
 
+	// tiri sbagliati consecutivamente
 	public void addWrongShoots() {
 		this.wrongShoots += 1;
 	}
@@ -23,8 +24,8 @@ public class GameInfoManager {
 		this.score += score;
 	}
 
-	public double getGameTime() {
-		return gameTime;
+	public int getGameTime() {
+		return (int)gameTime;
 	}
 
 	public int getDestroyedBubbles() {
@@ -33,6 +34,10 @@ public class GameInfoManager {
 
 	public int getWrongShoots() {
 		return wrongShoots;
+	}
+	
+	public void clearWrongShoots() {
+		this.wrongShoots = 0; 
 	}
 
 	public int getScore() {
