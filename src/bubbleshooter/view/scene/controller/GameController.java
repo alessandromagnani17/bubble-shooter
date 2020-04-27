@@ -6,6 +6,7 @@ import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
+import bubbleshooter.view.images.ImagePath;
 import bubbleshooter.view.rendering.CanvasDrawer;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.event.EventHandler;
@@ -13,12 +14,17 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 public class GameController extends AbstractController {
 
 	@FXML
 	private Canvas canvas;
+
     @FXML
     private CheckBox help = new CheckBox("Help");
 	private CanvasDrawer canvasDrawer;
