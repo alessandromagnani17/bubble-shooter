@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="700.0" maxWidth="705.0" minHeight="700.0" minWidth="705.0" prefHeight="700.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
+<AnchorPane maxHeight="700.0" maxWidth="705.0" minHeight="700.0" minWidth="705.0" prefHeight="700.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
    <children>
-      <Button alignment="CENTER" layoutX="270.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#btnOnClickHandler" prefHeight="0.0" prefWidth="134.0" text="Play" textFill="RED">
+      <Label layoutX="96.0" layoutY="37.0" prefHeight="126.0" prefWidth="507.0" text="Bubbleshooter" textFill="RED">
+         <font>
+            <Font name="Ananda" size="80.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="200.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#play" prefHeight="87.0" prefWidth="305.0" text="Play" textFill="RED">
+         <font>
+            <Font name="Ananda" size="38.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="200.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#highscores" prefHeight="87.0" prefWidth="305.0" text="Highscores" textFill="RED">
+         <font>
+            <Font name="Ananda" size="38.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="200.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="87.0" prefWidth="305.0" text="Quit" textFill="RED">
          <font>
             <Font name="Ananda" size="38.0" />
          </font>

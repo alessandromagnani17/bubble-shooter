@@ -12,13 +12,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
 
 public class GameController extends AbstractController {
 
 	@FXML
 	private Canvas canvas;
-
+    @FXML
+    private CheckBox help = new CheckBox("Help");
 	private CanvasDrawer canvasDrawer;
 	private boolean gameOver;
 
@@ -42,6 +44,9 @@ public class GameController extends AbstractController {
 	public void render() {
 		if (this.isGameOver()) {
 			this.nextScene();
+		}
+		if(this.help.isSelected()) {
+			//Disegnare la linea tratteggiata
 		}
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();

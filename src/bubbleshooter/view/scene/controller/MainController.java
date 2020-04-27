@@ -13,10 +13,18 @@ public final class MainController extends AbstractController {
 
 
 
-    public void btnOnClickHandler() {
-            this.getController().startGame(LevelTypes.BASICMODE);
-            this.nextScene();
+    public void play() {
+        this.getController().startGame(LevelTypes.BASICMODE);
+        this.nextScene();
     }
+   
+    public void highscores() {
+        this.getView().loadScene(FXMLPath.HIGHSCORE);
+    }
+    
+    public void quit() {
+        System.exit(0);
+}
 
     @Override
     public FXMLPath getNextScene() {
