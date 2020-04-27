@@ -1,6 +1,9 @@
 package bubbleshooter.view.scene.controller;
 
+import java.util.stream.Collectors;
+
 import bubbleshooter.controller.Controller;
+import bubbleshooter.controller.GameOverController;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
@@ -23,6 +26,8 @@ import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
 
+    private static final double LIMITS = 400.0;
+	
     @FXML
     private Canvas canvas;
 
@@ -44,7 +49,7 @@ public class GameController extends AbstractController {
         double yBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY();
 
         cannon.setLayoutX(315.5);
-        cannon.setLayoutY(460.0);
+        cannon.setLayoutY(455.0);
 
         rotation.setPivotX(xBubble - cannon.getLayoutX());
         rotation.setPivotY(yBubble - cannon.getLayoutY());
@@ -60,13 +65,19 @@ public class GameController extends AbstractController {
         //canvasDrawer.draw(this.getController().getBubbles());
         getController().resume();
         this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
+
+        	@Override
             public void handle(final MouseEvent event) {
+                GameOverController gameOverController = new GameOverController(getController().getBubbles(), LIMITS);
                 Bubble shootingBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
                 if (shootingBubble.getPosition().getX() == xBubble) {
                 	shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
                             new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
                 }
+
+        		if (gameOverController.isGameOver()) {
+        			setGameOver();
+        		}
             }
         });
     }
