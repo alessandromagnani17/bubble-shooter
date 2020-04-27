@@ -27,6 +27,7 @@ import javafx.scene.transform.Rotate;
 public class GameController extends AbstractController {
 
     private static final double LIMITS = 400.0;
+    private static final double LIMITS_MOUSE = 530.0;
 	
     @FXML
     private Canvas canvas;
@@ -70,7 +71,7 @@ public class GameController extends AbstractController {
             public void handle(final MouseEvent event) {
                 GameOverController gameOverController = new GameOverController(getController().getBubbles(), LIMITS);
                 Bubble shootingBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-                if (shootingBubble.getPosition().getX() == xBubble) {
+                if (shootingBubble.getPosition().getX() == xBubble && event.getY() < LIMITS_MOUSE) {
                 	shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
                             new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
                 }

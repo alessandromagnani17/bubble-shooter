@@ -8,18 +8,18 @@ import bubbleshooter.model.gameobject.BubbleType;
 public class GameOverController {
 
     private List<Bubble> bubbles;
-    private double yCannon;
+    private double limits;
 
-    public GameOverController(final List<Bubble> bubbles, final double yCannon) {
+    public GameOverController(final List<Bubble> bubbles, final double limits) {
         this.bubbles = bubbles;
-        this.yCannon = yCannon;
+        this.limits = limits;
     }
 
     public final boolean isGameOver() { 
         for (Bubble bubble : bubbles) {
             if (bubble.getType().equals(BubbleType.GRID_BUBBLE)) {
-                if (bubble.getPosition().getY() > yCannon) {
-                    System.out.println("GAME OVEEEERRR");
+                if (bubble.getPosition().getY() > limits) {
+                    System.out.println("GAME OVER");
                     return true;
                 }
             }
