@@ -57,7 +57,11 @@ public class GameController extends AbstractController {
         canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, 
                 getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
                 getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
-        
+        canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, 
+                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
+                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
+
+
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         //canvasDrawer.draw(this.getController().getBubbles());
         getController().resume();
