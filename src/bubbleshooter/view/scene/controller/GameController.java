@@ -89,20 +89,20 @@ public class GameController extends AbstractController {
 	}
 
 	@Override
-	public FXMLPath getNextScene() {
+	public final FXMLPath getNextScene() {
 		return FXMLPath.MAIN;
 	}
 
 	@Override
-	protected FXMLPath getPreviousScene() {
+	protected final FXMLPath getPreviousScene() {
 		return FXMLPath.MAIN;
 	}
 
-	public boolean isGameOver() {
+	public final boolean isGameOver() {
 		return this.gameOver;
 	}
 
-	public void setGameOver() {
+	public final void setGameOver() {
 		this.gameOver = true;
 	}
 
