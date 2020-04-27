@@ -49,7 +49,10 @@ public class GameController extends AbstractController {
         rotation.setPivotY(this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY() - cannon.getLayoutY());
         cannon.getTransforms().add(rotation);
 
-        
+        pane.getChildren().add(cannon);
+
+       
+
 
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         //canvasDrawer.draw(this.getController().getBubbles());
