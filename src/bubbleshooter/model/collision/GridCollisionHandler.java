@@ -60,8 +60,8 @@ public class GridCollisionHandler implements CollisionHandler {
                                                                       .filter(a -> !this.gridManager.getBubbleNeighbours(this.basicBubble)
                                                                       .stream()
                                                                       .anyMatch(b -> b.getPosition().equals(a)))
-                                                                      .filter(a -> a.getX() >= GameCostants.BUBBLE_WIDTH.getValue() / 2 && a.getX() 
-                                                                      <= GameCostants.GUIWIDTH.getValue() - GameCostants.BUBBLE_WIDTH.getValue() / 2)
+                                                                      .filter(a -> a.getX() >= shootingBubble.getRadius() && a.getX() 
+                                                                      <= GameCostants.GUIWIDTH.getValue() - shootingBubble.getRadius())
                                                                       .collect(Collectors.toSet());
      }
 

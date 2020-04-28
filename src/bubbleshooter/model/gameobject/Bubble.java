@@ -22,8 +22,8 @@ public interface Bubble {
     void update(double elapsed);
 
     double getRadius(); 
-
-    void setRadius(double radius);
+    
+    double getWidth();
 
     BubbleType getType(); 
 

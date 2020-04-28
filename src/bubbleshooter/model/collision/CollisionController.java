@@ -36,11 +36,11 @@ public class CollisionController {
     private void checkBounceCollision() {
         final Bubble shootingBubble = this.gameObjectManager.getShootingBubble();
         final Point2D pos = shootingBubble.getPosition();
-        if ((pos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2) >= (GameCostants.GUIWIDTH.getValue())
-           || (pos.getX() <= (GameCostants.BUBBLE_WIDTH.getValue() / 2)
-            || pos.getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2)) {
-            final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.gridManager);
-            handler.handle();
+        if ((pos.getX() + shootingBubble.getRadius()) >= GameCostants.GUIWIDTH.getValue()
+            || (pos.getX() - shootingBubble.getRadius()) <= 0
+            || (pos.getY() + shootingBubble.getRadius()) <= 0) {
+                final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.gridManager);
+                handler.handle();
         }
     }
 

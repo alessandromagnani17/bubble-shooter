@@ -1,22 +1,14 @@
 package bubbleshooter.model.gameobject;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-
-import bubbleshooter.model.component.CollisionComponent;
-import bubbleshooter.model.component.Component;
-import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
 public abstract class AbstractBubble implements Bubble {
 
+	private final double radius = 18;
 	private Point2D position;
 	private Point2D direction;
 	private boolean isDestroyed;
-	private double radius;
 	private BubbleType type;
 	private BubbleColor color;
 	
@@ -25,7 +17,6 @@ public abstract class AbstractBubble implements Bubble {
 		this.position = position;
 		this.direction = position;
 		this.isDestroyed = false;
-		this.radius = GameCostants.RADIUS.getValue();
 		this.color = BubbleColor.getRandomColor();
 		this.type = type;
 		this.position = position;
@@ -61,11 +52,6 @@ public abstract class AbstractBubble implements Bubble {
 	}
 
 	@Override
-	public final void setRadius(final double radius) {
-		this.radius = radius;
-	}
-
-	@Override
 	public final BubbleType getType() {
 		return this.type;
 	}
@@ -96,5 +82,10 @@ public abstract class AbstractBubble implements Bubble {
 	@Override
 	public void setDirection(final Point2D direction) {
 		this.direction = direction;
+	}
+
+	@Override
+	public double getWidth() {
+		return this.radius * 2;
 	}
 }

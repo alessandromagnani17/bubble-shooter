@@ -43,8 +43,8 @@ public class BubbleGridManager {
 	public final double getDistanceBetweenBubbles(final Bubble bubbleAt, final Bubble bubbleTo) {
 		Point2D bubbleAtPos = bubbleAt.getPosition();
 		Point2D bubbleToPos = bubbleTo.getPosition();
-		return Math.sqrt(Math.pow(bubbleAtPos.getX() - bubbleToPos.getX(), 2)
-				+ (Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2)));
+		return     Math.sqrt(Math.pow(bubbleAtPos.getX() - bubbleToPos.getX(), 2)
+				+  Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2));
 	}
 
 	// tira le palline una riga più in giù

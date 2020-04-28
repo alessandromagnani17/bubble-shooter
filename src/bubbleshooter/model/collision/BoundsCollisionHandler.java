@@ -26,7 +26,7 @@ public class BoundsCollisionHandler implements CollisionHandler {
     }
 
     private boolean isTopWall() {
-        return this.shootingBubble.getPosition().getY() <= GameCostants.BUBBLE_WIDTH.getValue() / 2;
+        return this.shootingBubble.getPosition().getY() <= this.shootingBubble.getRadius();
     }
 
     private boolean hasNeighbour() {
@@ -49,15 +49,15 @@ public class BoundsCollisionHandler implements CollisionHandler {
     private Point2D getPositionToLink() {
        double min = GameCostants.GUIWIDTH.getValue();
        double finalPos = this.shootingBubble.getPosition().getX();
-       double offset = !this.gridManager.isOffsetRaw() ? GameCostants.BUBBLE_WIDTH.getValue() : GameCostants.BUBBLE_WIDTH.getValue() / 2;
+       double offset = !this.gridManager.isOffsetRaw() ? this.shootingBubble.getWidth() : this.shootingBubble.getRadius();
        for (double i = 0; i <= GameCostants.ROW_BUBBLE.getValue(); i++) {
-           double xPos = i * GameCostants.BUBBLE_WIDTH.getValue() + offset;
+           double xPos = i * this.shootingBubble.getWidth() + offset;
            double distance = Math.abs(xPos - shootingBubble.getPosition().getX());
            if (distance < min) {
                min = distance;
                finalPos = xPos;
            }
        }
-      return new Point2D(finalPos, GameCostants.BUBBLE_WIDTH.getValue() / 2);
+      return new Point2D(finalPos, this.shootingBubble.getRadius());
     }
 }
