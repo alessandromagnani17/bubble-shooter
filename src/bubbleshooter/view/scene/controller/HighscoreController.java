@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.highscore.HighscoreStructure;
-import bubbleshooter.model.highscore.HighscoreStoreImpl;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,7 +52,6 @@ public class HighscoreController extends AbstractController implements Initializ
     private ObservableList<HighscoreStructure> getScores(LevelTypes gameMode) {
         
         ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-        HighscoreStoreImpl impl = new HighscoreStoreImpl();
         
         return scoreList;
     }
