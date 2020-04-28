@@ -98,7 +98,7 @@ public class GameController extends AbstractController {
 
 	@Override
 	public final FXMLPath getNextScene() {
-		return FXMLPath.MAIN;
+		return FXMLPath.GAMEOVER;
 	}
 
 	@Override
