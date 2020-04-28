@@ -1,6 +1,9 @@
 package bubbleshooter.view.scene.controller;
 
+import java.util.stream.Collectors;
+
 import bubbleshooter.controller.Controller;
+import bubbleshooter.controller.GameOverController;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
@@ -23,9 +26,11 @@ import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
 
-	@FXML
-	private Canvas canvas;
-
+    private static final double LIMITS = 400.0;
+    private static final double LIMITS_MOUSE = 530.0;
+	
+    @FXML
+    private Canvas canvas;
 
     @FXML
     private AnchorPane pane;
@@ -40,38 +45,40 @@ public class GameController extends AbstractController {
         super.init(controller, view);
 
         ImageView cannon = new ImageView(new Image(ImagePath.CANNON.getPath()));
+        Rotate rotation = new Rotate();
+        double xBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX();
+        double yBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY();
 
         cannon.setLayoutX(315.5);
-        cannon.setLayoutY(460.0);
+        cannon.setLayoutY(455.0);
 
-
-        Rotate rotation = new Rotate();
-        rotation.setPivotX(this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX() - cannon.getLayoutX());
-        rotation.setPivotY(this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY() - cannon.getLayoutY());
+        rotation.setPivotX(xBubble - cannon.getLayoutX());
+        rotation.setPivotY(yBubble - cannon.getLayoutY());
         cannon.getTransforms().add(rotation);
 
         pane.getChildren().add(cannon);
 
-        canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
-        canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
-        canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()));
-
+        canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
+        canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
+        canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, xBubble, yBubble));
 
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         //canvasDrawer.draw(this.getController().getBubbles());
         getController().resume();
         this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
+
+        	@Override
             public void handle(final MouseEvent event) {
+                GameOverController gameOverController = new GameOverController(getController().getBubbles(), LIMITS);
                 Bubble shootingBubble = getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-                shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-                         new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
+                if (shootingBubble.getPosition().getX() == xBubble && event.getY() < LIMITS_MOUSE) {
+                	shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
+                            new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
+                }
+
+        		if (gameOverController.isGameOver()) {
+        			setGameOver();
+        		}
             }
         });
     }
@@ -91,7 +98,7 @@ public class GameController extends AbstractController {
 
 	@Override
 	public final FXMLPath getNextScene() {
-		return FXMLPath.MAIN;
+		return FXMLPath.GAMEOVER;
 	}
 
 	@Override
@@ -112,5 +119,6 @@ public class GameController extends AbstractController {
         this.canvas.getGraphicsContext2D().restore();
     	this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
+    
 
 }
