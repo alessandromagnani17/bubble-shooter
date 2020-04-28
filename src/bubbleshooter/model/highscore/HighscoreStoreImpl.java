@@ -59,15 +59,15 @@ public class HighscoreStoreImpl implements HighscoreStore {
     }
 
     @Override
-    public void addScore(final LevelTypes gameMode, final HighscoreStructure score) {
+    public void addScore(final HighscoreStructure score) {
     	
     	this.mapOfItems = readFile();
     	
-    	this.mapOfItems.get(gameMode).add(score);
+    	this.mapOfItems.get(score.getGameMode()).add(score);
     	
-    	sort(this.mapOfItems.get(gameMode));
+    	sort(this.mapOfItems.get(score.getGameMode()));
     	
-    	clean(this.mapOfItems.get(gameMode));
+    	clean(this.mapOfItems.get(score.getGameMode()));
     	
     	reWriteFile();
     }
