@@ -7,19 +7,23 @@ import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
-
+import bubbleshooter.model.highscore.HighscoreStoreImpl;
+import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.view.View;
+import javafx.collections.ObservableList;
 
 public class ControllerImpl implements Controller {
 
     private final Model model;
     private final View view;
     private GameLoop engine;
+    private HighscoreStoreImpl highscoreStore;
     //GESTIRE LA PARTE DELL INPUT PER STOPPARE E FAR PARTIRE IL GAME LOOP
 
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
+     this.highscoreStore = new HighscoreStoreImpl();
     }
 
      //METODO CHE VERRA INVOCATO DA UN CONTROLLERFXML QUANDO VIENE SPINTO 
@@ -57,6 +61,11 @@ public class ControllerImpl implements Controller {
 	@Override
 	public List<Bubble> getBubbles() {
 		return this.model.getBubbles();
+	}
+
+	@Override
+	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
+		return this.highscoreStore.getHighscoresForModality(gameMode);
 	}
 
 }
