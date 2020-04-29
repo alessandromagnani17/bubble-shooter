@@ -65,10 +65,7 @@ public class ControllerImpl implements Controller {
 
 	@Override
 	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
-		ObservableList<HighscoreStructure> scoreList;
-		scoreList = this.highscoreStore.getHighscoresForModality(gameMode);
-		System.out.println("Lista ---> " + this.highscoreStore.getHighscoresForModality(gameMode).size());
-		return scoreList;
+		return this.highscoreStore.getHighscoresForModality(gameMode);
 	}
 
 }

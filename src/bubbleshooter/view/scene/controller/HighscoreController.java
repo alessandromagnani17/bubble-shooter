@@ -3,9 +3,11 @@ package bubbleshooter.view.scene.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
 import bubbleshooter.model.highscore.HighscoreStructure;
+import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class HighscoreController extends AbstractController implements Initializable {
+public class HighscoreController extends AbstractController{
     
     @FXML
     private TableView<HighscoreStructure> tableBaseView;
@@ -31,7 +33,8 @@ public class HighscoreController extends AbstractController implements Initializ
     private TableColumn<HighscoreStructure, Integer> scoreSurvivalColumn;
     
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public final void init(final Controller controller, final View view) {
+        super.init(controller, view);
         
         nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
         scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
@@ -45,13 +48,11 @@ public class HighscoreController extends AbstractController implements Initializ
         // Rende le due tabelle non modificabili alla pressione del mouse
         tableBaseView.setMouseTransparent(true);
         tableSurvivalView.setMouseTransparent(true);
+        
     }
 
-
     private ObservableList<HighscoreStructure> getScores(LevelTypes gameMode) {
-    	ObservableList<HighscoreStructure> prova = null;
-    	//prova = this.getController().getHighscoreList(gameMode);
-    	return prova;
+    	return this.getController().getHighscoreList(gameMode);
     }
     
     public void backToMenu() {
