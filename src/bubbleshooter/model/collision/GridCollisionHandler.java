@@ -69,7 +69,7 @@ public class GridCollisionHandler implements CollisionHandler {
        }
 
     private Set<Point2D> getFreePlacesToLink() {
-        return this.gridManager.getNeighbourPosition(this.basicBubble).stream()
+        return this.gridHelper.getNeighbourPosition(this.basicBubble).stream()
                                                                       .filter(a -> !this.gridHelper.getBubbleNeighbours(this.basicBubble)
                                                                       .stream()
                                                                       .anyMatch(b -> b.getPosition().equals(a)))
