@@ -2,6 +2,8 @@ package bubbleshooter.model.gamemodality;
 
 import java.util.Collections;
 import java.util.List;
+
+import bubbleshooter.controller.GameOverController;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleFactory;
@@ -16,6 +18,7 @@ public abstract class AbstractGameMode {
 	private BubbleGridManager bubbleGridManager;
 	private CollisionController collisionController;
 	private GameInfoManager gameInfoManager;
+	private GameOverChecker gameOverChecker; 
 	private GameStatus status = GameStatus.PAUSE;
 	// gameDataManager per gestire punteggio
 
@@ -24,6 +27,7 @@ public abstract class AbstractGameMode {
 		this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager);
 		this.collisionController = new CollisionController(this.gameObjectManager, this.bubbleGridManager);
 		this.gameInfoManager = new GameInfoManager();
+		this.gameOverChecker = new GameOverChecker(this); 
 		this.status = GameStatus.PAUSE;
 	}
 
@@ -69,8 +73,7 @@ public abstract class AbstractGameMode {
 	}
 
 	public boolean checkGameOver() {
-		// da implementare da qualche parte il metodo che controlla il gameOver
-		return false;
+		return this.gameOverChecker.checkGameOver(); 
 	}
 
 	public void setGameStatus(final GameStatus status) {

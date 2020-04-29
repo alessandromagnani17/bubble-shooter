@@ -2,12 +2,16 @@ package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
 
+import com.sun.javafx.scene.paint.GradientUtils.Point;
+
 import javafx.geometry.Point2D;
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
 
 public class SpriteImpl implements Sprite {
 
@@ -26,6 +30,7 @@ public class SpriteImpl implements Sprite {
 	public void draw() {
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
 				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
+
 	}
 
 	private Point2D getTopLeftFromCenter(Point2D center) {

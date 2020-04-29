@@ -1,7 +1,6 @@
 package bubbleshooter.view;
 
 import bubbleshooter.controller.Controller;
-
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.scene.FXMLPath;
@@ -15,6 +14,8 @@ import javafx.stage.Stage;
 public class ViewImpl implements View {
 
     private static final String TITLE = "BUBBLE SHOOTER";
+    private static final double MIN_WIDTH = GameCostants.GUIWIDTH.getValue();
+    private static final double MIN_HEIGHT = GameCostants.GUIHEIGTH.getValue();
     private Controller controller;
     private AbstractController currentGuiController;
     private final Stage stage;
@@ -35,8 +36,8 @@ public class ViewImpl implements View {
 
     private void initalize() {
         this.stage.setTitle(TITLE);
-        this.stage.setMinHeight(GameCostants.GUIHEIGTH.getValue());
-        this.stage.setMinWidth(GameCostants.GUIWIDTH.getValue());
+        this.stage.setMinHeight(MIN_HEIGHT);
+        this.stage.setMinWidth(MIN_WIDTH);
         this.stage.setMaximized(false);
         this.stage.setOnCloseRequest(e -> Runtime.getRuntime().exit(0));
         this.loadScene(FXMLPath.MAIN);

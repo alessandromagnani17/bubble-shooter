@@ -7,6 +7,7 @@ import java.util.Map;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleColor;
 import bubbleshooter.view.images.ImagePath;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -32,6 +33,7 @@ public class CanvasDrawer {
 			sprite.setPosition(bubble.getPosition());
 			sprite.setHeigth(bubble.getRadius() * 2);
 			sprite.setWidth(bubble.getRadius() * 2);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

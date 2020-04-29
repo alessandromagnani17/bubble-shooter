@@ -1,5 +1,6 @@
 package bubbleshooter.view.rendering;
 
+import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -23,4 +24,5 @@ public class Cannon extends ImageView {
     public final void setAngle(final double angle) {
         this.angle = angle;
     }
+
 }
