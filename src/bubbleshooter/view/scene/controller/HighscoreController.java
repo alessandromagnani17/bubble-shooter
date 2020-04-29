@@ -49,7 +49,9 @@ public class HighscoreController extends AbstractController implements Initializ
 
 
     private ObservableList<HighscoreStructure> getScores(LevelTypes gameMode) {
-        return this.getController().getHighscoreList(gameMode);
+    	ObservableList<HighscoreStructure> prova = null;
+    	//prova = this.getController().getHighscoreList(gameMode);
+    	return prova;
     }
     
     public void backToMenu() {
