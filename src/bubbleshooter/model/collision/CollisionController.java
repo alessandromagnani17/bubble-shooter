@@ -1,5 +1,7 @@
 package bubbleshooter.model.collision;
 
+import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameInfoManager;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
@@ -9,12 +11,10 @@ import javafx.scene.shape.Shape;
 
 public class CollisionController {
 
-    private final GameObjectManager gameObjectManager;
-    private final BubbleGridManager gridManager;
+   private final AbstractGameMode level;
 
-    public CollisionController(final GameObjectManager manager, final BubbleGridManager gridManager) {
-        this.gameObjectManager = manager;
-        this.gridManager = gridManager;
+    public CollisionController(final AbstractGameMode level) {
+        this.level = level;
     }
 
     public final void checkCollisions() {
@@ -23,23 +23,23 @@ public class CollisionController {
     }
 
     private void checkGridCollision() {
-        final Bubble shootingBubble = this.gameObjectManager.getShootingBubble();
-        for (final Bubble basicbubble : this.gridManager.getBubbleGrid()) {
+        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        for (final Bubble basicbubble : this.level.getGridManager().getBubbleGrid()) {
             if (this.hasCollided(shootingBubble, basicbubble)) {
                 Collision collision = new Collision(shootingBubble, basicbubble);
-                CollisionHandler handler = new GridCollisionHandler(collision, this.gridManager);
+                CollisionHandler handler = new GridCollisionHandler(collision, this.level);
                 handler.handle();
             }
         }
     }
 
     private void checkBounceCollision() {
-        final Bubble shootingBubble = this.gameObjectManager.getShootingBubble();
+        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
         final Point2D pos = shootingBubble.getPosition();
         if ((pos.getX() + shootingBubble.getRadius()) >= GameCostants.GUIWIDTH.getValue()
             || (pos.getX() - shootingBubble.getRadius()) <= 0
             || (pos.getY() + shootingBubble.getRadius()) <= 0) {
-                final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.gridManager);
+                final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level);
                 handler.handle();
         }
     }

@@ -2,18 +2,24 @@ package bubbleshooter.model.collision;
 
 import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
+import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import javafx.geometry.Point2D;
 
 public class BoundsCollisionHandler implements CollisionHandler {
 
     private final Bubble shootingBubble;
+    private final AbstractGameMode level;
     private final BubbleGridManager gridManager;
+    private final BubbleGridHelper gridHelper;
 
-    public BoundsCollisionHandler(final Bubble shootingBubble, final BubbleGridManager gridManager) {
+    public BoundsCollisionHandler(final Bubble shootingBubble, final AbstractGameMode level) {
         this.shootingBubble = shootingBubble;
-        this.gridManager = gridManager;
+        this.gridManager = level.getGridManager();
+        this.gridHelper = level.getGridHelper();
+        this.level = level;
     }
 
     @Override
@@ -30,7 +36,7 @@ public class BoundsCollisionHandler implements CollisionHandler {
     }
 
     private boolean hasNeighbour() {
-        return this.gridManager.getBubbleNeighbours(shootingBubble).size() > 0;
+        return this.gridHelper.getBubbleNeighbours(shootingBubble).size() > 0;
     }
 
     private void linkToTopWall() {
@@ -38,10 +44,10 @@ public class BoundsCollisionHandler implements CollisionHandler {
         if (!this.hasNeighbour()) {
             this.gridManager.addToGrid(shootingBubble, this.getPositionToLink());
         } else {
-            Collision collision = new Collision(shootingBubble, this.gridManager.getBubbleNeighbours(shootingBubble)
+            Collision collision = new Collision(shootingBubble, this.gridHelper.getBubbleNeighbours(shootingBubble)
                                                                                 .stream()
                                                                                 .findFirst().get());
-            CollisionHandler handler = new GridCollisionHandler(collision, this.gridManager);
+            CollisionHandler handler = new GridCollisionHandler(collision, this.level);
             handler.handle();
           }
         }

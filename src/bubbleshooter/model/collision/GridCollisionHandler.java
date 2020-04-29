@@ -6,7 +6,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameInfoManager;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 
 public class GridCollisionHandler implements CollisionHandler {
@@ -14,11 +17,15 @@ public class GridCollisionHandler implements CollisionHandler {
     private Bubble shootingBubble;
     private final Bubble basicBubble;
     private final BubbleGridManager gridManager;
+    private final BubbleGridHelper gridHelper;
+    private final GameInfoManager gameInfoManager;
 
-    public GridCollisionHandler(final Collision collision, final BubbleGridManager gridManager) {
+    public GridCollisionHandler(final Collision collision, final AbstractGameMode level) {
         this.shootingBubble = collision.getShootingBubble();
         this.basicBubble  = collision.getCollided();
-        this.gridManager = gridManager;
+        this.gridManager = level.getGridManager();
+        this.gridHelper = level.getGridHelper();
+        this.gameInfoManager = level.getGameInfoManager();
        }
 
     @Override
@@ -26,7 +33,9 @@ public class GridCollisionHandler implements CollisionHandler {
         this.linkToGrid();
         if (this.canExplode()) {
             this.explode();
-         }
+          } else {
+                this.gameInfoManager.addWrongShoots();
+            }
     }
 
     private void linkToGrid() {
@@ -34,8 +43,12 @@ public class GridCollisionHandler implements CollisionHandler {
     }
 
     private void explode() {
-        this.getBubblesToExplode(this.shootingBubble, new HashSet<>()).stream().forEach(a -> a.destroy());
-        this.gridManager.getIsolatedBubbles().forEach(a -> a.destroy());
+        Set<Bubble> toExplode = this.getBubblesToExplode(this.shootingBubble, new HashSet<>());
+        toExplode.forEach(a -> a.destroy());
+        Set<Bubble> isolatedBubbles = this.gridHelper.getIsolatedBubbles();
+        isolatedBubbles.forEach(a -> a.destroy());
+        toExplode.addAll(isolatedBubbles);
+        toExplode.forEach(a -> this.gameInfoManager.addDestroyedBubble());
     }
 
     private boolean canExplode() {
@@ -43,8 +56,8 @@ public class GridCollisionHandler implements CollisionHandler {
     }
 
     private List<Bubble> getNeighboursToExplode(final Bubble bubble) {
-        return this.gridManager.getBubbleNeighbours(bubble).stream()
-                                                           .filter(a -> this.gridManager.areEquals(a, bubble))
+        return this.gridHelper.getBubbleNeighbours(bubble).stream()
+                                                           .filter(a -> this.gridHelper.areEquals(a, bubble))
                                                            .collect(Collectors.toList());
      }
 
@@ -57,7 +70,7 @@ public class GridCollisionHandler implements CollisionHandler {
 
     private Set<Point2D> getFreePlacesToLink() {
         return this.gridManager.getNeighbourPosition(this.basicBubble).stream()
-                                                                      .filter(a -> !this.gridManager.getBubbleNeighbours(this.basicBubble)
+                                                                      .filter(a -> !this.gridHelper.getBubbleNeighbours(this.basicBubble)
                                                                       .stream()
                                                                       .anyMatch(b -> b.getPosition().equals(a)))
                                                                       .filter(a -> a.getX() >= shootingBubble.getRadius() && a.getX() 
