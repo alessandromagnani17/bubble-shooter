@@ -16,13 +16,9 @@ public class BubbleGridManager {
     private GameObjectManager gameObjectManager;
 
     public BubbleGridManager(final GameObjectManager gameObjectManager) {
-	    this.gameObjectManager = gameObjectManager;
+        this.gameObjectManager = gameObjectManager;
 		this.createdRows = 0;
 		this.offsetRow = false;
-	}
-
-	public final List<Bubble> getBubbleNeighbours(final Bubble bubble) {
-		return this.getBubbleGrid().stream().filter(a -> this.isNear(a, bubble)).collect(Collectors.toList());
 	}
 
 	// crea una nuova riga in cima
@@ -40,41 +36,10 @@ public class BubbleGridManager {
 		return newRow;
 	}
 
-	public final double getDistanceBetweenBubbles(final Bubble bubbleAt, final Bubble bubbleTo) {
-		Point2D bubbleAtPos = bubbleAt.getPosition();
-		Point2D bubbleToPos = bubbleTo.getPosition();
-		return     Math.sqrt(Math.pow(bubbleAtPos.getX() - bubbleToPos.getX(), 2)
-				+  Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2));
-	}
-
 	// tira le palline una riga più in giù
 	private void dropBubble() {
 		this.getBubbleGrid().stream().forEach(b -> b.setPosition(
 				new Point2D(b.getPosition().getX(), b.getPosition().getY() + GameCostants.BUBBLE_HEIGTH.getValue())));
-	}
-
-	public final boolean isNear(final Bubble bubbleAt, final Bubble bubbleTo) {
-		return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= GameCostants.DIAGONALDISTANCE.getValue()
-				&& this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
-	}
-
-	private List<Bubble> getLinkedBubbles(final Bubble starting, final List<Bubble> linkedBubbles) {
-		this.getBubbleNeighbours(starting).stream()
-				.filter(a -> !linkedBubbles.contains(a) && !a.isDestroyed() && linkedBubbles.add(a))
-				.forEach(a -> this.getLinkedBubbles(a, linkedBubbles));
-		return linkedBubbles;
-	}
-
-	public final List<Bubble> getIsolatedBubbles() {
-		List<Bubble> firstLineBubbles = this.getBubbleGrid().stream()
-				.filter(a -> a.getPosition().getY() == GameCostants.BUBBLE_HEIGTH.getValue() / 2 && !a.isDestroyed())
-				.collect(Collectors.toList());
-		Set<Bubble> linkedBubbles = new HashSet<Bubble>();
-		linkedBubbles.addAll(firstLineBubbles);
-		for (Bubble bubble : firstLineBubbles) {
-			linkedBubbles.addAll(this.getLinkedBubbles(bubble, new LinkedList<Bubble>()));
-		}
-		return this.getBubbleGrid().stream().filter(a -> !linkedBubbles.contains(a)).collect(Collectors.toList());
 	}
 
 	public final List<Bubble> getBubbleGrid() {
@@ -97,10 +62,6 @@ public class BubbleGridManager {
 
 	public final void removeBubble(final Bubble bubble) {
 		this.gameObjectManager.removeGameObject(bubble);
-	}
-
-	public final boolean areEquals(final Bubble a, final Bubble b) {
-		return a.getColor().equals(b.getColor());
 	}
 
 	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
