@@ -32,7 +32,7 @@ public class GameOverController extends AbstractController {
 			HighscoreStructure store = new HighscoreStructure(this.textArea.getText(), 2500, LevelTypes.BASICMODE);
 			this.highscoreStore.addScore(store);
 			
-			this.getView().loadScene(FXMLPath.HIGHSCORE);
+			this.nextScene();
 		}
 	}
 
