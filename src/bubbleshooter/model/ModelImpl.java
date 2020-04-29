@@ -45,4 +45,9 @@ public class ModelImpl implements Model {
 	public List<Bubble> getBubbles() {
 		return this.gameMode.getGameObjectManager().getAllBubbles();
 	}
+
+	@Override
+	public AbstractGameMode getLevel() {
+		return this.gameMode;
+	}
 }
