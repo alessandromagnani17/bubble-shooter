@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import bubbleshooter.model.gamemodality.LevelTypes;
-import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
+import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +23,6 @@ public class HighscoreController extends AbstractController implements Initializ
     private TableColumn<HighscoreStructure, String> nameBaseColumn; 
     @FXML
     private TableColumn<HighscoreStructure, Integer> scoreBaseColumn;
-    
     @FXML
     private TableView<HighscoreStructure> tableSurvivalView;
     @FXML
@@ -31,6 +30,7 @@ public class HighscoreController extends AbstractController implements Initializ
     @FXML
     private TableColumn<HighscoreStructure, Integer> scoreSurvivalColumn;
     
+    private HighscoreStoreImpl prova = new HighscoreStoreImpl();
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,9 +51,9 @@ public class HighscoreController extends AbstractController implements Initializ
 
 
     private ObservableList<HighscoreStructure> getScores(LevelTypes gameMode) {
-        
-        ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-        HighscoreStoreImpl impl = new HighscoreStoreImpl();
+    	
+    	ObservableList<HighscoreStructure> scoreList;
+        scoreList = this.prova.getHighscoresForModality(gameMode);
         
         return scoreList;
     }

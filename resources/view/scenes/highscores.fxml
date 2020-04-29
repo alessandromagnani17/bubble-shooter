@@ -17,29 +17,25 @@
       </TableView>
       <Label layoutX="174.0" layoutY="12.0" prefHeight="112.0" prefWidth="348.0" text="Highscores" textFill="RED">
          <font>
-            <Font name="Ananda" size="70.0" />
-         </font>
-      </Label>
-      <Label layoutX="91.0" layoutY="158.0" text="Basic Mode" textFill="RED">
+            <Font size="50.0" />
+         </font></Label>
+      <Label layoutX="48.0" layoutY="158.0" prefHeight="43.0" prefWidth="215.0" text="Basic Mode" textFill="RED">
          <font>
-            <Font name="Ananda" size="30.0" />
-         </font>
-      </Label>
+            <Font size="30.0" />
+         </font></Label>
       <TableView fx:id="tableSurvivalView" layoutX="366.0" layoutY="211.0" prefHeight="387.0" prefWidth="303.0">
          <columns>
             <TableColumn fx:id="nameSurvivalColumn" prefWidth="158.76572227478027" text="Name" />
             <TableColumn fx:id="scoreSurvivalColumn" prefWidth="144.2342987060547" text="Time" />
          </columns>
       </TableView>
-      <Label layoutX="422.0" layoutY="159.0" text="Survival Mode" textFill="RED">
+      <Label layoutX="386.0" layoutY="158.0" prefHeight="37.0" prefWidth="215.0" text="Survival Mode" textFill="RED">
          <font>
-            <Font name="Ananda" size="30.0" />
-         </font>
-      </Label>
-      <Button layoutX="475.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="68.0" prefWidth="198.0" text="Back to menu" textFill="RED">
+            <Font size="30.0" />
+         </font></Label>
+      <Button layoutX="475.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="68.0" prefWidth="194.0" text="Back to menu" textFill="RED">
          <font>
-            <Font name="Ananda" size="28.0" />
-         </font>
-      </Button>
+            <Font size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>

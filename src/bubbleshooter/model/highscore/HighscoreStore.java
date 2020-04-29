@@ -19,7 +19,7 @@ public interface HighscoreStore extends Serializable{
      * @param score 
      *              current score to save
      */
-    void addScore(LevelTypes gameMode, HighscoreStructure score);
+    void addScore(HighscoreStructure score);
 
     /**
      * 

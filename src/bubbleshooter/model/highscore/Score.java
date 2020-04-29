@@ -31,5 +31,9 @@ public class Score {
     public Integer getScore() {
         return score.get();
     }
+    
+	public LevelTypes getGameMode() {
+		return gameMode;
+	}
 
 }

@@ -25,26 +25,33 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private final File file;
     private Map<LevelTypes, List<HighscoreStructure>> mapOfItems;
     private final static int CAPACITY = 10;
+    private boolean flag;
     
     public HighscoreStoreImpl() {
     	this.file =  new File(DIR_PATH + FILE_PATH);
         try {
-            System.out.println("!!! ---> Creating file ...");
-            if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
-            if(!file.exists()) this.file.createNewFile();
-            
-            System.out.println("!!! ---> Writing BASIC and SURVIVAL ...");
-            FileWriter fw = new FileWriter(this.file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            
-            bw.write("HIGHSCORES!!\n\n");
-            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-            bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
-            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-            bw.write("END_OF_FILE_END_OF_FILE");
-            
-            bw.flush();
-            bw.close();
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+            if(!file.exists()) {
+                this.file.createNewFile();
+                flag = true;
+            } else {
+                flag = false;
+            }
+            if (flag) {
+                FileWriter fw = new FileWriter(this.file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                
+                bw.write("HIGHSCORES!!\n\n");
+                bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
+                bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
+                bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
+                bw.write("END_OF_FILE_END_OF_FILE");
+                
+                bw.flush();
+                bw.close();
+            }
             
         } catch (IOException e) {
             System.out.println("ERROR !!! Can't create file...");
@@ -59,15 +66,15 @@ public class HighscoreStoreImpl implements HighscoreStore {
     }
 
     @Override
-    public void addScore(final LevelTypes gameMode, final HighscoreStructure score) {
+    public void addScore(final HighscoreStructure score) {
     	
     	this.mapOfItems = readFile();
     	
-    	this.mapOfItems.get(gameMode).add(score);
+    	this.mapOfItems.get(score.getGameMode()).add(score);
     	
-    	sort(this.mapOfItems.get(gameMode));
+    	sort(this.mapOfItems.get(score.getGameMode()));
     	
-    	clean(this.mapOfItems.get(gameMode));
+    	clean(this.mapOfItems.get(score.getGameMode()));
     	
     	reWriteFile();
     }
@@ -87,14 +94,12 @@ public class HighscoreStoreImpl implements HighscoreStore {
         String stringaLetta;
         
         try {
-            System.out.println("!!! ---> Reading from file ...");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             
             stringaLetta = br.readLine();
             while(!stringaLetta.equals("END_OF_FILE_END_OF_FILE")) {
                 stringaLetta = br.readLine();
-                //System.out.println("Stringa letta --> " + stringaLetta);
                 if(stringaLetta.equals(modality)) {
                     stringaLetta = br.readLine();
                     while(!stringaLetta.equals("END_OF_HIGH_END_OF_HIGH")) {
@@ -140,9 +145,6 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 flag = false;
             }
         }
-        
-        //System.out.println("!!! ---> USERNAME LETTO --> " + name);
-        //System.out.println("!!! ---> SCORE LETTO --> " + score);
         
         return new HighscoreStructure(name,Integer.parseInt(score),gameMode);
     }
@@ -200,8 +202,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     @Override
     public ObservableList<HighscoreStructure> getHighscoresForModality(final LevelTypes gameMode) {
-        ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();;
-
+        ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();
+        this.mapOfItems = readFile();
         if (this.mapOfItems.containsKey(gameMode)) {
             result.addAll(this.mapOfItems.get(gameMode));
         } 

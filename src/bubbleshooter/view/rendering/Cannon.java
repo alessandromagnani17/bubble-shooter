@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.view.rendering;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
@@ -8,8 +8,6 @@ public class Cannon extends ImageView {
 
     private ImageView cannon;
     private double angle;
-    private Point2D pivot; 
-    
 
     public Cannon(final Image img) {
         this.cannon = new ImageView(img);
@@ -27,9 +25,4 @@ public class Cannon extends ImageView {
         this.angle = angle;
     }
 
-	public Point2D getPivot() {
-		return pivot;
-	}
-    
-    
 }
