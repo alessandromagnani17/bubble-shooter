@@ -90,9 +90,9 @@ public class GameController extends AbstractController {
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
 
-				if (gameOverController.isGameOver()) {
+				/*if (gameOverController.isGameOver()) {
 					setGameOver();
-				}
+				}*/
 			}
 		});
 	}
