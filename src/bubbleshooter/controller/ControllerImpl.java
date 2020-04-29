@@ -7,7 +7,6 @@ import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
-
 import bubbleshooter.view.View;
 
 public class ControllerImpl implements Controller {
@@ -58,5 +57,4 @@ public class ControllerImpl implements Controller {
 	public List<Bubble> getBubbles() {
 		return this.model.getBubbles();
 	}
-
 }
