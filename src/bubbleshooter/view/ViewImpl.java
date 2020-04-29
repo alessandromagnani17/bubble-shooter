@@ -35,6 +35,8 @@ public class ViewImpl implements View {
 
     private void initalize() {
         this.stage.setTitle(TITLE);
+        this.stage.setMinHeight(GameCostants.GUIHEIGTH.getValue());
+        this.stage.setMinWidth(GameCostants.GUIWIDTH.getValue());
         this.stage.setMaximized(false);
         this.stage.setOnCloseRequest(e -> Runtime.getRuntime().exit(0));
         this.loadScene(FXMLPath.MAIN);
@@ -64,12 +66,9 @@ public class ViewImpl implements View {
     }
 
     private void initStage(final SceneWrapper wrapper) {
-       // final double oldWidth = this.stage.getWidth();
-       // final double oldHeigth = this.stage.getHeight();
         this.stage.setScene(wrapper.getScene());
-        this.stage.setWidth(GameCostants.GUIWIDTH.getValue());
-        this.stage.setHeight(GameCostants.GUIHEIGTH.getValue());
-
+        this.stage.setWidth(this.stage.getWidth());
+        this.stage.setHeight(this.stage.getHeight());
         if (!this.viewStarted) {
             this.stage.setResizable(false);
             this.stage.show();
