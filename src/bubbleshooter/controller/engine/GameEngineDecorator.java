@@ -1,31 +1,45 @@
 package bubbleshooter.controller.engine;
 
-public class GameEngineDecorator implements GameLoop{
+public class GameEngineDecorator implements GameLoop {
 
-    protected GameLoop gameLooop;
-	
-	public GameEngineDecorator(final GameLoop gameLoop) {
-		this.gameLooop = gameLoop;
-	}
+    /**
+    * The BasicGameLoop used by the Decorator.
+    */
+    private GameLoop gameLooop;
 
-	@Override
-	public void startLoop() {
-		this.gameLooop.startLoop();
-	}
+    public GameEngineDecorator(final GameLoop gameLoop) {
+        this.gameLooop = gameLoop;
+    }
 
-	@Override
-	public void stopLoop() {
+    /**
+     * The method to Start the loop of the BasicGameLoop.
+     */
+    @Override
+    public void startLoop() {
+        this.gameLooop.startLoop();
+    }
+
+    /**
+     * The method to Stop the loop of the BasicGameLoop.
+     */
+    @Override
+    public void stopLoop() {
         this.gameLooop.stopLoop();
-	}
+    }
 
-	@Override
-	public void pauseLoop() {
+    /**
+     * The method to pause the loop of the BasicGameLoop.
+     */
+    @Override
+    public void pauseLoop() {
         this.gameLooop.pauseLoop();
-	}
+    }
 
-	@Override
-	public void resumeLoop() {
+    /**
+     * The method to resume the loop of the BasicGameLoop.
+     */
+    @Override
+    public void resumeLoop() {
         this.gameLooop.resumeLoop();
-	}
-
+    }
 }

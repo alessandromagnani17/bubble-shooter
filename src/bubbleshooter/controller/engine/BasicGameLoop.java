@@ -28,12 +28,13 @@ public class BasicGameLoop extends Thread implements GameLoop  {
     public final void startLoop() {
         if (!this.isRunning()) {
             this.isRunning = true;
-            this.isPaused = true;
+            this.isPaused = false;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
         }
     }
 
+    @Override
     public final void run() {
         long lastFrameTime = System.currentTimeMillis();
         while (this.isRunning()) {
@@ -45,12 +46,10 @@ public class BasicGameLoop extends Thread implements GameLoop  {
             }
             lastFrameTime = currentFrameTime;
         }
-        this.view.showGameOver();
-        //musica gameover
-        //score e classifica
+        //this.view.showGameOver();
     }
 
-	@Override
+    @Override
     public final synchronized void stopLoop() {
         this.isRunning = false;
         this.loopThread.interrupt(); // per fermare il thread se si trova in sleep
@@ -76,7 +75,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
 
     private void waitForNextFrame(final long currentFrameTime) {
        long sleepTime;
-       long remainingTime = PERIOD - currentFrameTime;
+       final long remainingTime = PERIOD - currentFrameTime;
        if (remainingTime < 0) {
             sleepTime = PERIOD; 
        } else {

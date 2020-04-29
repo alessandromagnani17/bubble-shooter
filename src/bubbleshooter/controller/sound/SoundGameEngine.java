@@ -5,42 +5,38 @@ import bubbleshooter.controller.engine.GameLoop;
 
 public class SoundGameEngine extends GameEngineDecorator {
 
-	private SoundManager soundManager = new SoundManager();
-	
+    private final SoundManager soundManager = new SoundManager();
+
     public SoundGameEngine(final GameLoop gameLoop) {
         super(gameLoop);
         this.soundManager.loadBackgroundSound(SoundNames.COFFIN.getPath());
     }
 
-	@Override
-	public void startLoop() {
-		super.startLoop();
-		this.soundManager.startSound();
-	}
-	
-	@Override
-	public void stopLoop() {
+    @Override
+    public final void startLoop() {
+        super.startLoop();
+        this.soundManager.startSound();
+    }
+
+    @Override
+    public final void stopLoop() {
         super.stopLoop();
         this.soundManager.stopSound();
-	}
-	
-	@Override
-	public void pauseLoop() {
+    }
+
+    @Override
+    public final void pauseLoop() {
         super.pauseLoop();
         this.soundManager.pauseSound();
-	}
-	
-	@Override
-	public void resumeLoop() {
+   }
+
+    @Override
+    public final void resumeLoop() {
         super.resumeLoop();
         this.soundManager.resumeSound();
-	}
-	
-	public SoundManager getSoundManager() {
-		return this.soundManager;
-	}
-	
-	public GameLoop getGameEngine() {
-		return super.gameLooop;
-	}
+    }
+
+    public final SoundManager getSoundManager() {
+        return this.soundManager;
+    }
 }

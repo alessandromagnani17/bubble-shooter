@@ -53,8 +53,8 @@ public class ControllerImpl implements Controller {
         }
     }
 
-	@Override
-	public List<Bubble> getBubbles() {
-		return this.model.getBubbles();
-	}
+    @Override
+    public final List<Bubble> getBubbles() {
+        return this.model.getBubbles();
+    }
 }

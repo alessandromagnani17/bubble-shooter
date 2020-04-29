@@ -70,7 +70,6 @@ public class GameController extends AbstractController {
 
         this.canvasDrawer = new CanvasDrawer(this.canvas);
         //canvasDrawer.draw(this.getController().getBubbles());
-        getController().resume();
         this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
         	@Override
