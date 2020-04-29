@@ -3,9 +3,11 @@ package bubbleshooter.view.scene.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
 import bubbleshooter.model.highscore.HighscoreStructure;
+import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +34,8 @@ public class HighscoreController extends AbstractController implements Initializ
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	
+    	System.out.println(this.getController().getBubbles());
         
         nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
         scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
@@ -49,9 +53,10 @@ public class HighscoreController extends AbstractController implements Initializ
 
 
     private ObservableList<HighscoreStructure> getScores(LevelTypes gameMode) {
-    	ObservableList<HighscoreStructure> prova = null;
-    	//prova = this.getController().getHighscoreList(gameMode);
+    	ObservableList<HighscoreStructure> prova;
+    	prova = this.getController().getHighscoreList(gameMode); 
     	return prova;
+
     }
     
     public void backToMenu() {
