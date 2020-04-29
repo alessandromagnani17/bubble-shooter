@@ -21,7 +21,7 @@ public class GameInfoManager {
 	}
 
 	public void updateScore(int score) {
-		this.score += score;
+		this.score = score;
 	}
 
 	public int getGameTime() {

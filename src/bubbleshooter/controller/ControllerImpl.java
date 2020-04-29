@@ -9,6 +9,7 @@ import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
 import bubbleshooter.model.highscore.HighscoreStructure;
+
 import bubbleshooter.view.View;
 import javafx.collections.ObservableList;
 
@@ -29,24 +30,24 @@ public class ControllerImpl implements Controller {
      //METODO CHE VERRA INVOCATO DA UN CONTROLLERFXML QUANDO VIENE SPINTO 
      //IL PULSANTE PLAY TRAMITE GETCONTROLLER CHE RESTITUISCE IL CONTROLLER DELLA GUI .startGame()
     @Override
-    public void startGame(final LevelTypes levelType) {
+    public final void startGame(final LevelTypes levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
      this.engine.startLoop();
     }
 
     @Override
-    public void pause() {
+    public final void pause() {
         this.engine.pauseLoop();
     }
 
     @Override
-    public void resume() {
+    public final void resume() {
         this.engine.resumeLoop();
     }
 
     @Override
-    public void setGameOver() {
+    public final void setGameOver() {
         this.engine.stopLoop();
     }
 
@@ -58,14 +59,18 @@ public class ControllerImpl implements Controller {
         }
     }
 
-	@Override
-	public List<Bubble> getBubbles() {
-		return this.model.getBubbles();
-	}
+    @Override
+    public final List<Bubble> getBubbles() {
+        return this.model.getBubbles();
+    }
 
 	@Override
 	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
 		return this.highscoreStore.getHighscoresForModality(gameMode);
 	}
 
+	@Override
+	public int getScore() {
+		return this.model.getLevel().getGameInfoManager().getScore();
+	}
 }

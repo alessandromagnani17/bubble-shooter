@@ -1,14 +1,11 @@
 package bubbleshooter.view.scene.controller;
 
-import java.util.stream.Collectors;
-
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.GameOverController;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
-import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.images.ImagePath;
@@ -21,7 +18,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -51,14 +47,10 @@ public class GameController extends AbstractController {
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
-
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
 		this.setCurrentState(this.inGameState);
-
-		// getController().resume();
-
 		ImageView cannon = new ImageView(new Image(ImagePath.CANNON.getPath()));
 		Rotate rotation = new Rotate();
 		double xBubble = getController().getBubbles().stream()
@@ -89,10 +81,10 @@ public class GameController extends AbstractController {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
-
-				/*if (gameOverController.isGameOver()) {
+				if (gameOverController.isGameOver()) {
+					System.out.println("SCORE: " + getController().getScore());
 					setGameOver();
-				}*/
+				}
 			}
 		});
 	}

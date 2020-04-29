@@ -1,7 +1,6 @@
 package bubbleshooter.controller;
 
 import java.util.List;
-
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
 
