@@ -28,7 +28,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
     public final void startLoop() {
         if (!this.isRunning()) {
             this.isRunning = true;
-            this.isPaused = true;
+            this.isPaused = false;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
         }
