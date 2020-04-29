@@ -47,14 +47,10 @@ public class GameController extends AbstractController {
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
-
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
 		this.setCurrentState(this.inGameState);
-
-		// getController().resume();
-
 		ImageView cannon = new ImageView(new Image(ImagePath.CANNON.getPath()));
 		Rotate rotation = new Rotate();
 		double xBubble = getController().getBubbles().stream()
