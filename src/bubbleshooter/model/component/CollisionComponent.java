@@ -11,7 +11,7 @@ public class CollisionComponent extends AbstractComponent {
     }
 
    public final Shape getCollisionShape() {
-        Point2D bubblePosition = super.getContainer().getPosition();
+        final Point2D bubblePosition = super.getContainer().getPosition();
         return new Circle(bubblePosition.getX(), bubblePosition.getY(), super.getContainer().getRadius());
     }
 }

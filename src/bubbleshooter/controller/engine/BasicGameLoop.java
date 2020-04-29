@@ -76,7 +76,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
 
     private void waitForNextFrame(final long currentFrameTime) {
        long sleepTime;
-       long remainingTime = this.PERIOD - currentFrameTime;
+       long remainingTime = PERIOD - currentFrameTime;
        if (remainingTime < 0) {
             sleepTime = PERIOD; 
        } else {
