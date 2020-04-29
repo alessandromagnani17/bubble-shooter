@@ -20,7 +20,7 @@ public class HandlerAdapterMouseClicked implements EventHandler<MouseEvent> {
     public final void handle(final MouseEvent event) {
         HandlerAdapterMouseMoved handler = new HandlerAdapterMouseMoved(rotation, xBubble, yBubble);
         handler.handle(event);
-        System.out.println("x = " + event.getX() + ", y = " + event.getY());
+        //System.out.println("x = " + event.getX() + ", y = " + event.getY());
     }
 }
 

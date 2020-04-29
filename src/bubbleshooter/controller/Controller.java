@@ -19,7 +19,8 @@ public interface Controller {
     void setGameOver();
 
     List<Bubble> getBubbles();
-
+ 
+    int getScore();
 
 	ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode);
 

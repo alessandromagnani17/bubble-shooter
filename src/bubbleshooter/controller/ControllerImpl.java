@@ -64,12 +64,16 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
-
 	@Override
 	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
 		ObservableList<HighscoreStructure> scoreList;
 		scoreList = this.highscoreStore.getHighscoresForModality(gameMode);
 		System.out.println("Lista ---> " + this.highscoreStore.getHighscoresForModality(gameMode).size());
 		return scoreList;
+	}
+
+	@Override
+	public int getScore() {
+		return this.model.getLevel().getGameInfoManager().getScore();
 	}
 }
