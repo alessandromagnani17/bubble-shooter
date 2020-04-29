@@ -5,6 +5,8 @@ import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.GridBubble;
 import bubbleshooter.model.gameobject.ShootingBubble;
+import bubbleshooter.model.highscore.HighscoreStructure;
+import javafx.collections.ObservableList;
 
 public interface Controller {
 
@@ -18,6 +20,8 @@ public interface Controller {
 
     List<Bubble> getBubbles();
     //DATA MANAGER FOR SCORE
+
+	ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode);
 
     //INPUT MANAGER
 

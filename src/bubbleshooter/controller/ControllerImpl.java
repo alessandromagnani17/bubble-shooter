@@ -8,7 +8,9 @@ import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
+import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.view.View;
+import javafx.collections.ObservableList;
 
 public class ControllerImpl implements Controller {
 
@@ -59,6 +61,14 @@ public class ControllerImpl implements Controller {
 	@Override
 	public List<Bubble> getBubbles() {
 		return this.model.getBubbles();
+	}
+
+	@Override
+	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
+		ObservableList<HighscoreStructure> scoreList;
+		scoreList = this.highscoreStore.getHighscoresForModality(gameMode);
+		System.out.println("Lista ---> " + this.highscoreStore.getHighscoresForModality(gameMode).size());
+		return scoreList;
 	}
 
 }
