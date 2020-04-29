@@ -70,7 +70,9 @@ public abstract class AbstractGameMode {
 
 	public boolean checkGameOver() {
 		// da implementare da qualche parte il metodo che controlla il gameOver
-		return false;
+		//if(pallina più bassa ha y = a shooting) setGameOver
+		return false; 
+	
 	}
 
 	public void setGameStatus(final GameStatus status) {
