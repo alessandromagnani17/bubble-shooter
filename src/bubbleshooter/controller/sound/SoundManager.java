@@ -24,20 +24,19 @@ public final class SoundManager {
 		  try {
               this.audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream(soundTypePath)));
               this.clip = AudioSystem.getClip();
-               this.clip.open(this.audioInputStream);
+              this.clip.open(this.audioInputStream);
           } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
         	  	e.printStackTrace();
           }
-	}
+    }
 	
     public void startSound() {
-    	if(this.isPaused) {
+    	if (this.isPaused) {
     	   this.isPaused = false;
     	   this.clip.setFramePosition(0);
     	   this.clip.start(); 
     	  }
         }
-    
     public void stopSound() {
     	this.clip.stop();
     	this.isPaused = true;
@@ -48,7 +47,7 @@ public final class SoundManager {
     	this.clipFrame = this.clip.getFramePosition();
     	this.clip.stop();
     }
-    
+
     public void resumeSound() {
     	if (this.isPaused) {
     		this.isPaused = false;
@@ -56,9 +55,8 @@ public final class SoundManager {
     	    this.clip.start();
     	}
     }
-    
+
     public boolean isPaused() {
     	return this.isPaused;
     }
-
 }

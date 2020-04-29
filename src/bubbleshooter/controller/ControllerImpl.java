@@ -24,24 +24,24 @@ public class ControllerImpl implements Controller {
      //METODO CHE VERRA INVOCATO DA UN CONTROLLERFXML QUANDO VIENE SPINTO 
      //IL PULSANTE PLAY TRAMITE GETCONTROLLER CHE RESTITUISCE IL CONTROLLER DELLA GUI .startGame()
     @Override
-    public void startGame(final LevelTypes levelType) {
+    public final void startGame(final LevelTypes levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
      this.engine.startLoop();
     }
 
     @Override
-    public void pause() {
+    public final void pause() {
         this.engine.pauseLoop();
     }
 
     @Override
-    public void resume() {
+    public final void resume() {
         this.engine.resumeLoop();
     }
 
     @Override
-    public void setGameOver() {
+    public final void setGameOver() {
         this.engine.stopLoop();
     }
 
