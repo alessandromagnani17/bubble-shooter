@@ -30,8 +30,6 @@ public class HighscoreController extends AbstractController implements Initializ
     @FXML
     private TableColumn<HighscoreStructure, Integer> scoreSurvivalColumn;
     
-    private HighscoreStoreImpl prova = new HighscoreStoreImpl();
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -51,11 +49,8 @@ public class HighscoreController extends AbstractController implements Initializ
 
 
     private ObservableList<HighscoreStructure> getScores(LevelTypes gameMode) {
-    	
-    	ObservableList<HighscoreStructure> scoreList;
-        scoreList = this.prova.getHighscoresForModality(gameMode);
-        
-        return scoreList;
+    	ObservableList<HighscoreStructure> prova = this.getController().getHighscoreList(gameMode);
+    	return prova;
     }
     
     public void backToMenu() {
