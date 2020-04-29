@@ -3,11 +3,10 @@ package bubbleshooter.model.gamemodality;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
-
-import bubbleshooter.controller.GameOverController;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleFactory;
+import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
@@ -17,6 +16,7 @@ public abstract class AbstractGameMode {
 
 	private GameObjectManager gameObjectManager;
 	private BubbleGridManager bubbleGridManager;
+	private BubbleGridHelper bubbleGridHelper;
 	private CollisionController collisionController;
 	private GameInfoManager gameInfoManager;
 	private GameOverChecker gameOverChecker;
@@ -26,7 +26,8 @@ public abstract class AbstractGameMode {
 	public AbstractGameMode() {
 		this.gameObjectManager = new GameObjectManager();
 		this.bubbleGridManager = new BubbleGridManager(this.gameObjectManager);
-		this.collisionController = new CollisionController(this.gameObjectManager, this.bubbleGridManager);
+		this.bubbleGridHelper = new BubbleGridHelper(gameObjectManager);
+		this.collisionController = new CollisionController(this);
 		this.gameInfoManager = new GameInfoManager();
 		this.gameOverChecker = new GameOverChecker(this);
 		this.status = GameStatus.PAUSE;
@@ -85,6 +86,10 @@ public abstract class AbstractGameMode {
 
 	public BubbleGridManager getGridManager() {
 		return this.bubbleGridManager;
+	}
+	
+	public BubbleGridHelper getGridHelper() {
+		return this.bubbleGridHelper;
 	}
 
 	public List<Bubble> getCurrentBubbles() {

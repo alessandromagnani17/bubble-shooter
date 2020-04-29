@@ -2,15 +2,19 @@ package bubbleshooter.controller.sound;
 
 public enum SoundNames {
 
-	BACKGROUND("/sound/background.wav"),
+	BACKGROUND("sound/Background.wav"),
 	
-	SHOT("/sound/shot.wav"),
+	GEOMETRY("sound/Geometry.wav"),
 	
-	POP("/sound/pop.wav"),
+	COFFIN("sound/Coffin.wav"),
 	
-	SNAP("/sound/snap.wav"),
+	SHOT("sound/shot.wav"),
 	
-	BOMB("/sound/bomb.wav");
+	POP("sound/pop.wav"),
+	
+	SNAP("sound/snap.wav"),
+	
+	BOMB("sound/bomb.wav");
 	
 	private final String path;
 

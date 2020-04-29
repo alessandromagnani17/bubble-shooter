@@ -2,6 +2,7 @@
 build/
 bin/
 out/
+doc/
 .idea/
 reports
 # Ignored, as Gradle Buildship generates it on import / refresh

@@ -7,7 +7,7 @@ public interface Component {
     void update(double elapsed);
 
     void setContainer(Bubble parent);
-	
+
     Bubble getContainer();
 
     ComponentType getComponentType();
