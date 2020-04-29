@@ -1,14 +1,10 @@
 package bubbleshooter.view.scene.controller;
 
-import java.util.stream.Collectors;
-
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.GameOverController;
-import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
-import bubbleshooter.utility.GameCostants;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.images.ImagePath;
@@ -21,7 +17,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -76,8 +71,8 @@ public class GameController extends AbstractController {
 		pane.getChildren().add(cannon);
 
 		canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
-		canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
-		canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, xBubble, yBubble));
+		//canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
+		//canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, xBubble, yBubble));
 		this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			@Override
