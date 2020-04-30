@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 
@@ -70,6 +69,4 @@ public class BubbleGridHelper {
                       new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_WIDTH.getValue()));
     }
 
-	
-	
 }

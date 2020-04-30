@@ -28,11 +28,7 @@ public class GameOverController extends AbstractController {
 	
 	public void addToHighscore() {
 		if(!this.textArea.getText().isEmpty()) {
-			// Da creare e aggiungere l'highscore
-			// HighscoreStructure store = new HighscoreStructure(this.textArea.getText(), , LevelTypes.SURVIVALMODE)
-			// this.highscoreStore.addScore(LevelTypes.SURVIVALMODE, store);
-			//HighscoreStructure store = new HighscoreStructure(this.textArea.getText(), 2500, LevelTypes.BASICMODE);
-			//this.highscoreStore.addScore(store);
+			this.getController().saveScore(this.textArea.getText());
 			this.nextScene();
 		}
 	}

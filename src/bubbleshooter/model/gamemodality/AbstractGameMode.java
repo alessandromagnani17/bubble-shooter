@@ -2,6 +2,7 @@ package bubbleshooter.model.gamemodality;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleFactory;
@@ -18,8 +19,9 @@ public abstract class AbstractGameMode {
 	private BubbleGridHelper bubbleGridHelper;
 	private CollisionController collisionController;
 	private GameInfoManager gameInfoManager;
-	private GameOverChecker gameOverChecker; 
+	private GameOverChecker gameOverChecker;
 	private GameStatus status = GameStatus.PAUSE;
+	private LevelTypes currentLevelTypes;
 	// gameDataManager per gestire punteggio
 
 	public AbstractGameMode() {
@@ -28,7 +30,7 @@ public abstract class AbstractGameMode {
 		this.bubbleGridHelper = new BubbleGridHelper(gameObjectManager);
 		this.collisionController = new CollisionController(this);
 		this.gameInfoManager = new GameInfoManager();
-		this.gameOverChecker = new GameOverChecker(this); 
+		this.gameOverChecker = new GameOverChecker(this);
 		this.status = GameStatus.PAUSE;
 	}
 
@@ -50,9 +52,7 @@ public abstract class AbstractGameMode {
 	}
 
 	public final void initGameObject() {
-		for (int i = 0; i < GameCostants.ROWS.getValue(); i++) {
-			this.createNewRow();
-		}
+		Stream.iterate(1, i -> i += 1).limit((long) GameCostants.ROWS.getValue()).forEach(i -> this.createNewRow());
 		this.loadShootingBubble();
 	}
 
@@ -72,9 +72,13 @@ public abstract class AbstractGameMode {
 	public void setGameOver() {
 		this.setGameStatus(GameStatus.GAMEOVER);
 	}
+	
+	public void setCurrentLevelTypes(final LevelTypes level) {
+		this.currentLevelTypes = level;
+	}
 
 	public boolean checkGameOver() {
-		return this.gameOverChecker.checkGameOver(); 
+		return this.gameOverChecker.checkGameOver();
 	}
 
 	public void setGameStatus(final GameStatus status) {
@@ -99,6 +103,10 @@ public abstract class AbstractGameMode {
 
 	public GameInfoManager getGameInfoManager() {
 		return this.gameInfoManager;
+	}
+	
+	public LevelTypes getCurrentLevelTypes() {
+		return this.currentLevelTypes;
 	}
 
 	public abstract void updateScore(double elapsed);

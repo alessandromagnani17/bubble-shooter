@@ -24,6 +24,10 @@ public interface Controller {
 
 	ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode);
 
+	void saveScore(String text);
+
+	void setLevelType(LevelTypes basicmode);
+
     //INPUT MANAGER
 
     //MUSIC 

@@ -6,17 +6,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import bubbleshooter.utility.GameCostants;
 import javafx.geometry.Point2D;
 
 public class BubbleGridManager {
 
-    private int createdRows;
-    private boolean offsetRow;
-    private GameObjectManager gameObjectManager;
+	private int createdRows;
+	private boolean offsetRow;
+	private GameObjectManager gameObjectManager;
 
-    public BubbleGridManager(final GameObjectManager gameObjectManager) {
-        this.gameObjectManager = gameObjectManager;
+	public BubbleGridManager(final GameObjectManager gameObjectManager) {
+		this.gameObjectManager = gameObjectManager;
 		this.createdRows = 0;
 		this.offsetRow = false;
 	}
@@ -24,16 +26,15 @@ public class BubbleGridManager {
 	// crea una nuova riga in cima
 	public final List<Bubble> createNewRow() {
 		List<Bubble> newRow = new LinkedList<>();
+		double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue(): GameCostants.BUBBLE_WIDTH.getValue() / 2;
 		this.dropBubble();
-		double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue()
-				: GameCostants.BUBBLE_WIDTH.getValue() / 2;
-		for (double x = 0; x < GameCostants.ROW_BUBBLE.getValue(); x++) {
-			newRow.add(BubbleFactory.createGridBubble(new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset,
-					GameCostants.BUBBLE_HEIGTH.getValue() / 2)));
-		}
-		this.createdRows++;
-		this.offsetRow = !this.offsetRow;
-		return newRow;
+		Stream.iterate(0 , x -> x += 1).limit((long)GameCostants.ROW_BUBBLE.getValue())
+										.forEach(x -> newRow.add(BubbleFactory.createGridBubble
+												(new Point2D(x * GameCostants.BUBBLE_WIDTH.getValue() + offset,
+														GameCostants.BUBBLE_HEIGTH.getValue() / 2))));
+		this.offsetRow = !offsetRow; 
+		return newRow; 
+
 	}
 
 	// tira le palline una riga più in giù
