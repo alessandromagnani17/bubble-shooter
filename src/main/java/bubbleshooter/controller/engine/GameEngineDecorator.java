@@ -42,4 +42,14 @@ public class GameEngineDecorator implements GameLoop {
     public void resumeLoop() {
         this.gameLooop.resumeLoop();
     }
+
+	@Override
+	public boolean isRunning() {
+		return this.gameLooop.isRunning();
+	}
+
+	@Override
+	public boolean isPaused() {
+		return this.gameLooop.isPaused();
+	}
 }
