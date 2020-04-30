@@ -76,6 +76,6 @@ public class ControllerImpl implements Controller {
 
 	@Override
 	public void saveScore(String text) {
-		//this.highscoreStore.addScore(new HighscoreStructure(text, this.getScore(), gameMode));
+		this.highscoreStore.addScore(new HighscoreStructure(text, this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
 	}
 }
