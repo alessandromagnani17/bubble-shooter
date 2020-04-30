@@ -14,6 +14,8 @@ public class GameOverController extends AbstractController {
 	@FXML private Button addButton;
 	private HighscoreStoreImpl highscoreStore = new HighscoreStoreImpl();
 	
+	
+	
 	@Override
 	public FXMLPath getNextScene() {
 		return FXMLPath.HIGHSCORE;

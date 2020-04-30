@@ -45,16 +45,6 @@ public class BubbleGridManager {
 	public final List<Bubble> getBubbleGrid() {
 		return this.gameObjectManager.getBubbleGrid();
 	}
-	
-	public final Set<Point2D> getNeighbourPosition(final Bubble bubble) {
-        Point2D bubblePos = bubble.getPosition();
-        return Set.of(new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
-                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue(), bubblePos.getY()),
-                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_WIDTH.getValue()),
-                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() - GameCostants.BUBBLE_WIDTH.getValue()),
-                      new Point2D(bubblePos.getX() - GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_WIDTH.getValue()),
-                      new Point2D(bubblePos.getX() + GameCostants.BUBBLE_WIDTH.getValue() / 2, bubblePos.getY() + GameCostants.BUBBLE_WIDTH.getValue()));
-    }
 
 	public final int getCreatedRows() {
 		return this.createdRows;

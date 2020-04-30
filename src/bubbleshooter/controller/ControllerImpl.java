@@ -7,6 +7,7 @@ import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.highscore.HighscoreStore;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
 import bubbleshooter.model.highscore.HighscoreStructure;
 
@@ -18,7 +19,7 @@ public class ControllerImpl implements Controller {
     private final Model model;
     private final View view;
     private GameLoop engine;
-    private HighscoreStoreImpl highscoreStore;
+    private HighscoreStore highscoreStore;
     //GESTIRE LA PARTE DELL INPUT PER STOPPARE E FAR PARTIRE IL GAME LOOP
 
     public ControllerImpl(final Model model, final View view) {

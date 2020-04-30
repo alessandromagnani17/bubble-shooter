@@ -2,6 +2,7 @@ package bubbleshooter.controller.sound;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 public final class SoundManager {
 	
@@ -26,6 +27,7 @@ public final class SoundManager {
 	
     public void startBackgroundSound() {
         this.mediaPlayer.setVolume(this.volume);
+    	this.mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
     	this.mediaPlayer.play();
      }
 
