@@ -72,6 +72,10 @@ public abstract class AbstractGameMode {
 	public void setGameOver() {
 		this.setGameStatus(GameStatus.GAMEOVER);
 	}
+	
+	public void setCurrentLevelTypes(final LevelTypes level) {
+		this.currentLevelTypes = level;
+	}
 
 	public boolean checkGameOver() {
 		return this.gameOverChecker.checkGameOver();
@@ -99,6 +103,10 @@ public abstract class AbstractGameMode {
 
 	public GameInfoManager getGameInfoManager() {
 		return this.gameInfoManager;
+	}
+	
+	public LevelTypes getCurrentLevelTypes() {
+		return this.currentLevelTypes;
 	}
 
 	public abstract void updateScore(double elapsed);
