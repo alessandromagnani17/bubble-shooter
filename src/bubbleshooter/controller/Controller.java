@@ -26,6 +26,8 @@ public interface Controller {
 
 	void saveScore(String text);
 
+	void setLevelType(LevelTypes basicmode);
+
     //INPUT MANAGER
 
     //MUSIC 
