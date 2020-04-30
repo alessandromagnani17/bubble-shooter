@@ -1,25 +1,30 @@
 package bubbleshooter.model.gameobject;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import bubbleshooter.model.component.Component;
+import bubbleshooter.model.component.ComponentType;
+import bubbleshooter.model.component.ShootingComponent;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
 
 public abstract class AbstractBubble implements Bubble {
 
-	private final double radius = 18;
+    private static final double RADIUS = 18;
 	private Point2D position;
-	private Point2D direction;
 	private boolean isDestroyed;
 	private BubbleType type;
 	private BubbleColor color;
+    private List<Component> components;
 	
 	public AbstractBubble(final BubbleType type, final Point2D position) {
 		this.type = type;
 		this.position = position;
-		this.direction = position;
 		this.isDestroyed = false;
 		this.color = BubbleColor.getRandomColor();
 		this.type = type;
 		this.position = position;
+        this.components = new LinkedList<>();
 		this.setComponents();
 	}
 
@@ -48,7 +53,7 @@ public abstract class AbstractBubble implements Bubble {
 
 	@Override
 	public final double getRadius() {
-		return this.radius;
+		return RADIUS;
 	}
 
 	@Override
@@ -71,21 +76,42 @@ public abstract class AbstractBubble implements Bubble {
 	}
 
 	@Override
-	public void update(final double elapsed){
+	public void update(final double elapsed) {
 	}
 
 	@Override
-	public Point2D getDirection() {
-		return this.direction;
+	public final double getWidth() {
+		return RADIUS * 2;
 	}
 
 	@Override
-	public void setDirection(final Point2D direction) {
-		this.direction = direction;
+	public final Optional<Component> getComponent(final ComponentType type) {
+		return this.components.stream()
+				              .filter(a -> a.getComponentType().equals(type))
+                              .findFirst();
 	}
 
 	@Override
-	public double getWidth() {
-		return this.radius * 2;
+	public final void addComponent(final Component component) {
+		this.components.add(component);
 	}
+
+	@Override
+	public final void setDirection(final Point2D direction) {
+        if (this.getComponent(ComponentType.SHOOTINGCOMPONENT).isPresent()) {
+            ShootingComponent shooter = (ShootingComponent) this.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
+            shooter.setDirection(direction);
+        }
+	}
+
+	@Override
+	public final Optional<Point2D> getDirection() {
+		if (this.getComponent(ComponentType.SHOOTINGCOMPONENT).isPresent()) {
+            ShootingComponent shooter = (ShootingComponent) this.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
+            return Optional.of(shooter.getDirection());
+        } else {
+        	return Optional.empty();
+        }
+	}
+
 }
