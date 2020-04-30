@@ -16,6 +16,6 @@ import javafx.geometry.Point2D;
     }
 
     public static void bounce(final Bubble shootingBubble) {
-        shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().getX() * -1, shootingBubble.getDirection().getY()));
+        shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().get().getX() * -1, shootingBubble.getDirection().get().getY()));
     }
 }
