@@ -11,13 +11,13 @@ public class InPauseState extends GameState {
 
 	@Override
 	public void enter() {
-		this.getController().pause();
+		this.getController().getGameEngine().pauseLoop();
 
 	}
 
 	@Override
 	public void exit() {
-		this.getController().resume();
+		this.getController().getGameEngine().resumeLoop();
 
 	}
 
