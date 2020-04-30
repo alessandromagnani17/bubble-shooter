@@ -80,10 +80,6 @@ public class GameController extends AbstractController {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
-				/*if (gameOverController.isGameOver()) {
-					System.out.println("SCORE: " + getController().getScore());
-					setGameOver();
-				}*/
 			}
 		});
 	}

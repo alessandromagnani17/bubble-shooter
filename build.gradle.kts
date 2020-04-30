@@ -13,19 +13,16 @@ plugins {
 
 sourceSets {
 	main {
-		java {
-			srcDirs("src")
-			}
 		resources {
 			srcDirs("resources")
 			}
 		}
-	}
+}
 	
 repositories {
     jcenter() // Contains the whole Maven Central + other stuff
 }
-// List of JavaFX modules you need. Comment out things you are not using.
+
 val javaFXModules = listOf(
     "base",
     "controls",
@@ -38,22 +35,18 @@ val javaFXModules = listOf(
 val supportedPlatforms = listOf("linux", "mac", "win")
 
 dependencies {
-    // Example library: Guava. Add what you need (and remove Guava if you don't use it)
     implementation("com.google.guava:guava:28.1-jre")
 	implementation("org.locationtech.jts:jts-core:1.15.0")
-    // JavaFX: comment out if you do not need them
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:13:$platform")
         }
     }
-        // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
 }
 
 tasks.withType<Test> {
-    // Enables JUnit 5 Jupiter module
     useJUnitPlatform()
 }
 

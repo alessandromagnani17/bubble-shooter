@@ -2,6 +2,8 @@ package bubbleshooter.model.component;
 
 public class ShootingComponent extends AbstractComponent {
 
+    private static final double BUBBLESPEED = 0.7;
+	
     public ShootingComponent() {
         this.setType(ComponentType.SHOOTINGCOMPONENT);
     }
@@ -14,6 +16,6 @@ public class ShootingComponent extends AbstractComponent {
     }
 
     private void moveBubble(final double elapsed) {
-        super.getContainer().setPosition(super.getContainer().getPosition().add(this.getContainer().getDirection().multiply(elapsed)));
+        super.getContainer().setPosition(super.getContainer().getPosition().add(this.getContainer().getDirection().multiply(elapsed).multiply(BUBBLESPEED)));
     }
 }
