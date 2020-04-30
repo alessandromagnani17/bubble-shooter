@@ -78,4 +78,9 @@ public class ControllerImpl implements Controller {
 	public void saveScore(String text) {
 		this.highscoreStore.addScore(new HighscoreStructure(text, this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
 	}
+
+	@Override
+	public void setLevelType(LevelTypes basicmode) {
+		this.model.getLevel().setCurrentLevelTypes(basicmode);
+	}
 }
