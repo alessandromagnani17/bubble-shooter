@@ -1,7 +1,7 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
-import bubbleshooter.controller.GameOverController;
+import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
@@ -67,23 +67,23 @@ public class GameController extends AbstractController {
 		pane.getChildren().add(cannon);
 
 		canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
-		//canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
-		//canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, xBubble, yBubble));
+		canvas.setOnMouseDragged(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
+		canvas.setOnMouseClicked(new HandlerAdapterMouseClicked(rotation, xBubble, yBubble));
+
 		this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(final MouseEvent event) {
-				GameOverController gameOverController = new GameOverController(getController().getBubbles(), LIMITS);
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
 				if (shootingBubble.getPosition().getX() == xBubble && event.getY() < LIMITS_MOUSE) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
-				if (gameOverController.isGameOver()) {
+				/*if (gameOverController.isGameOver()) {
 					System.out.println("SCORE: " + getController().getScore());
 					setGameOver();
-				}
+				}*/
 			}
 		});
 	}
