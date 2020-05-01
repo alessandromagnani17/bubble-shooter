@@ -45,7 +45,7 @@ public class GameController extends AbstractController {
 	private GameState currentState;
 	private GameState inGameState;
 	private GameState inPauseState;
-	private DrawHelpLine help = new DrawHelpLine(this.pane);
+	private DrawHelpLine help;
 
 	@Override
 	public final void init(final Controller controller, final View view) {
@@ -68,8 +68,8 @@ public class GameController extends AbstractController {
 		rotation.setPivotY(yBubble - cannon.getLayoutY());
 		cannon.getTransforms().add(rotation);
 		
-		System.out.println("xBubble --> " + xBubble);
-		System.out.println("yBubble --> " + yBubble);
+		System.out.println("Larghezza --> " + pane.getWidth());
+		System.out.println("Lunghezza --> " + pane.getHeight());
 		
 		
 		
@@ -109,8 +109,11 @@ public class GameController extends AbstractController {
 	}
 	
 	public void helpSelected() {
+		this.help  = new DrawHelpLine(this.pane);;
 		if (this.helpCheckBox.isSelected()) {
 			this.help.drawLine();
+		} else {
+			this.help.deleteLine();
 		}
 	}
 
