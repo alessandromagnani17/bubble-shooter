@@ -14,6 +14,7 @@ import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.states.GameState;
 import bubbleshooter.view.states.InGameState;
 import bubbleshooter.view.states.InPauseState;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -83,15 +84,14 @@ public class GameController extends AbstractController {
 				}
 			}
 		});
+		
 	}
 
 	public final void render() {
 		if (this.isGameOver()) {
 			this.nextScene();
 		}
-		if (this.help.isSelected()) {
-			// Disegnare la linea tratteggiata
-		}
+		
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();
 		canvasDrawer.draw(this.getController().getBubbles());
@@ -99,6 +99,12 @@ public class GameController extends AbstractController {
 	
 	public void switchBall() {
 		System.exit(0);
+	}
+	
+	public void helpSelected() {
+		if (this.help.isSelected()) {
+			
+		}
 	}
 
 	@Override
