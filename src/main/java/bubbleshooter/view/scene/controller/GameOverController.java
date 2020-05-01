@@ -13,6 +13,7 @@ public class GameOverController extends AbstractController {
 	@FXML private Label scoreLabel = new Label();
 	@FXML private Label destroyedBubbleLabel = new Label();
 	@FXML private Label gameTimeLabel = new Label();
+	@FXML private Label wrongShootsLabel = new Label();
 	
 	@Override
 	public final void init(final Controller controller, final View view) {
@@ -20,6 +21,7 @@ public class GameOverController extends AbstractController {
 		this.scoreLabel.setText(String.valueOf(this.getController().getScore()));
 		this.destroyedBubbleLabel.setText(String.valueOf(this.getController().getDestroyedBubbles()));
 		this.gameTimeLabel.setText(String.valueOf(this.getController().getGameTime()));
+		this.wrongShootsLabel.setText(String.valueOf(this.getController().getWrongShoots()));
 	}
 	
 	@Override
