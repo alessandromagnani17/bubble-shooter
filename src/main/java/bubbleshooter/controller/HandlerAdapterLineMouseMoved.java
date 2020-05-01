@@ -54,7 +54,6 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
     	
     	coeffAng = (y2-y1)/(x2-x1);
     	interc = (x2*y1 - x1*y2)/(x2-x1);
-    	boundsLine.setVisible(false);
         if(boundsLine.isVisible()) {
         	boundsLine.setVisible(false);
         }
@@ -84,6 +83,10 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
         	writeLine(boundsLine, xInt, yInt, 705, newY);
         	
         }
+		
+		if(!this.helpLine.isVisible()) {
+			this.boundsLine.setVisible(false);
+		}
 		
 	}
 
