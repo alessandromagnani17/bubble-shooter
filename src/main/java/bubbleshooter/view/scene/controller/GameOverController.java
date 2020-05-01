@@ -11,11 +11,15 @@ public class GameOverController extends AbstractController {
 	
 	@FXML private TextArea textArea = new TextArea();
 	@FXML private Label scoreLabel = new Label();
+	@FXML private Label destroyedBubbleLabel = new Label();
+	@FXML private Label gameTimeLabel = new Label();
 	
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
 		this.scoreLabel.setText(String.valueOf(this.getController().getScore()));
+		this.destroyedBubbleLabel.setText(String.valueOf(this.getController().getDestroyedBubbles()));
+		this.gameTimeLabel.setText(String.valueOf(this.getController().getGameTime()));
 	}
 	
 	@Override
