@@ -6,6 +6,8 @@ import javafx.scene.transform.Rotate;
 
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
+    private static final double MAXANGLE =  65.0;
+    private static final double MINANGLE = -65.0;
     private Rotate rotation = new Rotate();
     private double xBubble;
     private double yBubble;
@@ -20,7 +22,16 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         double hypotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
         double cathetus = (event.getX() - xBubble);
 
-        return Math.toDegrees(Math.asin(cathetus / hypotenuse));
+        return checkAngle(Math.toDegrees(Math.asin(cathetus / hypotenuse)));
+    }
+
+    public final double checkAngle(final double angle) {
+        if (angle > MAXANGLE) {
+            return MAXANGLE;
+        } else if (angle < MINANGLE) {
+            return MINANGLE;
+        }
+        return angle;
     }
 
     @Override
