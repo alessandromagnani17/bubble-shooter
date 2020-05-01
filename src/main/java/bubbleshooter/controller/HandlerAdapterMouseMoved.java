@@ -7,8 +7,6 @@ import javafx.scene.transform.Rotate;
 
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
-    private static final double MAXANGLE =  65.0;
-    private static final double MINANGLE = -65.0;
     private Rotate rotation = new Rotate();
     private double xBubble;
     private double yBubble;
