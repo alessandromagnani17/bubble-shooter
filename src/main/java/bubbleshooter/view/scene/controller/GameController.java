@@ -4,8 +4,8 @@ import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleColor;
 import bubbleshooter.model.gameobject.BubbleType;
-import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.images.ImagePath;
@@ -27,8 +27,8 @@ import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
 
-    private static final double MAXANGLE =  65.0;
-    private static final double MINANGLE = -65.0;
+    private static final double MAXANGLE =  64.9;
+    private static final double MINANGLE = -64.9;
 	
 	@FXML
 	private Canvas canvas;
@@ -97,8 +97,15 @@ public class GameController extends AbstractController {
 		canvasDrawer.draw(this.getController().getBubbles());
 	}
 	
-	public void switchBall() {
-		System.exit(0);
+	public final void switchBall() {
+		/*this.getController().getBubbles().stream()
+		.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
+		.setColor(this.getController().getBubbles().stream()
+		.filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get().getColor());*/
+		this.getController().getBubbles().stream()
+		.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
+		.setColor(BubbleColor.PURPLE);
+		
 	}
 
 	@Override
@@ -149,6 +156,4 @@ public class GameController extends AbstractController {
 	public GameState getInPauseState() {
 		return inPauseState;
 	}
-	
-
 }
