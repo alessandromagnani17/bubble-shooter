@@ -69,11 +69,6 @@ public class GameController extends AbstractController {
 		rotation.setPivotY(yBubble - cannon.getLayoutY());
 		cannon.getTransforms().add(rotation);
 		
-		System.out.println("Larghezza --> " + pane.getWidth());
-		System.out.println("Lunghezza --> " + pane.getHeight());
-		
-		
-		
 		pane.getChildren().add(cannon);
 
 		canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
