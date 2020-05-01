@@ -50,6 +50,7 @@ public class GameController extends AbstractController {
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
+		this.help  = new DrawHelpLine(this.pane);
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
@@ -109,11 +110,13 @@ public class GameController extends AbstractController {
 	}
 	
 	public void helpSelected() {
-		this.help  = new DrawHelpLine(this.pane);;
 		if (this.helpCheckBox.isSelected()) {
 			this.help.drawLine();
+			System.out.println("Selezionato");
 		} else {
+			System.out.println("NON Selezionato");
 			this.help.deleteLine();
+			
 		}
 	}
 
