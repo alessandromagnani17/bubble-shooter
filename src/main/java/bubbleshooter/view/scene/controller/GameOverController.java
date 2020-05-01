@@ -1,11 +1,7 @@
 package bubbleshooter.view.scene.controller;
 
-import bubbleshooter.model.gamemodality.LevelTypes;
-import bubbleshooter.model.highscore.HighscoreStoreImpl;
-import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.view.scene.FXMLPath;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class GameOverController extends AbstractController {
