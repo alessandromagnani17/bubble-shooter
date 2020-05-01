@@ -3,10 +3,7 @@ package bubbleshooter.view.images;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
-
 import javafx.scene.image.Image;
-
-
 
 /**
  * A simple image loader with caching.
@@ -36,11 +33,6 @@ public class ImageLoader {
      * @return the image of the object required.
      */
     public Image getImage(final ImagePath imagePath) {
-        /*if (imagePath.equals(ImagePath.BUBBLE) && !this.imageMap.containsKey(imagePath)) {
-            final Image img = this.loadImage(Color.getRandomColor()); 
-            this.imageMap.put(imagePath, img); 
-        }
-        */
         if (!this.imageMap.containsKey(imagePath)) {
             final Image img = this.loadImage(imagePath.getPath());
             this.imageMap.put(imagePath, img);
@@ -49,7 +41,6 @@ public class ImageLoader {
         return this.imageMap.get(imagePath);
 
     }
-
     /**
      * Loads all images.
      */
