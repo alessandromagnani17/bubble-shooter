@@ -117,7 +117,6 @@ public class GameController extends AbstractController {
 			this.help.drawLine();
 		} else {
 			this.help.deleteLine();
-			
 		}
 	}
 
