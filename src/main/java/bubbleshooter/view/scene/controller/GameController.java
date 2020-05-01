@@ -107,9 +107,7 @@ public class GameController extends AbstractController {
 	public void helpSelected() {
 		if (this.helpCheckBox.isSelected()) {
 			this.help.drawLine();
-			System.out.println("Selezionato");
 		} else {
-			System.out.println("NON Selezionato");
 			this.help.deleteLine();
 			
 		}
