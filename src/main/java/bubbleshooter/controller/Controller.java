@@ -28,6 +28,8 @@ public interface Controller {
 
 	double getGameTime();
 
+	int getWrongShoots();
+
     //INPUT MANAGER
 
     //MUSIC 
