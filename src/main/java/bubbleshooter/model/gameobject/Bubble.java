@@ -1,35 +1,42 @@
 package bubbleshooter.model.gameobject;
 
+import java.util.Optional;
+import bubbleshooter.model.component.CollisionComponent;
+import bubbleshooter.model.component.Component;
+import bubbleshooter.model.component.ComponentType;
+import bubbleshooter.model.component.ShootingComponent;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
 
 public interface Bubble {
 	
-	Point2D getPosition(); 
-	
-	Point2D getDirection();
-	
-	Shape getShape();
 
 	void setPosition(Point2D position);
 	
-	void setDirection(Point2D direction);
+    void setDirection(Point2D direction);
 	
-    boolean isDestroyed();
+    void setType(BubbleType type); 
 
     void destroy();
 
     void update(double elapsed);
 
+    void setColor(BubbleColor color); 
+
+    void addComponent(Component component);
+
     double getRadius(); 
-    
+
     double getWidth();
+
+    boolean isDestroyed();
 
     BubbleType getType(); 
 
-    void setType(BubbleType type); 
-
     BubbleColor getColor(); 
 
-    void setColor(BubbleColor color); 
+    Optional<Component> getComponent(ComponentType type);
+
+	Point2D getPosition(); 
+	
+	Optional<Point2D> getDirection();
 }

@@ -7,6 +7,10 @@ public abstract class AbstractComponent implements Component {
     private Bubble container;
     private ComponentType type;
 
+    public AbstractComponent(final Bubble container) {
+        this.container = container;
+    }
+
     @Override
     public void update(final double elapsed) {
     }
@@ -30,4 +34,5 @@ public abstract class AbstractComponent implements Component {
     public final void setType(final ComponentType type) {
         this.type = type;
     }
+
 }

@@ -9,4 +9,8 @@ public interface GameLoop {
     void pauseLoop();
 
     void resumeLoop();
+
+    boolean isRunning();
+
+    boolean isPaused();
 }

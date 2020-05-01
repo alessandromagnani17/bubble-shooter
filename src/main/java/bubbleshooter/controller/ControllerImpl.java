@@ -37,21 +37,6 @@ public class ControllerImpl implements Controller {
      this.engine.startLoop();
     }
 
-    @Override
-    public final void pause() {
-        this.engine.pauseLoop();
-    }
-
-    @Override
-    public final void resume() {
-        this.engine.resumeLoop();
-    }
-
-    @Override
-    public final void setGameOver() {
-        this.engine.stopLoop();
-    }
-
     private void startSelectedGame(final LevelTypes levelType) {
         if (levelType.equals(LevelTypes.BASICMODE)) {
             this.model.startBasicGame();
@@ -83,5 +68,10 @@ public class ControllerImpl implements Controller {
 	@Override
 	public void setLevelType(LevelTypes basicmode) {
 		this.model.getLevel().setCurrentLevelTypes(basicmode);
+	}
+
+	@Override
+	public GameLoop getGameEngine() {
+		return this.engine;
 	}
 }

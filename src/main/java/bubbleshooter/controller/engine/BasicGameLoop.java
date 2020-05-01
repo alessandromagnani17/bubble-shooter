@@ -52,7 +52,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
     @Override
     public final synchronized void stopLoop() {
         this.isRunning = false;
-        this.loopThread.interrupt(); // per fermare il thread se si trova in sleep
+        this.loopThread.interrupt(); 
     }
 
     @Override
@@ -65,11 +65,11 @@ public class BasicGameLoop extends Thread implements GameLoop  {
         this.isPaused = false;
     }
 
-    private boolean isPaused() {
-        return this.isPaused || this.model.getGameStatus().equals(GameStatus.PAUSE);
+    public final boolean isPaused() {
+        return this.isPaused;
     }
 
-    private boolean isRunning() {
+    public final boolean isRunning() {
         return this.isRunning;
     }
 

@@ -1,5 +1,7 @@
 package bubbleshooter.model.collision;
 
+import bubbleshooter.model.component.CollisionComponent;
+import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.GameInfoManager;
 import bubbleshooter.model.gameobject.Bubble;
@@ -26,6 +28,7 @@ public class CollisionController {
         final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
         for (final Bubble basicbubble : this.level.getGridManager().getBubbleGrid()) {
             if (this.hasCollided(shootingBubble, basicbubble)) {
+            	System.out.println("here");
                 Collision collision = new Collision(shootingBubble, basicbubble);
                 CollisionHandler handler = new GridCollisionHandler(collision, this.level);
                 handler.handle();
@@ -45,7 +48,14 @@ public class CollisionController {
     }
 
     private boolean hasCollided(final Bubble bubbleAt, final Bubble bubbleTo) {
-        return Shape.intersect(bubbleAt.getShape(), bubbleTo.getShape()).getBoundsInLocal().getWidth() != -1;
+        if (bubbleAt.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent() 
+         && bubbleTo.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent()) {
+             CollisionComponent first = (CollisionComponent) bubbleAt.getComponent(ComponentType.COLLISIONCOMPONENT).get();
+             CollisionComponent second = (CollisionComponent) bubbleTo.getComponent(ComponentType.COLLISIONCOMPONENT).get();
+             return Shape.intersect(first.getCollisionShape(), second.getCollisionShape()).getBoundsInLocal().getWidth() != -1;
+        } else {
+            return false;
+        }
     }
 
 }
