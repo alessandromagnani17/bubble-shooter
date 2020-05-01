@@ -18,7 +18,6 @@ public class GameOverChecker {
 		for (Bubble bubble : gameMode.getCurrentBubbles()) {
 	        if (bubble.getType().equals(BubbleType.GRID_BUBBLE)) {
 	            if (bubble.getPosition().getY() > LIMITS) {
-	            	System.out.println("GAMEOVVERRRR");
 	                return true;
 	            }
 	        }
