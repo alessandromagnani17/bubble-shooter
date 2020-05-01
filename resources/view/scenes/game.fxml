@@ -17,10 +17,10 @@
 
    <children>
       <Canvas fx:id="canvas" height="700.0" width="705.0" />
-      <Button fx:id="pause" layoutX="561.0" layoutY="660.0" mnemonicParsing="false" text="Pause" />
-      <Button layoutX="629.0" layoutY="660.0" mnemonicParsing="false" text="Restart" />
-      <CheckBox fx:id="helpCheckBox" layoutX="14.0" layoutY="664.0" mnemonicParsing="false" onMouseClicked="#helpSelected" text="Help" />
+      <Button fx:id="pause" layoutX="561.0" layoutY="645.0" mnemonicParsing="false" text="Pause" />
+      <Button layoutX="629.0" layoutY="645.0" mnemonicParsing="false" text="Restart" />
+      <CheckBox fx:id="helpCheckBox" layoutX="14.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#helpSelected" text="Help" />
       <Line endX="375.0" layoutX="330.0" layoutY="574.0" startX="-330.0" />
-      <Button layoutX="489.0" layoutY="660.0" mnemonicParsing="false" onMouseClicked="#switchBall" text="Switch" />
+      <Button layoutX="489.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#switchBall" text="Switch" />
    </children>
 </AnchorPane>
