@@ -59,6 +59,11 @@ public class ControllerImpl implements Controller {
 	public int getScore() {
 		return this.model.getLevel().getGameInfoManager().getScore();
 	}
+	
+	@Override
+	public int getDestroyedBubbles() {
+		return this.model.getLevel().getGameInfoManager().getDestroyedBubbles();
+	}
 
 	@Override
 	public void saveScore(String text) {
