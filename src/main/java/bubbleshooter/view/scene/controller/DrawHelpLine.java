@@ -26,7 +26,9 @@ public class DrawHelpLine {
 	}
 
 	private void setRotation() {
-		
+		this.rotation.setPivotX(X_BUBBLE - 352.5);
+		this.rotation.setPivotY(Y_BUBBLE - 574.0);
+		this.helpLine.getTransforms().add(this.rotation);
 	}
 
 	public void drawLine() {
