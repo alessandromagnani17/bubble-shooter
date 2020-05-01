@@ -24,6 +24,8 @@ public interface Controller {
 
 	void setLevelType(LevelTypes basicmode);
 
+	int getDestroyedBubbles();
+
     //INPUT MANAGER
 
     //MUSIC 
