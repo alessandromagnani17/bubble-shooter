@@ -96,6 +96,10 @@ public class GameController extends AbstractController {
 		this.clearCanvas();
 		canvasDrawer.draw(this.getController().getBubbles());
 	}
+	
+	public void switchBall() {
+		System.exit(0);
+	}
 
 	@Override
 	public final FXMLPath getNextScene() {
