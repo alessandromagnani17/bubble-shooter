@@ -13,6 +13,7 @@ public class GameObjectManager {
 
     private List<Bubble> bubbles;
 
+    
     public GameObjectManager() {
         this.bubbles = new LinkedList<>();
     } 
@@ -49,18 +50,18 @@ public class GameObjectManager {
             ShootingComponent shooter = (ShootingComponent) shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
             shooter.setDirection(shootingBubble.getPosition());
         }
-        shootingBubble.setColor(BubbleColor.getRandomColor());
+        shootingBubble.setColor(getSwitchBubble().getColor());
     }
 
-   /* public final void reloadSwitchBubble() {
+    public final void reloadSwitchBubble() {
     	Bubble switchBubble = this.getSwitchBubble();
     	switchBubble.setPosition(new Point2D(600, 600));
     	if (switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).isPresent()) {
     		SwitchComponent switcher = (SwitchComponent) switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).get();
     		switcher.setBubbleColor(switchBubble.getColor());
     	}
-    	switchBubble.setColor(this.getShootingBubble().getColor());
-    }*/
+    	switchBubble.setColor(BubbleColor.getRandomColor());
+    }
 
     public final List<Bubble> getBubbleGrid() {
         return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.GRID_BUBBLE)).collect(Collectors.toList());
