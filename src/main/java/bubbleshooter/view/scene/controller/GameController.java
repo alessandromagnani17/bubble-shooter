@@ -24,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
@@ -38,12 +39,13 @@ public class GameController extends AbstractController {
 	private AnchorPane pane;
 
 	@FXML
-	private CheckBox help = new CheckBox("Help");
+	private CheckBox helpCheckBox = new CheckBox("Help");
 	private CanvasDrawer canvasDrawer;
 	private boolean gameOver;
 	private GameState currentState;
 	private GameState inGameState;
 	private GameState inPauseState;
+	private DrawHelpLine help = new DrawHelpLine(this.pane);
 
 	@Override
 	public final void init(final Controller controller, final View view) {
@@ -65,7 +67,12 @@ public class GameController extends AbstractController {
 		rotation.setPivotX(xBubble - cannon.getLayoutX());
 		rotation.setPivotY(yBubble - cannon.getLayoutY());
 		cannon.getTransforms().add(rotation);
-
+		
+		System.out.println("xBubble --> " + xBubble);
+		System.out.println("yBubble --> " + yBubble);
+		
+		
+		
 		pane.getChildren().add(cannon);
 
 		canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
@@ -102,8 +109,8 @@ public class GameController extends AbstractController {
 	}
 	
 	public void helpSelected() {
-		if (this.help.isSelected()) {
-			
+		if (this.helpCheckBox.isSelected()) {
+			this.help.drawLine();
 		}
 	}
 
