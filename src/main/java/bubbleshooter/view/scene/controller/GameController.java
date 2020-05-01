@@ -41,7 +41,7 @@ public class GameController extends AbstractController {
 	@FXML
 	private CheckBox helpCheckBox = new CheckBox("Help");
 	private CanvasDrawer canvasDrawer;
-	private boolean gameOver;
+	private static boolean gameOver;
 	private GameState currentState;
 	private GameState inGameState;
 	private GameState inPauseState;
@@ -131,11 +131,11 @@ public class GameController extends AbstractController {
 	}
 
 	public final boolean isGameOver() {
-		return this.gameOver;
+		return gameOver;
 	}
 
-	public final void setGameOver() {
-		this.gameOver = true;
+	public static final void setGameOver() {
+		gameOver = true;
 	}
 
 	public final boolean checkAngle(final double angle) {
