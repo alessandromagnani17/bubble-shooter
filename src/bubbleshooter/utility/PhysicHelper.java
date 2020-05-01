@@ -2,6 +2,7 @@ package bubbleshooter.utility;
 
 import bubbleshooter.model.gameobject.Bubble;
 import javafx.geometry.Point2D;
+import javafx.scene.input.MouseEvent;
 
  public final class PhysicHelper {
 
@@ -17,5 +18,12 @@ import javafx.geometry.Point2D;
 
     public static void bounce(final Bubble shootingBubble) {
         shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().getX() * -1, shootingBubble.getDirection().getY()));
+    }
+    
+    public static double calculateAngle(final MouseEvent event, final double xBubble, final double yBubble) {
+        double hypotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
+        double cathetus = (event.getX() - xBubble);
+
+        return Math.toDegrees(Math.asin(cathetus / hypotenuse));
     }
 }
