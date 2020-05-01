@@ -64,6 +64,12 @@ public class ControllerImpl implements Controller {
 	public int getDestroyedBubbles() {
 		return this.model.getLevel().getGameInfoManager().getDestroyedBubbles();
 	}
+	
+	@Override
+	public double getGameTime() {
+		return this.model.getLevel().getGameInfoManager().getGameTime();
+	}
+
 
 	@Override
 	public void saveScore(String text) {
