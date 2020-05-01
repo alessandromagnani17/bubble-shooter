@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.GameInfoManager;
@@ -73,8 +73,8 @@ public class GridCollisionHandler implements CollisionHandler {
                                                                       .filter(a -> !this.gridHelper.getBubbleNeighbours(this.basicBubble)
                                                                       .stream()
                                                                       .anyMatch(b -> b.getPosition().equals(a)))
-                                                                      .filter(a -> a.getX() >= shootingBubble.getRadius() && a.getX() 
-                                                                      <= GameCostants.GUIWIDTH.getValue() - shootingBubble.getRadius())
+                                                                      .filter(a -> a.getX() >= Bubble.getRadius() && a.getX() 
+                                                                      <= Settings.getGuiWidth() - Bubble.getRadius())
                                                                       .collect(Collectors.toSet());
      }
 

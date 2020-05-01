@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 
 public class ShootingComponent extends AbstractComponent {
 
-    private static final double BUBBLESPEED = 0.7;
+    private static final double BUBBLESPEED = 0.9;
     private Point2D direction;
 
     public ShootingComponent(final Bubble container) {
@@ -30,6 +30,6 @@ public class ShootingComponent extends AbstractComponent {
     }
 
     public final Point2D getDirection() {
-    	return this.direction;
+        return this.direction;
     }
 }
