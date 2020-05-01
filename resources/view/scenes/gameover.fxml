@@ -29,7 +29,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="347.0" layoutY="202.0" prefHeight="37.0" prefWidth="80.0" textFill="RED">
+      <Label fx:id="scoreLabel" layoutX="347.0" layoutY="202.0" prefHeight="37.0" prefWidth="80.0" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
