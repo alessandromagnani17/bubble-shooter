@@ -49,9 +49,5 @@ public class DrawHelpLine {
 	public void deleteLine() {
 		this.helpLine.setVisible(false);
 	}
-	
-	public Line getHelpLine() {
-		return this.helpLine;
-	}
 
 }
