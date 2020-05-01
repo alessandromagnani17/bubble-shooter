@@ -1,5 +1,6 @@
 package bubbleshooter.view.scene.controller;
 
+import bubbleshooter.controller.HandlerAdapterLineMouseMoved;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import javafx.scene.layout.AnchorPane;
@@ -21,13 +22,13 @@ public class DrawHelpLine {
 		this.pane = pane;
 		this.editHelpLine();
 		this.setRotation();
-		this.pane.setOnMouseMoved(new HandlerAdapterMouseMoved(this.rotation, 352.5, 574.0));
 		this.borderLeft.setVisible(false);
 		this.borderRight.setVisible(false);
 		this.helpLine.setVisible(false);
 		this.pane.getChildren().add(borderRight);
 		this.pane.getChildren().add(borderLeft);
 		this.pane.getChildren().add(helpLine);
+		this.pane.setOnMouseMoved(new HandlerAdapterLineMouseMoved(this.rotation, 352.5, 574.0, this.helpLine, this.borderLeft, this.borderRight));
 	}
 
 	private void editHelpLine() {
