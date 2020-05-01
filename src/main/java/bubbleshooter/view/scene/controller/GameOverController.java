@@ -11,10 +11,7 @@ import javafx.scene.control.TextArea;
 public class GameOverController extends AbstractController {
 	
 	@FXML private TextArea textArea = new TextArea();
-	@FXML private Button addButton;
 	private HighscoreStoreImpl highscoreStore = new HighscoreStoreImpl();
-	
-	
 	
 	@Override
 	public FXMLPath getNextScene() {
