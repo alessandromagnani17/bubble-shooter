@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.model.component.ShootingComponent;
-import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public class GameObjectManager {
@@ -39,7 +39,7 @@ public class GameObjectManager {
 
     public final void reloadShootingBubble() {
         Bubble shootingBubble = this.getShootingBubble();
-        shootingBubble.setPosition(new Point2D(GameCostants.GUIWIDTH.getValue() / 2, 600));
+        shootingBubble.setPosition(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()));
         if (shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).isPresent()) {
             ShootingComponent shooter = (ShootingComponent) shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
             shooter.setDirection(shootingBubble.getPosition());

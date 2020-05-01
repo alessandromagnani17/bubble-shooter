@@ -9,7 +9,7 @@ import bubbleshooter.model.gameobject.BubbleFactory;
 import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode {
@@ -52,7 +52,7 @@ public abstract class AbstractGameMode {
 	}
 
 	public final void initGameObject() {
-		Stream.iterate(1, i -> i += 1).limit((long) GameCostants.ROWS.getValue()).forEach(i -> this.createNewRow());
+		Stream.iterate(1, i -> i += 1).limit((long) Settings.getNumRows()).forEach(i -> this.createNewRow());
 		this.loadShootingBubble();
 	}
 
@@ -62,7 +62,7 @@ public abstract class AbstractGameMode {
 
 	public void loadShootingBubble() {
 		this.gameObjectManager.addBubble(Collections.singletonList(
-				BubbleFactory.createShootingBubble(new Point2D(GameCostants.GUIWIDTH.getValue() / 2, 600))));
+				BubbleFactory.createShootingBubble(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
 	}
 
 	public final GameObjectManager getGameObjectManager() {
@@ -95,6 +95,10 @@ public abstract class AbstractGameMode {
 	
 	public BubbleGridHelper getGridHelper() {
 		return this.bubbleGridHelper;
+	}
+	
+	public CollisionController getCollisionController() {
+		return this.collisionController;
 	}
 
 	public List<Bubble> getCurrentBubbles() {

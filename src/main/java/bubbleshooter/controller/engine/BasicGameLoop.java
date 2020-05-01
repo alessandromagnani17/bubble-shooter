@@ -65,7 +65,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
             }
             lastFrameTime = currentFrameTime;
         }
-        //this.view.showGameOver();
+        this.view.showGameOver();
     }
 
     /**
