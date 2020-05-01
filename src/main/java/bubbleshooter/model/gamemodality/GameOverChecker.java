@@ -24,7 +24,6 @@ public class GameOverChecker {
 	        }
 	    }
 	    return false;
-	    
 	}
 
 }
