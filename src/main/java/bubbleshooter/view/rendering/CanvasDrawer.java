@@ -10,6 +10,7 @@ import bubbleshooter.view.images.ImagePath;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class CanvasDrawer {
 
@@ -56,6 +57,8 @@ public class CanvasDrawer {
 				e.printStackTrace();
 			}
 		});
+		
+		gc.drawImage(new Image(ImagePath.GREEN_BUBBLE.getPath()), (double)600, (double)600);
 	}
 
 	private List<Sprite> createSpriteList(List<Bubble> bubbles) {
