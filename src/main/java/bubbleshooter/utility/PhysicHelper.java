@@ -5,6 +5,9 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 
  public final class PhysicHelper {
+	 
+	 private static final double MAXANGLE =  65.0;
+	    private static final double MINANGLE = -65.0;
 
     private PhysicHelper() {
     }
@@ -24,6 +27,15 @@ import javafx.scene.input.MouseEvent;
         double hypotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
         double cathetus = (event.getX() - xBubble);
 
-        return Math.toDegrees(Math.asin(cathetus / hypotenuse));
+        return checkAngle(Math.toDegrees(Math.asin(cathetus / hypotenuse)));
+    }
+    
+    private static double checkAngle(final double angle) {
+        if (angle > MAXANGLE) {
+            return MAXANGLE;
+        } else if (angle < MINANGLE) {
+            return MINANGLE;
+        }
+        return angle;
     }
 }
