@@ -28,7 +28,7 @@ public class DrawHelpLine {
 		this.pane.getChildren().add(borderRight);
 		this.pane.getChildren().add(borderLeft);
 		this.pane.getChildren().add(helpLine);
-		this.pane.setOnMouseMoved(new HandlerAdapterLineMouseMoved(this.rotation, 352.5, 574.0, this.helpLine, this.borderLeft, this.borderRight));
+		this.pane.setOnMouseMoved(new HandlerAdapterLineMouseMoved(this.rotation, 352.5, 574.0, this.helpLine, this.borderLeft, this.borderRight, this.pane));
 	}
 
 	private void editHelpLine() {
