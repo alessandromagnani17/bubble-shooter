@@ -10,6 +10,7 @@ import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.GameCostants;
+import bubbleshooter.view.scene.controller.GameController;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode {
@@ -47,7 +48,9 @@ public abstract class AbstractGameMode {
 		if (this.isTimeToNewRow(elapsed)) {
 			this.createNewRow();
 		}
-		this.checkGameOver();
+		if (this.checkGameOver()) {
+			GameController.setGameOver();
+		}
 
 	}
 
