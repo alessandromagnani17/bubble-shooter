@@ -5,7 +5,7 @@ import bubbleshooter.model.gameobject.BubbleType;
 
 public class GameOverChecker {
 
-	private static final double LIMITS = 450.0;
+    private static final double LIMITS = 450.0;
 	private AbstractGameMode gameMode;
 
 	public GameOverChecker(final AbstractGameMode gameMode) {
@@ -18,13 +18,11 @@ public class GameOverChecker {
 		for (Bubble bubble : gameMode.getCurrentBubbles()) {
 	        if (bubble.getType().equals(BubbleType.GRID_BUBBLE)) {
 	            if (bubble.getPosition().getY() > LIMITS) {
-	            	System.out.println("GAMEOVVERRRR");
 	                return true;
 	            }
 	        }
 	    }
 	    return false;
-	    
 	}
 
 }

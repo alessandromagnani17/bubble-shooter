@@ -2,8 +2,12 @@ package bubbleshooter.utility;
 
 import bubbleshooter.model.gameobject.Bubble;
 import javafx.geometry.Point2D;
+import javafx.scene.input.MouseEvent;
 
  public final class PhysicHelper {
+	 
+	 private static final double MAXANGLE =  65.0;
+	    private static final double MINANGLE = -65.0;
 
     private PhysicHelper() {
     }
@@ -16,6 +20,22 @@ import javafx.geometry.Point2D;
     }
 
     public static void bounce(final Bubble shootingBubble) {
-        shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().getX() * -1, shootingBubble.getDirection().getY()));
+        shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().get().getX() * -1, shootingBubble.getDirection().get().getY()));
+    }
+    
+    public static double calculateAngle(final MouseEvent event, final double xBubble, final double yBubble) {
+        double hypotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
+        double cathetus = (event.getX() - xBubble);
+
+        return checkAngle(Math.toDegrees(Math.asin(cathetus / hypotenuse)));
+    }
+    
+    private static double checkAngle(final double angle) {
+        if (angle > MAXANGLE) {
+            return MAXANGLE;
+        } else if (angle < MINANGLE) {
+            return MINANGLE;
+        }
+        return angle;
     }
 }

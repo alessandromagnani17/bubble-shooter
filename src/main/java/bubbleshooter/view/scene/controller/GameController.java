@@ -4,6 +4,7 @@ import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.gameobject.BubbleColor;
 import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
@@ -13,6 +14,7 @@ import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.states.GameState;
 import bubbleshooter.view.states.InGameState;
 import bubbleshooter.view.states.InPauseState;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -22,13 +24,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
 
-	private static final double LIMITS = 400.0;
-	private static final double LIMITS_MOUSE = 530.0;
-
+    private static final double MAXANGLE =  64.9;
+    private static final double MINANGLE = -64.9;
+	
 	@FXML
 	private Canvas canvas;
 
@@ -36,16 +39,18 @@ public class GameController extends AbstractController {
 	private AnchorPane pane;
 
 	@FXML
-	private CheckBox help = new CheckBox("Help");
+	private CheckBox helpCheckBox = new CheckBox("Help");
 	private CanvasDrawer canvasDrawer;
-	private boolean gameOver;
+	private static boolean gameOver;
 	private GameState currentState;
 	private GameState inGameState;
 	private GameState inPauseState;
+	private DrawHelpLine help;
 
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
+		this.help  = new DrawHelpLine(this.pane);
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
@@ -63,7 +68,7 @@ public class GameController extends AbstractController {
 		rotation.setPivotX(xBubble - cannon.getLayoutX());
 		rotation.setPivotY(yBubble - cannon.getLayoutY());
 		cannon.getTransforms().add(rotation);
-
+		
 		pane.getChildren().add(cannon);
 
 		canvas.setOnMouseMoved(new HandlerAdapterMouseMoved(rotation, xBubble, yBubble));
@@ -76,24 +81,43 @@ public class GameController extends AbstractController {
 			public void handle(final MouseEvent event) {
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				if (shootingBubble.getPosition().getX() == xBubble && event.getY() < LIMITS_MOUSE) {
+				if (shootingBubble.getPosition().getX() == xBubble && checkAngle(rotation.getAngle())) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
 			}
 		});
+		
 	}
 
 	public final void render() {
 		if (this.isGameOver()) {
 			this.nextScene();
 		}
-		if (this.help.isSelected()) {
-			// Disegnare la linea tratteggiata
-		}
+
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();
 		canvasDrawer.draw(this.getController().getBubbles());
+	}
+	
+	public final void switchBall() {
+		Bubble shootingBubble = this.getController().getBubbles().stream()
+				.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
+		Bubble switchBubble = this.getController().getBubbles().stream()
+				.filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get();
+
+		BubbleColor supportColor;
+		supportColor = shootingBubble.getColor();
+		shootingBubble.setColor(switchBubble.getColor());
+		switchBubble.setColor(supportColor);
+	}
+	
+	public void helpSelected() {
+		if (this.helpCheckBox.isSelected()) {
+			this.help.drawLine();
+		} else {
+			this.help.deleteLine();
+		}
 	}
 
 	@Override
@@ -107,13 +131,18 @@ public class GameController extends AbstractController {
 	}
 
 	public final boolean isGameOver() {
-		return this.gameOver;
+		return gameOver;
 	}
 
-	public final void setGameOver() {
-		this.gameOver = true;
+	public static final void setGameOver() {
+		gameOver = true;
 	}
 
+	public final boolean checkAngle(final double angle) {
+		return !(angle > MAXANGLE || angle < MINANGLE);
+	}
+	
+	
 	// Clear the canvas after every render. It avoids ghosting effect.
 	private void clearCanvas() {
 		this.canvas.getGraphicsContext2D().restore();
@@ -139,5 +168,4 @@ public class GameController extends AbstractController {
 	public GameState getInPauseState() {
 		return inPauseState;
 	}
-
 }

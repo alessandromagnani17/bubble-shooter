@@ -8,9 +8,9 @@ public interface Component {
 
     void setContainer(Bubble parent);
 
+    void setType(ComponentType type);
+
     Bubble getContainer();
 
     ComponentType getComponentType();
-
-    void setType(ComponentType type);
 }
