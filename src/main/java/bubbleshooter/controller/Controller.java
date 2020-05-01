@@ -26,6 +26,8 @@ public interface Controller {
 
 	int getDestroyedBubbles();
 
+	double getGameTime();
+
     //INPUT MANAGER
 
     //MUSIC 
