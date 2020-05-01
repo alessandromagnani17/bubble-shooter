@@ -94,23 +94,22 @@ public class GameController extends AbstractController {
 		if (this.isGameOver()) {
 			this.nextScene();
 		}
-		
+
 		// da aggiungere anche la chiamata al controller per sapere lo score corrente
 		this.clearCanvas();
 		canvasDrawer.draw(this.getController().getBubbles());
 	}
 	
 	public final void switchBall() {
-		/*this.getController().getBubbles().stream()
-		.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
-		.setColor(this.getController().getBubbles().stream()
-		.filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get().getColor());*/
-		this.getController().getBubbles().stream()
-		.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
-		.setColor(BubbleColor.PURPLE);
-		
-		
+		Bubble shootingBubble = this.getController().getBubbles().stream()
+				.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
+		Bubble switchBubble = this.getController().getBubbles().stream()
+				.filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get();
 
+		BubbleColor supportColor;
+		supportColor = shootingBubble.getColor();
+		shootingBubble.setColor(switchBubble.getColor());
+		switchBubble.setColor(supportColor);
 	}
 	
 	public void helpSelected() {
