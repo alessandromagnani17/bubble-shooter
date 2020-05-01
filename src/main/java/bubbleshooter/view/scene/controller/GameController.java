@@ -1,11 +1,12 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
+
+
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
-import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.images.ImagePath;
@@ -23,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {

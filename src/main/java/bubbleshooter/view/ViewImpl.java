@@ -1,7 +1,7 @@
 package bubbleshooter.view;
 
 import bubbleshooter.controller.Controller;
-import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.scene.SceneLoader;
@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 public class ViewImpl implements View {
 
     private static final String TITLE = "BUBBLE SHOOTER";
-    private static final double MIN_WIDTH = GameCostants.GUIWIDTH.getValue();
-    private static final double MIN_HEIGHT = GameCostants.GUIHEIGTH.getValue();
+    private static final double MIN_WIDTH = Settings.getGuiWidth();
+    private static final double MIN_HEIGHT = Settings.getGuiHeigth();
     private Controller controller;
     private AbstractController currentGuiController;
     private final Stage stage;
