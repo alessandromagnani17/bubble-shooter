@@ -13,10 +13,6 @@ public class SwitchComponent extends AbstractComponent {
         this.setType(ComponentType.SWITCHCOMPONENT);
 	}
 
-    public void switchBubbles () {
-    	
-    }
-
 	public final BubbleColor getBubbleColor() {
 		return bubbleColor;
 	}
