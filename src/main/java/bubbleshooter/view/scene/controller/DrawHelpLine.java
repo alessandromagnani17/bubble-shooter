@@ -25,6 +25,7 @@ public class DrawHelpLine {
 		this.borderLeft.setVisible(false);
 		this.borderRight.setVisible(false);
 		this.helpLine.setVisible(false);
+		this.helpLine.setMouseTransparent(true);
 		this.pane.getChildren().add(borderRight);
 		this.pane.getChildren().add(borderLeft);
 		this.pane.getChildren().add(helpLine);
