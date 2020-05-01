@@ -26,9 +26,9 @@ import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
 
-	private static final double LIMITS = 400.0;
-	private static final double LIMITS_MOUSE = 530.0;
-
+    private static final double MAXANGLE =  65.0;
+    private static final double MINANGLE = -65.0;
+	
 	@FXML
 	private Canvas canvas;
 
@@ -76,7 +76,7 @@ public class GameController extends AbstractController {
 			public void handle(final MouseEvent event) {
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				if (shootingBubble.getPosition().getX() == xBubble && event.getY() < LIMITS_MOUSE) {
+				if (shootingBubble.getPosition().getX() == xBubble && checkAngle(rotation.getAngle())) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
@@ -114,6 +114,10 @@ public class GameController extends AbstractController {
 		this.gameOver = true;
 	}
 
+	public final boolean checkAngle(final double angle) {
+		return !(angle > MAXANGLE || angle < MINANGLE);
+	}
+	
 	// Clear the canvas after every render. It avoids ghosting effect.
 	private void clearCanvas() {
 		this.canvas.getGraphicsContext2D().restore();
@@ -139,5 +143,6 @@ public class GameController extends AbstractController {
 	public GameState getInPauseState() {
 		return inPauseState;
 	}
+	
 
 }
