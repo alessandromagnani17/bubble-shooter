@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorPaneID" maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.HighscoreController">
+   <children>
+      <TableView fx:id="tableBaseView" layoutX="16.0" layoutY="211.0" prefHeight="386.0" prefWidth="303.0">
+        <columns>
+          <TableColumn fx:id="nameBaseColumn" prefWidth="158.76572227478027" text="Name" />
+          <TableColumn fx:id="scoreBaseColumn" prefWidth="144.2342987060547" text="Score" />
+        </columns>
+      </TableView>
+      <Label layoutX="174.0" layoutY="12.0" prefHeight="112.0" prefWidth="348.0" text="Highscores" textFill="RED">
+         <font>
+            <Font size="50.0" />
+         </font></Label>
+      <Label layoutX="48.0" layoutY="158.0" prefHeight="43.0" prefWidth="215.0" text="Basic Mode" textFill="RED">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <TableView fx:id="tableSurvivalView" layoutX="366.0" layoutY="211.0" prefHeight="387.0" prefWidth="303.0">
+         <columns>
+            <TableColumn fx:id="nameSurvivalColumn" prefWidth="158.76572227478027" text="Name" />
+            <TableColumn fx:id="scoreSurvivalColumn" prefWidth="144.2342987060547" text="Time" />
+         </columns>
+      </TableView>
+      <Label layoutX="386.0" layoutY="158.0" prefHeight="37.0" prefWidth="215.0" text="Survival Mode" textFill="RED">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <Button layoutX="475.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="68.0" prefWidth="194.0" text="Back to menu" textFill="RED">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
