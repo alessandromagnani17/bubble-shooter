@@ -54,16 +54,23 @@ public abstract class AbstractGameMode {
 	public final void initGameObject() {
 		Stream.iterate(1, i -> i += 1).limit((long) GameCostants.ROWS.getValue()).forEach(i -> this.createNewRow());
 		this.loadShootingBubble();
+		this.loadSwitchBubble();
 	}
 
 	private void createNewRow() {
 		this.gameObjectManager.addBubble(this.bubbleGridManager.createNewRow());
 	}
 
-	public void loadShootingBubble() {
+	public final void loadShootingBubble() {
 		this.gameObjectManager.addBubble(Collections.singletonList(
 				BubbleFactory.createShootingBubble(new Point2D(GameCostants.GUIWIDTH.getValue() / 2, 600))));
 	}
+	
+	public final void loadSwitchBubble() {
+		this.gameObjectManager.addBubble(Collections.singletonList(
+				BubbleFactory.createSwitchBubble(new Point2D(600, 600))));
+	}
+	
 
 	public final GameObjectManager getGameObjectManager() {
 		return this.gameObjectManager;
