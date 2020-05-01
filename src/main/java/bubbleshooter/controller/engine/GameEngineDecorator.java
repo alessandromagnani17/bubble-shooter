@@ -1,55 +1,69 @@
 package bubbleshooter.controller.engine;
 
+/**
+ * 
+ * Class used to decorate the {@link GameLoop} and add features to it.
+ *
+ */
 public class GameEngineDecorator implements GameLoop {
 
     /**
-    * The BasicGameLoop used by the Decorator.
+    * The {@link BasicGameLoop} used by the Decorator.
     */
-    private GameLoop gameLooop;
+    private final GameLoop gameLoop;
 
+    /**
+     * @param gameLoop The {@link BasicGameLoop} used by the Decorator.
+     */
     public GameEngineDecorator(final GameLoop gameLoop) {
-        this.gameLooop = gameLoop;
+        this.gameLoop = gameLoop;
     }
 
     /**
-     * The method to Start the loop of the BasicGameLoop.
+     * The method to Start the loop of the {@link BasicGameLoop}.
      */
     @Override
     public void startLoop() {
-        this.gameLooop.startLoop();
+        this.gameLoop.startLoop();
     }
 
     /**
-     * The method to Stop the loop of the BasicGameLoop.
+     * The method to Stop the loop of the {@link BasicGameLoop}.
      */
     @Override
     public void stopLoop() {
-        this.gameLooop.stopLoop();
+        this.gameLoop.stopLoop();
     }
 
     /**
-     * The method to pause the loop of the BasicGameLoop.
+     * The method to pause the loop of the {@link BasicGameLoop}.
      */
     @Override
     public void pauseLoop() {
-        this.gameLooop.pauseLoop();
+        this.gameLoop.pauseLoop();
     }
 
     /**
-     * The method to resume the loop of the BasicGameLoop.
+     * The method to resume the loop of the {@link BasicGameLoop}.
      */
     @Override
     public void resumeLoop() {
-        this.gameLooop.resumeLoop();
+        this.gameLoop.resumeLoop();
     }
 
-	@Override
-	public boolean isRunning() {
-		return this.gameLooop.isRunning();
-	}
+    /**
+     * @return if the {@link BasicGameLoop} is running or not.
+     */
+    @Override
+    public final boolean isRunning() {
+        return this.gameLoop.isRunning();
+    }
 
-	@Override
-	public boolean isPaused() {
-		return this.gameLooop.isPaused();
-	}
+    /**
+     * @return if the {@link BasicGameLoop} is paused or not.
+     */
+    @Override
+    public final boolean isPaused() {
+        return this.gameLoop.isPaused();
+    }
 }

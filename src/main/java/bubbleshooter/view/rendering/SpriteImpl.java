@@ -1,11 +1,8 @@
 package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
-
-import com.sun.javafx.scene.paint.GradientUtils.Point;
-
 import javafx.geometry.Point2D;
-import bubbleshooter.utility.GameCostants;
+import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,7 +12,9 @@ import javafx.scene.transform.Rotate;
 
 public class SpriteImpl implements Sprite {
 
-	private static final double DEFAULT = GameCostants.RADIUS.getValue() * 2;
+	//private static final double DEFAULT = GameCostants.RADIUS.getValue() * 2;
+	//private static final double DEFAULT 
+	
 	private final GraphicsContext gc;
 	private double heigth;
 	private double width;

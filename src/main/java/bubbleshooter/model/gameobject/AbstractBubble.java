@@ -6,17 +6,17 @@ import java.util.Optional;
 import bubbleshooter.model.component.Component;
 import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.model.component.ShootingComponent;
+import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractBubble implements Bubble {
 
-    private static final double RADIUS = 18;
-	private Point2D position;
-	private boolean isDestroyed;
-	private BubbleType type;
-	private BubbleColor color;
-    private List<Component> components;
-	
+    private Point2D position;
+    private boolean isDestroyed;
+    private BubbleType type;
+    private BubbleColor color;
+    private final List<Component> components;
+
 	public AbstractBubble(final BubbleType type, final Point2D position) {
 		this.type = type;
 		this.position = position;
@@ -52,11 +52,6 @@ public abstract class AbstractBubble implements Bubble {
 	}
 
 	@Override
-	public final double getRadius() {
-		return RADIUS;
-	}
-
-	@Override
 	public final BubbleType getType() {
 		return this.type;
 	}
@@ -77,11 +72,6 @@ public abstract class AbstractBubble implements Bubble {
 
 	@Override
 	public void update(final double elapsed) {
-	}
-
-	@Override
-	public final double getWidth() {
-		return RADIUS * 2;
 	}
 
 	@Override

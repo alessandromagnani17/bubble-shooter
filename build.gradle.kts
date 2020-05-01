@@ -17,8 +17,13 @@ sourceSets {
 			srcDirs("resources")
 			}
 		}
+   test {
+		resources {
+			srcDirs("resources")
+			}
+		}
 }
-	
+
 repositories {
     jcenter() // Contains the whole Maven Central + other stuff
 }

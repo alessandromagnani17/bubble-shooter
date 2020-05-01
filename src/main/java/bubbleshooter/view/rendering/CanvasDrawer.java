@@ -26,14 +26,13 @@ public class CanvasDrawer {
         this.canvas = canvas;
     }
 
-    private Sprite generateSprite(final Bubble bubble) {
-        Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
-        try {
-            sprite.setSource(COLOR_MAP.get(bubble.getColor()));
-            sprite.setPosition(bubble.getPosition());
-            sprite.setHeigth(bubble.getRadius() * 2);
-            sprite.setWidth(bubble.getRadius() * 2);
-
+	private Sprite generateSprite(Bubble bubble) {
+		Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
+		try {
+			sprite.setSource(COLOR_MAP.get(bubble.getColor()));
+			sprite.setPosition(bubble.getPosition());
+			sprite.setHeigth(Bubble.getRadius() * 2);
+			sprite.setWidth(Bubble.getRadius() * 2);
         } catch (Exception e) {
             e.printStackTrace();
         }
