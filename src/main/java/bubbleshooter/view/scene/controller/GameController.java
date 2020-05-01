@@ -106,6 +106,8 @@ public class GameController extends AbstractController {
 		.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
 		.setColor(BubbleColor.PURPLE);
 		
+		
+
 	}
 
 	@Override
