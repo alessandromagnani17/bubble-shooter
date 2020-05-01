@@ -15,17 +15,22 @@
          <font>
             <Font size="50.0" />
          </font></Label>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#play" prefHeight="87.0" prefWidth="305.0" text="Play" textFill="RED">
+      <Button alignment="CENTER" layoutX="200.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#basicMode" prefHeight="87.0" prefWidth="305.0" text="Basic Mode" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#highscores" prefHeight="87.0" prefWidth="305.0" text="Highscores" textFill="RED">
+      <Button alignment="CENTER" layoutX="200.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#highscores" prefHeight="87.0" prefWidth="305.0" text="Highscores" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="87.0" prefWidth="305.0" text="Quit" textFill="RED">
+      <Button alignment="CENTER" layoutX="200.0" layoutY="505.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="87.0" prefWidth="305.0" text="Quit" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
+      <Button alignment="CENTER" layoutX="200.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#survivalMode" prefHeight="87.0" prefWidth="305.0" text="Survival Mode" textFill="RED">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

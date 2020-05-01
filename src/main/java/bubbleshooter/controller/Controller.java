@@ -24,6 +24,12 @@ public interface Controller {
 
 	void setLevelType(LevelTypes basicmode);
 
+	int getDestroyedBubbles();
+
+	double getGameTime();
+
+	int getWrongShoots();
+
     //INPUT MANAGER
 
     //MUSIC 

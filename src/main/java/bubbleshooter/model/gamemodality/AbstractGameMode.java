@@ -10,6 +10,7 @@ import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.Settings;
+import bubbleshooter.view.scene.controller.GameController;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode {
@@ -47,23 +48,32 @@ public abstract class AbstractGameMode {
 		if (this.isTimeToNewRow(elapsed)) {
 			this.createNewRow();
 		}
-		this.checkGameOver();
+		if (this.checkGameOver()) {
+			GameController.setGameOver();
+		}
 
 	}
 
 	public final void initGameObject() {
 		Stream.iterate(1, i -> i += 1).limit((long) Settings.getNumRows()).forEach(i -> this.createNewRow());
 		this.loadShootingBubble();
+		this.loadSwitchBubble();
 	}
 
 	private void createNewRow() {
 		this.gameObjectManager.addBubble(this.bubbleGridManager.createNewRow());
 	}
 
-	public void loadShootingBubble() {
+	public final void loadShootingBubble() {
 		this.gameObjectManager.addBubble(Collections.singletonList(
 				BubbleFactory.createShootingBubble(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
 	}
+	
+	public final void loadSwitchBubble() {
+		this.gameObjectManager.addBubble(Collections.singletonList(
+				BubbleFactory.createSwitchBubble(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
+	}
+	
 
 	public final GameObjectManager getGameObjectManager() {
 		return this.gameObjectManager;
