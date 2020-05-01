@@ -6,7 +6,7 @@ import javafx.geometry.Point2D;
 
 public class SwitchBubble extends AbstractBubble {
 
-	public SwitchBubble(BubbleType type, Point2D position) {
+	public SwitchBubble(Point2D position) {
 		super(BubbleType.SWITCH_BUBBLE, position);
 	}
 
