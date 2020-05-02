@@ -49,7 +49,7 @@ public abstract class AbstractGameMode {
 			this.createNewRow();
 		}
 		if (this.checkGameOver()) {
-			GameController.setGameOver();
+			this.status = GameStatus.GAMEOVER; 
 		}
 
 	}
