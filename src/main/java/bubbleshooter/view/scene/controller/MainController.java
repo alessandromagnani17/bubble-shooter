@@ -1,5 +1,8 @@
 package bubbleshooter.view.scene.controller;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.utility.Settings;
@@ -20,24 +23,38 @@ public final class MainController extends AbstractController {
 	@FXML private Button highscoresButton = new Button();
 	@FXML private Button quitButton = new Button();
 	@FXML private Label titleLabel = new Label();
-	private static final double BUTTON_DISTANCE = 10;
-	private static final double TITLE_Y = 10;
+	private Set<Button> setButtons;
+	private static final double TITLE_DISTANCE = Settings.getGuiHeigth()/10;
+	private static final double TITLE_HEIGTH = Settings.getGuiHeigth()/8;
+	private static final double TITLE_WIDTH = Settings.getGuiWidth();
+	private static final double BUTTON_DISTANCE = Settings.getGuiHeigth()/50;
+	private static final double BUTTON_WIDTH = Settings.getGuiWidth()/2;
+	private static final double BUTTON_HEIGTH = Settings.getGuiHeigth()/10;
+	private static final double BUTTON_X = Settings.getGuiWidth()/2 - BUTTON_WIDTH/2;
 	
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
 		
 		this.titleLabel.setText("Bubble Shooter");
-		this.titleLabel.setLayoutY(TITLE_Y);
-		this.titleLabel.setLayoutX((Settings.getGuiWidth() - this.basicModeButton.getPrefWidth())/2);
-		this.basicModeButton.setLayoutX((Settings.getGuiWidth() - this.basicModeButton.getPrefWidth())/2);
-		this.basicModeButton.setLayoutY(this.titleLabel.getPrefHeight() + BUTTON_DISTANCE);
-		this.survivalModeButton.setLayoutX((Settings.getGuiWidth() - this.basicModeButton.getPrefWidth())/2);
-		this.survivalModeButton.setLayoutY(this.basicModeButton.getLayoutY() + this.basicModeButton.getPrefHeight() + BUTTON_DISTANCE);
-		this.highscoresButton.setLayoutX((Settings.getGuiWidth() - this.basicModeButton.getPrefWidth())/2);
-		this.highscoresButton.setLayoutY(this.survivalModeButton.getLayoutY() + this.survivalModeButton.getPrefHeight() + BUTTON_DISTANCE);
-		this.quitButton.setLayoutX((Settings.getGuiWidth() - this.basicModeButton.getPrefWidth())/2);
-		this.quitButton.setLayoutY(this.highscoresButton.getLayoutY() + this.highscoresButton.getPrefHeight() + BUTTON_DISTANCE);
+		this.titleLabel.setAlignment(Pos.BOTTOM_CENTER);
+		this.titleLabel.setPrefSize(TITLE_WIDTH, TITLE_HEIGTH);
+		
+		this.basicModeButton.setLayoutX(BUTTON_X);
+		this.basicModeButton.setLayoutY(TITLE_HEIGTH + TITLE_DISTANCE);
+		this.basicModeButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
+		
+		this.survivalModeButton.setLayoutX(BUTTON_X);
+		this.survivalModeButton.setLayoutY(this.basicModeButton.getLayoutY() + BUTTON_HEIGTH + BUTTON_DISTANCE);
+		this.survivalModeButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
+		
+		this.highscoresButton.setLayoutX(BUTTON_X);
+		this.highscoresButton.setLayoutY(this.survivalModeButton.getLayoutY() + BUTTON_HEIGTH + BUTTON_DISTANCE);
+		this.highscoresButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
+		
+		this.quitButton.setLayoutX(BUTTON_X);
+		this.quitButton.setLayoutY(this.highscoresButton.getLayoutY() + BUTTON_HEIGTH + BUTTON_DISTANCE);
+		this.quitButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
 	}
 
     public void basicMode() {
