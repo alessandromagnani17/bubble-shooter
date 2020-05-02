@@ -1,7 +1,6 @@
 package bubbleshooter.controller.engine;
 
 import bubbleshooter.model.Model;
-import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
 
 /**
