@@ -59,15 +59,5 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="150.0" layoutY="343.0" prefHeight="37.0" prefWidth="203.0" text="Wrong shoots:" textFill="RED">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="wrongShootsLabel" layoutX="350.0" layoutY="343.0" prefHeight="37.0" prefWidth="159.0" textFill="RED">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
