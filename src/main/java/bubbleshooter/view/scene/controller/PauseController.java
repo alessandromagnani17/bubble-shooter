@@ -28,6 +28,10 @@ public class PauseController extends AbstractController {
 	public void restart() {
 		
 	}
+	
+	public void quit() {
+		System.exit(0);
+	}
 
 	@Override
 	public FXMLPath getNextScene() {
