@@ -5,13 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import bubbleshooter.controller.Controller;
-import bubbleshooter.controller.engine.BasicGameLoop;
-import bubbleshooter.controller.engine.GameLoop;
-import bubbleshooter.model.Model;
-import bubbleshooter.model.ModelImpl;
-import bubbleshooter.view.View;
-import bubbleshooter.view.scene.FXMLPath;
 
 /**
  * JUnit Test class to test the {@link GameLoop} of the Game.
