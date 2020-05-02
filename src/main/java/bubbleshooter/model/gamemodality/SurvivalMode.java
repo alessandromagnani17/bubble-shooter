@@ -7,6 +7,10 @@ public class SurvivalMode extends AbstractGameMode {
 	
 	private double timeLeft = SECOND_BEFORE_NEW_ROW; 
 
+	public SurvivalMode() {
+        this.setCurrentLevelTypes(LevelTypes.SURVIVALMODE);
+	}
+	
 	@Override
 	public void updateScore(double elapsed) {
 		GameInfoManager infoManager = this.getGameInfoManager();
