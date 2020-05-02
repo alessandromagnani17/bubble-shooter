@@ -24,6 +24,10 @@ public class PauseController extends AbstractController {
 	public void resume() {
 		this.getView().loadScene(FXMLPath.GAME);
 	}
+	
+	public void restart() {
+		
+	}
 
 	@Override
 	public FXMLPath getNextScene() {
