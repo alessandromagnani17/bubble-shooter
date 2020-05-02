@@ -9,24 +9,21 @@
 
 <AnchorPane fx:id="anchorPaneID" maxHeight="900.0" maxWidth="700.0" minHeight="741.0" minWidth="627.0" prefHeight="741.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.HighscoreController">
    <children>
-      <TableView fx:id="tableBaseView" layoutX="16.0" layoutY="211.0" prefHeight="386.0" prefWidth="303.0">
+      <TableView fx:id="tableBaseView" layoutX="16.0" layoutY="211.0">
         <columns>
-          <TableColumn fx:id="nameBaseColumn" prefWidth="158.76572227478027" text="Name" />
-          <TableColumn fx:id="scoreBaseColumn" prefWidth="144.2342987060547" text="Score" />
+          <TableColumn fx:id="nameBaseColumn" text="Name" />
+          <TableColumn fx:id="scoreBaseColumn" text="Score" />
         </columns>
       </TableView>
-      <Label fx:id="titleLabel" layoutX="174.0" layoutY="12.0" prefHeight="112.0" prefWidth="348.0" text="Highscores" textFill="RED">
-         <font>
-            <Font size="50.0" />
-         </font></Label>
+      <Label fx:id="titleLabel" textFill="RED"> </Label>
       <Label fx:id="basicModeLabel" layoutX="48.0" layoutY="158.0" prefHeight="43.0" prefWidth="215.0" text="Basic Mode" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <TableView fx:id="tableSurvivalView" layoutX="366.0" layoutY="211.0" prefHeight="387.0" prefWidth="303.0">
+      <TableView fx:id="tableSurvivalView" layoutX="366.0" layoutY="211.0">
          <columns>
-            <TableColumn fx:id="nameSurvivalColumn" prefWidth="158.76572227478027" text="Name" />
-            <TableColumn fx:id="scoreSurvivalColumn" prefWidth="144.2342987060547" text="Time" />
+            <TableColumn fx:id="nameSurvivalColumn" text="Name" />
+            <TableColumn fx:id="scoreSurvivalColumn" text="Time" />
          </columns>
       </TableView>
       <Label fx:id="survivalModeLabel" layoutX="386.0" layoutY="158.0" prefHeight="37.0" prefWidth="215.0" text="Survival Mode" textFill="RED">
