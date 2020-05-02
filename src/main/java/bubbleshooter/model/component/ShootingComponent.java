@@ -11,7 +11,7 @@ public class ShootingComponent extends AbstractComponent {
     /**
      * The speed of the shootingBubble in the game.
     */
-    private static final double BUBBLESPEED = 0.9;
+    private static final double BUBBLESPEED = 0.7;
     private Point2D direction;
 
     /**
