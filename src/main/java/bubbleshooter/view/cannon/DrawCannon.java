@@ -11,7 +11,7 @@ import javafx.scene.transform.Rotate;
 public class DrawCannon {
 
     private static final double CANNON_X = Settings.getGuiWidth()  / 2.29;
-    private static final double CANNON_Y = Settings.getGuiHeigth() / 1.43;
+    private static final double CANNON_Y = Settings.getGuiHeigth() / 1.40;
     private static final double SHOOTING_X = Settings.getGuiWidth() / 2;
     private static final double SHOOTING_Y = Settings.getGuiHeigth() - Bubble.getWidth();
 
