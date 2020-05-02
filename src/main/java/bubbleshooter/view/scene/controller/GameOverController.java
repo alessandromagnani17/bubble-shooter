@@ -25,7 +25,7 @@ public class GameOverController extends AbstractController {
 	private static final double TITLE_WIDTH = Settings.getGuiWidth();
 	private static final double TITLE_FONT_SIZE = TITLE_HEIGTH/1.5;
 	private static final double LABEL_HEIGTH = Settings.getGuiHeigth()/10;
-	private static final double LABEL_WIDTH = Settings.getGuiHeigth();
+	private static final double LABEL_WIDTH = Settings.getGuiWidth();
 	private static final double LABEL_X = Settings.getGuiWidth()/2 - LABEL_WIDTH/4;
 	private static final double LABEL_DISTANCE = Settings.getGuiHeigth()/10;
 	private static final double LABEL_FONT_SIZE = LABEL_HEIGTH/2;
