@@ -17,11 +17,10 @@ public abstract class AbstractBubble implements Bubble {
     private BubbleColor color;
     private final List<Component> components;
 
-	public AbstractBubble(final BubbleType type, final Point2D position) {
-		this.type = type;
+	public AbstractBubble(final BubbleType type, final Point2D position, BubbleColor color) {
+		this.color = color; 
 		this.position = position;
 		this.isDestroyed = false;
-		this.color = BubbleColor.getRandomColor();
 		this.type = type;
 		this.position = position;
         this.components = new LinkedList<>();
