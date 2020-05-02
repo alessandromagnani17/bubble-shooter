@@ -1,6 +1,5 @@
 package bubbleshooter.model.gamemodality;
 
-import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
 
 public class GameOverChecker {
@@ -14,15 +13,11 @@ public class GameOverChecker {
 	}
 
 	public final boolean checkGameOver() {
-
-		for (Bubble bubble : gameMode.getCurrentBubbles()) {
-	        if (bubble.getType().equals(BubbleType.GRID_BUBBLE)) {
-	            if (bubble.getPosition().getY() > LIMITS) {
-	                return true;
-	            }
-	        }
-	    }
-	    return false;
+		return this.gameMode.getCurrentBubbles().stream().filter(b -> b.getType()
+				.equals(BubbleType.GRID_BUBBLE)).anyMatch(b -> b.getPosition().getY() > LIMITS); 
 	}
+	
+	
+	
 
 }
