@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="700.0" maxWidth="705.0" minHeight="700.0" minWidth="705.0" prefHeight="700.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.GameOverController">
    <children>
-      <Button fx:id="buttonAdd" mnemonicParsing="false" onMouseClicked="#addToHighscore" textFill="RED"> </Button>
+      <Button fx:id="buttonAdd" onMouseClicked="#addToHighscore" textFill="RED"> </Button>
       <Label fx:id="gameOverLabel" textFill="RED"> </Label>
       <Label fx:id="scoreLabel" textFill="RED"> </Label>
       <TextArea fx:id="textArea" > </TextArea>
