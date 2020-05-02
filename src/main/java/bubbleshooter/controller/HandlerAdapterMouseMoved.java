@@ -20,7 +20,6 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     @Override
     public final void handle(final MouseEvent event) {
         this.rotation.setAngle(PhysicHelper.calculateAngle(event, this.xBubble, this.yBubble));
-        System.out.println(this.rotation.getAngle());
     }
 
     public final double getRotationAngle() {
