@@ -3,6 +3,8 @@ package bubbleshooter.view.scene.controller;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.sun.prism.paint.Color;
+
 import bubbleshooter.controller.Controller;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.utility.Settings;
@@ -12,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 /**
