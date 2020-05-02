@@ -19,8 +19,11 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
     @Override
     public final void handle(final MouseEvent event) {
-        // TODO Auto-generated method stub
-        //System.out.println(calculateAngle(event, xBubble, yBubble) + ",     x : " + event.getX() + ", y : " + event.getY());
-        rotation.setAngle(PhysicHelper.calculateAngle(event, xBubble, yBubble));
+        this.rotation.setAngle(PhysicHelper.calculateAngle(event, this.xBubble, this.yBubble));
+        System.out.println(this.rotation.getAngle());
+    }
+
+    public final double getRotationAngle() {
+        return this.rotation.getAngle();
     }
 }
