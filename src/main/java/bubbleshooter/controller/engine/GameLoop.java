@@ -27,12 +27,12 @@ public interface GameLoop {
     void resumeLoop();
 
     /**
-     * @return if the {@link GameLoop} is running or not.
-     */
-    boolean isRunning();
-
-    /**
      * @return if the {@link GameLoop} is paused or not.
      */
     boolean isPaused();
+
+	/**
+	 * @return if the {@link GameLoop} is running or not.
+	 */
+	boolean isStopped();
 }
