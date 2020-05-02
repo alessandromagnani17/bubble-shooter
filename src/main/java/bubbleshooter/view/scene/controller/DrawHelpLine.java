@@ -3,6 +3,7 @@ package bubbleshooter.view.scene.controller;
 import bubbleshooter.controller.HandlerAdapterLineMouseMoved;
 import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
+import bubbleshooter.utility.Settings;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -12,8 +13,8 @@ public class DrawHelpLine {
 	
 	private AnchorPane pane = new AnchorPane();
 	private Line helpLine = new Line(352.5, 574.0, 352.5, 0); 
-	private Line borderLeft = new Line(0, 0, 0, 700);
-	private Line borderRight = new Line(705, 0, 705, 700);
+	private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
+	private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
 	private static final double X_BUBBLE = 352.5;
 	private static final double Y_BUBBLE = 600.0;
 	Rotate rotation = new Rotate();

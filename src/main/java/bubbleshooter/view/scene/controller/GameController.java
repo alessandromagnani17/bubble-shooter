@@ -16,7 +16,6 @@ import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.states.GameState;
 import bubbleshooter.view.states.InGameState;
 import bubbleshooter.view.states.InPauseState;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -26,7 +25,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
 public class GameController extends AbstractController {
