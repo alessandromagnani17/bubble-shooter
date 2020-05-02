@@ -96,6 +96,10 @@ public class GameController extends AbstractController {
 			this.help.deleteLine();
 		}
 	}
+    
+    public void pause() {
+    	this.getView().loadScene(FXMLPath.PAUSE);
+    }
 
 	@Override
 	public final FXMLPath getNextScene() {
