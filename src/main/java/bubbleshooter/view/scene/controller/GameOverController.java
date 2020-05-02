@@ -39,7 +39,7 @@ public class GameOverController extends AbstractController {
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
-		
+		this.getController().getGameEngine().stopLoop();
 		this.gameOverLabel.setText("Game Over");
 		this.gameOverLabel.setFont(Font.font(TITLE_FONT_SIZE));
 		this.gameOverLabel.setAlignment(Pos.BOTTOM_CENTER);

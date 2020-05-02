@@ -26,7 +26,6 @@ public abstract class AbstractGameMode {
 	private BubbleFactory bubbleFactory;
 	private GameStatus status = GameStatus.PAUSE;
 	private LevelTypes currentLevelTypes;
-	// gameDataManager per gestire punteggio
 
 	public AbstractGameMode() {
 		this.gameObjectManager = new GameObjectManager();

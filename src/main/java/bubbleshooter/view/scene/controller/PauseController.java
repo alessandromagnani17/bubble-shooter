@@ -61,6 +61,7 @@ public class PauseController extends AbstractController {
 	}
 	
 	public void resume() {
+		this.getController().getGameEngine().resumeLoop();
 		this.getView().loadScene(FXMLPath.GAME);
 	}
 	
