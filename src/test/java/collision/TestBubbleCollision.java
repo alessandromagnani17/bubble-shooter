@@ -21,7 +21,7 @@ public class TestBubbleCollision {
     private final Bubble gridBubble = new GridBubble(new Point2D(0, 0));
     private final Bubble gridBubble2 = new GridBubble(new Point2D(99, 99));
     private final Bubble shootingBubble = new ShootingBubble(new Point2D(100, 100));
-    private CollisionController coll = new CollisionController(new BasicMode());
+    private CollisionController coll;
     //private CollisionController controller;
 
    @Test
