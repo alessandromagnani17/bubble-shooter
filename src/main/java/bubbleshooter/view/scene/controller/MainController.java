@@ -42,13 +42,11 @@ public final class MainController extends AbstractController {
 
     public void basicMode() {
         this.getController().startGame(LevelTypes.BASICMODE);
-        this.getController().setLevelType(LevelTypes.BASICMODE);
         this.nextScene();
     }
     
     public void survivalMode() {
         this.getController().startGame(LevelTypes.SURVIVALMODE);
-        this.getController().setLevelType(LevelTypes.SURVIVALMODE);
         this.nextScene();
     }
    
