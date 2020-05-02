@@ -12,9 +12,9 @@
 <AnchorPane maxHeight="700.0" maxWidth="705.0" minHeight="700.0" minWidth="705.0" prefHeight="700.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
    <children>
       <Label fx:id="titleLabel" textFill="RED"> </Label>
-      <Button fx:id="basicModeButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#basicMode" text="Basic Mode" textFill="RED"> </Button>
-      <Button fx:id="highscoresButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#highscores" text="Highscores" textFill="RED"> </Button>
-      <Button fx:id="quitButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#quit" text="Quit" textFill="RED"> </Button>
-      <Button fx:id="survivalModeButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#survivalMode" text="Survival Mode" textFill="RED"> </Button>
+      <Button fx:id="basicModeButton" mnemonicParsing="false" onMouseClicked="#basicMode" textFill="RED"> </Button>
+      <Button fx:id="highscoresButton" mnemonicParsing="false" onMouseClicked="#highscores" textFill="RED"> </Button>
+      <Button fx:id="quitButton" mnemonicParsing="false" onMouseClicked="#quit" textFill="RED"> </Button>
+      <Button fx:id="survivalModeButton" mnemonicParsing="false" onMouseClicked="#survivalMode" textFill="RED"> </Button>
    </children>
 </AnchorPane>
