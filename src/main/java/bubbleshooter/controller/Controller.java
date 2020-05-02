@@ -22,8 +22,6 @@ public interface Controller {
 
 	void saveScore(String text);
 
-	void setLevelType(LevelTypes basicmode);
-
 	int getDestroyedBubbles();
 
 	double getGameTime();

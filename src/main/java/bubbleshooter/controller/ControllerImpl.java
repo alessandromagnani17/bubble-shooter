@@ -80,10 +80,6 @@ public class ControllerImpl implements Controller {
 		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
 	}
 
-	@Override
-	public void setLevelType(LevelTypes basicmode) {
-		this.model.getLevel().setCurrentLevelTypes(basicmode);
-	}
 
 	@Override
 	public GameLoop getGameEngine() {
