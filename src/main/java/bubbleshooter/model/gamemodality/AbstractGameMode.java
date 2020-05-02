@@ -44,7 +44,7 @@ public abstract class AbstractGameMode {
 		this.gameObjectManager.update(elapsed);
 		this.collisionController.checkCollisions();
 		this.gameInfoManager.updateGameTime(elapsed);
-		this.updateScore(elapsed);
+		this.updateScore(elapsed / 1000);
 		if (this.isTimeToNewRow(elapsed)) {
 			this.createNewRow();
 		}
@@ -65,15 +65,14 @@ public abstract class AbstractGameMode {
 	}
 
 	public final void loadShootingBubble() {
-		this.gameObjectManager.addBubble(Collections.singletonList(
-				BubbleFactory.createShootingBubble(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
+		this.gameObjectManager.addBubble(Collections.singletonList(BubbleFactory.createShootingBubble(
+				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
 	}
-	
+
 	public final void loadSwitchBubble() {
-		this.gameObjectManager.addBubble(Collections.singletonList(
-				BubbleFactory.createSwitchBubble(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
+		this.gameObjectManager.addBubble(Collections.singletonList(BubbleFactory.createSwitchBubble(
+				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()))));
 	}
-	
 
 	public final GameObjectManager getGameObjectManager() {
 		return this.gameObjectManager;
@@ -82,7 +81,7 @@ public abstract class AbstractGameMode {
 	public void setGameOver() {
 		this.setGameStatus(GameStatus.GAMEOVER);
 	}
-	
+
 	public void setCurrentLevelTypes(final LevelTypes level) {
 		this.currentLevelTypes = level;
 	}
@@ -102,11 +101,11 @@ public abstract class AbstractGameMode {
 	public BubbleGridManager getGridManager() {
 		return this.bubbleGridManager;
 	}
-	
+
 	public BubbleGridHelper getGridHelper() {
 		return this.bubbleGridHelper;
 	}
-	
+
 	public CollisionController getCollisionController() {
 		return this.collisionController;
 	}
@@ -118,7 +117,7 @@ public abstract class AbstractGameMode {
 	public GameInfoManager getGameInfoManager() {
 		return this.gameInfoManager;
 	}
-	
+
 	public LevelTypes getCurrentLevelTypes() {
 		return this.currentLevelTypes;
 	}
