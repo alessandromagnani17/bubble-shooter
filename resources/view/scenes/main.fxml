@@ -11,23 +11,23 @@
 
 <AnchorPane maxHeight="700.0" maxWidth="705.0" minHeight="700.0" minWidth="705.0" prefHeight="700.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.MainController">
    <children>
-      <Label layoutX="200.0" layoutY="37.0" prefHeight="126.0" prefWidth="507.0" text="Bubbleshooter" textAlignment="CENTER" textFill="RED">
+      <Label fx:id="titleLabel"  prefHeight="126.0" prefWidth="507.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="50.0" />
          </font></Label>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#basicMode" prefHeight="87.0" prefWidth="305.0" text="Basic Mode" textFill="RED">
+      <Button fx:id="basicModeButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#basicMode" prefHeight="87.0" prefWidth="305.0" text="Basic Mode" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#highscores" prefHeight="87.0" prefWidth="305.0" text="Highscores" textFill="RED">
+      <Button fx:id="highscoresButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#highscores" prefHeight="87.0" prefWidth="305.0" text="Highscores" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="505.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="87.0" prefWidth="305.0" text="Quit" textFill="RED">
+      <Button fx:id="quitButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="87.0" prefWidth="305.0" text="Quit" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Button alignment="CENTER" layoutX="200.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#survivalMode" prefHeight="87.0" prefWidth="305.0" text="Survival Mode" textFill="RED">
+      <Button fx:id="survivalModeButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#survivalMode" prefHeight="87.0" prefWidth="305.0" text="Survival Mode" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
