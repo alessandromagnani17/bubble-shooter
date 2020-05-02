@@ -7,8 +7,8 @@ public class GridBubble extends AbstractBubble {
 	
 	private CollisionComponent collisionComponent;
 	
-	public GridBubble(final Point2D position) {
-		super(BubbleType.GRID_BUBBLE, position);
+	public GridBubble(final Point2D position, BubbleColor color) {
+		super(BubbleType.GRID_BUBBLE, position, color);
 	}
 
 	@Override

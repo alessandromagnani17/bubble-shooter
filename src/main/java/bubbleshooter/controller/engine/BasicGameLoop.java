@@ -1,6 +1,7 @@
 package bubbleshooter.controller.engine;
 
 import bubbleshooter.model.Model;
+import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.view.View;
 
 /**
@@ -16,7 +17,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
     private static final int PERIOD = SECOND / FPS;
     private final View view;
     private final Model model;
-    private volatile boolean isRunning;
+    private volatile boolean isStopped;
     private volatile boolean isPaused;
     private Thread loopThread;
 
@@ -31,7 +32,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
         this.setDaemon(true);
         this.view = view;
         this.model = model;
-        this.isRunning = false;
+        this.isStopped = true;
         this.isPaused = true;
     }
 
@@ -40,8 +41,8 @@ public class BasicGameLoop extends Thread implements GameLoop  {
      */
     @Override
     public final void startLoop() {
-        if (!this.isRunning()) {
-            this.isRunning = true;
+        if (this.isStopped()) {
+            this.isStopped = false;
             this.isPaused = false;
             this.loopThread = new Thread(this, "loop");
             this.loopThread.start();
@@ -55,7 +56,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
     @Override
     public final void run() {
         long lastFrameTime = System.currentTimeMillis();
-        while (this.isRunning()) {
+        while (!this.isStopped()) {
             final long currentFrameTime = System.currentTimeMillis();
             if (!this.isPaused()) {
                 final long elapsed = currentFrameTime - lastFrameTime;
@@ -72,7 +73,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
      */
     @Override
     public final synchronized void stopLoop() {
-        this.isRunning = false;
+        this.isStopped = true;
         this.loopThread.interrupt(); 
     }
 
@@ -104,8 +105,8 @@ public class BasicGameLoop extends Thread implements GameLoop  {
      * @return if the {@link GameLoop} is running or not.
      */
     @Override
-    public final boolean isRunning() {
-        return this.isRunning;
+    public final boolean isStopped() {
+        return this.isStopped || this.model.getGameStatus().equals(GameStatus.GAMEOVER);
     }
 
     /**

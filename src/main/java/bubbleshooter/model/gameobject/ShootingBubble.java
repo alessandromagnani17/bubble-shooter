@@ -7,8 +7,8 @@ import javafx.geometry.Point2D;
 
 public class ShootingBubble extends AbstractBubble {
 	
-	public ShootingBubble(final Point2D position) {
-		super(BubbleType.SHOOTING_BUBBLE, position);
+	public ShootingBubble(final Point2D position, BubbleColor color) {
+		super(BubbleType.SHOOTING_BUBBLE, position, color);
 	}
 
 	@Override

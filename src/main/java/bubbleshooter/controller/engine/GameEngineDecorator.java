@@ -55,8 +55,8 @@ public class GameEngineDecorator implements GameLoop {
      * @return if the {@link BasicGameLoop} is running or not.
      */
     @Override
-    public final boolean isRunning() {
-        return this.gameLoop.isRunning();
+    public final boolean isStopped() {
+        return this.gameLoop.isStopped();
     }
 
     /**
