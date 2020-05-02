@@ -19,7 +19,7 @@
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Label fx:id="gameOverLabel" layoutX="150.0" layoutY="108.0" prefHeight="63.0" prefWidth="426.0" text="Game Over" textFill="RED">
+      <Label fx:id="gameOverLabel" text="Game Over" textFill="RED">
          <font>
             <Font size="50.0" />
          </font>
