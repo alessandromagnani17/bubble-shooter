@@ -98,6 +98,7 @@ public class GameController extends AbstractController {
 	}
     
     public void pause() {
+    	this.getController().getGameEngine().pauseLoop();
     	this.getView().loadScene(FXMLPath.PAUSE);
     }
 
