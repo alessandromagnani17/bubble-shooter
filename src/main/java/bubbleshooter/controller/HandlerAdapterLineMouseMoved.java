@@ -46,13 +46,14 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
         Bounds s2 = borderRight.getBoundsInParent();
         Bounds s3 = borderLeft.getBoundsInParent();
         
-        double coeffAng, interc, xInt, yInt, newY, X1, Y1;
+        double angularCoeff, interc, xInt, yInt, newY, X1, Y1;
         double x1 = helpLine.getStartX();
     	double y1 = helpLine.getStartY();
     	double x2 = event.getX();
     	double y2 = event.getY();
     	
-    	coeffAng = (y2-y1)/(x2-x1);
+    	//coeffAng = (y2-y1)/(x2-x1);
+    	angularCoeff = PhysicHelper.calculateAngularCoefficient(x1,y1,x2,y2);
     	interc = (x2*y1 - x1*y2)/(x2-x1);
         if(boundsLine.isVisible()) {
         	boundsLine.setVisible(false);
@@ -61,14 +62,14 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
         if(s1.intersects(s3)) {
         	
         	xInt = 705;
-        	yInt = coeffAng*705 + interc;
+        	yInt = angularCoeff*705 + interc;
         	
         	X1 = xBubble;
         	Y1 = (yBubble - yInt) * 2;
         	
         	interc = (X1*yInt - xInt*Y1)/(X1-xInt);
         	
-        	newY = -coeffAng*0 - interc;
+        	newY = -angularCoeff*0 - interc;
         	
         	writeLine(boundsLine, xInt, yInt, 0, newY);
         }
@@ -78,7 +79,7 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
         	xInt = 0;
         	yInt = interc;
         	
-        	newY = -coeffAng*705 + interc;
+        	newY = -angularCoeff*705 + interc;
         	
         	writeLine(boundsLine, xInt, yInt, 705, newY);
         	
