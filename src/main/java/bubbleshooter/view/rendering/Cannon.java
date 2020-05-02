@@ -1,6 +1,5 @@
 package bubbleshooter.view.rendering;
 
-import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

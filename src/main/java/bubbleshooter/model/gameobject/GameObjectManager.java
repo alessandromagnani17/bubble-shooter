@@ -14,7 +14,7 @@ public class GameObjectManager {
 
     private List<Bubble> bubbles;
 
-    
+
     public GameObjectManager() {
         this.bubbles = new LinkedList<>();
     } 
@@ -55,9 +55,9 @@ public class GameObjectManager {
     }
 
     public final void reloadSwitchBubble() {
-    	Bubble switchBubble = this.getSwitchBubble();
-    	switchBubble.setPosition(new Point2D(600, 600));
-    	if (switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).isPresent()) {
+        Bubble switchBubble = this.getSwitchBubble();
+        switchBubble.setPosition(new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()));
+        if (switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).isPresent()) {
     		SwitchComponent switcher = (SwitchComponent) switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).get();
     		switcher.setBubbleColor(switchBubble.getColor());
     	}
