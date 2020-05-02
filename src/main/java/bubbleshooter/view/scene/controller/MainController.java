@@ -80,8 +80,9 @@ public final class MainController extends AbstractController {
     }
     
     public void quit() {
-        System.exit(0);
-}
+        //System.exit(0);
+    	this.getView().loadScene(FXMLPath.GAMEOVER);
+    }
 
     @Override
     public FXMLPath getNextScene() {
