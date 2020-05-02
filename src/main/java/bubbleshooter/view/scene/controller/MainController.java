@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 /**
  * The Controller related to the main.fxml GUI.
  *
@@ -40,25 +41,32 @@ public final class MainController extends AbstractController {
 		
 		this.titleLabel.setText("Bubble Shooter");
 		this.titleLabel.setFont(Font.font(TITLE_FONT_SIZE));
-		System.out.println("Label size --> " + TITLE_HEIGTH);
 		this.titleLabel.setAlignment(Pos.BOTTOM_CENTER);
 		this.titleLabel.setPrefSize(TITLE_WIDTH, TITLE_HEIGTH);
 		
+		this.basicModeButton.setText("Basic Mode");
+		this.basicModeButton.setTextAlignment(TextAlignment.CENTER);
 		this.basicModeButton.setLayoutX(BUTTON_X);
 		this.basicModeButton.setLayoutY(TITLE_HEIGTH + TITLE_DISTANCE);
 		this.basicModeButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
 		this.basicModeButton.setFont(Font.font(BUTTON_FONT_SIZE));
 		
+		this.survivalModeButton.setText("Survival Mode");
+		this.survivalModeButton.setTextAlignment(TextAlignment.CENTER);
 		this.survivalModeButton.setLayoutX(BUTTON_X);
 		this.survivalModeButton.setLayoutY(this.basicModeButton.getLayoutY() + BUTTON_HEIGTH + BUTTON_DISTANCE);
 		this.survivalModeButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
 		this.survivalModeButton.setFont(Font.font(BUTTON_FONT_SIZE));
 		
+		this.highscoresButton.setText("Highscores");
+		this.highscoresButton.setTextAlignment(TextAlignment.CENTER);
 		this.highscoresButton.setLayoutX(BUTTON_X);
 		this.highscoresButton.setLayoutY(this.survivalModeButton.getLayoutY() + BUTTON_HEIGTH + BUTTON_DISTANCE);
 		this.highscoresButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
 		this.highscoresButton.setFont(Font.font(BUTTON_FONT_SIZE));
 		
+		this.quitButton.setText("Quit");
+		this.quitButton.setTextAlignment(TextAlignment.CENTER);
 		this.quitButton.setLayoutX(BUTTON_X);
 		this.quitButton.setLayoutY(this.highscoresButton.getLayoutY() + BUTTON_HEIGTH + BUTTON_DISTANCE);
 		this.quitButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
