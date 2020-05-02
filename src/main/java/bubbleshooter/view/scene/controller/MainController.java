@@ -78,6 +78,7 @@ public final class MainController extends AbstractController {
 
     public void basicMode() {
         this.getController().startGame(LevelTypes.BASICMODE);
+        this.getController().setLevelType(LevelTypes.BASICMODE);
         this.nextScene();
     }
     
@@ -91,8 +92,7 @@ public final class MainController extends AbstractController {
     }
     
     public void quit() {
-        //System.exit(0);
-    	this.getView().loadScene(FXMLPath.GAMEOVER);
+        System.exit(0);
     }
 
     @Override
