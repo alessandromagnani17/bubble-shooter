@@ -78,7 +78,6 @@ public final class MainController extends AbstractController {
 
     public void basicMode() {
         this.getController().startGame(LevelTypes.BASICMODE);
-        this.getController().setLevelType(LevelTypes.BASICMODE);
         this.nextScene();
     }
     
