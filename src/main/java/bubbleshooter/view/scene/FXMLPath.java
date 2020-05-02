@@ -5,7 +5,8 @@ public enum FXMLPath {
     MAIN("/view/scenes/main.fxml"),
     GAME("/view/scenes/game.fxml"),
     HIGHSCORE("/view/scenes/highscores.fxml"),
-	GAMEOVER("/view/scenes/gameover.fxml");
+	GAMEOVER("/view/scenes/gameover.fxml"),
+	PAUSE("/view/scenes/pause.fxml");
     
     private final String scene;
 
