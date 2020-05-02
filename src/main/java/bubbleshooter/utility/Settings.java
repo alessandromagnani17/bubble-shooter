@@ -12,8 +12,8 @@ public final class Settings {
     private static final double NUM_BUBBLES = 19;
     private static final double NUM_ROWS = 8;
 
-   private Settings() {
-   }
+    private Settings() {
+    }
 
     public static double getNumBubbles() {
         return NUM_BUBBLES;
@@ -42,4 +42,5 @@ public final class Settings {
     public static double getNumRows() {
         return NUM_ROWS;
     }
+
 }

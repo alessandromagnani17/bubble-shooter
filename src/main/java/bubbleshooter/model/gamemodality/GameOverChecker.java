@@ -16,8 +16,4 @@ public class GameOverChecker {
 		return this.gameMode.getCurrentBubbles().stream().filter(b -> b.getType()
 				.equals(BubbleType.GRID_BUBBLE)).anyMatch(b -> b.getPosition().getY() > LIMITS); 
 	}
-	
-	
-	
-
 }
