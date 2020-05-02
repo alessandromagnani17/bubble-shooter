@@ -72,13 +72,17 @@ public class HighscoreController extends AbstractController {
 		this.tableSurvivalView.setPrefSize(TABLE_WIDTH, TABLE_HEIGTH);
 
 		this.nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
+		this.nameBaseColumn.setText("Player");
 		this.nameBaseColumn.setPrefWidth(TABLE_WIDTH/2);
 		this.scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
+		this.scoreBaseColumn.setText("Score");
 		this.scoreBaseColumn.setPrefWidth(TABLE_WIDTH/2);
 		
 		this.nameSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
+		this.nameSurvivalColumn.setText("Player");
 		this.nameSurvivalColumn.setPrefWidth(TABLE_WIDTH/2);
 		this.scoreSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
+		this.scoreSurvivalColumn.setText("Time");
 		this.scoreSurvivalColumn.setPrefWidth(TABLE_WIDTH/2);
 		
 		this.backMenuButton.setText("Back to menu");
