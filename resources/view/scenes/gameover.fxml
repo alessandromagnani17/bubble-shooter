@@ -15,21 +15,21 @@
 
 <AnchorPane maxHeight="700.0" maxWidth="705.0" minHeight="700.0" minWidth="705.0" prefHeight="700.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bubbleshooter.view.scene.controller.GameOverController">
    <children>
-      <Button layoutX="150.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#addToHighscore" prefHeight="41.0" prefWidth="297.0" text="Add to highscores" textFill="RED">
+      <Button fx:id="buttonAdd" layoutX="150.0" layoutY="506.0" mnemonicParsing="false" onMouseClicked="#addToHighscore" prefHeight="41.0" prefWidth="297.0" text="Add to highscores" textFill="RED">
          <font>
             <Font size="30.0" />
          </font></Button>
-      <Label layoutX="150.0" layoutY="108.0" prefHeight="63.0" prefWidth="426.0" text="Game Over" textFill="RED">
+      <Label fx:id="gameOverLabel" layoutX="150.0" layoutY="108.0" prefHeight="63.0" prefWidth="426.0" text="Game Over" textFill="RED">
          <font>
             <Font size="50.0" />
          </font>
       </Label>
-      <Label layoutX="150.0" layoutY="202.0" prefHeight="37.0" prefWidth="159.0" text="Your score:" textFill="RED">
+      <Label fx:id="scoreLabel" layoutX="150.0" layoutY="202.0" prefHeight="37.0" prefWidth="159.0" text="Your score:" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLabel" layoutX="310.0" layoutY="202.0" prefHeight="37.0" prefWidth="80.0" textFill="RED">
+      <Label fx:id="scoreLabelToWrite" layoutX="310.0" layoutY="202.0" prefHeight="37.0" prefWidth="80.0" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
@@ -39,22 +39,22 @@
             <Font size="30.0" />
          </font>
       </TextArea>
-      <Label layoutX="150.0" layoutY="249.0" prefHeight="37.0" prefWidth="249.0" text="Destroyed bubble:" textFill="RED">
+      <Label fx:id="destroyedBubbleLabel" layoutX="150.0" layoutY="249.0" prefHeight="37.0" prefWidth="256.0" text="Destroyed bubbles:" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="destroyedBubbleLabel" layoutX="399.0" layoutY="249.0" prefHeight="37.0" prefWidth="170.0" textFill="RED">
+      <Label fx:id="destroyedBubbleLabelToWrite" layoutX="399.0" layoutY="249.0" prefHeight="37.0" prefWidth="170.0" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label layoutX="150.0" layoutY="296.0" prefHeight="37.0" prefWidth="170.0" text="Game time:" textFill="RED">
+      <Label fx:id="gameTimeLabel" layoutX="150.0" layoutY="296.0" prefHeight="37.0" prefWidth="170.0" text="Game time:" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="gameTimeLabel" layoutX="313.0" layoutY="295.0" prefHeight="37.0" prefWidth="249.0" textFill="RED">
+      <Label fx:id="gameTimeLabelToWrite" layoutX="313.0" layoutY="295.0" prefHeight="37.0" prefWidth="249.0" textFill="RED">
          <font>
             <Font size="30.0" />
          </font>
