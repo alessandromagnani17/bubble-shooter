@@ -1,6 +1,7 @@
 package bubbleshooter.controller.sound;
 
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 
 /**
@@ -9,7 +10,6 @@ import javafx.scene.media.MediaPlayer;
 public class SoundManager {
 
     private static final double VOLUME = 0.2;
-    private SoundNames soundName;
     private MediaPlayer mediaPlayer;
 
     /**
@@ -24,9 +24,8 @@ public class SoundManager {
      */
     private void loadGameSounds() {
         try {
-              this.soundName = SoundNames.BACKGROUND;
-              this.mediaPlayer = new MediaPlayer(new Media(ClassLoader.getSystemResource(this.soundName.getPath()).toString()));
-          } catch (Exception e) {
+            this.mediaPlayer = new MediaPlayer(new Media(ClassLoader.getSystemResource(SoundNames.BACKGROUND.getPath()).toString()));
+          } catch (MediaException e) {
               e.printStackTrace();
           }
     }

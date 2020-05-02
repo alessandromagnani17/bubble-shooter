@@ -2,7 +2,6 @@ package bubbleshooter.controller.engine;
 
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.GameStatus;
-import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
 
 /**
@@ -13,7 +12,7 @@ import bubbleshooter.view.View;
  */
 public class BasicGameLoop extends Thread implements GameLoop  {
 
-    private static final int FPS = Settings.getFPS();
+    private static final int FPS = 60;
     private static final int SECOND = 1000;
     private static final int PERIOD = SECOND / FPS;
     private final View view;
@@ -33,7 +32,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
         this.setDaemon(true);
         this.view = view;
         this.model = model;
-        this.isStopped = false;
+        this.isStopped = true;
         this.isPaused = true;
     }
 
@@ -42,7 +41,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
      */
     @Override
     public final void startLoop() {
-        if (!this.isStopped()) {
+        if (this.isStopped()) {
             this.isStopped = false;
             this.isPaused = false;
             this.loopThread = new Thread(this, "loop");

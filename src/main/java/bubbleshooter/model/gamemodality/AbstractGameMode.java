@@ -74,15 +74,13 @@ public abstract class AbstractGameMode {
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
 				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()),
 				remainingColors.get(rnd.nextInt(remainingColors.size() - 1)))));
-		
-		
 	}
 
 	public final void loadSwitchBubble() {
 		Random rnd = new Random();
 		List<BubbleColor> remainingColors = this.bubbleGridHelper.getRemainingColors();
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()),
+				new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()),
 				remainingColors.get(rnd.nextInt(remainingColors.size() - 1)))));
 	}
 
