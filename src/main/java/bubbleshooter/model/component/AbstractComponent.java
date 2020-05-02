@@ -2,11 +2,18 @@ package bubbleshooter.model.component;
 
 import bubbleshooter.model.gameobject.Bubble;
 
+/**
+ * Abstract class to implement the generic methods of {@link Component} interface.
+ *
+ */
 public abstract class AbstractComponent implements Component {
 
     private Bubble container;
     private ComponentType type;
 
+    /**
+     * @param container The {@link Bubble} which contains this component.
+     */
     public AbstractComponent(final Bubble container) {
         this.container = container;
     }

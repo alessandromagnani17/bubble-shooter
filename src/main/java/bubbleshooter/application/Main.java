@@ -10,10 +10,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * This class represent the Main class of the JavaFX-based application.
+ * This class represent the Main class of the Application.
  */
 public final class Main extends Application {
-
 
     @Override
     public void start(final Stage windowStage) throws Exception {

@@ -4,7 +4,6 @@ import javafx.stage.Screen;
 
 public final class Settings {
 
-    private static final int FPS = 60;
     private static final double SCREEN_WIDTH = Screen.getPrimary().getBounds().getWidth();
     private static final double SCREEN_HEIGTH = Screen.getPrimary().getBounds().getHeight();
     private static final double GUI_HEIGTH = SCREEN_HEIGTH / 1.52;
@@ -33,10 +32,6 @@ public final class Settings {
 
     public static double getGuiWidth() {
         return GUI_WIDTH;
-    }
-
-    public static int getFPS() {
-        return FPS;
     }
 
     public static double getNumRows() {

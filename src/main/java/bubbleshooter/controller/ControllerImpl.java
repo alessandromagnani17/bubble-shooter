@@ -14,22 +14,32 @@ import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.view.View;
 import javafx.collections.ObservableList;
 
+/**
+ * Class which implements the {@link Controller} interface.
+ * Used to communicate with {@link Model} , {@link View} and to start the {@link GameLoop}.
+ */
 public class ControllerImpl implements Controller {
 
     private final Model model;
     private final View view;
     private GameLoop engine;
     private HighscoreStore highscoreStore;
-    //GESTIRE LA PARTE DELL INPUT PER STOPPARE E FAR PARTIRE IL GAME LOOP
 
+    /**
+     * @param model The {@link Model} of the Game.
+     * @param view The {@link View} of the Game.
+     */
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
      this.highscoreStore = new HighscoreStoreImpl();
     }
 
-     //METODO CHE VERRA INVOCATO DA UN CONTROLLERFXML QUANDO VIENE SPINTO 
-     //IL PULSANTE PLAY TRAMITE GETCONTROLLER CHE RESTITUISCE IL CONTROLLER DELLA GUI .startGame()
+
+    /**
+    * The method called by the {@link View} to start the Game in the {@link Model}.
+    * @param levelType
+    */
     @Override
     public final void startGame(final LevelTypes levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
@@ -45,6 +55,9 @@ public class ControllerImpl implements Controller {
         }
     }
 
+    /**
+     * @return The List of the current Bubble in the Game.
+     */
     @Override
     public final List<Bubble> getBubbles() {
         return this.model.getBubbles();
@@ -80,9 +93,11 @@ public class ControllerImpl implements Controller {
 		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
 	}
 
-
+    /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
+     * @return The Engine of the Game.
+     */
 	@Override
-	public GameLoop getGameEngine() {
+	public final GameLoop getGameEngine() {
 		return this.engine;
 	}
 }
