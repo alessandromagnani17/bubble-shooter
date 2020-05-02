@@ -12,7 +12,7 @@ import bubbleshooter.view.View;
  */
 public class BasicGameLoop extends Thread implements GameLoop  {
 
-    private static final int FPS = Settings.getFPS();
+    private static final int FPS = 60;
     private static final int SECOND = 1000;
     private static final int PERIOD = SECOND / FPS;
     private final View view;
