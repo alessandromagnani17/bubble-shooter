@@ -1,6 +1,7 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.SwitcherController;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
@@ -46,13 +47,20 @@ public class GameController extends AbstractController {
 	private DrawCannon drawCannon;
 	private Cannon cannon;
 	private SwitcherController switcherController;
+	private HandlerAdapterMouseMoved handlerAdapter;
 
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
+		
 		this.help  = new DrawHelpLine(this.pane);
 	    this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 		this.drawCannon = new DrawCannon(this.pane, this.cannon);
+		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
+										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY(), 
+										this.help);
+		this.pane.setOnMouseMoved(this.handlerAdapter);
+		
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
@@ -67,7 +75,8 @@ public class GameController extends AbstractController {
 			public void handle(final MouseEvent event) {
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
+				//if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
+				if (shootingBubble.getPosition().getX() == xBubble) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
