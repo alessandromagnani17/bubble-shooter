@@ -25,4 +25,5 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     public final double getRotationAngle() {
         return this.rotation.getAngle();
     }
+
 }
