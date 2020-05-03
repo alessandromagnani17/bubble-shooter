@@ -1,27 +1,29 @@
 package bubbleshooter.model.gamemodality;
 
+import java.util.List;
+
+import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleColor;
 import bubbleshooter.model.gameobject.BubbleType;
 
 public class GameSwitcher {
 
-    private AbstractGameMode gameMode;
+    private List<Bubble> bubbles;
 
-    public GameSwitcher(final AbstractGameMode gameMode) {
-        super();
-        this.gameMode = gameMode;
+    public GameSwitcher(final List<Bubble> bubbles) {
+        this.bubbles = bubbles;
     }
 
     public final void switchBall() {
-        BubbleColor bubbleColor = gameMode.getCurrentBubbles().stream()
+        BubbleColor bubbleColor = bubbles.stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getColor();
 
-        gameMode.getCurrentBubbles().stream()
+        bubbles.stream()
         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
-        .setColor(gameMode.getCurrentBubbles().stream()
+        .setColor(bubbles.stream()
                 .filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get().getColor());
 
-        gameMode.getCurrentBubbles().stream()
+        bubbles.stream()
         .filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get()
         .setColor(bubbleColor);
     }
