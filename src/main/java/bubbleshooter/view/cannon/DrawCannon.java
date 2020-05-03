@@ -28,10 +28,10 @@ public class DrawCannon {
         this.setRotation();
         this.pane.getChildren().add(this.cannon.getCannon());
 
-        this.handlerAdapterMouseMoved = new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y);
+        //this.handlerAdapterMouseMoved = new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y);
 
-        this.pane.setOnMouseMoved(handlerAdapterMouseMoved);
-        this.pane.setOnMouseDragged(new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y));
+        //this.pane.setOnMouseMoved(handlerAdapterMouseMoved);
+        //this.pane.setOnMouseDragged(new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y));
         this.pane.setOnMouseClicked(new HandlerAdapterMouseClicked(this.rotation, SHOOTING_X, SHOOTING_Y));
     }
 
