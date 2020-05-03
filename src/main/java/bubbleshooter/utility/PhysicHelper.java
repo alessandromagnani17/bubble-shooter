@@ -2,12 +2,11 @@ package bubbleshooter.utility;
 
 import bubbleshooter.model.gameobject.Bubble;
 import javafx.geometry.Point2D;
-import javafx.scene.input.MouseEvent;
 
  public final class PhysicHelper {
 	 
-	 private static final double MAXANGLE =  65.0;
-	    private static final double MINANGLE = -65.0;
+	private static final double MAXANGLE =  65.0;
+	private static final double MINANGLE = -65.0;
 
     private PhysicHelper() {
     }
@@ -23,9 +22,10 @@ import javafx.scene.input.MouseEvent;
         shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().get().getX() * -1, shootingBubble.getDirection().get().getY()));
     }
     
-    public static double calculateAngle(final MouseEvent event, final double xBubble, final double yBubble) {
-        double hypotenuse = Math.sqrt(Math.pow(event.getX() - xBubble, 2) + Math.pow(event.getY() - yBubble, 2));
-        double cathetus = (event.getX() - xBubble);
+    public static double calculateAngle(final Point2D eventPosition, final Point2D shootingBubblePosition) {
+        double hypotenuse = Math.sqrt(Math.pow(eventPosition.getX() - shootingBubblePosition.getX(), 2) + 
+        		Math.pow(eventPosition.getY() - shootingBubblePosition.getY(), 2));
+        double cathetus = (eventPosition.getX() - shootingBubblePosition.getX());
 
         return checkAngle(Math.toDegrees(Math.asin(cathetus / hypotenuse)));
     }
@@ -39,11 +39,12 @@ import javafx.scene.input.MouseEvent;
         return angle;
     }
 
-	public static double calculateAngularCoefficient(double x1, double y1, double x2, double y2) {
-		return (y2-y1)/(x2-x1);
+	public static double calculateAngularCoefficient(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
+		return (endPointSecondLine.getY() - startPointSecondLine.getY()) / (endPointSecondLine.getX() - startPointSecondLine.getX());
 	}
 
-	public static double calculateIntercepts(double x1, double y1, double x2, double y2) {
-		return (x2*y1 - x1*y2)/(x2-x1);
+	public static double calculateIntercepts(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
+		return (endPointSecondLine.getX() * startPointSecondLine.getY() - 
+				startPointSecondLine.getX() * endPointSecondLine.getY()) / (endPointSecondLine.getX() - startPointSecondLine.getX());
 	}
 }

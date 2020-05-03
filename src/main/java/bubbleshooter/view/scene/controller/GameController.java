@@ -48,6 +48,7 @@ public class GameController extends AbstractController {
 	private Cannon cannon;
 	private SwitcherController switcherController;
 	private HandlerAdapterMouseMoved handlerAdapter;
+	private Point2D startPointFirstLine;
 
 	@Override
 	public final void init(final Controller controller, final View view) {
@@ -56,11 +57,12 @@ public class GameController extends AbstractController {
 		this.help  = new DrawHelpLine(this.pane);
 	    this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 		this.drawCannon = new DrawCannon(this.pane, this.cannon);
+		this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
 		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
-										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY(), 
-										this.help);
-		this.pane.setOnMouseMoved(this.handlerAdapter);
+										this.startPointFirstLine, this.help);
 		
+		this.pane.setOnMouseMoved(this.handlerAdapter);
+		this.pane.setOnMouseDragged(this.handlerAdapter);
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);

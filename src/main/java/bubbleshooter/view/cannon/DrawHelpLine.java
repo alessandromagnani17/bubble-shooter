@@ -3,6 +3,7 @@ package bubbleshooter.view.cannon;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -11,16 +12,14 @@ import javafx.scene.transform.Rotate;
 public class DrawHelpLine {
 	
 	private AnchorPane pane = new AnchorPane();
-	private static final double LINE_X = Settings.getGuiWidth() / 2;
-    private static final double LINE_Y = Settings.getGuiHeigth() - Bubble.getWidth();
+	
+	private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth());
     public static final double DASH_SIZE = Settings.getGuiHeigth()/70;
     public static final double DASH_WIDTH = Settings.getGuiHeigth()/200;
-	private Line helpLine = new Line(LINE_X, LINE_Y, LINE_X, 0);
+	private Line helpLine = new Line(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), START_POINT_FIRST_LINE.getX(), 0);
 	private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
     private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
     private Line boundsLine = new Line(0,0,0,0);
-	private static final double X_BUBBLE = 352.5;
-	private static final double Y_BUBBLE = 600.0;
 	private Rotate rotation = new Rotate();
 	private boolean helpSelected = false;
 
@@ -54,8 +53,8 @@ public class DrawHelpLine {
 	}
 
 	private void setRotation() {
-		this.rotation.setPivotX(LINE_X);
-		this.rotation.setPivotY(LINE_Y);
+		this.rotation.setPivotX(START_POINT_FIRST_LINE.getX());
+		this.rotation.setPivotY(START_POINT_FIRST_LINE.getY());
 		this.helpLine.getTransforms().add(this.rotation);
 	}
 	
@@ -98,11 +97,11 @@ public class DrawHelpLine {
 		return this.boundsLine;
 	}
 
-	public void drawBoundsLine(double xInt, double yInt, double endX, double endY) {
-		this.boundsLine.setStartX(xInt);
-		this.boundsLine.setStartY(yInt);
-		this.boundsLine.setEndX(endX);
-		this.boundsLine.setEndY(endY);
+	public void drawBoundsLine(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
+		this.boundsLine.setStartX(startPointSecondLine.getX());
+		this.boundsLine.setStartY(startPointSecondLine.getY());
+		this.boundsLine.setEndX(endPointSecondLine.getX());
+		this.boundsLine.setEndY(endPointSecondLine.getY());
 		this.boundsLine.setVisible(true);
 	}
 

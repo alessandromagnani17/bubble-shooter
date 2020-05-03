@@ -4,6 +4,7 @@ import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.cannon.DrawHelpLine;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
@@ -13,32 +14,36 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     private Rotate cannonRotation = new Rotate();
     private Rotate lineRotation = new Rotate();
     private DrawHelpLine drawHelpLine;
-    private double xBubble;
-    private double yBubble;
+    private Point2D shootingBubblePosition;
+    private Point2D eventPosition;
 
-    public HandlerAdapterMouseMoved(final Rotate cannonRotation, final Rotate lineRotation, final double xBubble, 
-    								final double yBubble, DrawHelpLine drawHelpLine) {
+
+    public HandlerAdapterMouseMoved(final Rotate cannonRotation, final Rotate lineRotation, Point2D shootingBubblePosition,
+    		DrawHelpLine drawHelpLine) {
     	this.cannonRotation = cannonRotation;
     	this.lineRotation = lineRotation;
-        this.xBubble = xBubble;
-        this.yBubble = yBubble;
+        this.shootingBubblePosition = shootingBubblePosition;
         this.drawHelpLine = drawHelpLine;
     }
 
     @Override
     public final void handle(final MouseEvent event) {
-        this.cannonRotation.setAngle(PhysicHelper.calculateAngle(event, this.xBubble, this.yBubble));
-        this.lineRotation.setAngle(PhysicHelper.calculateAngle(event, this.xBubble, this.yBubble));
-        this.checkBounds(event.getX(), event.getY());
+    	this.eventPosition = new Point2D(event.getX(), event.getY());
+        this.cannonRotation.setAngle(PhysicHelper.calculateAngle(eventPosition, shootingBubblePosition));
+        this.lineRotation.setAngle(PhysicHelper.calculateAngle(eventPosition, shootingBubblePosition));
+        this.checkBounds(eventPosition);
     }
 
-    private void checkBounds(double xMouse, double yMouse) {
-    	double angularCoefficient, intercepts, xInt = 0, yInt = 0, newX, newY, startY;
+    private void checkBounds(Point2D eventPosition) {
+    	double angularCoefficient;
+    	double intercepts;
+    	Point2D startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
+    						 this.drawHelpLine.getHelpLine().getStartY());
+    	Point2D startPointSecondLine;
+    	Point2D endPointSecondLine;
     	
-    	angularCoefficient = PhysicHelper.calculateAngularCoefficient(this.drawHelpLine.getHelpLine().getStartX(), 
-    						 this.drawHelpLine.getHelpLine().getStartY(), xMouse, yMouse);
-    	intercepts = PhysicHelper.calculateIntercepts(this.drawHelpLine.getHelpLine().getStartX(), 
-				 			 this.drawHelpLine.getHelpLine().getStartY(), xMouse, yMouse);
+    	angularCoefficient = PhysicHelper.calculateAngularCoefficient(startPointFirstLine, this.eventPosition);
+    	intercepts = PhysicHelper.calculateIntercepts(startPointFirstLine, this.eventPosition);
     	
     	if(this.drawHelpLine.getBoundsLine().isVisible()) {
     		this.drawHelpLine.getBoundsLine().setVisible(false);
@@ -46,25 +51,26 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     	
 		if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getLeftBounds()) 
 				&& this.drawHelpLine.isHelpSelected()) {
-			xInt = 0;
-			yInt = intercepts;
-			newX = Settings.getGuiWidth();
-			newY = -angularCoefficient*newX + intercepts;
-			this.drawHelpLine.drawBoundsLine(xInt, yInt, newX, newY);
-		}else if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
+			
+			startPointSecondLine = new Point2D(0, intercepts);
+			endPointSecondLine = new Point2D(Settings.getGuiWidth(), -angularCoefficient * Settings.getGuiWidth() + intercepts);
+			this.drawHelpLine.drawBoundsLine(startPointSecondLine, endPointSecondLine);
+		}
+		
+		if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
 				&& this.drawHelpLine.isHelpSelected()) {
-			xInt = Settings.getGuiWidth();
-			yInt = angularCoefficient*xInt + intercepts;
-			newX = this.drawHelpLine.getHelpLine().getStartX();
-			startY = this.drawHelpLine.getHelpLine().getStartY();
-			newY =  startY - (startY - yInt)*2;
 			
-			intercepts = PhysicHelper.calculateIntercepts(xInt, yInt, newX, newY);
+			startPointSecondLine = new Point2D(Settings.getGuiWidth(), angularCoefficient * Settings.getGuiWidth() + intercepts);
+			endPointSecondLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
+					startPointFirstLine.getY() - (startPointFirstLine.getY() - startPointSecondLine.getY())*2);
+
+			intercepts = PhysicHelper.calculateIntercepts(startPointSecondLine, endPointSecondLine);
 			
-			newX = 0;
-			newY = -angularCoefficient*newX + intercepts;
-			this.drawHelpLine.drawBoundsLine(xInt, yInt, newX, newY);
-		} 
+			endPointSecondLine = new Point2D(0, -angularCoefficient * 0 + intercepts);		
+			
+			this.drawHelpLine.drawBoundsLine(startPointSecondLine, endPointSecondLine);
+		}
+		
 	}
 
 	public final double getRotationAngle() {
