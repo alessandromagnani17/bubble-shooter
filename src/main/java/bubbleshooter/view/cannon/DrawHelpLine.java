@@ -28,17 +28,24 @@ public class DrawHelpLine {
 
 	public DrawHelpLine(AnchorPane pane) {
 		this.pane = pane;
-		this.editHelpLine();
+		this.editLine(this.helpLine);
+		this.editLine(this.boundsLine);
 		this.setRotation();
 		this.helpLine.setVisible(false);
+		this.borderRight.setVisible(false);
+		this.borderLeft.setVisible(false);
+		this.boundsLine.setVisible(false);
 		this.helpLine.setMouseTransparent(true);
 		this.pane.getChildren().add(helpLine);
+		this.pane.getChildren().add(borderRight);
+		this.pane.getChildren().add(borderLeft);
+		this.pane.getChildren().add(boundsLine);
 	}
 
-	private void editHelpLine() {
-		this.helpLine.setStroke(Color.RED);
-		this.helpLine.setStrokeWidth(DASH_WIDTH);
-		this.helpLine.getStrokeDashArray().add(DASH_SIZE);
+	private void editLine(Line line) {
+		line.setStroke(Color.RED);
+		line.setStrokeWidth(DASH_WIDTH);
+		line.getStrokeDashArray().add(DASH_SIZE);
 	}
 
 	private void setRotation() {
