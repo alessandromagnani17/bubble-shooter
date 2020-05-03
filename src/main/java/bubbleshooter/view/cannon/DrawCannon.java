@@ -10,7 +10,8 @@ import javafx.scene.transform.Rotate;
 
 public class DrawCannon {
 
-    private static final double CANNON_X = Settings.getGuiWidth()  / 2.23;
+    //private static final double CANNON_X = Settings.getGuiWidth()  / 2.23;
+	private static final double CANNON_X = Settings.getGuiWidth() / 2;
     private static final double CANNON_Y = Settings.getGuiHeigth() / 1.31;
     private static final double SHOOTING_X = Settings.getGuiWidth() / 2;
     private static final double SHOOTING_Y = Settings.getGuiHeigth() - Bubble.getWidth();
@@ -39,12 +40,12 @@ public class DrawCannon {
     }
 
     private void editCannon() {
-        this.cannon.getCannon().setLayoutX(CANNON_X);
+        this.cannon.getCannon().setLayoutX(CANNON_X - this.cannon.getCannon().getImage().getWidth()/2);
         this.cannon.getCannon().setLayoutY(CANNON_Y);
     }
 
     private void setRotation() {
-        this.rotation.setPivotX(SHOOTING_X - CANNON_X);
+        this.rotation.setPivotX(SHOOTING_X - CANNON_X + this.cannon.getCannon().getImage().getWidth()/2);
         this.rotation.setPivotY(SHOOTING_Y - CANNON_Y);
         this.cannon.getCannon().getTransforms().add(rotation);
     }
