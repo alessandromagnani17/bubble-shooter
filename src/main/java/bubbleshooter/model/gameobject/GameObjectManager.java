@@ -55,6 +55,8 @@ public class GameObjectManager {
     }
 
     public final void reloadSwitchBubble() {
+    	System.out.println(this.getBubbleGrid().stream().filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
+				.map(b -> b.getColor()).distinct().collect(Collectors.toList()));
         Bubble switchBubble = this.getSwitchBubble();
         switchBubble.setPosition(new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()));
         if (switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).isPresent()) {

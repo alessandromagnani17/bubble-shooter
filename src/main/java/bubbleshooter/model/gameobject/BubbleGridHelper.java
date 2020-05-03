@@ -70,8 +70,6 @@ public class BubbleGridHelper {
 	}
 
 	public List<BubbleColor> getRemainingColors() {
-		System.out.println(this.getBubbleGrid().stream().filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
-				.map(b -> b.getColor()).distinct().collect(Collectors.toList()));
 		return this.getBubbleGrid().stream().filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
 				.map(b -> b.getColor()).distinct().collect(Collectors.toList());
 	}

@@ -68,8 +68,7 @@ public abstract class AbstractGameMode {
 	}
 
 	public final void loadShootingBubble() {
-		Random rnd = new Random();
-		List<BubbleColor> remainingColors = this.bubbleGridHelper.getRemainingColors();
+		
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
 				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()),
 				remainingColors.get(rnd.nextInt(remainingColors.size() - 1)))));
