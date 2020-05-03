@@ -50,4 +50,8 @@ public class DrawCannon {
         this.cannon.getCannon().getTransforms().add(rotation);
     }
 
+	public Rotate getRotation() {
+		return this.rotation;
+	}
+
 }
