@@ -10,7 +10,8 @@ import javafx.scene.transform.Rotate;
 
 public class DrawCannon {
 
-    private static final double CANNON_X = Settings.getGuiWidth()  / 2.23;
+    //private static final double CANNON_X = Settings.getGuiWidth()  / 2.23;
+	private static final double CANNON_X = Settings.getGuiWidth() / 2;
     private static final double CANNON_Y = Settings.getGuiHeigth() / 1.31;
     private static final double SHOOTING_X = Settings.getGuiWidth() / 2;
     private static final double SHOOTING_Y = Settings.getGuiHeigth() - Bubble.getWidth();
@@ -27,26 +28,30 @@ public class DrawCannon {
         this.setRotation();
         this.pane.getChildren().add(this.cannon.getCannon());
 
-        this.handlerAdapterMouseMoved = new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y);
+        //this.handlerAdapterMouseMoved = new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y);
 
-        this.pane.setOnMouseMoved(handlerAdapterMouseMoved);
-        this.pane.setOnMouseDragged(new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y));
+        //this.pane.setOnMouseMoved(handlerAdapterMouseMoved);
+        //this.pane.setOnMouseDragged(new HandlerAdapterMouseMoved(this.rotation, SHOOTING_X, SHOOTING_Y));
         this.pane.setOnMouseClicked(new HandlerAdapterMouseClicked(this.rotation, SHOOTING_X, SHOOTING_Y));
     }
 
-    public final double getAngle() {
+    /*public final double getAngle() {
         return handlerAdapterMouseMoved.getRotationAngle();
-    }
+    }*/
 
     private void editCannon() {
-        this.cannon.getCannon().setLayoutX(CANNON_X);
+        this.cannon.getCannon().setLayoutX(CANNON_X - this.cannon.getCannon().getImage().getWidth()/2);
         this.cannon.getCannon().setLayoutY(CANNON_Y);
     }
 
     private void setRotation() {
-        this.rotation.setPivotX(SHOOTING_X - CANNON_X);
+        this.rotation.setPivotX(SHOOTING_X - CANNON_X + this.cannon.getCannon().getImage().getWidth()/2);
         this.rotation.setPivotY(SHOOTING_Y - CANNON_Y);
         this.cannon.getCannon().getTransforms().add(rotation);
     }
+
+	public Rotate getRotation() {
+		return this.rotation;
+	}
 
 }
