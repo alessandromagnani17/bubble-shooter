@@ -22,6 +22,7 @@ public class DrawHelpLine {
 	private static final double X_BUBBLE = 352.5;
 	private static final double Y_BUBBLE = 600.0;
 	private Rotate rotation = new Rotate();
+	private boolean helpSelected = false;
 
 	public DrawHelpLine(AnchorPane pane) {
 		this.pane = pane;
@@ -76,10 +77,13 @@ public class DrawHelpLine {
 
 	public void drawLine() {
 		this.helpLine.setVisible(true);
+		this.helpSelected = true;
 	}
 
 	public void deleteLine() {
 		this.helpLine.setVisible(false);
+		this.boundsLine.setVisible(false);
+		this.helpSelected = false;
 	}
 
 	public Rotate getRotation() {
