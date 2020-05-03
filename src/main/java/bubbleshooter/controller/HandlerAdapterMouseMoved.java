@@ -28,7 +28,6 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     public final void handle(final MouseEvent event) {
         this.cannonRotation.setAngle(PhysicHelper.calculateAngle(event, this.xBubble, this.yBubble));
         this.lineRotation.setAngle(PhysicHelper.calculateAngle(event, this.xBubble, this.yBubble));
-        DrawHelpLine.drawBounds(event);
     }
 
     public final double getRotationAngle() {
