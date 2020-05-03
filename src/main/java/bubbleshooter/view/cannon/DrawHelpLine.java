@@ -86,7 +86,7 @@ public class DrawHelpLine {
 		return this.rotation;
 	}
 
-	public Object getBoundsLine() {
+	public Line getBoundsLine() {
 		return this.boundsLine;
 	}
 
