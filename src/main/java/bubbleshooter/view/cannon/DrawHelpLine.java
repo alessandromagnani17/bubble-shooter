@@ -18,7 +18,10 @@ public class DrawHelpLine {
     private static final double LINE_Y = Settings.getGuiHeigth() - Bubble.getWidth();
     public static final double DASH_SIZE = Settings.getGuiHeigth()/70;
     public static final double DASH_WIDTH = Settings.getGuiHeigth()/200;
-	private Line helpLine = new Line(LINE_X, LINE_Y, LINE_X, 0); 
+	private Line helpLine = new Line(LINE_X, LINE_Y, LINE_X, 0);
+	private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
+    private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
+    private Line boundsLine = new Line(0,0,0,0);
 	private static final double X_BUBBLE = 352.5;
 	private static final double Y_BUBBLE = 600.0;
 	private Rotate rotation = new Rotate();
