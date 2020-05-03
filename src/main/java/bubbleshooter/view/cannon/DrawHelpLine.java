@@ -74,7 +74,4 @@ public class DrawHelpLine {
 		return this.rotation;
 	}
 
-	public static void drawBounds(MouseEvent event) {
-	}
-
 }
