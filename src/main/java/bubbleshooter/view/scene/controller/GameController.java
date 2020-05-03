@@ -75,7 +75,8 @@ public class GameController extends AbstractController {
 			public void handle(final MouseEvent event) {
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
+				//if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
+				if (shootingBubble.getPosition().getX() == xBubble) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
