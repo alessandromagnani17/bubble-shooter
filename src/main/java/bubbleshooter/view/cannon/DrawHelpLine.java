@@ -5,6 +5,7 @@ import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -21,7 +22,6 @@ public class DrawHelpLine {
 	private static final double X_BUBBLE = 352.5;
 	private static final double Y_BUBBLE = 600.0;
 	private Rotate rotation = new Rotate();
-	private HandlerAdapterMouseMoved handlerAdapter;
 
 	public DrawHelpLine(AnchorPane pane) {
 		this.pane = pane;
@@ -58,6 +58,10 @@ public class DrawHelpLine {
 
 	public Rotate getRotation() {
 		return this.rotation;
+	}
+
+	public static void drawBounds(MouseEvent event) {
+		
 	}
 
 }
