@@ -2,6 +2,7 @@ package bubbleshooter.view.cannon;
 
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
+import javafx.geometry.Bounds;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -19,6 +20,9 @@ public class DrawHelpLine {
 	private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
     private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
     private Line boundsLine = new Line(0,0,0,0);
+    private Bounds helpBounds;
+    private Bounds rightBounds;
+    private Bounds leftBounds;
 	private static final double X_BUBBLE = 352.5;
 	private static final double Y_BUBBLE = 600.0;
 	private Rotate rotation = new Rotate();
@@ -33,6 +37,13 @@ public class DrawHelpLine {
 		this.pane.getChildren().add(borderRight);
 		this.pane.getChildren().add(borderLeft);
 		this.pane.getChildren().add(boundsLine);
+		this.setBounds();
+	}
+
+	private void setBounds() {
+		this.helpBounds = helpLine.getBoundsInParent();
+		this.rightBounds = borderRight.getBoundsInParent();
+		this.leftBounds = borderLeft.getBoundsInParent();
 	}
 
 	private void setInvisibleLine() {
