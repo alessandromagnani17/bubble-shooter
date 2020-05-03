@@ -79,7 +79,7 @@ public class DrawHelpLine {
 	}
 
 	public void drawLine() {
-		this.helpLine.setVisible(true);
+		//this.helpLine.setVisible(true);
 		this.helpSelected = true;
 	}
 
