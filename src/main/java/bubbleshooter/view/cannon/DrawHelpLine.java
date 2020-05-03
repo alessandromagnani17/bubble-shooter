@@ -1,8 +1,5 @@
 package bubbleshooter.view.cannon;
 
-import bubbleshooter.controller.HandlerAdapterLineMouseMoved;
-import bubbleshooter.controller.HandlerAdapterMouseClicked;
-import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
 import javafx.scene.input.MouseEvent;
@@ -71,7 +68,6 @@ public class DrawHelpLine {
 	}
 
 	public static void drawBounds(MouseEvent event) {
-		
 	}
 
 }
