@@ -31,8 +31,8 @@ public class DrawHelpLine {
 		this.helpLine.setMouseTransparent(true);
 		this.pane.getChildren().add(helpLine);
 		//this.handlerAdapter = new HandlerAdapterLineMouseMoved(this.rotation, LINE_X, LINE_Y, this.helpLine, this.pane);
-		this.handlerAdapter = new HandlerAdapterMouseMoved(this.rotation, LINE_X, LINE_Y);
-		this.pane.setOnMouseMoved(this.handlerAdapter);
+		//this.handlerAdapter = new HandlerAdapterMouseMoved(this.rotation, LINE_X, LINE_Y);
+		//this.pane.setOnMouseMoved(this.handlerAdapter);
 	}
 
 	private void editHelpLine() {
