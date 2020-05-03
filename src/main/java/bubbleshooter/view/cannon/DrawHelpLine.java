@@ -1,10 +1,8 @@
 package bubbleshooter.view.cannon;
 
-import bubbleshooter.controller.HandlerAdapterLineMouseMoved;
-import bubbleshooter.controller.HandlerAdapterMouseClicked;
-import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
+import javafx.geometry.Bounds;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -17,28 +15,42 @@ public class DrawHelpLine {
     private static final double LINE_Y = Settings.getGuiHeigth() - Bubble.getWidth();
     public static final double DASH_SIZE = Settings.getGuiHeigth()/70;
     public static final double DASH_WIDTH = Settings.getGuiHeigth()/200;
-	private Line helpLine = new Line(LINE_X, LINE_Y, LINE_X, 0); 
+	private Line helpLine = new Line(LINE_X, LINE_Y, LINE_X, 0);
+	private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
+    private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
+    private Line boundsLine = new Line(0,0,0,0);
 	private static final double X_BUBBLE = 352.5;
 	private static final double Y_BUBBLE = 600.0;
 	private Rotate rotation = new Rotate();
-	private HandlerAdapterMouseMoved handlerAdapter;
+	private boolean helpSelected = false;
 
 	public DrawHelpLine(AnchorPane pane) {
 		this.pane = pane;
-		this.editHelpLine();
+		this.editLine(this.helpLine);
+		this.editLine(this.boundsLine);
 		this.setRotation();
-		this.helpLine.setVisible(false);
-		this.helpLine.setMouseTransparent(true);
+		this.setInvisibleLine();
 		this.pane.getChildren().add(helpLine);
-		//this.handlerAdapter = new HandlerAdapterLineMouseMoved(this.rotation, LINE_X, LINE_Y, this.helpLine, this.pane);
-		//this.handlerAdapter = new HandlerAdapterMouseMoved(this.rotation, LINE_X, LINE_Y);
-		//this.pane.setOnMouseMoved(this.handlerAdapter);
+		this.pane.getChildren().add(borderRight);
+		this.pane.getChildren().add(borderLeft);
+		this.pane.getChildren().add(boundsLine);
 	}
 
-	private void editHelpLine() {
-		this.helpLine.setStroke(Color.RED);
-		this.helpLine.setStrokeWidth(DASH_WIDTH);
-		this.helpLine.getStrokeDashArray().add(DASH_SIZE);
+	private void setInvisibleLine() {
+		this.helpLine.setVisible(false);
+		this.helpLine.setMouseTransparent(true);
+		this.borderRight.setVisible(false);
+		this.borderRight.setMouseTransparent(true);
+		this.borderLeft.setVisible(false);
+		this.borderLeft.setMouseTransparent(true);
+		this.boundsLine.setVisible(false);
+		this.boundsLine.setMouseTransparent(true);
+	}
+
+	private void editLine(Line line) {
+		line.setStroke(Color.RED);
+		line.setStrokeWidth(DASH_WIDTH);
+		line.getStrokeDashArray().add(DASH_SIZE);
 	}
 
 	private void setRotation() {
@@ -47,20 +59,51 @@ public class DrawHelpLine {
 		this.helpLine.getTransforms().add(this.rotation);
 	}
 	
+	public Bounds getHelpBounds() {
+		return helpLine.getBoundsInParent();
+	}
+	
+	public Bounds getRightBounds() {
+		return borderRight.getBoundsInParent();
+	}
+	
+	public Bounds getLeftBounds() {
+		return borderLeft.getBoundsInParent();
+	}
+	
+	public boolean isHelpSelected() {
+		return this.helpSelected;
+	}
+	
 	public Line getHelpLine() {
 		return this.helpLine;
 	}
 
 	public void drawLine() {
 		this.helpLine.setVisible(true);
+		this.helpSelected = true;
 	}
 
 	public void deleteLine() {
 		this.helpLine.setVisible(false);
+		this.boundsLine.setVisible(false);
+		this.helpSelected = false;
 	}
 
 	public Rotate getRotation() {
 		return this.rotation;
+	}
+
+	public Line getBoundsLine() {
+		return this.boundsLine;
+	}
+
+	public void drawBoundsLine(double xInt, double yInt, double endX, double endY) {
+		this.boundsLine.setStartX(xInt);
+		this.boundsLine.setStartY(yInt);
+		this.boundsLine.setEndX(endX);
+		this.boundsLine.setEndY(endY);
+		this.boundsLine.setVisible(true);
 	}
 
 }

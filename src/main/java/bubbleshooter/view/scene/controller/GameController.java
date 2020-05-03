@@ -57,7 +57,8 @@ public class GameController extends AbstractController {
 	    this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 		this.drawCannon = new DrawCannon(this.pane, this.cannon);
 		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
-										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
+										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY(), 
+										this.help);
 		this.pane.setOnMouseMoved(this.handlerAdapter);
 		
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
@@ -74,7 +75,8 @@ public class GameController extends AbstractController {
 			public void handle(final MouseEvent event) {
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
+				//if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
+				if (shootingBubble.getPosition().getX() == xBubble) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
