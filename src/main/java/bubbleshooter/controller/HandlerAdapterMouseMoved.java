@@ -33,7 +33,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     private void checkBounds(double xMouse, double yMouse) {
-    	double angularCoefficient, intercepts, xInt, yInt, newX, newY, startY;
+    	double angularCoefficient, intercepts, xInt = 0, yInt = 0, newX, newY, startY;
     	
     	angularCoefficient = PhysicHelper.calculateAngularCoefficient(this.drawHelpLine.getHelpLine().getStartX(), 
     						 this.drawHelpLine.getHelpLine().getStartY(), xMouse, yMouse);
@@ -51,9 +51,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 			newX = Settings.getGuiWidth();
 			newY = -angularCoefficient*newX + intercepts;
 			this.drawHelpLine.drawBoundsLine(xInt, yInt, newX, newY);
-		}
-		
-		if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
+		}else if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
 				&& this.drawHelpLine.isHelpSelected()) {
 			xInt = Settings.getGuiWidth();
 			yInt = angularCoefficient*xInt + intercepts;
@@ -65,10 +63,8 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 			
 			newX = 0;
 			newY = -angularCoefficient*newX + intercepts;
-			
 			this.drawHelpLine.drawBoundsLine(xInt, yInt, newX, newY);
-		}
-		
+		} 
 	}
 
 	public final double getRotationAngle() {
