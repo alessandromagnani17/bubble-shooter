@@ -2,6 +2,7 @@ package bubbleshooter.view.cannon;
 
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
+import javafx.geometry.Bounds;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
