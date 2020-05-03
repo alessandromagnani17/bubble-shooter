@@ -35,9 +35,9 @@ public class DrawCannon {
         this.pane.setOnMouseClicked(new HandlerAdapterMouseClicked(this.rotation, SHOOTING_X, SHOOTING_Y));
     }
 
-    /*public final double getAngle() {
+    public final double getAngle() {
         return handlerAdapterMouseMoved.getRotationAngle();
-    }*/
+    }
 
     private void editCannon() {
         this.cannon.getCannon().setLayoutX(CANNON_X - this.cannon.getCannon().getImage().getWidth()/2);
