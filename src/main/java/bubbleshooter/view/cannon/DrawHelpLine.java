@@ -28,15 +28,19 @@ public class DrawHelpLine {
 		this.editLine(this.helpLine);
 		this.editLine(this.boundsLine);
 		this.setRotation();
-		this.helpLine.setVisible(false);
-		this.borderRight.setVisible(false);
-		this.borderLeft.setVisible(false);
-		this.boundsLine.setVisible(false);
+		this.setInvisibleLine();
 		this.helpLine.setMouseTransparent(true);
 		this.pane.getChildren().add(helpLine);
 		this.pane.getChildren().add(borderRight);
 		this.pane.getChildren().add(borderLeft);
 		this.pane.getChildren().add(boundsLine);
+	}
+
+	private void setInvisibleLine() {
+		this.helpLine.setVisible(false);
+		this.borderRight.setVisible(false);
+		this.borderLeft.setVisible(false);
+		this.boundsLine.setVisible(false);
 	}
 
 	private void editLine(Line line) {
