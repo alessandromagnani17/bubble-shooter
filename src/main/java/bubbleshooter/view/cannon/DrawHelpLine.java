@@ -71,7 +71,7 @@ public class DrawHelpLine {
 		return borderLeft.getBoundsInParent();
 	}
 	
-	public boolean helpSelected() {
+	public boolean isHelpSelected() {
 		return this.helpSelected;
 	}
 	
