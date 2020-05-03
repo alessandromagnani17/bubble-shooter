@@ -57,7 +57,8 @@ public class GameController extends AbstractController {
 	    this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 		this.drawCannon = new DrawCannon(this.pane, this.cannon);
 		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
-										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
+										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY(), 
+										this.help);
 		this.pane.setOnMouseMoved(this.handlerAdapter);
 		
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
