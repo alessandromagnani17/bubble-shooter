@@ -59,4 +59,8 @@ public class DrawHelpLine {
 		this.helpLine.setVisible(false);
 	}
 
+	public Rotate getRotation() {
+		return this.rotation;
+	}
+
 }
