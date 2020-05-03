@@ -7,6 +7,7 @@ import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.view.View;
 import bubbleshooter.view.cannon.DrawCannon;
+import bubbleshooter.view.cannon.DrawHelpLine;
 import bubbleshooter.view.images.ImagePath;
 import bubbleshooter.view.rendering.Cannon;
 import bubbleshooter.view.rendering.CanvasDrawer;
