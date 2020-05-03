@@ -47,4 +47,15 @@ import javafx.geometry.Point2D;
 		return (endPointSecondLine.getX() * startPointSecondLine.getY() - 
 				startPointSecondLine.getX() * endPointSecondLine.getY()) / (endPointSecondLine.getX() - startPointSecondLine.getX());
 	}
+
+	public static boolean angleTooHigh(Point2D startPointFirstLine, Point2D startPointSecondLine) {
+		double angle;
+		angle = PhysicHelper.calculateAngle(startPointFirstLine, startPointSecondLine);
+		if (angle > MAXANGLE) {
+            return false;
+        } else if (angle < MINANGLE) {
+            return false;
+        }
+		return true;
+	}
 }
