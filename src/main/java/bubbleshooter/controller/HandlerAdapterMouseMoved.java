@@ -6,7 +6,6 @@ import bubbleshooter.view.cannon.DrawHelpLine;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
