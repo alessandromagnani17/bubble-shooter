@@ -1,6 +1,7 @@
 package bubbleshooter.controller;
 
 import bubbleshooter.utility.PhysicHelper;
+import bubbleshooter.utility.Settings;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.scene.input.MouseEvent;
@@ -16,32 +17,36 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
     private double xBubble;
     private double yBubble;
     private Line helpLine;
-    private Line borderRight;
-    private Line borderLeft;
+    private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
+    private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
     private Line boundsLine = new Line(0,0,0,0);
     
     
-	public HandlerAdapterLineMouseMoved(Rotate rotation, double xBubble, double yBubble, Line helpLine,
-			Line borderRight, Line borderLeft, AnchorPane pane) {
+	public HandlerAdapterLineMouseMoved(Rotate rotation, double xBubble, double yBubble, Line helpLine, AnchorPane pane) {
 		this.rotation = rotation;
 		this.xBubble = xBubble;
 		this.yBubble = yBubble;
 		this.helpLine = helpLine;
-		this.borderRight = borderRight;
-		this.borderLeft = borderLeft;
 		this.pane = pane;
 		this.boundsLine.setStroke(Color.RED);
 		this.boundsLine.setStrokeWidth(4);
 		this.boundsLine.getStrokeDashArray().add(10.0);
 		this.boundsLine.setVisible(false);
+		this.borderLeft.setVisible(false);
+		this.borderRight.setVisible(false);
+		this.pane.getChildren().add(this.borderRight);
+		this.pane.getChildren().add(this.borderLeft);
 		this.pane.getChildren().add(this.boundsLine);
 	}
 	
 	@Override
 	public void handle(MouseEvent event) {
 		
-		this.rotation.setAngle(PhysicHelper.calculateAngle(event, xBubble, yBubble));
+		System.out.println("xMouse --> " + event.getX());
+		System.out.println("yMouse --> " + event.getY());
 		
+		this.rotation.setAngle(PhysicHelper.calculateAngle(event, xBubble, yBubble));
+		/*
 		Bounds s1 = helpLine.getBoundsInParent();
         Bounds s2 = borderRight.getBoundsInParent();
         Bounds s3 = borderLeft.getBoundsInParent();
@@ -89,7 +94,7 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
 		if(!this.helpLine.isVisible()) {
 			this.boundsLine.setVisible(false);
 		}
-		
+		*/
 	}
 
 	private void writeLine(Line line, double xInt, double yInt, int endX, double endY) {
