@@ -1,6 +1,7 @@
 package bubbleshooter.controller;
 
 import bubbleshooter.utility.PhysicHelper;
+import bubbleshooter.utility.Settings;
 import bubbleshooter.view.cannon.DrawHelpLine;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +33,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     private void checkBounds(double xMouse, double yMouse) {
-    	double angularCoefficient, intercepts, xInt, yInt;
+    	double angularCoefficient, intercepts, xInt, yInt, newX, newY;
     	
     	angularCoefficient = PhysicHelper.calculateAngularCoefficient(this.drawHelpLine.getHelpLine().getStartX(), 
     						 this.drawHelpLine.getHelpLine().getStartY(), xMouse, yMouse);
@@ -46,7 +47,9 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 		if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getLeftBounds())) {
 			xInt = 0;
 			yInt = intercepts;
-			
+			newX = Settings.getGuiWidth();
+			newY = -angularCoefficient*newX + intercepts;
+			this.drawHelpLine.drawBoundsLine(xInt, yInt, newX, newY);
 		}
 	}
 
