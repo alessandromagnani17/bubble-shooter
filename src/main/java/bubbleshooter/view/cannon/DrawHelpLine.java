@@ -90,4 +90,12 @@ public class DrawHelpLine {
 		return this.boundsLine;
 	}
 
+	public void drawBoundsLine(double xInt, double yInt, double endX, double endY) {
+		this.boundsLine.setStartX(xInt);
+		this.boundsLine.setStartY(yInt);
+		this.boundsLine.setEndX(endX);
+		this.boundsLine.setEndY(endY);
+		this.boundsLine.setVisible(true);
+	}
+
 }
