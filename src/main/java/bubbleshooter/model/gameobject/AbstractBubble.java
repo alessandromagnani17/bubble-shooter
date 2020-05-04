@@ -30,6 +30,19 @@ public abstract class AbstractBubble implements Bubble {
 	protected abstract void setComponents();
 
 	@Override
+	public final Optional<Component> getComponent(final ComponentType type) {
+		return this.components.stream()
+				              .filter(a -> a.getComponentType().equals(type))
+                              .findFirst();
+	}
+
+	@Override
+	public final void addComponent(final Component component) {
+		this.components.add(component);
+	}
+
+	
+	@Override
 	public final Point2D getPosition() {
 		return this.position;
 	}
@@ -71,18 +84,6 @@ public abstract class AbstractBubble implements Bubble {
 
 	@Override
 	public void update(final double elapsed) {
-	}
-
-	@Override
-	public final Optional<Component> getComponent(final ComponentType type) {
-		return this.components.stream()
-				              .filter(a -> a.getComponentType().equals(type))
-                              .findFirst();
-	}
-
-	@Override
-	public final void addComponent(final Component component) {
-		this.components.add(component);
 	}
 
 	@Override
