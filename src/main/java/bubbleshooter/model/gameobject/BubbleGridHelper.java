@@ -97,6 +97,7 @@ public class BubbleGridHelper {
         return this.getBubbleGrid().stream().filter(a -> !linkedBubbles.contains(a)).collect(Collectors.toSet());
     }
 
+
     /**
      * 
      * @param bubble
@@ -111,6 +112,7 @@ public class BubbleGridHelper {
                 new Point2D(bubblePos.getX() - Bubble.getWidth() / 2, bubblePos.getY() + Bubble.getWidth()),
                 new Point2D(bubblePos.getX() + Bubble.getWidth() / 2, bubblePos.getY() + Bubble.getWidth()));
     }
+
 
     /**
      * @return The current {@link BubbleColor} in the game.
