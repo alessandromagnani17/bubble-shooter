@@ -40,4 +40,6 @@ public interface Controller {
 	double getGameTime();
 
 	int getWrongShoots();
+	
+	LevelTypes getCurrentLevel();
 }
