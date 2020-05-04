@@ -1,4 +1,4 @@
-package bubbleshooter.controller;
+package bubbleshooter.controller.input;
 
 import bubbleshooter.view.cannon.DrawHelpLine;
 import javafx.event.EventHandler;

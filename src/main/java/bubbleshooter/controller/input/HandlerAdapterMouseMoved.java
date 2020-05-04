@@ -1,4 +1,4 @@
-package bubbleshooter.controller;
+package bubbleshooter.controller.input;
 
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
