@@ -1,62 +1,75 @@
 package bubbleshooter.controller.sound;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaException;
-import javafx.scene.media.MediaPlayer;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 /**
  * The Class which manage the Sound feature of the Game.
  */
 public class SoundManager {
 
-    private static final double VOLUME = 0.2;
-    private MediaPlayer mediaPlayer;
+    private final Clip clip;
+    private int framePos;
 
     /**
      * In the constructor are loaded the resources of the sounds.
+     * @throws LineUnavailableException 
+     * @throws IOException 
+     * @throws UnsupportedAudioFileException 
      */
-    public SoundManager() {
+    public SoundManager() throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+        this.clip = AudioSystem.getClip();
+        this.framePos = 0;
         this.loadGameSounds();
     }
 
     /**
      * Method used to load the resources and to initialize the MediaPlayer.
+     * @throws IOException 
+     * @throws UnsupportedAudioFileException 
+     * @throws LineUnavailableException 
      */
-    private void loadGameSounds() {
-        try {
-            this.mediaPlayer = new MediaPlayer(new Media(ClassLoader.getSystemResource(SoundNames.BACKGROUND.getPath()).toString()));
-          } catch (MediaException e) {
-              e.printStackTrace();
-          }
+    private void loadGameSounds() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        final AudioInputStream ais = AudioSystem.getAudioInputStream(getClass().getResource(SoundNames.BACKGROUND.getPath()));
+        this.clip.open(ais);
+        ais.close();
     }
 
     /**
      * Method used to start the Background music in the game.
      */
     public final void startBackgroundSound() {
-        this.mediaPlayer.setVolume(VOLUME);
-        this.mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        this.mediaPlayer.play();
+        this.clip.setFramePosition(this.framePos);
+        this.clip.loop(Clip.LOOP_CONTINUOUSLY);
+        this.clip.start();
      }
 
     /**
      * Method used to stop the Background music in the game.
      */
     public final void stopBackgroundSound() {
-        this.mediaPlayer.stop();
+        this.clip.stop();
+        this.framePos = 0;
     }
 
     /**
      * Method used to pause the Background music in the game.
      */
     public final void pauseBackgroundSound() {
-        this.mediaPlayer.pause();
+        this.framePos = this.clip.getFramePosition();
+        this.clip.stop();
     }
 
     /**
      * Method used to resume the Background music in the game.
      */
     public final void resumeSound() {
-        this.mediaPlayer.play();
+        this.clip.setFramePosition(this.framePos);
+        this.clip.start();
     }
 }

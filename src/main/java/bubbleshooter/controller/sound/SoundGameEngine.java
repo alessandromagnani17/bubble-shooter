@@ -1,5 +1,11 @@
 package bubbleshooter.controller.sound;
 
+import java.io.IOException;
+import java.util.Optional;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import bubbleshooter.controller.engine.GameEngineDecorator;
 import bubbleshooter.controller.engine.GameLoop;
 
@@ -10,16 +16,20 @@ import bubbleshooter.controller.engine.GameLoop;
 public class SoundGameEngine extends GameEngineDecorator {
 
     /**
-     * The {@link SoundManager2} which manage the Sound feature.
+     * The {@link SoundManager} which manage the Sound feature.
      */
-    private final SoundManager soundManager;
+    private Optional<SoundManager> soundManager;
 
     /**
      * @param gameLoop The {@link BasicGameLoop} to decorate.
      */
     public SoundGameEngine(final GameLoop gameLoop) {
         super(gameLoop);
-        this.soundManager = new SoundManager();
+        try {
+            this.soundManager = Optional.of(new SoundManager());
+        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
+            this.soundManager = Optional.empty();
+        }
     }
 
     /**
@@ -29,7 +39,9 @@ public class SoundGameEngine extends GameEngineDecorator {
     @Override
     public final void startLoop() {
         super.startLoop();
-        this.soundManager.startBackgroundSound();
+        if (this.soundManager.isPresent()) {
+            this.soundManager.get().startBackgroundSound();
+        }
     }
 
     /**
@@ -39,7 +51,9 @@ public class SoundGameEngine extends GameEngineDecorator {
     @Override
     public final void stopLoop() {
         super.stopLoop();
-        this.soundManager.stopBackgroundSound();
+        if (this.soundManager.isPresent()) {
+            this.soundManager.get().stopBackgroundSound();
+        }
     }
 
     /**
@@ -49,7 +63,9 @@ public class SoundGameEngine extends GameEngineDecorator {
     @Override
     public final void pauseLoop() {
         super.pauseLoop();
-        this.soundManager.pauseBackgroundSound();
+        if (this.soundManager.isPresent()) {
+        this.soundManager.get().pauseBackgroundSound();
+        }
    }
 
     /**
@@ -59,14 +75,17 @@ public class SoundGameEngine extends GameEngineDecorator {
     @Override
     public final void resumeLoop() {
         super.resumeLoop();
-        this.soundManager.resumeSound();
+        if (this.soundManager.isPresent()) {
+            this.soundManager.get().resumeSound();
+
+        }
     }
 
     /**
      * 
      * @return the {@link SoundManager2} which manages the Music feature.
      */
-    public final SoundManager getSoundManager() {
+    public final Optional<SoundManager> getSoundManager() {
         return this.soundManager;
     }
 }

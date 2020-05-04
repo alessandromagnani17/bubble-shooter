@@ -8,7 +8,7 @@ public enum SoundNames {
     /**
      *The main background music of the Game.
      */
-    BACKGROUND("sound/Background.wav"),
+    BACKGROUND("/sound/Background.wav"),
 
     /**
      *Another background music of the Game.
