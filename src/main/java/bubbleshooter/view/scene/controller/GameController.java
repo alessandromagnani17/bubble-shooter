@@ -1,6 +1,7 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.SwitcherController;
 import bubbleshooter.model.gameobject.Bubble;
@@ -20,6 +21,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -29,15 +31,12 @@ public class GameController extends AbstractController {
 
     private static final double MAXANGLE =  64.9;
     private static final double MINANGLE = -64.9;
-	
-	@FXML
-	private Canvas canvas;
 
-	@FXML
-	private AnchorPane pane;
+    @FXML private Canvas canvas;
+    @FXML private AnchorPane pane;
+    @FXML private CheckBox helpCheckBox = new CheckBox("Help");
+    @FXML private Button switchButton = new Button();
 
-	@FXML
-	private CheckBox helpCheckBox = new CheckBox("Help");
 	private CanvasDrawer canvasDrawer;
 	private boolean gameOver;
 	private GameState currentState;
@@ -48,22 +47,28 @@ public class GameController extends AbstractController {
 	private Cannon cannon;
 	private SwitcherController switcherController;
 	private HandlerAdapterMouseMoved handlerAdapter;
+	private Point2D startPointFirstLine;
 
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
-		
+
 		this.help  = new DrawHelpLine(this.pane);
 	    this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 		this.drawCannon = new DrawCannon(this.pane, this.cannon);
+		this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
 		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
-										this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY(), 
-										this.help);
+										this.startPointFirstLine, this.help);
+
 		this.pane.setOnMouseMoved(this.handlerAdapter);
-		
+		this.pane.setOnMouseDragged(this.handlerAdapter);
+		this.pane.setOnMouseClicked(this.handlerAdapter);
+
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
+		this.switcherController = new SwitcherController(this.getController().getBubbles());
+
 		this.setCurrentState(this.inGameState);
 
 		double xBubble = getController().getBubbles().stream()
@@ -75,8 +80,7 @@ public class GameController extends AbstractController {
 			public void handle(final MouseEvent event) {
 				Bubble shootingBubble = getController().getBubbles().stream()
 						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				//if (shootingBubble.getPosition().getX() == xBubble && checkAngle(drawCannon.getAngle())) {
-				if (shootingBubble.getPosition().getX() == xBubble) {
+				if (shootingBubble.getPosition().getX() == xBubble && checkAngle(handlerAdapter.getRotationAngle())) {
 					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
 							new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
 				}
@@ -95,8 +99,11 @@ public class GameController extends AbstractController {
 	}
 	
 	public final void switchBall() {
-		 this.switcherController = new SwitcherController();
-		 this.switcherController.switchControl();
+		this.switcherController.switchControl();
+		if(this.switcherController.isSwitchEnd()) {
+			this.switchButton.setText("Ended");
+			this.switchButton.setMouseTransparent(true);
+		}
 	}
 	
     public final void helpSelected() {

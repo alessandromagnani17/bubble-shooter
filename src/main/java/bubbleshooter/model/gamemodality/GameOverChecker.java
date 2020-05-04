@@ -5,15 +5,15 @@ import bubbleshooter.model.gameobject.BubbleType;
 public class GameOverChecker {
 
     private static final double LIMITS = 574;
-	private AbstractGameMode gameMode;
+    private AbstractGameMode gameMode;
 
-	public GameOverChecker(final AbstractGameMode gameMode) {
-		super();
-		this.gameMode = gameMode;
-	}
+    public GameOverChecker(final AbstractGameMode gameMode) {
+        super();
+        this.gameMode = gameMode;
+    }
 
-	public final boolean checkGameOver() {
-		return this.gameMode.getCurrentBubbles().stream().filter(b -> b.getType()
-				.equals(BubbleType.GRID_BUBBLE)).anyMatch(b -> b.getPosition().getY() > LIMITS); 
-	}
+    public final boolean checkGameOver() {
+        return this.gameMode.getCurrentBubbles().stream().filter(b -> b.getType()
+                .equals(BubbleType.GRID_BUBBLE)).anyMatch(b -> b.getPosition().getY() > LIMITS); 
+    }
 }
