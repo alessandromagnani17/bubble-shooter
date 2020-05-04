@@ -1,6 +1,6 @@
 package bubbleshooter.view.cannon;
 
-import bubbleshooter.controller.HandlerAdapterMouseMoved;
+import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.rendering.Cannon;

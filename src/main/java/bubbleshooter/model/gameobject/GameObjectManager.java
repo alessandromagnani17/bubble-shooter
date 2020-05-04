@@ -79,13 +79,6 @@ public class GameObjectManager {
     public final void reloadSwitchBubble() {
         this.getSwitchBubble().setPosition(new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()));
         this.getSwitchBubble().setColor(BubbleColor.getRandomColor());
-        /*Bubble switchBubble = this.getSwitchBubble();
-        switchBubble.setPosition(new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()));
-        if (switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).isPresent()) {
-    		final SwitchComponent switcher = (SwitchComponent) switchBubble.getComponent(ComponentType.SWITCHCOMPONENT).get();
-    		switcher.setBubbleColor(switchBubble.getColor());
-    	}
-    	switchBubble.setColor(BubbleColor.getRandomColor());*/
     }
 
     /**
