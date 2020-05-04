@@ -35,7 +35,6 @@ public class ControllerImpl implements Controller {
      this.highscoreStore = new HighscoreStoreImpl();
     }
 
-
     /**
     * The method called by the {@link View} to start the Game in the {@link Model}.
     * @param levelType

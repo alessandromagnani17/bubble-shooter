@@ -4,7 +4,6 @@ import bubbleshooter.model.gameobject.Bubble;
 
 /**
  * Abstract class to implement the generic methods of {@link Component} interface.
- *
  */
 public abstract class AbstractComponent implements Component {
 

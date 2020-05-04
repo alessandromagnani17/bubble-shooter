@@ -12,5 +12,8 @@ public enum ComponentType {
      */
     COLLISIONCOMPONENT,
 
+    /**
+     * THE COMPONENT OF THE BUBBLE USED FOR SWITCH THE COLOR OF THE BUBBLE.
+     */
     SWITCHCOMPONENT;
 }
