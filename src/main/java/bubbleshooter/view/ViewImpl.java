@@ -71,7 +71,7 @@ public class ViewImpl implements View {
         this.stage.setWidth(this.stage.getWidth());
         this.stage.setHeight(this.stage.getHeight());
         if (!this.viewStarted) {
-            this.stage.setResizable(false);
+            this.stage.setResizable(true);
             this.stage.show();
             this.viewStarted = true;
         }
