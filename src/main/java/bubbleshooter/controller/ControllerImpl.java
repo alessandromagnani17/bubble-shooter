@@ -91,6 +91,11 @@ public class ControllerImpl implements Controller {
 	public void saveScore(String text) {
 		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
 	}
+	
+	@Override
+	public final LevelTypes getCurrentLevel() {
+		return this.model.getLevel().getCurrentLevelTypes();
+	}
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
      * @return The Engine of the Game.
