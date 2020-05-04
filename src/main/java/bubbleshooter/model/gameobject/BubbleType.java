@@ -1,6 +1,22 @@
 package bubbleshooter.model.gameobject;
 
+/**
+ * Enumeration that contains all the type of {@link Bubble} in the game.
+ */
 public enum BubbleType {
 
-    GRID_BUBBLE, SHOOTING_BUBBLE, SWITCH_BUBBLE; 
+    /**
+     * The {@link GridBubble} that is in the game's grid.
+     */
+    GRID_BUBBLE, 
+
+    /**
+     * The {@link ShootingBubble} that is ready to be shot.
+     */
+    SHOOTING_BUBBLE, 
+
+    /**
+     * The {@link SwitchBubble} that you can switch.
+     */
+    SWITCH_BUBBLE; 
 }
