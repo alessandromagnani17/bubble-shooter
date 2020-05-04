@@ -2,10 +2,8 @@ package bubbleshooter.controller.sound;
 
 import java.io.IOException;
 import java.util.Optional;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
 import bubbleshooter.controller.engine.GameEngineDecorator;
 import bubbleshooter.controller.engine.GameLoop;
 
@@ -27,7 +25,7 @@ public class SoundGameEngine extends GameEngineDecorator {
         super(gameLoop);
         try {
             this.soundManager = Optional.of(new SoundManager());
-        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException | NullPointerException e) {
+        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
             this.soundManager = Optional.empty();
         }
     }
