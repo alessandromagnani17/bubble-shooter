@@ -13,32 +13,32 @@ public enum SoundNames {
     /**
      *Another background music of the Game.
      */
-    GEOMETRY("sound/Geometry.wav"),
+    GEOMETRY("/sound/Geometry.wav"),
 
     /**
      *Another background music of the Game.
      */
-    COFFIN("sound/Coffin.wav"),
+    COFFIN("/sound/Coffin.wav"),
 
     /**
      *The sound used when a {@link Bubble} is shot.
      */
-    SHOT("sound/shot.wav"),
+    SHOT("/sound/shot.wav"),
 
     /**
      *The sound used when a {@link Bubble} pop.
      */
-    POP("sound/pop.wav"),
+    POP("/sound/pop.wav"),
 
     /**
      *The sound used when a {@link Bubble} snap.
      */
-    SNAP("sound/snap.wav"),
+    SNAP("/sound/snap.wav"),
 
     /**
      *The sound used when a {@link Bubble} explode.
      */
-    BOMB("sound/bomb.wav");
+    BOMB("/sound/bomb.wav");
 
     /**
      * The path of the resource in the project.

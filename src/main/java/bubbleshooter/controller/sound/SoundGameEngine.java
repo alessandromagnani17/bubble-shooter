@@ -27,7 +27,7 @@ public class SoundGameEngine extends GameEngineDecorator {
         super(gameLoop);
         try {
             this.soundManager = Optional.of(new SoundManager());
-        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
+        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException | NullPointerException e) {
             this.soundManager = Optional.empty();
         }
     }
