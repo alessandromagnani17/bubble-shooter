@@ -1,4 +1,4 @@
-package bubbleshooter.controller;
+package bubbleshooter.controller.input;
 
 import java.util.List;
 
