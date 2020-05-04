@@ -3,9 +3,7 @@ package bubbleshooter.model.gameobject;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.utility.Settings;
-import bubbleshooter.model.component.SwitchComponent;
 import javafx.geometry.Point2D;
 
 /**
