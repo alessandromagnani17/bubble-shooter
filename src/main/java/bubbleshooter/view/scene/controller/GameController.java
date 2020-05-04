@@ -3,7 +3,6 @@ package bubbleshooter.view.scene.controller;
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.SwitcherController;
-import bubbleshooter.model.gamemodality.GameSwitcher;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;

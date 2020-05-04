@@ -2,13 +2,10 @@ package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
 import javafx.geometry.Point2D;
-import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.transform.Rotate;
 
 public class SpriteImpl implements Sprite {
 

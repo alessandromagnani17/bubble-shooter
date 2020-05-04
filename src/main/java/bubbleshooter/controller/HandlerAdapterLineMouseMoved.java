@@ -3,7 +3,6 @@ package bubbleshooter.controller;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
