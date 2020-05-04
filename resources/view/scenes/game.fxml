@@ -10,7 +10,7 @@
    <children>
       <Canvas fx:id="canvas" height="700.0" width="705.0" />
       <Button fx:id="pause" layoutX="561.0" layoutY="645.0" onMouseClicked="#pause" mnemonicParsing="false" text="Pause" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="89.0" />
-      <Button layoutX="629.0" layoutY="645.0" mnemonicParsing="false" text="Restart" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="629.0" layoutY="645.0" mnemonicParsing="false" text="Restart" onMouseClicked="#restart" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="14.0" />
       <CheckBox fx:id="helpCheckBox" layoutX="14.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#helpSelected" text="Help" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="14.0" />
       <Line endX="375.0" layoutX="330.0" layoutY="574.0" startX="-330.0" AnchorPane.bottomAnchor="125.5" AnchorPane.leftAnchor="-0.5" AnchorPane.rightAnchor="-0.5" AnchorPane.topAnchor="573.5" />
       <Button fx:id="switchButton" layoutX="490.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#switchBall" text="Switch" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="157.0" />
