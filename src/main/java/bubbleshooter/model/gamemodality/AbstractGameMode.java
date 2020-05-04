@@ -15,35 +15,35 @@ import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode {
 
-	private GameObjectManager gameObjectManager;
-	private BubbleGridManager bubbleGridManager;
-	private BubbleGridHelper bubbleGridHelper;
-	private CollisionController collisionController;
-	private GameInfoManager gameInfoManager;
-	private GameOverChecker gameOverChecker;
-	private BubbleFactory bubbleFactory;
-	private GameStatus status = GameStatus.PAUSE;
-	private LevelTypes currentLevelTypes;
+    private GameObjectManager gameObjectManager;
+    private BubbleGridManager bubbleGridManager;
+    private BubbleGridHelper bubbleGridHelper;
+    private CollisionController collisionController;
+    private GameInfoManager gameInfoManager;
+    private GameOverChecker gameOverChecker;
+    private BubbleFactory bubbleFactory;
+    private GameStatus status = GameStatus.PAUSE;
+    private LevelTypes currentLevelTypes;
 
-	public AbstractGameMode() {
-		this.gameObjectManager = new GameObjectManager();
-		this.bubbleGridManager = new BubbleGridManager(this);
-		this.bubbleGridHelper = new BubbleGridHelper(gameObjectManager);
-		this.collisionController = new CollisionController(this);
-		this.gameInfoManager = new GameInfoManager();
-		this.gameOverChecker = new GameOverChecker(this);
-		this.bubbleFactory = new BubbleFactory();
-		this.status = GameStatus.PAUSE;
-	}
+    public AbstractGameMode() {
+        this.gameObjectManager = new GameObjectManager();
+        this.bubbleGridManager = new BubbleGridManager(this);
+        this.bubbleGridHelper = new BubbleGridHelper(gameObjectManager);
+        this.collisionController = new CollisionController(this);
+        this.gameInfoManager = new GameInfoManager();
+        this.gameOverChecker = new GameOverChecker(this);
+        this.bubbleFactory = new BubbleFactory();
+        this.status = GameStatus.PAUSE;
+    }
 
-	public void start() {
-		this.status = GameStatus.RUNNING;
-		this.initGameObject();
-	}
+    public final void start() {
+        this.status = GameStatus.RUNNING;
+        this.initGameObject();
+    }
 
-	public void update(final double elapsed) {
-		this.gameObjectManager.update(elapsed);
-		this.collisionController.checkCollisions();
+    public final void update(final double elapsed) {
+        this.gameObjectManager.update(elapsed);
+        this.collisionController.checkCollisions();
 		this.gameInfoManager.updateGameTime(elapsed);
 		this.updateScore(elapsed / 1000);
 		if (this.isTimeToNewRow(elapsed)) {
@@ -72,7 +72,7 @@ public abstract class AbstractGameMode {
 
 	public final void loadSwitchBubble() {
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-				new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()), BubbleColor.getRandomColor())));
+				new Point2D(Settings.getGuiWidth() / 4, Settings.getGuiHeigth() - Bubble.getWidth()), BubbleColor.getRandomColor())));
 	}
 
 	public final GameObjectManager getGameObjectManager() {

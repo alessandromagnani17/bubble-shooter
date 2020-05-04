@@ -76,7 +76,7 @@ public class GameObjectManager {
      * Method to reload the {@link SwitchBubble} after a {@link Collision}.
      */
     public final void reloadSwitchBubble() {
-        this.getSwitchBubble().setPosition(new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()));
+        this.getSwitchBubble().setPosition(new Point2D(Settings.getGuiWidth() / 4, Settings.getGuiHeigth() - Bubble.getWidth()));
         final Random rand = new Random();
         this.getSwitchBubble().setColor(this.getRemainingColors().get(rand.nextInt(this.getRemainingColors().size() - 1)));
     }
