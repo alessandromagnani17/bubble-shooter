@@ -12,7 +12,6 @@ import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.utility.Settings;
-import bubbleshooter.view.scene.controller.GameController;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode {

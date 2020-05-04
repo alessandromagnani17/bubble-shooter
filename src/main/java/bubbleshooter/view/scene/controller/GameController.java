@@ -1,9 +1,9 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
+import bubbleshooter.controller.HandlerAdapterMouseClicked;
 import bubbleshooter.controller.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.SwitcherController;
-import bubbleshooter.model.gamemodality.GameSwitcher;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
@@ -31,12 +31,12 @@ public class GameController extends AbstractController {
 
     private static final double MAXANGLE =  64.9;
     private static final double MINANGLE = -64.9;
-	
-	@FXML private Canvas canvas;
-	@FXML private AnchorPane pane;
-	@FXML private CheckBox helpCheckBox = new CheckBox("Help");
-	@FXML private Button switchButton = new Button();
-	
+
+    @FXML private Canvas canvas;
+    @FXML private AnchorPane pane;
+    @FXML private CheckBox helpCheckBox = new CheckBox("Help");
+    @FXML private Button switchButton = new Button();
+
 	private CanvasDrawer canvasDrawer;
 	private boolean gameOver;
 	private GameState currentState;
@@ -52,16 +52,18 @@ public class GameController extends AbstractController {
 	@Override
 	public final void init(final Controller controller, final View view) {
 		super.init(controller, view);
-		
+
 		this.help  = new DrawHelpLine(this.pane);
 	    this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 		this.drawCannon = new DrawCannon(this.pane, this.cannon);
 		this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
 		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
 										this.startPointFirstLine, this.help);
-		
+
 		this.pane.setOnMouseMoved(this.handlerAdapter);
 		this.pane.setOnMouseDragged(this.handlerAdapter);
+		this.pane.setOnMouseClicked(this.handlerAdapter);
+
 		this.canvasDrawer = new CanvasDrawer(this.canvas);
 		this.inGameState = new InGameState(this, controller);
 		this.inPauseState = new InPauseState(this, controller);
