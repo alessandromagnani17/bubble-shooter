@@ -3,7 +3,7 @@ package bubbleshooter.controller;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -14,18 +14,17 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
 	
 	private AnchorPane pane;
 	private Rotate rotation = new Rotate();
-    private double xBubble;
-    private double yBubble;
+    private Point2D shootingBubblePosition;
+    private Point2D eventPosition;
     private Line helpLine;
     private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
     private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
     private Line boundsLine = new Line(0,0,0,0);
     
     
-	public HandlerAdapterLineMouseMoved(Rotate rotation, double xBubble, double yBubble, Line helpLine, AnchorPane pane) {
+	public HandlerAdapterLineMouseMoved(Rotate rotation, Point2D shootingBubblePosition, Line helpLine, AnchorPane pane) {
 		this.rotation = rotation;
-		this.xBubble = xBubble;
-		this.yBubble = yBubble;
+		this.shootingBubblePosition = shootingBubblePosition;
 		this.helpLine = helpLine;
 		this.pane = pane;
 		this.boundsLine.setStroke(Color.RED);
@@ -41,11 +40,8 @@ public class HandlerAdapterLineMouseMoved implements EventHandler<MouseEvent> {
 	
 	@Override
 	public void handle(MouseEvent event) {
-		
-		System.out.println("xMouse --> " + event.getX());
-		System.out.println("yMouse --> " + event.getY());
-		
-		this.rotation.setAngle(PhysicHelper.calculateAngle(event, xBubble, yBubble));
+		this.eventPosition = new Point2D(event.getX(), event.getY());
+		this.rotation.setAngle(PhysicHelper.calculateAngle(eventPosition, shootingBubblePosition));
 		/*
 		Bounds s1 = helpLine.getBoundsInParent();
         Bounds s2 = borderRight.getBoundsInParent();

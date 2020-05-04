@@ -6,7 +6,6 @@ import java.util.Optional;
 import bubbleshooter.model.component.Component;
 import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.model.component.ShootingComponent;
-import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractBubble implements Bubble {
