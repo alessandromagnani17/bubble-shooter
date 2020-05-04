@@ -2,6 +2,7 @@ package bubbleshooter.model.gameobject;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
@@ -76,7 +77,8 @@ public class GameObjectManager {
      */
     public final void reloadSwitchBubble() {
         this.getSwitchBubble().setPosition(new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()));
-        this.getSwitchBubble().setColor(BubbleColor.getRandomColor());
+        final Random rand = new Random();
+        this.getSwitchBubble().setColor(this.getRemainingColors().get(rand.nextInt(this.getRemainingColors().size() - 1)));
     }
 
     /**
@@ -86,5 +88,14 @@ public class GameObjectManager {
         return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.GRID_BUBBLE)).collect(Collectors.toList());
     }
 
+    /**
+     * @return The currents {@link BubbleColor} in the game.
+     * Useful to not generate some other colors in the end of the game.
+     */
+    public final List<BubbleColor> getRemainingColors() {
+        return this.getBubbleGrid().stream()
+                                   .filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
+                                   .map(b -> b.getColor()).distinct().collect(Collectors.toList());
+    }
 }
 
