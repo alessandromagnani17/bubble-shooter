@@ -2,7 +2,6 @@ package bubbleshooter.model.gamemodality;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.gameobject.Bubble;
