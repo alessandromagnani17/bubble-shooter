@@ -122,8 +122,9 @@ public class GameController extends AbstractController {
     }
 
     public final void restart() {
+        this.getController().getGameEngine().pauseLoop();
         this.getController().startGame(this.getController().getCurrentLevel());
-        this.getView().loadScene(FXMLPath.GAME);
+        this.getController().getGameEngine().resumeLoop();
     }
 
     @Override
