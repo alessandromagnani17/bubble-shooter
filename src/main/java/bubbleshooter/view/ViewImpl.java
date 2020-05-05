@@ -31,7 +31,7 @@ public class ViewImpl implements View {
     public void launch(final Controller controller) {
       this.controller = controller;
       this.initalize();
-      ImageLoader.getLoader().loadAll();
+      ImageLoader.loadAll();
     }
 
     private void initalize() {
@@ -54,7 +54,6 @@ public class ViewImpl implements View {
 
             final Parent root = wrapper.getScene().getRoot();
             root.requestFocus();
-            //root.setOnKeyPressed(wrapper.getController()::onKeyPressed);
             Platform.runLater(() -> this.initStage(wrapper));
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,7 +70,7 @@ public class ViewImpl implements View {
         this.stage.setWidth(this.stage.getWidth());
         this.stage.setHeight(this.stage.getHeight());
         if (!this.viewStarted) {
-            this.stage.setResizable(true);
+            this.stage.setResizable(false);
             this.stage.show();
             this.viewStarted = true;
         }
