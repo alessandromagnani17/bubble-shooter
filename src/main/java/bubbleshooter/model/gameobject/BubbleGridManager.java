@@ -23,18 +23,9 @@ public class BubbleGridManager {
 	// crea una nuova riga in cima
 	public final List<Bubble> createNewRow() {
 		List<Bubble> newRow = new LinkedList<>();
-		// double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue():
-		// GameCostants.BUBBLE_WIDTH.getValue() / 2;
 		double offset = this.offsetRow ? Bubble.getWidth() : Bubble.getRadius();
 
 		this.dropBubble();
-		/*
-		 * Stream.iterate(0 , x -> x +=
-		 * 1).limit((long)GameCostants.ROW_BUBBLE.getValue()) .forEach(x ->
-		 * newRow.add(BubbleFactory.createGridBubble (new Point2D(x *
-		 * GameCostants.BUBBLE_WIDTH.getValue() + offset,
-		 * GameCostants.BUBBLE_HEIGTH.getValue() / 2))));
-		 */
 		Stream.iterate(0, x -> x += 1).limit((long) Settings.getNumBubbles())
 				.forEach(x -> newRow.add(this.gameMode.getBubbleFactory().createGridBubble(
 						new Point2D(x * Bubble.getWidth() + offset, Bubble.getRadius()),
@@ -67,8 +58,8 @@ public class BubbleGridManager {
 		Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, BubbleColor.getRandomColor());
 		bubbleToAdd.setColor(bubble.getColor());
 		this.gameMode.getGameObjectManager().addBubble(Collections.singletonList(bubbleToAdd));
-		this.gameMode.getGameObjectManager().reloadShootingBubble();
-		this.gameMode.getGameObjectManager().reloadSwitchBubble();
+		this.gameMode.reloadShootingBubble();
+		this.gameMode.reloadSwitchBubble();
 		return bubbleToAdd;
 	}
 
