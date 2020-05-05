@@ -5,7 +5,7 @@ package bubbleshooter.controller.engine;
  * Class used to decorate the {@link GameLoop} and add features to it.
  *
  */
-public class GameEngineDecorator implements GameLoop {
+public abstract class GameEngineDecorator implements GameLoop {
 
     /**
     * The {@link BasicGameLoop} used by the Decorator.
