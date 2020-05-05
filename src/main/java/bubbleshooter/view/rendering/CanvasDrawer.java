@@ -13,13 +13,12 @@ import javafx.scene.canvas.GraphicsContext;
 public class CanvasDrawer {
 
     private final Canvas canvas;
-    private static final Map<BubbleColor, ImagePath> COLOR_MAP;
-
-    static {
-       COLOR_MAP = Map.of(BubbleColor.BLUE, ImagePath.BLUE_BUBBLE, BubbleColor.GREEN, ImagePath.GREEN_BUBBLE,
-                BubbleColor.PURPLE, ImagePath.PURPLE_BUBBLE, BubbleColor.RED, ImagePath.RED_BUBBLE,
-                BubbleColor.LIGHT_BLUE, ImagePath.LIGHT_BLUE_BUBBLE, BubbleColor.YELLOW, ImagePath.YELLOW_BUBBLE);
-    }
+    private final Map<BubbleColor, ImagePath> colorMap = Map.of(BubbleColor.BLUE, ImagePath.BLUE_BUBBLE, 
+													    		BubbleColor.GREEN, ImagePath.GREEN_BUBBLE,
+													            BubbleColor.PURPLE, ImagePath.PURPLE_BUBBLE,
+													            BubbleColor.RED, ImagePath.RED_BUBBLE,
+													            BubbleColor.LIGHT_BLUE, ImagePath.LIGHT_BLUE_BUBBLE, 
+													            BubbleColor.YELLOW, ImagePath.YELLOW_BUBBLE);
 
     public CanvasDrawer(final Canvas canvas) {
         this.canvas = canvas;
@@ -28,7 +27,7 @@ public class CanvasDrawer {
 	private Sprite generateSprite(Bubble bubble) {
 		Sprite sprite = new SpriteImpl(this.canvas.getGraphicsContext2D());
 		try {
-			sprite.setSource(COLOR_MAP.get(bubble.getColor()));
+			sprite.setSource(this.colorMap.get(bubble.getColor()));
 			sprite.setPosition(bubble.getPosition());
 			sprite.setHeigth(Bubble.getRadius() * 2);
 			sprite.setWidth(Bubble.getRadius() * 2);
