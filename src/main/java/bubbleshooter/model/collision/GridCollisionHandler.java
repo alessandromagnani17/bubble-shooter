@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gameobject.Bubble;
 
 /**
@@ -17,13 +18,13 @@ public class GridCollisionHandler implements CollisionHandler {
 
     private Bubble shootingBubble;
     private final Bubble basicBubble;
-    private final AbstractGameMode level;
+    private final GameMode level;
 
     /**
      * @param collision The {@link Collision} with the grid to know which {@link Bubble} have collided.
      * @param level The current level of the game to work with {@link BubbleGridManager} and {@link BubbleGridHelper}.
      */
-    public GridCollisionHandler(final Collision collision, final AbstractGameMode level) {
+    public GridCollisionHandler(final Collision collision, final GameMode level) {
         this.shootingBubble = collision.getShootingBubble();
         this.basicBubble = collision.getCollided();
         this.level = level;

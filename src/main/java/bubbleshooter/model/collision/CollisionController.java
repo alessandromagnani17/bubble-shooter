@@ -3,6 +3,7 @@ package bubbleshooter.model.collision;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
@@ -10,7 +11,7 @@ import javafx.scene.shape.Shape;
 
 /**
  * The class used to check {@link Collision} between {@link Bubble} and also with Boundaries. 
- * It's a field of the {@link AbstractGameMode}.
+ * It's a field of the {@link GameMode}.
  */
 public class CollisionController {
 
@@ -18,17 +19,17 @@ public class CollisionController {
      * The current level of the game. 
      * With it you can access to all components of the level such as {@link BubbleGridManager} and {@link BubbleGridHelper}.
      */
-   private final AbstractGameMode level;
+   private final GameMode level;
 
    /**
     * @param level The current level selected by the player.
     */
-    public CollisionController(final AbstractGameMode level) {
+    public CollisionController(final GameMode level) {
         this.level = level;
     }
 
     /**
-     * Method called in the update method of the {@link AbstractGameMode} every loop's cycle of the engine.
+     * Method called in the update method of the {@link GameMode} every loop's cycle of the engine.
      * It checks if a {@link Bubble} has collided with another {@link Bubble} or with the Boundaries.
      */
     public final void checkCollisions() {

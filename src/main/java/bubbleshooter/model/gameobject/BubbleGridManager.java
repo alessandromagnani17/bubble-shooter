@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
@@ -12,9 +13,9 @@ public class BubbleGridManager {
 
 	private int createdRows;
 	private boolean offsetRow;
-	private AbstractGameMode gameMode;
+	private GameMode gameMode;
 
-	public BubbleGridManager(final AbstractGameMode gameMode) {
+	public BubbleGridManager(final GameMode gameMode) {
 		this.gameMode = gameMode;
 		this.createdRows = 0;
 		this.offsetRow = false;
