@@ -10,45 +10,40 @@ import bubbleshooter.model.gameobject.GameObjectManager;
 
 public interface GameMode {
 
+	void start();
 
+	void update(final double elapsed);
 
-void start(); 
+	void loadShootingBubble();
 
-void update(final double elapsed); 
+	void loadSwitchBubble();
 
-void initGameObject(); 
+	GameObjectManager getGameObjectManager();
 
+	void setGameOver();
 
-void loadShootingBubble();
+	void setCurrentLevelTypes(final LevelTypes level);
 
-void loadSwitchBubble();
+	void setGameStatus(final GameStatus status);
 
-GameObjectManager getGameObjectManager();
+	GameStatus getGameStatus();
 
-void setGameOver();
+	BubbleGridManager getGridManager();
 
-void setCurrentLevelTypes(final LevelTypes level);
+	BubbleGridHelper getGridHelper();
 
-boolean checkGameOver();
+	CollisionController getCollisionController();
 
-void setGameStatus(final GameStatus status);
+	List<Bubble> getCurrentBubbles();
 
-GameStatus getGameStatus();
+	GameInfoManager getGameInfoManager();
 
-BubbleGridManager getGridManager();
+	LevelTypes getCurrentLevelTypes();
 
-BubbleGridHelper getGridHelper(); 
-
-
-CollisionController getCollisionController();
-
-List<Bubble> getCurrentBubbles();
-
-GameInfoManager getGameInfoManager();
-
-LevelTypes getCurrentLevelTypes();
-
-BubbleFactory getBubbleFactory();
-
+	BubbleFactory getBubbleFactory();
+	
+	void reloadShootingBubble(); 
+	
+	void reloadSwitchBubble();
 
 }
