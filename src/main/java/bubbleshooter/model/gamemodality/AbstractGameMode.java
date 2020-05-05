@@ -44,90 +44,89 @@ public abstract class AbstractGameMode {
     public final void update(final double elapsed) {
         this.gameObjectManager.update(elapsed);
         this.collisionController.checkCollisions();
-		this.gameInfoManager.updateGameTime(elapsed);
-		this.updateScore(elapsed / 1000);
-		if (this.isTimeToNewRow(elapsed)) {
-			this.createNewRow();
-		}
-		if (this.checkGameOver()) {
-			this.status = GameStatus.GAMEOVER;
-		}
+        this.gameInfoManager.updateGameTime(elapsed);
+        this.updateScore(elapsed / 1000);
+        if (this.isTimeToNewRow(elapsed)) {
+            this.createNewRow();
+        }
+        if (this.checkGameOver()) {
+            this.status = GameStatus.GAMEOVER;
+        }
+    }
 
-	}
+    public final void initGameObject() {
+        Stream.iterate(1, i -> i += 1).limit((long) Settings.getNumRows()).forEach(i -> this.createNewRow());
+        this.loadShootingBubble();
+        this.loadSwitchBubble();
+    }
 
-	public final void initGameObject() {
-		Stream.iterate(1, i -> i += 1).limit((long) Settings.getNumRows()).forEach(i -> this.createNewRow());
-		this.loadShootingBubble();
-		this.loadSwitchBubble();
-	}
+    private void createNewRow() {
+        this.gameObjectManager.addBubble(this.bubbleGridManager.createNewRow());
+    }
 
-	private void createNewRow() {
-		this.gameObjectManager.addBubble(this.bubbleGridManager.createNewRow());
-	}
+    public final void loadShootingBubble() {
+        this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
+                    new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()), BubbleColor.getRandomColor())));
+    }
 
-	public final void loadShootingBubble() {
-		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()), BubbleColor.getRandomColor())));
-	}
+    public final void loadSwitchBubble() {
+        this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
+                new Point2D(Settings.getGuiWidth() / 4, Settings.getGuiHeigth() - Bubble.getWidth()), BubbleColor.getRandomColor())));
+    }
 
-	public final void loadSwitchBubble() {
-		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-				new Point2D(Settings.getGuiWidth() / 4, Settings.getGuiHeigth() - Bubble.getWidth()), BubbleColor.getRandomColor())));
-	}
+    public final GameObjectManager getGameObjectManager() {
+        return this.gameObjectManager;
+    }
 
-	public final GameObjectManager getGameObjectManager() {
-		return this.gameObjectManager;
-	}
+    public final void setGameOver() {
+        this.setGameStatus(GameStatus.GAMEOVER);
+    }
 
-	public void setGameOver() {
-		this.setGameStatus(GameStatus.GAMEOVER);
-	}
+    public final void setCurrentLevelTypes(final LevelTypes level) {
+        this.currentLevelTypes = level;
+    }
 
-	public void setCurrentLevelTypes(final LevelTypes level) {
-		this.currentLevelTypes = level;
-	}
+    public final boolean checkGameOver() {
+        return this.gameOverChecker.checkGameOver();
+    }
 
-	public boolean checkGameOver() {
-		return this.gameOverChecker.checkGameOver();
-	}
+    public final void setGameStatus(final GameStatus status) {
+        this.status = status;
+    }
 
-	public void setGameStatus(final GameStatus status) {
-		this.status = status;
-	}
+    public final GameStatus getGameStatus() {
+        return this.status;
+    }
 
-	public GameStatus getGameStatus() {
-		return this.status;
-	}
+    public final BubbleGridManager getGridManager() {
+        return this.bubbleGridManager;
+    }
 
-	public BubbleGridManager getGridManager() {
-		return this.bubbleGridManager;
-	}
+    public final BubbleGridHelper getGridHelper() {
+        return this.bubbleGridHelper;
+    }
 
-	public BubbleGridHelper getGridHelper() {
-		return this.bubbleGridHelper;
-	}
+    public final CollisionController getCollisionController() {
+        return this.collisionController;
+    }
 
-	public CollisionController getCollisionController() {
-		return this.collisionController;
-	}
+    public final List<Bubble> getCurrentBubbles() {
+        return this.gameObjectManager.getAllBubbles();
+    }
 
-	public List<Bubble> getCurrentBubbles() {
-		return this.gameObjectManager.getAllBubbles();
-	}
+    public final GameInfoManager getGameInfoManager() {
+        return this.gameInfoManager;
+    }
 
-	public GameInfoManager getGameInfoManager() {
-		return this.gameInfoManager;
-	}
+    public final LevelTypes getCurrentLevelTypes() {
+        return this.currentLevelTypes;
+    }
 
-	public LevelTypes getCurrentLevelTypes() {
-		return this.currentLevelTypes;
-	}
+    public final BubbleFactory getBubbleFactory() {
+        return this.bubbleFactory;
+    }
 
-	public BubbleFactory getBubbleFactory() {
-		return this.bubbleFactory;
-	}
+    public abstract void updateScore(double elapsed);
 
-	public abstract void updateScore(double elapsed);
-
-	public abstract boolean isTimeToNewRow(double elapsed);
+    public abstract boolean isTimeToNewRow(double elapsed);
 }
