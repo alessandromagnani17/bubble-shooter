@@ -51,7 +51,6 @@ public class ViewImpl implements View {
                     .getScene(scene);
             wrapper.getController().init(controller, this);
             this.currentGuiController = wrapper.getController();
-
             final Parent root = wrapper.getScene().getRoot();
             root.requestFocus();
             Platform.runLater(() -> this.initStage(wrapper));
