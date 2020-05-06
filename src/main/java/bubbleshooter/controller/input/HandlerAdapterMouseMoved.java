@@ -34,7 +34,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         this.checkBounds(eventPosition);
     }
 
-    private void checkBounds(Point2D eventPosition) {
+    private void checkBounds(final Point2D eventPosition) {
     	double angularCoefficient;
     	double intercepts;
     	boolean flag = false;
@@ -42,15 +42,15 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     						 this.drawHelpLine.getHelpLine().getStartY());
     	Point2D startPointSecondLine = null;
     	Point2D endPointSecondLine = null;
-    	
+      
     	angularCoefficient = PhysicHelper.calculateAngularCoefficient(startPointFirstLine, this.eventPosition);
     	intercepts = PhysicHelper.calculateIntercepts(startPointFirstLine, this.eventPosition);
-    	
-    	if(!this.drawHelpLine.getHelpLine().isVisible() && this.drawHelpLine.isHelpSelected()) {
+
+    	if (!this.drawHelpLine.getHelpLine().isVisible() && this.drawHelpLine.isHelpSelected()) {
     		this.drawHelpLine.getHelpLine().setVisible(true);
     	}
-    	
-		if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getLeftBounds()) 
+
+		if (this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getLeftBounds()) 
 				&& this.drawHelpLine.isHelpSelected()) {
 			startPointSecondLine = new Point2D(0, intercepts);
 			endPointSecondLine = new Point2D(Settings.getGuiWidth(), -angularCoefficient * Settings.getGuiWidth() + intercepts);
@@ -58,22 +58,22 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 			
 		}else if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
 				&& this.drawHelpLine.isHelpSelected()) {
-			
+
 			startPointSecondLine = new Point2D(Settings.getGuiWidth(), angularCoefficient * Settings.getGuiWidth() + intercepts);
 			endPointSecondLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
 					startPointFirstLine.getY() - (startPointFirstLine.getY() - startPointSecondLine.getY())*2);
 
 			intercepts = PhysicHelper.calculateIntercepts(startPointSecondLine, endPointSecondLine);
-			
-			endPointSecondLine = new Point2D(0, -angularCoefficient * 0 + intercepts);		
-			
+
+			endPointSecondLine = new Point2D(0, -angularCoefficient * 0 + intercepts);
+
 			flag = PhysicHelper.angleTooHigh(eventPosition, shootingBubblePosition);
-			
+
 		} else {
 			this.drawHelpLine.getBoundsLine().setVisible(false);
 		}
-		
-		if(flag) {
+
+		if (flag) {
 			this.drawHelpLine.drawLine();
 			this.drawHelpLine.drawBoundsLine(startPointSecondLine, endPointSecondLine);
 		} 
