@@ -11,14 +11,12 @@ import bubbleshooter.model.gameobject.BubbleFactory;
 import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.model.gameobject.ShootingBubble;
-import bubbleshooter.model.gameobject.SwitchBubble;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode implements GameMode {
 
-	private GameObjectManager gameObjectManager;
+        private GameObjectManager gameObjectManager;
 	private BubbleGridManager bubbleGridManager;
 	private BubbleGridHelper bubbleGridHelper;
 	private CollisionController collisionController;

@@ -10,10 +10,10 @@ import bubbleshooter.model.gameobject.GameObjectManager;
 
 public interface GameMode {
 
+    void update(double elapsed);
+
 	void start();
-
-	void update(final double elapsed);
-
+	
 	void loadShootingBubble();
 
 	void loadSwitchBubble();
@@ -22,9 +22,9 @@ public interface GameMode {
 
 	void setGameOver();
 
-	void setCurrentLevelTypes(final LevelTypes level);
+	void setCurrentLevelTypes(LevelTypes level);
 
-	void setGameStatus(final GameStatus status);
+	void setGameStatus(GameStatus status);
 
 	GameStatus getGameStatus();
 
