@@ -1,10 +1,7 @@
-package bubbleshooter.controller;
+package bubbleshooter.model.highscore;
 
 import bubbleshooter.model.gamemodality.GameInfoManager;
 import bubbleshooter.model.gamemodality.LevelTypes;
-import bubbleshooter.model.highscore.HighscoreStore;
-import bubbleshooter.model.highscore.HighscoreStoreImpl;
-import bubbleshooter.model.highscore.HighscoreStructure;
 import javafx.collections.ObservableList;
 
 public class ScoreManager {
