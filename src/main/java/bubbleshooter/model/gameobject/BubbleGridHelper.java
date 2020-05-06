@@ -112,13 +112,13 @@ public class BubbleGridHelper {
                 new Point2D(bubblePos.getX() - Bubble.getWidth() / 2, bubblePos.getY() + Bubble.getWidth()),
                 new Point2D(bubblePos.getX() + Bubble.getWidth() / 2, bubblePos.getY() + Bubble.getWidth()));
     }
-    
+
     /**
      * @return The currents {@link BubbleColor} in the game.
      * Useful to not generate some other colors in the end of the game.
      */
     public final List<BubbleColor> getRemainingColors() {
-    	return this.getBubbleGrid().stream()
+        return this.getBubbleGrid().stream()
                                    .filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
                                    .map(b -> b.getColor()).distinct().collect(Collectors.toList());
     }
