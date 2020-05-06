@@ -5,6 +5,7 @@ import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.highscore.HighscoreStructure;
+import bubbleshooter.model.highscore.ScoreManager;
 import javafx.collections.ObservableList;
 
 /**
