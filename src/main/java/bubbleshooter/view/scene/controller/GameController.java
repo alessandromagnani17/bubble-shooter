@@ -123,7 +123,9 @@ public class GameController extends AbstractController {
         this.getController().getGameEngine().pauseLoop();
         this.getController().startGame(this.getController().getCurrentLevel());
         this.getController().getGameEngine().resumeLoop();
+
         this.switcherController.setInitialNumSwitch();
+        this.switcherController.setBubbles(this.getController().getBubbles());
         this.switchButton.setText("Switch");
         this.switchButton.setMouseTransparent(false);
     }
