@@ -28,8 +28,10 @@ public interface Controller {
      * @return The Engine of the Game.
      */
     GameLoop getGameEngine();
+
+	void saveScore(String text);
  
-    int getScore();
+    /*int getScore();
 
 	ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode);
 
@@ -39,7 +41,9 @@ public interface Controller {
 
 	double getGameTime();
 
-	int getWrongShoots();
+	int getWrongShoots();*/
 	
 	LevelTypes getCurrentLevel();
+
+	ScoreManager getScoreManager();
 }
