@@ -7,6 +7,7 @@ import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.highscore.ScoreManager;
 import bubbleshooter.view.View;
 
 /**
