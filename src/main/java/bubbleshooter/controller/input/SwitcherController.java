@@ -7,32 +7,38 @@ import bubbleshooter.model.gameobject.Bubble;
 
 public class SwitcherController {
 
-	private final static double LIMITS_SWITCH = 3;
-	private double numSwitch;
+    private static final double LIMITS_SWITCH = 3;
+    private double numSwitch;
     private GameSwitcher gameSwitcher;
+    private List<Bubble> bubbles;
 
-    public SwitcherController(List<Bubble> bubbles) {
-    	this.gameSwitcher = new GameSwitcher(bubbles);
-    	this.setInitialNumSwitch();    
+    public SwitcherController(final List<Bubble> bubbles) {
+        this.bubbles = bubbles;
+        this.gameSwitcher = new GameSwitcher(this.bubbles);
+        this.setInitialNumSwitch();
     }
 
     public final void switchControl() {
         if (!isSwitchEnd()) {
-        	this.increasesNumSwitch();
-        	this.gameSwitcher.switchBall();
+            this.increasesNumSwitch();
+            this.gameSwitcher.switchBall();
         }
     }
 
-	public void setInitialNumSwitch() {
-		this.numSwitch = 0;
-	}
-	
-	public void increasesNumSwitch() {
-		this.numSwitch++;
-	}
-	
-	public boolean isSwitchEnd() {
-		return this.numSwitch >= LIMITS_SWITCH;
-		
-	}
+    public final void setInitialNumSwitch() {
+        this.numSwitch = 0;
+    }
+
+    public final void increasesNumSwitch() {
+        this.numSwitch++;
+    }
+
+    public final boolean isSwitchEnd() {
+        return this.numSwitch >= LIMITS_SWITCH;
+    }
+
+    public final void setBubbles(final List<Bubble> bubbles) {
+        this.bubbles = bubbles;
+        this.gameSwitcher = new GameSwitcher(this.bubbles);
+    }
 }
