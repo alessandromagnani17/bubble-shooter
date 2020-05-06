@@ -28,7 +28,7 @@ public class ControllerImpl implements Controller {
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
-     this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
+     
      //this.highscoreStore = new HighscoreStoreImpl();
     }
 
@@ -40,6 +40,7 @@ public class ControllerImpl implements Controller {
     public final void startGame(final LevelTypes levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
+     this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
      this.engine.startLoop();
     }
 
