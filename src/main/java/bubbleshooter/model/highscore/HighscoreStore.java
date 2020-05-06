@@ -19,7 +19,7 @@ public interface HighscoreStore extends Serializable {
     File getFile();
 
     /**
-     * Method for add a score for a game modality
+     * Method for add a score for a game modality.
      * 
      * @param score the current {@link HighscoreStructure} to save.
      */

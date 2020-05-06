@@ -24,13 +24,13 @@ import javafx.collections.ObservableList;
 public class HighscoreStoreImpl implements HighscoreStore {
 
     private static final long serialVersionUID = -3738961252432967724L;
-	private static final String SEP = System.getProperty("file.separator");
-	private static final String DIR_PATH = System.getProperty("user.home") + SEP + ".Bubbleshooter";
-	private static final String FILE_PATH = SEP + "Highscores.txt";
-	private final File file;
-	private Map<LevelTypes, List<HighscoreStructure>> mapOfItems;
-	private static final int CAPACITY = 10;
-	private boolean flag;
+    private static final String SEP = System.getProperty("file.separator");
+    private static final String DIR_PATH = System.getProperty("user.home") + SEP + ".Bubbleshooter";
+    private static final String FILE_PATH = SEP + "Highscores.txt";
+    private final File file;
+    private Map<LevelTypes, List<HighscoreStructure>> mapOfItems;
+    private static final int CAPACITY = 10;
+    private boolean flag;
 	
 	/**
 	 * Constructor of the {@link HighscoreStore} used for create the file if necessary and
