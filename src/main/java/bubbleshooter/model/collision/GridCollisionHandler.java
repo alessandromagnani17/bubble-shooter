@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
-import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gameobject.Bubble;
 
