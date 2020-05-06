@@ -5,10 +5,9 @@ import bubbleshooter.model.gameobject.BubbleType;
 public class GameOverChecker {
 
     private static final double LIMITS = 574;
-    private AbstractGameMode gameMode;
+    private GameMode gameMode;
 
-    public GameOverChecker(final AbstractGameMode gameMode) {
-        super();
+    public GameOverChecker(final GameMode gameMode) {
         this.gameMode = gameMode;
     }
 

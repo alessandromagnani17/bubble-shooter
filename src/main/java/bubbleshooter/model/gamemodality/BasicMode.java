@@ -3,7 +3,7 @@ package bubbleshooter.model.gamemodality;
 public class BasicMode extends AbstractGameMode {
 
     private static final int BUBBLE_SCORE = 20;
-    private static int WRONG_SHOTS_BEFORE_NEW_ROW = 5;
+    private static final int WRONG_SHOTS_BEFORE_NEW_ROW = 5;
 
     public BasicMode() {
         this.setCurrentLevelTypes(LevelTypes.BASICMODE);

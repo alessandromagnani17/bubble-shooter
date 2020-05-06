@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
@@ -12,9 +13,9 @@ public class BubbleGridManager {
 
 	private int createdRows;
 	private boolean offsetRow;
-	private AbstractGameMode gameMode;
+	private GameMode gameMode;
 
-	public BubbleGridManager(final AbstractGameMode gameMode) {
+	public BubbleGridManager(final GameMode gameMode) {
 		this.gameMode = gameMode;
 		this.createdRows = 0;
 		this.offsetRow = false;
@@ -23,18 +24,9 @@ public class BubbleGridManager {
 	// crea una nuova riga in cima
 	public final List<Bubble> createNewRow() {
 		List<Bubble> newRow = new LinkedList<>();
-		// double offset = this.offsetRow ? GameCostants.BUBBLE_WIDTH.getValue():
-		// GameCostants.BUBBLE_WIDTH.getValue() / 2;
 		double offset = this.offsetRow ? Bubble.getWidth() : Bubble.getRadius();
 
 		this.dropBubble();
-		/*
-		 * Stream.iterate(0 , x -> x +=
-		 * 1).limit((long)GameCostants.ROW_BUBBLE.getValue()) .forEach(x ->
-		 * newRow.add(BubbleFactory.createGridBubble (new Point2D(x *
-		 * GameCostants.BUBBLE_WIDTH.getValue() + offset,
-		 * GameCostants.BUBBLE_HEIGTH.getValue() / 2))));
-		 */
 		Stream.iterate(0, x -> x += 1).limit((long) Settings.getNumBubbles())
 				.forEach(x -> newRow.add(this.gameMode.getBubbleFactory().createGridBubble(
 						new Point2D(x * Bubble.getWidth() + offset, Bubble.getRadius()),
@@ -67,8 +59,8 @@ public class BubbleGridManager {
 		Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, BubbleColor.getRandomColor());
 		bubbleToAdd.setColor(bubble.getColor());
 		this.gameMode.getGameObjectManager().addBubble(Collections.singletonList(bubbleToAdd));
-		this.gameMode.getGameObjectManager().reloadShootingBubble();
-		this.gameMode.getGameObjectManager().reloadSwitchBubble();
+		this.gameMode.reloadShootingBubble();
+		this.gameMode.reloadSwitchBubble();
 		return bubbleToAdd;
 	}
 

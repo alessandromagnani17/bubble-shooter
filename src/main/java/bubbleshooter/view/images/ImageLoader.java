@@ -1,7 +1,8 @@
 package bubbleshooter.view.images;
 
 import java.util.Arrays;
-import java.util.EnumMap;
+
+import java.util.HashMap;
 import java.util.Map;
 import javafx.scene.image.Image;
 
@@ -10,46 +11,26 @@ import javafx.scene.image.Image;
  */
 
 public class ImageLoader {
-    private static final ImageLoader SINGLETON = new ImageLoader();
-    private final Map<ImagePath, Image> imageMap;
 
-    /**
-     * Simple constructor.
-     */
-    public ImageLoader() {
-        this.imageMap = new EnumMap<>(ImagePath.class);
-    }
+	private static final Map<ImagePath, Image> images = new HashMap<>();
 
-    /**
-     *
-     * @return the {@link ImageLoader}.
-     */
-    public static ImageLoader getLoader() {
-        return SINGLETON;
-    }
+	/**
+	 * @param imagePath the path of the image to get.
+	 * @return the image of the object required.
+	 */
+	public static Image getImage(final ImagePath imagePath) {
+		return images.get(imagePath);
+	}
 
-    /**
-     * @param imagePath the path of the image to get.
-     * @return the image of the object required.
-     */
-    public Image getImage(final ImagePath imagePath) {
-        if (!this.imageMap.containsKey(imagePath)) {
-            final Image img = this.loadImage(imagePath.getPath());
-            this.imageMap.put(imagePath, img);
-            return img;
-        } 
-        return this.imageMap.get(imagePath);
+	/**
+	 * Loads all images.
+	 */
+	public static void loadAll() {
+		Arrays.stream(ImagePath.values()).forEach(p -> images.put(p, loadImage(p.getPath())));
 
-    }
-    /**
-     * Loads all images.
-     */
-    public void loadAll() {
-        Arrays.stream(ImagePath.values()).forEach(this::getImage);
-    }
+	}
 
-
-    private Image loadImage(final String imagePath) {
-                return new Image(ImageLoader.class.getResourceAsStream(imagePath));
-    }
+	private static Image loadImage(final String imagePath) {
+		return new Image(ImageLoader.class.getResourceAsStream(imagePath));
+	}
 }

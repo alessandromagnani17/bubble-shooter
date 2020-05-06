@@ -3,6 +3,7 @@ package bubbleshooter.model.collision;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
+import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gameobject.Bubble;
 import javafx.geometry.Point2D;
 
@@ -12,13 +13,13 @@ import javafx.geometry.Point2D;
 public class BoundsCollisionHandler implements CollisionHandler {
 
     private final Bubble shootingBubble;
-    private final AbstractGameMode level;
+    private final GameMode level;
 
     /**
      * @param shootingBubble the shootingBubble of the game.
      * @param level the current level of the game.
      */
-    public BoundsCollisionHandler(final Bubble shootingBubble, final AbstractGameMode level) {
+    public BoundsCollisionHandler(final Bubble shootingBubble, final GameMode level) {
         this.shootingBubble = shootingBubble;
         this.level = level;
     }

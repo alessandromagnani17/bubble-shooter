@@ -9,9 +9,6 @@ import javafx.scene.image.Image;
 
 public class SpriteImpl implements Sprite {
 
-	//private static final double DEFAULT = GameCostants.RADIUS.getValue() * 2;
-	//private static final double DEFAULT 
-	
 	private final GraphicsContext gc;
 	private double heigth;
 	private double width;
@@ -20,6 +17,7 @@ public class SpriteImpl implements Sprite {
 
 	public SpriteImpl(final GraphicsContext gc) {
 		this.gc = gc;
+
 	}
 
 	@Override
@@ -46,7 +44,7 @@ public class SpriteImpl implements Sprite {
 
 	@Override
 	public void setSource(ImagePath source) throws FileNotFoundException {
-		this.image = ImageLoader.getLoader().getImage(source);
+		this.image = ImageLoader.getImage(source);
 
 	}
 
