@@ -46,4 +46,7 @@ public interface GameMode {
 	
 	void reloadSwitchBubble();
 
+	public int getNumRows(); 
+	
+	public int getBubblesPerRow(); 
 }

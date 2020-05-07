@@ -2,10 +2,11 @@ package bubbleshooter.utility;
 
 import java.awt.Toolkit;
 
+
 public final class Settings {
 
-    private static final double SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    private static final double SCREEN_HEIGTH = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    private static final double SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth(); 
+    private static final double SCREEN_HEIGTH = Toolkit.getDefaultToolkit().getScreenSize().getHeight(); 
     private static final double GUI_HEIGTH = SCREEN_HEIGTH / 1.52;
     private static final double GUI_WIDTH = SCREEN_WIDTH / 2.72;
     private static final double NUM_BUBBLES = 19;

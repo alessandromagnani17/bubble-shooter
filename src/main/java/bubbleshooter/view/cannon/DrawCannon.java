@@ -11,7 +11,7 @@ import javafx.scene.transform.Rotate;
 public class DrawCannon {
 
     private static final Point2D CANNON_POSITION = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() / 1.31);
-    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth());
+    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.WIDTH);
 
     private AnchorPane pane = new AnchorPane();
     private Rotate rotation = new Rotate();

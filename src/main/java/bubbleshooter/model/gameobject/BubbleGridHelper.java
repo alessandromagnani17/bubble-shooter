@@ -14,13 +14,14 @@ import javafx.geometry.Point2D;
 public class BubbleGridHelper {
 
     private final GameObjectManager gameObjectManager;
-    private static final double DIAGONALDISTANCE = Bubble.getWidth() * 1.20;
+    private double diagonalDistance; 
 
     /**
      * @param gameObjectManager The manager of the {@link Bubble} in the Game.
      */
     public BubbleGridHelper(final GameObjectManager gameObjectManager) {
         this.gameObjectManager = gameObjectManager;
+        this.diagonalDistance = Bubble.WIDTH * 1.20; 
     }
 
     /**
@@ -57,7 +58,7 @@ public class BubbleGridHelper {
      * @return True if the 2 bubbles given are near in the game's grid.
      */
     public final boolean isNear(final Bubble bubbleAt, final Bubble bubbleTo) {
-        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= DIAGONALDISTANCE
+        return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= this.diagonalDistance
             && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
     }
 
@@ -87,7 +88,7 @@ public class BubbleGridHelper {
      */
     public final Set<Bubble> getIsolatedBubbles() {
         final Set<Bubble> firstLineBubbles = this.getBubbleGrid().stream()
-                .filter(a -> a.getPosition().getY() == Bubble.getWidth() / 2 && !a.isDestroyed())
+                .filter(a -> a.getPosition().getY() == Bubble.WIDTH / 2 && !a.isDestroyed())
                 .collect(Collectors.toSet());
         final Set<Bubble> linkedBubbles = new HashSet<Bubble>();
         linkedBubbles.addAll(firstLineBubbles);
@@ -105,12 +106,12 @@ public class BubbleGridHelper {
      */
     public final Set<Point2D> getNeighbourPosition(final Bubble bubble) {
         final Point2D bubblePos = bubble.getPosition();
-        return Set.of(new Point2D(bubblePos.getX() - Bubble.getWidth(), bubblePos.getY()),
-                new Point2D(bubblePos.getX() + Bubble.getWidth(), bubblePos.getY()),
-                new Point2D(bubblePos.getX() - Bubble.getWidth() / 2, bubblePos.getY() - Bubble.getWidth()),
-                new Point2D(bubblePos.getX() + Bubble.getWidth() / 2, bubblePos.getY() - Bubble.getWidth()),
-                new Point2D(bubblePos.getX() - Bubble.getWidth() / 2, bubblePos.getY() + Bubble.getWidth()),
-                new Point2D(bubblePos.getX() + Bubble.getWidth() / 2, bubblePos.getY() + Bubble.getWidth()));
+        return Set.of(new Point2D(bubblePos.getX() - Bubble.WIDTH, bubblePos.getY()),
+                new Point2D(bubblePos.getX() + Bubble.WIDTH, bubblePos.getY()),
+                new Point2D(bubblePos.getX() - Bubble.WIDTH / 2, bubblePos.getY() - Bubble.WIDTH),
+                new Point2D(bubblePos.getX() + Bubble.WIDTH / 2, bubblePos.getY() - Bubble.WIDTH),
+                new Point2D(bubblePos.getX() - Bubble.WIDTH / 2, bubblePos.getY() + Bubble.WIDTH),
+                new Point2D(bubblePos.getX() + Bubble.WIDTH / 2, bubblePos.getY() + Bubble.WIDTH));
     }
 
     /**
