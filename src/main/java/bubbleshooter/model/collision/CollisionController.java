@@ -1,8 +1,8 @@
 package bubbleshooter.model.collision;
 
+import bubbleshooter.model.Model;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;
@@ -59,9 +59,9 @@ public class CollisionController {
     private void checkBounceCollision() {
         final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
         final Point2D pos = shootingBubble.getPosition();
-        if ((pos.getX() + Bubble.getRadius()) >= Settings.getGuiWidth()
-            || (pos.getX() - Bubble.getRadius()) <= 0
-            || (pos.getY() + Bubble.getRadius()) <= 0) {
+        if ((pos.getX() + shootingBubble.getRadius()) >= Model.WIDTH
+            || (pos.getX() - shootingBubble.getRadius()) <= 0
+            || (pos.getY() + shootingBubble.getRadius()) <= 0) {
                 final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level);
                 handler.handle();
         }

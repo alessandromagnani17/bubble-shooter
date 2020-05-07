@@ -13,10 +13,12 @@ import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
 import bubbleshooter.model.gameobject.ShootingBubble;
 import bubbleshooter.model.gameobject.SwitchBubble;
-import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode implements GameMode {
+	
+	 private static final int NUM_BUBBLES = 19;
+	 private static final int NUM_ROWS = 8;
 
 	private GameObjectManager gameObjectManager;
 	private BubbleGridManager bubbleGridManager;
@@ -58,7 +60,7 @@ public abstract class AbstractGameMode implements GameMode {
 	}
 
 	private void initGameObject() {
-		Stream.iterate(1, i -> i += 1).limit((long) Settings.getNumRows()).forEach(i -> this.createNewRow());
+		Stream.iterate(1, i -> i += 1).limit(NUM_ROWS).forEach(i -> this.createNewRow());
 		this.loadShootingBubble();
 		this.loadSwitchBubble();
 	}
@@ -69,13 +71,13 @@ public abstract class AbstractGameMode implements GameMode {
 
 	public final void loadShootingBubble() {
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()),
+				new Point2D(350, 670),
 				BubbleColor.getRandomColor())));
 	}
 
 	public final void loadSwitchBubble() {
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-				new Point2D(Settings.getGuiWidth() / 4, Settings.getGuiHeigth() - Bubble.getWidth()),
+				new Point2D(175, 670),
 				BubbleColor.getRandomColor())));
 	}
 
@@ -85,7 +87,7 @@ public abstract class AbstractGameMode implements GameMode {
 	public final void reloadShootingBubble() {
 		Bubble shootingBubble = this.gameObjectManager.getShootingBubble();
 		shootingBubble
-				.setPosition(new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()));
+				.setPosition(new Point2D(350, 670));
 		shootingBubble.setDirection(shootingBubble.getPosition());
 		shootingBubble.setColor(this.gameObjectManager.getSwitchBubble().getColor());
 	}
@@ -95,7 +97,7 @@ public abstract class AbstractGameMode implements GameMode {
 	 */
 	public final void reloadSwitchBubble() {
 		Bubble switchBubble = this.gameObjectManager.getSwitchBubble();
-		switchBubble.setPosition(new Point2D(Settings.getGuiWidth() / 4, Settings.getGuiHeigth() - Bubble.getWidth()));
+		switchBubble.setPosition(new Point2D(175, 670));
 		final Random rand = new Random();
 		switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
 				.get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
@@ -153,6 +155,13 @@ public abstract class AbstractGameMode implements GameMode {
 		return this.bubbleFactory;
 	}
 
+	public int getNumRows() {
+		return NUM_ROWS; 
+	}
+	
+	public int getBubblesPerRow() {
+		return NUM_BUBBLES; 
+	}
 	protected abstract void updateScore(double elapsed);
 
 	protected abstract boolean isTimeToNewRow(double elapsed);

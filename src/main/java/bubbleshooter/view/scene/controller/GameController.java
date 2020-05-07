@@ -3,9 +3,11 @@ package bubbleshooter.view.scene.controller;
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.input.SwitcherController;
+import bubbleshooter.model.Model;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.gameobject.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
+import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
 import bubbleshooter.view.cannon.DrawCannon;
 import bubbleshooter.view.cannon.DrawHelpLine;
@@ -76,15 +78,19 @@ public class GameController extends AbstractController {
                 getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY());
 
-        this.canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        this.pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(final MouseEvent event) {
+            	System.out.println(pane.getWidth());
+            	System.out.println(pane.getHeight()); 
+            	System.out.println("mouse event = " + event.getX()* ( Model.WIDTH / Settings.getGuiWidth() ) + " " + event.getY() * (Model.HEIGTH / Settings.getGuiHeigth()));
                 Bubble shootingBubble = getController().getBubbles().stream()
                         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
                 if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle())) {
                     shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX(), event.getY()), shootingBubble.getPosition()));
+                            new Point2D(event.getX()* ( Model.WIDTH / Settings.getGuiWidth()) , event.getY() * (Model.HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
+
                 }
             }
         });
@@ -94,10 +100,10 @@ public class GameController extends AbstractController {
         if (this.isGameOver()) {
             this.nextScene();
         }
-
         // da aggiungere anche la chiamata al controller per sapere lo score corrente
         this.clearCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
+        
     }
 
     public final void switchBall() {
@@ -152,8 +158,14 @@ public class GameController extends AbstractController {
 
     // Clear the canvas after every render. It avoids ghosting effect.
     private void clearCanvas() {
+    	
         this.canvas.getGraphicsContext2D().restore();
         this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        this.canvas.getGraphicsContext2D().save();
+        this.canvas.getGraphicsContext2D().scale(1, -1);
+        this.canvas.getGraphicsContext2D().scale(Model.WIDTH / Settings.getGuiWidth(),Model.HEIGTH / Settings.getGuiHeigth());
+        
+		
     }
 
     public final GameState getCurrentState() {
