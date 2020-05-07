@@ -12,6 +12,10 @@ import bubbleshooter.model.gameobject.GameObjectManager;
  */
 public interface Model {
 
+	
+	static final int WIDTH = 705;
+	static final int HEIGTH = 700;
+	
     /**
      * Method called in the {@link Controller} class to start a {@link BasicMode}.
      */

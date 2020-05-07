@@ -4,9 +4,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.GameMode;
-import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public class BubbleGridManager {
@@ -24,12 +22,12 @@ public class BubbleGridManager {
 	// crea una nuova riga in cima
 	public final List<Bubble> createNewRow() {
 		List<Bubble> newRow = new LinkedList<>();
-		double offset = this.offsetRow ? Bubble.getWidth() : Bubble.getRadius();
+		double offset = this.offsetRow ? Bubble.WIDTH : Bubble.RADIUS;
 
 		this.dropBubble();
-		Stream.iterate(0, x -> x += 1).limit((long) Settings.getNumBubbles())
+		Stream.iterate(0, x -> x += 1).limit(gameMode.getBubblesPerRow())
 				.forEach(x -> newRow.add(this.gameMode.getBubbleFactory().createGridBubble(
-						new Point2D(x * Bubble.getWidth() + offset, Bubble.getRadius()),
+						new Point2D(x * Bubble.WIDTH + offset, Bubble.RADIUS),
 						BubbleColor.getRandomColor())));
 
 		this.offsetRow = !offsetRow;
@@ -40,7 +38,7 @@ public class BubbleGridManager {
 	// tira le palline una riga più in giù
 	private void dropBubble() {
 		this.getBubbleGrid().stream().forEach(
-				b -> b.setPosition(new Point2D(b.getPosition().getX(), b.getPosition().getY() + Bubble.getWidth())));
+				b -> b.setPosition(new Point2D(b.getPosition().getX(), b.getPosition().getY() + Bubble.WIDTH)));
 	}
 
 	public final List<Bubble> getBubbleGrid() {

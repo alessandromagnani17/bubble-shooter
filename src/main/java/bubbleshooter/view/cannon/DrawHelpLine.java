@@ -10,6 +10,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
 public class DrawHelpLine {
+<<<<<<< HEAD
 
     private AnchorPane pane = new AnchorPane();
 
@@ -19,6 +20,16 @@ public class DrawHelpLine {
 
     private Line helpLine = new Line(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), START_POINT_FIRST_LINE.getX(), 0);
     private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
+=======
+	
+	private AnchorPane pane = new AnchorPane();
+	
+	private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.WIDTH);
+    public static final double DASH_SIZE = Settings.getGuiHeigth()/70;
+    public static final double DASH_WIDTH = Settings.getGuiHeigth()/200;
+	private Line helpLine = new Line(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), START_POINT_FIRST_LINE.getX(), 0);
+	private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
+>>>>>>> 1e7f6c6d6671ed87c7c3c9ffbe3176a814356219
     private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
     private Line boundsLine = new Line(0, 0, 0, 0);
     private Rotate rotation = new Rotate();

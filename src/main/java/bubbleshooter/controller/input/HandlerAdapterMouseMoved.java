@@ -35,6 +35,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     private void checkBounds(final Point2D eventPosition) {
+<<<<<<< HEAD
         double angularCoefficient;
         double intercepts;
         boolean flag = false;
@@ -80,6 +81,53 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     public final double getRotationAngle() {
+=======
+    	double angularCoefficient;
+    	double intercepts;
+    	boolean flag = false;
+    	Point2D startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
+    						 this.drawHelpLine.getHelpLine().getStartY());
+    	Point2D startPointSecondLine = null;
+    	Point2D endPointSecondLine = null;
+      
+    	angularCoefficient = PhysicHelper.calculateAngularCoefficient(startPointFirstLine, this.eventPosition);
+    	intercepts = PhysicHelper.calculateIntercepts(startPointFirstLine, this.eventPosition);
+
+    	if (!this.drawHelpLine.getHelpLine().isVisible() && this.drawHelpLine.isHelpSelected()) {
+    		this.drawHelpLine.getHelpLine().setVisible(true);
+    	}
+
+		if (this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getLeftBounds()) 
+				&& this.drawHelpLine.isHelpSelected()) {
+			startPointSecondLine = new Point2D(0, intercepts);
+			endPointSecondLine = new Point2D(Settings.getGuiWidth(), -angularCoefficient * Settings.getGuiWidth() + intercepts);
+			flag = PhysicHelper.angleTooHigh(eventPosition, shootingBubblePosition);
+			
+		}else if(this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
+				&& this.drawHelpLine.isHelpSelected()) {
+
+			startPointSecondLine = new Point2D(Settings.getGuiWidth(), angularCoefficient * Settings.getGuiWidth() + intercepts);
+			endPointSecondLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
+					startPointFirstLine.getY() - (startPointFirstLine.getY() - startPointSecondLine.getY())*2);
+
+			intercepts = PhysicHelper.calculateIntercepts(startPointSecondLine, endPointSecondLine);
+
+			endPointSecondLine = new Point2D(0, -angularCoefficient * 0 + intercepts);
+
+			flag = PhysicHelper.angleTooHigh(eventPosition, shootingBubblePosition);
+
+		} else {
+			this.drawHelpLine.getBoundsLine().setVisible(false);
+		}
+
+		if (flag) {
+			this.drawHelpLine.drawLine();
+			this.drawHelpLine.drawBoundsLine(startPointSecondLine, endPointSecondLine);
+		} 
+	}
+
+	public final double getRotationAngle() {
+>>>>>>> 1e7f6c6d6671ed87c7c3c9ffbe3176a814356219
         return this.cannonRotation.getAngle();
     }
 }

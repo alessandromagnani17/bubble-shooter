@@ -16,6 +16,7 @@ public abstract class AbstractBubble implements Bubble {
     private BubbleColor color;
     private final List<Component> components;
 
+
     public AbstractBubble(final BubbleType type, final Point2D position, final BubbleColor color) {
         this.color = color; 
         this.position = position;
@@ -100,4 +101,16 @@ public abstract class AbstractBubble implements Bubble {
             return Optional.empty();
         }
     }
+
+	@Override
+	public double getRadius() {
+		return RADIUS; 
+	}
+
+	@Override
+	public double getWidth() {
+		return RADIUS * 2; 
+	}
+    
+    
 }
