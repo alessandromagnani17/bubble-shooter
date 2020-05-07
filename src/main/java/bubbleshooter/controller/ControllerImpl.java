@@ -28,20 +28,6 @@ public class ControllerImpl implements Controller {
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
-<<<<<<< HEAD
-     
-     //this.highscoreStore = new HighscoreStoreImpl();
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-     
-     //this.highscoreStore = new HighscoreStoreImpl();
-=======
->>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
->>>>>>> develop
-=======
->>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
->>>>>>> develop
     }
 
     /**
@@ -72,73 +58,6 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> develop
-=======
->>>>>>> develop
-	/*@Override
-	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
-		return this.scoresManager.getHighscores(gameMode);
-	}
-
-	@Override
-	public int getScore() {
-		return this.scoresManager.getScore();
-	}
-	
-	@Override
-	public int getDestroyedBubbles() {
-		return this.scoresManager.getDestroyedBubbles();
-	}
-	
-	@Override
-	public double getGameTime() {
-		return this.scoresManager.getGameTime();
-	}
-	
-	@Override
-	public int getWrongShoots() {
-		return this.scoresManager.getWrongShoots();
-	}*/
-
-	@Override
-	public void saveScore(String text) {
-		this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
-		//this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
-<<<<<<< HEAD
-	}
-	
-	@Override
-	public ScoreManager getScoreManager() {
-		return this.scoresManager;
-<<<<<<< HEAD
-	}
-	
-	@Override
-	public final LevelTypes getCurrentLevel() {
-		return this.model.getLevel().getCurrentLevelTypes();
-=======
->>>>>>> develop
-	}
-	
-	@Override
-=======
-	}
-	
-	@Override
-	public ScoreManager getScoreManager() {
-		return this.scoresManager;
-	}
-	
-	@Override
->>>>>>> develop
-	public final LevelTypes getCurrentLevel() {
-		return this.model.getLevel().getCurrentLevelTypes();
-	}
-=======
     /**
      * Method used for save the scores in the highscores.
      * 
@@ -169,7 +88,6 @@ public class ControllerImpl implements Controller {
     public final LevelTypes getCurrentLevel() {
         return this.model.getLevel().getCurrentLevelTypes();
     }
->>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
      * @return The Engine of the Game.
