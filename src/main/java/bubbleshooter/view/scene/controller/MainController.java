@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+
 /**
  * The Controller related to the main.fxml GUI.
  *
@@ -32,6 +33,12 @@ public final class MainController extends AbstractController {
     private static final double BUTTON_X = Settings.getGuiWidth() / 2 - BUTTON_WIDTH / 2;
     private static final double BUTTON_FONT_SIZE = BUTTON_HEIGTH / 2.5;
 
+    /**
+     * Method that initialized the controller and the view.
+     * 
+     * @param controller the controller of the game.
+     * @param view       the controller of the view.
+     */
     @Override
     public void init(final Controller controller, final View view) {
         super.init(controller, view);
@@ -88,11 +95,21 @@ public final class MainController extends AbstractController {
         System.exit(0);
     }
 
+    /**
+     * Method that return the next {@link GameScenes}.
+     * 
+     * @return the next {@link GameScenes}.
+     */
     @Override
     public FXMLPath getNextScene() {
         return FXMLPath.GAME; 
     }
 
+    /**
+     * Method that return the previous {@link GameScenes}.
+     * 
+     * @return the previous {@link GameScenes}.
+     */
     @Override
     protected FXMLPath getPreviousScene() {
         return FXMLPath.MAIN; 
