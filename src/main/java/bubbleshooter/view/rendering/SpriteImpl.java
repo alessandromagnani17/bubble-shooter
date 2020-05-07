@@ -2,6 +2,7 @@ package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
 import javafx.geometry.Point2D;
+import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,6 +23,7 @@ public class SpriteImpl implements Sprite {
 
 	@Override
 	public void draw() {
+		this.gc.scale(1, -1);
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
 				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
 

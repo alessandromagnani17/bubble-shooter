@@ -13,7 +13,7 @@ public class DrawHelpLine {
 	
 	private AnchorPane pane = new AnchorPane();
 	
-	private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth());
+	private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.WIDTH);
     public static final double DASH_SIZE = Settings.getGuiHeigth()/70;
     public static final double DASH_WIDTH = Settings.getGuiHeigth()/200;
 	private Line helpLine = new Line(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), START_POINT_FIRST_LINE.getX(), 0);

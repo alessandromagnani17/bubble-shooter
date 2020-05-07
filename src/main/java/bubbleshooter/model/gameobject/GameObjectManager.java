@@ -2,10 +2,7 @@ package bubbleshooter.model.gameobject;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
-import bubbleshooter.utility.Settings;
-import javafx.geometry.Point2D;
 
 /**
  * Class that hold and manages all the {@link Bubble} in the game.
