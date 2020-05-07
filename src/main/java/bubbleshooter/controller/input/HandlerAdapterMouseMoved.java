@@ -36,6 +36,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
     private void checkBounds(final Point2D eventPosition) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         double angularCoefficient;
         double intercepts;
         boolean flag = false;
@@ -82,6 +83,8 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
     public final double getRotationAngle() {
 =======
+=======
+>>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
     	double angularCoefficient;
     	double intercepts;
     	boolean flag = false;

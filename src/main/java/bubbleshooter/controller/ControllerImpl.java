@@ -28,8 +28,11 @@ public class ControllerImpl implements Controller {
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
+<<<<<<< HEAD
      
      //this.highscoreStore = new HighscoreStoreImpl();
+=======
+>>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
     }
 
     /**
@@ -60,6 +63,7 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
+<<<<<<< HEAD
 	/*@Override
 	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
 		return this.scoresManager.getHighscores(gameMode);
@@ -100,12 +104,44 @@ public class ControllerImpl implements Controller {
 	public final LevelTypes getCurrentLevel() {
 		return this.model.getLevel().getCurrentLevelTypes();
 	}
+=======
+    /**
+     * Method used for save the scores in the highscores.
+     * 
+     * @param text the name of the player.
+     */
+    @Override
+    public final void saveScore(final String text) {
+        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
+    }
+	
+	/**
+     * Method called by {@link GameOverController} and {@link HighscoreController}
+     * for have informations about the scores.
+     * 
+     * @return the ScoreManager.
+     */
+    @Override
+    public final ScoreManager getScoreManager() {
+        return this.scoresManager;
+    }
+
+	/**
+     * Method used to have the current game modality.
+     * 
+     * @return the current game modality.
+     */
+    @Override
+    public final LevelTypes getCurrentLevel() {
+        return this.model.getLevel().getCurrentLevelTypes();
+    }
+>>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
      * @return The Engine of the Game.
      */
-	@Override
-	public final GameLoop getGameEngine() {
-		return this.engine;
-	}
+    @Override
+    public final GameLoop getGameEngine() {
+        return this.engine;
+    }
 }
