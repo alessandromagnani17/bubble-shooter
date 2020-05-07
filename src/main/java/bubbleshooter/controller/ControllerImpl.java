@@ -60,35 +60,9 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
-	/*@Override
-	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
-		return this.scoresManager.getHighscores(gameMode);
-	}
-
-	@Override
-	public int getScore() {
-		return this.scoresManager.getScore();
-	}
-	
-	@Override
-	public int getDestroyedBubbles() {
-		return this.scoresManager.getDestroyedBubbles();
-	}
-	
-	@Override
-	public double getGameTime() {
-		return this.scoresManager.getGameTime();
-	}
-	
-	@Override
-	public int getWrongShoots() {
-		return this.scoresManager.getWrongShoots();
-	}*/
-
 	@Override
 	public void saveScore(String text) {
 		this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
-		//this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
 	}
 	
 	@Override
