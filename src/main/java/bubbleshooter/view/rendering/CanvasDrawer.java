@@ -29,8 +29,8 @@ public class CanvasDrawer {
 		try {
 			sprite.setSource(this.colorMap.get(bubble.getColor()));
 			sprite.setPosition(bubble.getPosition());
-			sprite.setHeigth(Bubble.getRadius() * 2);
-			sprite.setWidth(Bubble.getRadius() * 2);
+			sprite.setHeigth(Bubble.RADIUS * 2);
+			sprite.setWidth(Bubble.RADIUS * 2);
         } catch (Exception e) {
             e.printStackTrace();
         }

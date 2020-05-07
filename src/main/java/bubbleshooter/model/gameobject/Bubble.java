@@ -3,10 +3,12 @@ package bubbleshooter.model.gameobject;
 import java.util.Optional;
 import bubbleshooter.model.component.Component;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 
 public interface Bubble {
+	static final double RADIUS = 18;
+	static final double WIDTH = RADIUS * 2;
+	
 
     void setPosition(Point2D position);
 
@@ -22,13 +24,9 @@ public interface Bubble {
 
     void addComponent(Component component);
 
-    static double getRadius() {
-        return Bubble.getWidth() / 2;
-    }
+    double getRadius(); 
 
-    static double getWidth() {
-        return Settings.getGuiWidth() / (Settings.getNumBubbles() + 0.5);
-    }
+    double getWidth(); 
 
     boolean isDestroyed();
 
