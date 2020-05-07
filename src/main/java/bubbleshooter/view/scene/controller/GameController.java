@@ -117,8 +117,6 @@ public class GameController extends AbstractController {
     public final void helpSelected() {
         if (this.helpCheckBox.isSelected()) {
             this.help.drawLine();
-        } else {
-        	this.help.deleteLine();
         }
     }
 
@@ -131,9 +129,7 @@ public class GameController extends AbstractController {
         this.getController().getGameEngine().pauseLoop();
         this.getController().startGame(this.getController().getCurrentLevel());
         this.getController().getGameEngine().resumeLoop();
-
         this.switcherController.setInitialNumSwitch();
-        this.switcherController.setBubbles(this.getController().getBubbles());
         this.switchButton.setText("Switch");
         this.switchButton.setMouseTransparent(false);
     }
@@ -167,7 +163,7 @@ public class GameController extends AbstractController {
         this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         this.canvas.getGraphicsContext2D().save();
         this.canvas.getGraphicsContext2D().scale(1, -1);
-        this.canvas.getGraphicsContext2D().scale(Model.WIDTH / Settings.getGuiWidth(),Model.HEIGTH / Settings.getGuiHeigth());
+        this.canvas.getGraphicsContext2D().scale(Settings.getGuiWidth()/Model.WIDTH,Settings.getGuiHeigth() /  Model.HEIGTH);
         
 		
     }
