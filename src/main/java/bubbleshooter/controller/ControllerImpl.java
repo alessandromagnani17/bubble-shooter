@@ -58,16 +58,34 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
+
+    /**
+     * Method used for save the scores in the highscores.
+     * 
+     * @param text the name of the player.
+     */
     @Override
     public final void saveScore(final String text) {
         this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
     }
 
+    /**
+     * Method called by {@link GameOverController} and {@link HighscoreController}
+     * for have informations about the scores.
+     * 
+     * @return the ScoreManager.
+     */
     @Override
     public final ScoreManager getScoreManager() {
         return this.scoresManager;
     }
 
+
+    /**
+     * Method used to have the current game modality.
+     * 
+     * @return the current game modality.
+     */
     @Override
     public final LevelTypes getCurrentLevel() {
         return this.model.getLevel().getCurrentLevelTypes();

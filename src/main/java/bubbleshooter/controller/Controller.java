@@ -28,9 +28,26 @@ public interface Controller {
      */
     GameLoop getGameEngine();
 
+
+    /**
+     * Method used for save the scores in the highscores.
+     * 
+     * @param text the name of the player.
+     */
     void saveScore(String text);
- 
+
+    /**
+     * Method used to have the current game modality.
+     * 
+     * @return the current game modality.
+     */
     LevelTypes getCurrentLevel();
 
+    /**
+     * Method called by {@link GameOverController} and {@link HighscoreController}
+     * for have informations about the scores.
+     * 
+     * @return the ScoreManager.
+     */
     ScoreManager getScoreManager();
 }

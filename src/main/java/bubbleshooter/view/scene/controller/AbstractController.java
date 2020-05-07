@@ -52,9 +52,12 @@ public abstract class AbstractController {
     public void nextScene() {
         this.view.loadScene(this.getNextScene());
     }
-
  
-
+    /**
+     * Method that return the next {@link GameScenes}.
+     * 
+     * @return the next {@link GameScenes}.
+     */
     public abstract FXMLPath getNextScene();
 
     /**
@@ -69,8 +72,9 @@ public abstract class AbstractController {
     }
 
     /**
+     * Method that return the previous {@link GameScenes}.
      * 
-     * @return The previous {@link GameScenes}.
+     * @return the previous {@link GameScenes}.
      */
     protected abstract FXMLPath getPreviousScene();
   /*  @FXML
