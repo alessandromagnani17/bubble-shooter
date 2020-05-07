@@ -2,7 +2,6 @@ package bubbleshooter.model.collision;
 
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.utility.Settings;

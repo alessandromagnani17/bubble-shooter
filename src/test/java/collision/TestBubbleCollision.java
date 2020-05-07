@@ -32,60 +32,35 @@ import javafx.geometry.Point2D;
  */
 public class TestBubbleCollision {
 
-    private final Model model = new ModelImpl();
-    private final View view = new TestView();
-    private final Controller controller = new ControllerImpl(model, view);
-    private final  CollisionController collisionController = this.model.getLevel().getCollisionController();
+    private final  CollisionController collisionController = new CollisionController(new BasicMode());
 
     @Test
     public final void testComponent() {
-        final Bubble bubble = new GridBubble(new Point2D(0, 0), BubbleColor.BLUE);
-        assertTrue(bubble.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent());
-        final CollisionComponent component = (CollisionComponent) bubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
-        assertTrue(component.getContainer().equals(bubble));
-       }
+        final Bubble gridBubble = new GridBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        assertTrue(gridBubble.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent());
+        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        assertTrue(shootingBubble.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent());
+        final CollisionComponent gridCollComponent = (CollisionComponent) gridBubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
+        assertTrue(gridCollComponent.getContainer().equals(gridBubble));
+        final CollisionComponent shootCollComponent = (CollisionComponent) shootingBubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
+        assertTrue(shootCollComponent.getContainer().equals(shootingBubble));
+     }
 
-//    @Test
-//    public final void testCollisionController() {
-//    	this.controller.startGame(LevelTypes.BASICMODE);
-//        final Bubble shootingBubble = this.model.getGameObjectManager().getShootingBubble();
-//        final Bubble gridBubble = this.model.getGameObjectManager().getBubbleGrid().stream().findFirst().get();
-//        assertFalse(this.collisionController.hasCollided(gridBubble, shootingBubble));
-//        shootingBubble.setPosition(gridBubble.getPosition());
-//        assertTrue(this.collisionController.hasCollided(gridBubble, shootingBubble));
-//    }
-
-//    @Test
-//    public final void testCollisionHandler() {
-//        final Bubble gridBubble = new GridBubble(new Point2D(1, 1), BubbleColor.BLUE);
-//        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
-//        final Collision collision = new Collision(gridBubble, shootingBubble);
-//        final CollisionHandler handler = new GridCollisionHandler(collision, new BasicMode());
-//    }
-
-    /**
-     * Anonymous class used only to Test the GameEngine and avoid all the initializations.
-     */
-    class TestView implements View {
-
-        @Override
-        public void launch(final Controller controller) {
-        }
-
-        @Override
-        public void loadScene(final FXMLPath scene) {
-        }
-
-        @Override
-        public void showGameOver() {
-        }
-
-        @Override
-        public void update() {
-        }
-
-        @Override
-        public void render() {
-        }
+    @Test
+    public final void testCollisionController() {
+        final Bubble gridBubble = new GridBubble(new Point2D(100, 100), BubbleColor.BLUE);
+        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        assertFalse(this.collisionController.hasCollided(gridBubble, shootingBubble));
+        shootingBubble.setPosition(gridBubble.getPosition());
+        assertTrue(this.collisionController.hasCollided(gridBubble, shootingBubble));
     }
+
+    @Test
+    public final void testCollisionHandler() {
+        final Bubble gridBubble = new GridBubble(new Point2D(1, 1), BubbleColor.BLUE);
+        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        final Collision collision = new Collision(gridBubble, shootingBubble);
+        final CollisionHandler handler = new GridCollisionHandler(collision, new BasicMode());
+    }
+
 }
