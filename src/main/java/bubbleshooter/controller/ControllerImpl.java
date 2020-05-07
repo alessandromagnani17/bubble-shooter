@@ -33,8 +33,12 @@ public class ControllerImpl implements Controller {
      //this.highscoreStore = new HighscoreStoreImpl();
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
      
      //this.highscoreStore = new HighscoreStoreImpl();
+=======
+>>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
+>>>>>>> develop
 =======
 >>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
 >>>>>>> develop
@@ -69,8 +73,11 @@ public class ControllerImpl implements Controller {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop
 	/*@Override
 	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
@@ -101,6 +108,7 @@ public class ControllerImpl implements Controller {
 	public void saveScore(String text) {
 		this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
 		//this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
+<<<<<<< HEAD
 	}
 	
 	@Override
@@ -117,6 +125,16 @@ public class ControllerImpl implements Controller {
 	}
 	
 	@Override
+=======
+	}
+	
+	@Override
+	public ScoreManager getScoreManager() {
+		return this.scoresManager;
+	}
+	
+	@Override
+>>>>>>> develop
 	public final LevelTypes getCurrentLevel() {
 		return this.model.getLevel().getCurrentLevelTypes();
 	}

@@ -34,6 +34,7 @@ public interface Controller {
      */
     GameLoop getGameEngine();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	void saveScore(String text);
  
@@ -43,12 +44,15 @@ public interface Controller {
 =======
 <<<<<<< HEAD
 >>>>>>> develop
+=======
+>>>>>>> develop
 
 	void saveScore(String text);
  
     /*int getScore();
 =======
 >>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
+<<<<<<< HEAD
 
     /**
      * Method used for save the scores in the highscores.
@@ -69,6 +73,23 @@ public interface Controller {
 	
 	LevelTypes getCurrentLevel();
 
+=======
+
+    /**
+     * Method used for save the scores in the highscores.
+     * 
+     * @param text the name of the player.
+     */
+    void saveScore(String text);
+
+    /**
+     * Method used to have the current game modality.
+     * 
+     * @return the current game modality.
+     */
+    LevelTypes getCurrentLevel();
+
+>>>>>>> develop
 <<<<<<< HEAD
 	int getWrongShoots();*/
 	
@@ -76,8 +97,11 @@ public interface Controller {
 
 	ScoreManager getScoreManager();
 =======
+<<<<<<< HEAD
 	ScoreManager getScoreManager();
 =======
+=======
+>>>>>>> develop
     /**
      * Method called by {@link GameOverController} and {@link HighscoreController}
      * for have informations about the scores.
@@ -86,5 +110,8 @@ public interface Controller {
      */
     ScoreManager getScoreManager();
 >>>>>>> 1e0fa6b6f5515d5aadc77df844f49441c3fc53fe
+<<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop
 }
