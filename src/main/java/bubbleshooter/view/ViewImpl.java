@@ -28,7 +28,7 @@ public class ViewImpl implements View {
     }
 
     @Override
-    public void launch(final Controller controller) {
+    public final void launch(final Controller controller) {
       this.controller = controller;
       this.initalize();
       ImageLoader.loadAll();
@@ -44,7 +44,7 @@ public class ViewImpl implements View {
     }
 
     @Override
-    public void loadScene(final FXMLPath scene) {
+    public final void loadScene(final FXMLPath scene) {
         try {
             final SceneWrapper wrapper = SceneLoader
                     .getLoader()
@@ -58,7 +58,7 @@ public class ViewImpl implements View {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public final void render() {
         Platform.runLater(() -> this.currentGuiController.render());
@@ -76,17 +76,13 @@ public class ViewImpl implements View {
     }
 
     @Override
-    public void showGameOver() {
-    	this.currentGuiController.setGameover();
-    	this.currentGuiController.nextScene();
-
+    public final void showGameOver() {
+        this.currentGuiController.setGameover();
+        this.currentGuiController.nextScene();
     }
 
     @Override
-    public void update() {
+    public final void update() {
        this.render();
     }
-
- 
 }
-

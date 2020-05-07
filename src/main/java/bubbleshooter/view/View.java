@@ -10,7 +10,7 @@ public interface View {
     void loadScene(FXMLPath scene);
 
     void showGameOver();
-    
+
     void update();
 
     void render();

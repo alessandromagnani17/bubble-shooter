@@ -5,37 +5,36 @@ import bubbleshooter.model.gamemodality.LevelTypes;
 import javafx.collections.ObservableList;
 
 public class ScoreManager {
-	
-	GameInfoManager scoresManager;
-	private HighscoreStore highscoreStore;
 
-	public ScoreManager(GameInfoManager scoresManager) {
-		this.scoresManager = scoresManager;
-		this.highscoreStore = new HighscoreStoreImpl();
-	}
+    private GameInfoManager scoresManager;
+    private HighscoreStore highscoreStore;
 
-	public ObservableList<HighscoreStructure> getHighscores(LevelTypes gameMode) {
-		return this.highscoreStore.getHighscoresForModality(gameMode);
-	}
+    public ScoreManager(final GameInfoManager scoresManager) {
+        this.scoresManager = scoresManager;
+        this.highscoreStore = new HighscoreStoreImpl();
+    }
 
-	public int getScore() {
-		return this.scoresManager.getScore();
-	}
+    public final ObservableList<HighscoreStructure> getHighscores(final LevelTypes gameMode) {
+        return this.highscoreStore.getHighscoresForModality(gameMode);
+    }
 
-	public int getDestroyedBubbles() {
-		return this.scoresManager.getDestroyedBubbles();
-	}
+    public final int getScore() {
+        return this.scoresManager.getScore();
+    }
 
-	public double getGameTime() {
-		return this.scoresManager.getGameTime();
-	}
+    public final int getDestroyedBubbles() {
+        return this.scoresManager.getDestroyedBubbles();
+    }
 
-	public int getWrongShoots() {
-		return this.scoresManager.getWrongShoots();
-	}
+    public final double getGameTime() {
+        return this.scoresManager.getGameTime();
+    }
 
-	public void saveScore(String text, LevelTypes currentLevelTypes) {
-		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), currentLevelTypes));
-	}
+    public final int getWrongShoots() {
+        return this.scoresManager.getWrongShoots();
+    }
 
+    public final void saveScore(final String text, final LevelTypes currentLevelTypes) {
+        this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), currentLevelTypes));
+    }
 }

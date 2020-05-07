@@ -113,7 +113,7 @@ public class BubbleGridHelper {
                 new Point2D(bubblePos.getX() - Bubble.WIDTH / 2, bubblePos.getY() + Bubble.WIDTH),
                 new Point2D(bubblePos.getX() + Bubble.WIDTH / 2, bubblePos.getY() + Bubble.WIDTH));
     }
-    
+
     /**
      * @return The currents {@link BubbleColor} in the game.
      * Useful to not generate some other colors in the end of the game.

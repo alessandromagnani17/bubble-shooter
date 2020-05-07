@@ -35,7 +35,7 @@ public class GameOverController extends AbstractController {
     private static final double BUTTON_HEIGTH = Settings.getGuiHeigth() / 10;
     private static final double BUTTON_FONT_SIZE = BUTTON_HEIGTH / 2.5;
 
-	
+
     @Override
     public final void init(final Controller controller, final View view) {
         super.init(controller, view);
