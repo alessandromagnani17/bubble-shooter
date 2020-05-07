@@ -3,6 +3,7 @@ package bubbleshooter.model;
 import java.util.List;
 import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.BasicMode;
+import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gamemodality.GameStatus;
 import bubbleshooter.model.gamemodality.SurvivalMode;
 import bubbleshooter.model.gameobject.Bubble;
@@ -14,7 +15,7 @@ import bubbleshooter.model.gameobject.GameObjectManager;
  */
 public class ModelImpl implements Model {
 
-    private AbstractGameMode gameMode;
+    private GameMode gameMode;
 
     @Override
     public final void startBasicGame() {
@@ -50,7 +51,7 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public final AbstractGameMode getLevel() {
+    public final GameMode getLevel() {
         return this.gameMode;
     }
 }

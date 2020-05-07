@@ -11,10 +11,14 @@ import bubbleshooter.model.gameobject.BubbleFactory;
 import bubbleshooter.model.gameobject.BubbleGridHelper;
 import bubbleshooter.model.gameobject.BubbleGridManager;
 import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.utility.Settings;
+import bubbleshooter.model.gameobject.ShootingBubble;
+import bubbleshooter.model.gameobject.SwitchBubble;
 import javafx.geometry.Point2D;
 
-public abstract class AbstractGameMode {
+public abstract class AbstractGameMode implements GameMode {
+	
+	 private static final int NUM_BUBBLES = 19;
+	 private static final int NUM_ROWS = 8;
 
 	private GameObjectManager gameObjectManager;
 	private BubbleGridManager bubbleGridManager;
@@ -37,12 +41,12 @@ public abstract class AbstractGameMode {
 		this.status = GameStatus.PAUSE;
 	}
 
-	public void start() {
+	public final void start() {
 		this.status = GameStatus.RUNNING;
 		this.initGameObject();
 	}
 
-	public void update(final double elapsed) {
+	public final void update(final double elapsed) {
 		this.gameObjectManager.update(elapsed);
 		this.collisionController.checkCollisions();
 		this.gameInfoManager.updateGameTime(elapsed);
@@ -53,11 +57,10 @@ public abstract class AbstractGameMode {
 		if (this.checkGameOver()) {
 			this.status = GameStatus.GAMEOVER;
 		}
-
 	}
 
-	public final void initGameObject() {
-		Stream.iterate(1, i -> i += 1).limit((long) Settings.getNumRows()).forEach(i -> this.createNewRow());
+	private void initGameObject() {
+		Stream.iterate(1, i -> i += 1).limit(NUM_ROWS).forEach(i -> this.createNewRow());
 		this.loadShootingBubble();
 		this.loadSwitchBubble();
 	}
@@ -67,74 +70,99 @@ public abstract class AbstractGameMode {
 	}
 
 	public final void loadShootingBubble() {
-		Random rnd = new Random();
-		List<BubbleColor> remainingColors = this.bubbleGridHelper.getRemainingColors();
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-				new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.getWidth()),
-				remainingColors.get(rnd.nextInt(remainingColors.size() - 1)))));
+				new Point2D(350, 670),
+				BubbleColor.getRandomColor())));
 	}
 
 	public final void loadSwitchBubble() {
-		Random rnd = new Random();
-		List<BubbleColor> remainingColors = this.bubbleGridHelper.getRemainingColors();
 		this.gameObjectManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-				new Point2D(Settings.getGuiWidth() / 1.1, Settings.getGuiHeigth() - Bubble.getWidth()),
-				remainingColors.get(rnd.nextInt(remainingColors.size() - 1)))));
+				new Point2D(175, 670),
+				BubbleColor.getRandomColor())));
+	}
+
+	/**
+	 * Method to reload the {@link ShootingBubble} after a {@link Collision}.
+	 */
+	public final void reloadShootingBubble() {
+		Bubble shootingBubble = this.gameObjectManager.getShootingBubble();
+		shootingBubble
+				.setPosition(new Point2D(350, 670));
+		shootingBubble.setDirection(shootingBubble.getPosition());
+		shootingBubble.setColor(this.gameObjectManager.getSwitchBubble().getColor());
+	}
+
+	/**
+	 * Method to reload the {@link SwitchBubble} after a {@link Collision}.
+	 */
+	public final void reloadSwitchBubble() {
+		Bubble switchBubble = this.gameObjectManager.getSwitchBubble();
+		switchBubble.setPosition(new Point2D(175, 670));
+		final Random rand = new Random();
+		switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
+				.get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
 	}
 
 	public final GameObjectManager getGameObjectManager() {
 		return this.gameObjectManager;
 	}
 
-	public void setGameOver() {
+	public final void setGameOver() {
 		this.setGameStatus(GameStatus.GAMEOVER);
 	}
 
-	public void setCurrentLevelTypes(final LevelTypes level) {
+	public final void setCurrentLevelTypes(final LevelTypes level) {
 		this.currentLevelTypes = level;
 	}
 
-	public boolean checkGameOver() {
+	private final boolean checkGameOver() {
 		return this.gameOverChecker.checkGameOver();
 	}
 
-	public void setGameStatus(final GameStatus status) {
+	public final void setGameStatus(final GameStatus status) {
 		this.status = status;
 	}
 
-	public GameStatus getGameStatus() {
+	public final GameStatus getGameStatus() {
 		return this.status;
 	}
 
-	public BubbleGridManager getGridManager() {
+	public final BubbleGridManager getGridManager() {
 		return this.bubbleGridManager;
 	}
 
-	public BubbleGridHelper getGridHelper() {
+	public final BubbleGridHelper getGridHelper() {
 		return this.bubbleGridHelper;
 	}
 
-	public CollisionController getCollisionController() {
+	public final CollisionController getCollisionController() {
 		return this.collisionController;
 	}
 
-	public List<Bubble> getCurrentBubbles() {
+	public final List<Bubble> getCurrentBubbles() {
 		return this.gameObjectManager.getAllBubbles();
 	}
 
-	public GameInfoManager getGameInfoManager() {
+	public final GameInfoManager getGameInfoManager() {
 		return this.gameInfoManager;
 	}
 
-	public LevelTypes getCurrentLevelTypes() {
+	public final LevelTypes getCurrentLevelTypes() {
 		return this.currentLevelTypes;
 	}
 
-	public BubbleFactory getBubbleFactory() {
+	public final BubbleFactory getBubbleFactory() {
 		return this.bubbleFactory;
 	}
 
-	public abstract void updateScore(double elapsed);
+	public int getNumRows() {
+		return NUM_ROWS; 
+	}
+	
+	public int getBubblesPerRow() {
+		return NUM_BUBBLES; 
+	}
+	protected abstract void updateScore(double elapsed);
 
-	public abstract boolean isTimeToNewRow(double elapsed);
+	protected abstract boolean isTimeToNewRow(double elapsed);
 }

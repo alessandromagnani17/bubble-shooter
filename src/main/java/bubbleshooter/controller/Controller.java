@@ -5,6 +5,7 @@ import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
 import bubbleshooter.model.highscore.HighscoreStructure;
+import bubbleshooter.model.highscore.ScoreManager;
 import javafx.collections.ObservableList;
 
 /**
@@ -28,8 +29,10 @@ public interface Controller {
      * @return The Engine of the Game.
      */
     GameLoop getGameEngine();
+
+	void saveScore(String text);
  
-    int getScore();
+    /*int getScore();
 
 	ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode);
 
@@ -39,5 +42,9 @@ public interface Controller {
 
 	double getGameTime();
 
-	int getWrongShoots();
+	int getWrongShoots();*/
+	
+	LevelTypes getCurrentLevel();
+
+	ScoreManager getScoreManager();
 }

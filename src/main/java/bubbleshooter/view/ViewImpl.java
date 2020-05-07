@@ -31,7 +31,7 @@ public class ViewImpl implements View {
     public void launch(final Controller controller) {
       this.controller = controller;
       this.initalize();
-      ImageLoader.getLoader().loadAll();
+      ImageLoader.loadAll();
     }
 
     private void initalize() {
@@ -51,10 +51,8 @@ public class ViewImpl implements View {
                     .getScene(scene);
             wrapper.getController().init(controller, this);
             this.currentGuiController = wrapper.getController();
-
             final Parent root = wrapper.getScene().getRoot();
             root.requestFocus();
-            //root.setOnKeyPressed(wrapper.getController()::onKeyPressed);
             Platform.runLater(() -> this.initStage(wrapper));
         } catch (Exception e) {
             e.printStackTrace();

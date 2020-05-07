@@ -2,6 +2,7 @@ package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
 import javafx.geometry.Point2D;
+import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
@@ -9,9 +10,6 @@ import javafx.scene.image.Image;
 
 public class SpriteImpl implements Sprite {
 
-	//private static final double DEFAULT = GameCostants.RADIUS.getValue() * 2;
-	//private static final double DEFAULT 
-	
 	private final GraphicsContext gc;
 	private double heigth;
 	private double width;
@@ -20,10 +18,12 @@ public class SpriteImpl implements Sprite {
 
 	public SpriteImpl(final GraphicsContext gc) {
 		this.gc = gc;
+
 	}
 
 	@Override
 	public void draw() {
+		this.gc.scale(1, -1);
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
 				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
 
@@ -46,7 +46,7 @@ public class SpriteImpl implements Sprite {
 
 	@Override
 	public void setSource(ImagePath source) throws FileNotFoundException {
-		this.image = ImageLoader.getLoader().getImage(source);
+		this.image = ImageLoader.getImage(source);
 
 	}
 

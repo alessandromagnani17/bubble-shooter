@@ -5,8 +5,8 @@ import javafx.geometry.Point2D;
 
  public final class PhysicHelper {
 	 
-	private static final double MAXANGLE =  65.0;
-	private static final double MINANGLE = -65.0;
+	private static final double MAXANGLE =  80.0;
+	private static final double MINANGLE = -80.0;
 	
 
     private PhysicHelper() {

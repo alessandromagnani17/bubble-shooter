@@ -31,8 +31,8 @@ public interface GameLoop {
      */
     boolean isPaused();
 
-	/**
-	 * @return if the {@link GameLoop} is running or not.
-	 */
-	boolean isStopped();
+    /**
+     * @return if the {@link GameLoop} is running or not.
+     */
+    boolean isStopped();
 }

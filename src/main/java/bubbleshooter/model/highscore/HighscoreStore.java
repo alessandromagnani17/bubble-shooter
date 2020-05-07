@@ -5,29 +5,32 @@ import java.io.Serializable;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import javafx.collections.ObservableList;
 
-public interface HighscoreStore extends Serializable{
+/**
+ * Interface of the {@link HighscoreStore] of the game.
+ * It's used to read, save and modify the scores from a file.
+ */
+public interface HighscoreStore extends Serializable {
 
     /**
-     * @return the file where the highscores are saved
+     * Method for get the file where scores are saved.
+     * 
+     * @return the file where the scores are saved.
      */
     File getFile();
 
     /**
-     * Add a highscore for a game modality
-     * @param gameMode 
-     *              current game modality
-     * @param score 
-     *              current score to save
+     * Method for add a score for a game modality.
+     * 
+     * @param score the current {@link HighscoreStructure} to save.
      */
     void addScore(HighscoreStructure score);
 
     /**
+     * Method to have a list of scores for a specific game modality.
      * 
-     * @param gameMode 
-     *              game modality which we want the highscores
-     * @return the highscores for a game modality
+     * @param gameMode game modality which we want the scores.
+     * @return the scores for a game modality.
      */
     ObservableList<HighscoreStructure> getHighscoresForModality(LevelTypes gameMode);
-
 
 }

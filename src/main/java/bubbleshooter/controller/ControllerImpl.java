@@ -7,12 +7,8 @@ import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.highscore.HighscoreStore;
-import bubbleshooter.model.highscore.HighscoreStoreImpl;
-import bubbleshooter.model.highscore.HighscoreStructure;
-
+import bubbleshooter.model.highscore.ScoreManager;
 import bubbleshooter.view.View;
-import javafx.collections.ObservableList;
 
 /**
  * Class which implements the {@link Controller} interface.
@@ -23,7 +19,7 @@ public class ControllerImpl implements Controller {
     private final Model model;
     private final View view;
     private GameLoop engine;
-    private HighscoreStore highscoreStore;
+    private ScoreManager scoresManager;
 
     /**
      * @param model The {@link Model} of the Game.
@@ -32,9 +28,9 @@ public class ControllerImpl implements Controller {
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
-     this.highscoreStore = new HighscoreStoreImpl();
+     
+     //this.highscoreStore = new HighscoreStoreImpl();
     }
-
 
     /**
     * The method called by the {@link View} to start the Game in the {@link Model}.
@@ -44,6 +40,7 @@ public class ControllerImpl implements Controller {
     public final void startGame(final LevelTypes levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
+     this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
      this.engine.startLoop();
     }
 
@@ -63,34 +60,45 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
-	@Override
+	/*@Override
 	public ObservableList<HighscoreStructure> getHighscoreList(LevelTypes gameMode) {
-		return this.highscoreStore.getHighscoresForModality(gameMode);
+		return this.scoresManager.getHighscores(gameMode);
 	}
 
 	@Override
 	public int getScore() {
-		return this.model.getLevel().getGameInfoManager().getScore();
+		return this.scoresManager.getScore();
 	}
 	
 	@Override
 	public int getDestroyedBubbles() {
-		return this.model.getLevel().getGameInfoManager().getDestroyedBubbles();
+		return this.scoresManager.getDestroyedBubbles();
 	}
 	
 	@Override
 	public double getGameTime() {
-		return this.model.getLevel().getGameInfoManager().getGameTime();
+		return this.scoresManager.getGameTime();
 	}
 	
 	@Override
 	public int getWrongShoots() {
-		return this.model.getLevel().getGameInfoManager().getWrongShoots();
-	}
+		return this.scoresManager.getWrongShoots();
+	}*/
 
 	@Override
 	public void saveScore(String text) {
-		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
+		this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
+		//this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), this.model.getLevel().getCurrentLevelTypes()));
+	}
+	
+	@Override
+	public ScoreManager getScoreManager() {
+		return this.scoresManager;
+	}
+	
+	@Override
+	public final LevelTypes getCurrentLevel() {
+		return this.model.getLevel().getCurrentLevelTypes();
 	}
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.

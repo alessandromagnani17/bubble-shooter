@@ -3,28 +3,34 @@ package bubbleshooter.model.highscore;
 import bubbleshooter.model.gamemodality.LevelTypes;
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * 
+ * Class used to store a highscore with score, current game mode and the name.
+ *
+ */
 public class HighscoreStructure extends Score {
 
-    protected final SimpleStringProperty name;
+    private final SimpleStringProperty name;
 
     /**
-     * Construct a new HighscoreStructure
-     * @param name 
-     *              the player username
-     * @param score 
-     *              the score made by the player
+     * Constructor for a new HighscoreStructure.
+     * 
+     * @param name      the player name.
+     * @param score     the score made by the player.
+     * @param gameMode  the current game modality.
      */
     public HighscoreStructure(final String name, final Integer score, final LevelTypes gameMode) {
         super(score, gameMode);
-        this.name = new SimpleStringProperty(name) ;
+        this.name = new SimpleStringProperty(name);
     }
 
-    public String getName() {
+    /**
+     * Getter for the name.
+     * 
+     * @return the String value of the player name.
+     */
+    public final String getName() {
         return name.get();
-    }
-
-    public String toString() {
-        return "Player:" + this.getName() + " Score:" + super.getScore();
     }
 
 }
