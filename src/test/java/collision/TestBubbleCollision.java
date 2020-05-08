@@ -10,7 +10,7 @@ import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.game.gameMode.BasicMode;
+import bubbleshooter.model.game.mode.BasicMode;
 import javafx.geometry.Point2D;
 
 /**
@@ -20,24 +20,55 @@ public class TestBubbleCollision {
 
     private final  CollisionController collisionController = new CollisionController(new BasicMode());
 
+    /**
+     * Method to test if a {@link GridBubble} contains the {@link CollisionComponent}.
+     */
     @Test
-    public final void testComponent() {
+    public final void testComponentOnGridBubble() {
         final Bubble gridBubble = new GridBubble(new Point2D(0, 0), BubbleColor.BLUE);
         assertTrue(gridBubble.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent());
-        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
-        assertTrue(shootingBubble.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent());
-        final CollisionComponent gridCollComponent = (CollisionComponent) gridBubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
-        assertTrue(gridCollComponent.getContainer().equals(gridBubble));
-        final CollisionComponent shootCollComponent = (CollisionComponent) shootingBubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
-        assertTrue(shootCollComponent.getContainer().equals(shootingBubble));
      }
 
+    /**
+     * Method to test if a {@link ShootingBubble} contains the {@link CollisionComponent}.
+     */
     @Test
-    public final void testCollisionController() {
+    public final void testComponentOnShootingBubble() {
+        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        assertTrue(shootingBubble.getComponent(ComponentType.COLLISIONCOMPONENT).isPresent());
+
+     }
+
+    /**
+     * Method to test if a {@link Components} is linked with its {@link Bubble}.
+     */
+    @Test
+    public final void testAllComponents() {
+        final Bubble gridBubble = new GridBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+        final CollisionComponent gridCollComponent = (CollisionComponent) gridBubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
+        final CollisionComponent shootCollComponent = (CollisionComponent) shootingBubble.getComponent(ComponentType.COLLISIONCOMPONENT).get();
+        assertTrue(gridCollComponent.getContainer().equals(gridBubble));
+        assertTrue(shootCollComponent.getContainer().equals(shootingBubble));
+    }
+ 
+    /**
+     * Method to test if the {@link CollisionController} can detect a {@link Collision}.
+     */
+    @Test
+    public final void testFalseCollisions() {
         final Bubble gridBubble = new GridBubble(new Point2D(100, 100), BubbleColor.BLUE);
         final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
         assertFalse(this.collisionController.hasCollided(gridBubble, shootingBubble));
-        shootingBubble.setPosition(gridBubble.getPosition());
+    }
+
+    /**
+     * Method to test if the {@link CollisionController} can detect a {@link Collision}.
+     */
+    @Test
+    public final void testRightCollisions() {
+        final Bubble gridBubble = new GridBubble(new Point2D(100, 100), BubbleColor.BLUE);
+        final Bubble shootingBubble = new ShootingBubble(new Point2D(95, 95), BubbleColor.BLUE);
         assertTrue(this.collisionController.hasCollided(gridBubble, shootingBubble));
     }
 }
