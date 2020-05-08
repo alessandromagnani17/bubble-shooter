@@ -1,7 +1,6 @@
 package bubbleshooter.model;
 
 import java.util.List;
-import bubbleshooter.model.gamemodality.AbstractGameMode;
 import bubbleshooter.model.gamemodality.BasicMode;
 import bubbleshooter.model.gamemodality.GameMode;
 import bubbleshooter.model.gamemodality.GameStatus;
