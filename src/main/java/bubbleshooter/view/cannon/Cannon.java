@@ -1,4 +1,4 @@
-package bubbleshooter.view.rendering;
+package bubbleshooter.view.cannon;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
