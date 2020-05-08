@@ -1,4 +1,4 @@
-package bubbleshooter.model.bubble.bubbleGrid;
+package bubbleshooter.model.bubble.grid;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -19,14 +19,13 @@ import javafx.geometry.Point2D;
 public class BubbleGridHelper {
 
     private final BubblesManager gameObjectManager;
-    private double diagonalDistance; 
+    private final double diagonalDistance = Bubble.WIDTH * 1.20;
 
     /**
      * @param gameObjectManager The manager of the {@link Bubble} in the Game.
      */
     public BubbleGridHelper(final BubblesManager gameObjectManager) {
         this.gameObjectManager = gameObjectManager;
-        this.diagonalDistance = Bubble.WIDTH * 1.20; 
     }
 
     /**
@@ -95,7 +94,7 @@ public class BubbleGridHelper {
         final Set<Bubble> firstLineBubbles = this.getBubbleGrid().stream()
                 .filter(a -> a.getPosition().getY() == Bubble.WIDTH / 2 && !a.isDestroyed())
                 .collect(Collectors.toSet());
-        final Set<Bubble> linkedBubbles = new HashSet<Bubble>();
+        final Set<Bubble> linkedBubbles = new HashSet<>();
         linkedBubbles.addAll(firstLineBubbles);
         for (final Bubble bubble : firstLineBubbles) {
             linkedBubbles.addAll(this.getLinkedBubbles(bubble, new LinkedList<Bubble>()));

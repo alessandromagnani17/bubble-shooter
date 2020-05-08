@@ -1,4 +1,4 @@
-package bubbleshooter.model.game.gameMode;
+package bubbleshooter.model.game.mode;
 
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameType;
@@ -14,13 +14,13 @@ public class BasicMode extends AbstractGameMode {
 
     @Override
     public final void updateScore(final double elapsed) {
-        GameInfoManager infoManager = this.getGameInfoManager();
+        final GameInfoManager infoManager = this.getGameInfoManager();
         infoManager.updateScore(infoManager.getDestroyedBubbles() * BUBBLE_SCORE);
     }
 
     @Override
     public final boolean isTimeToNewRow(final double elapsed) {
-        GameInfoManager infoManager = this.getGameInfoManager();
+        final GameInfoManager infoManager = this.getGameInfoManager();
         if (infoManager.getWrongShoots() == WRONG_SHOTS_BEFORE_NEW_ROW) {
             infoManager.clearWrongShoots();
             return true;

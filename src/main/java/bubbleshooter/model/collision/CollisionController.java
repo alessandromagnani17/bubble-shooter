@@ -4,7 +4,7 @@ import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.game.gameMode.GameMode;
+import bubbleshooter.model.game.mode.GameMode;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 

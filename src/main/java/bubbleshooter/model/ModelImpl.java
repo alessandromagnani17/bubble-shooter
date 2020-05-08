@@ -4,9 +4,9 @@ import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.gameMode.BasicMode;
-import bubbleshooter.model.game.gameMode.GameMode;
-import bubbleshooter.model.game.gameMode.SurvivalMode;
+import bubbleshooter.model.game.mode.BasicMode;
+import bubbleshooter.model.game.mode.GameMode;
+import bubbleshooter.model.game.mode.SurvivalMode;
 
 /**
  *The class which manage the logic of the game.

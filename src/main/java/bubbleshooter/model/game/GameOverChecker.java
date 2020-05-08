@@ -1,12 +1,12 @@
 package bubbleshooter.model.game;
 
 import bubbleshooter.model.bubble.BubbleType;
-import bubbleshooter.model.game.gameMode.GameMode;
+import bubbleshooter.model.game.mode.GameMode;
 
 public class GameOverChecker {
 
     private static final double LIMITS = 574;
-    private GameMode gameMode;
+    private final GameMode gameMode;
 
     public GameOverChecker(final GameMode gameMode) {
         this.gameMode = gameMode;

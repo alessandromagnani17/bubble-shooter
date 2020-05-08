@@ -66,6 +66,7 @@ public abstract class AbstractBubble implements Bubble {
         return this.type;
     }
 
+    @Override
     public final void setType(final BubbleType type) {
         this.type = type;
     }

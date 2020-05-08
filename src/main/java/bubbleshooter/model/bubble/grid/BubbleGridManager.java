@@ -1,31 +1,30 @@
-package bubbleshooter.model.bubble.bubbleGrid;
+package bubbleshooter.model.bubble.grid;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
-import bubbleshooter.model.game.gameMode.GameMode;
+import bubbleshooter.model.game.mode.GameMode;
 import javafx.geometry.Point2D;
 
 public class BubbleGridManager {
 
-	private int createdRows;
-	private boolean offsetRow;
-	private GameMode gameMode;
+    private final int createdRows;
+    private boolean offsetRow;
+    private final GameMode gameMode;
 
-	public BubbleGridManager(final GameMode gameMode) {
-		this.gameMode = gameMode;
-		this.createdRows = 0;
-		this.offsetRow = false;
-	}
+    public BubbleGridManager(final GameMode gameMode) {
+        this.gameMode = gameMode;
+        this.createdRows = 0;
+        this.offsetRow = false;
+    }
 
-	// crea una nuova riga in cima
+    // crea una nuova riga in cima
 	public final List<Bubble> createNewRow() {
-		List<Bubble> newRow = new LinkedList<>();
-		double offset = this.offsetRow ? Bubble.WIDTH : Bubble.RADIUS;
+		final List<Bubble> newRow = new LinkedList<>();
+		final double offset = this.offsetRow ? Bubble.WIDTH : Bubble.RADIUS;
 
 		this.dropBubble();
 		Stream.iterate(0, x -> x += 1).limit(gameMode.getBubblesPerRow())
@@ -57,7 +56,7 @@ public class BubbleGridManager {
 	}
 
 	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
-		Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, BubbleColor.getRandomColor());
+		final Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, BubbleColor.getRandomColor());
 		bubbleToAdd.setColor(bubble.getColor());
 		this.gameMode.getGameObjectManager().addBubble(Collections.singletonList(bubbleToAdd));
 		this.gameMode.loadShootingBubble();
