@@ -4,7 +4,7 @@ import java.util.List;
 
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleFactory;
-import bubbleshooter.model.bubble.GameObjectManager;
+import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.bubbleGrid.BubbleGridHelper;
 import bubbleshooter.model.bubble.bubbleGrid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
@@ -22,7 +22,7 @@ public interface GameMode {
 
 	void loadSwitchBubble();
 
-	GameObjectManager getGameObjectManager();
+	BubblesManager getGameObjectManager();
 
 	void setGameOver();
 
@@ -45,12 +45,8 @@ public interface GameMode {
 	GameType getCurrentLevelTypes();
 
 	BubbleFactory getBubbleFactory();
-	
-	void reloadShootingBubble(); 
-	
-	void reloadSwitchBubble();
 
-	public int getNumRows(); 
-	
-	public int getBubblesPerRow(); 
+	public int getNumRows();
+
+	public int getBubblesPerRow();
 }
