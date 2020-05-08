@@ -11,7 +11,7 @@ public class SurvivalMode extends AbstractGameMode {
 	private double timeLeft = SECOND_BEFORE_NEW_ROW; 
 
 	public SurvivalMode() {
-        this.setCurrentLevelTypes(GameType.SURVIVALMODE);
+        this.setCurrentGameType(GameType.SURVIVALMODE);
 	}
 	
 	@Override

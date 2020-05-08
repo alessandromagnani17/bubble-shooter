@@ -43,12 +43,12 @@ public class ModelImpl implements Model {
 
     @Override
     public final BubblesManager getGameObjectManager() {
-        return this.gameMode.getGameObjectManager();
+        return this.gameMode.getBubblesManager();
     }
 
     @Override
     public final List<Bubble> getBubbles() {
-        return this.gameMode.getGameObjectManager().getAllBubbles();
+        return this.gameMode.getBubblesManager().getAllBubbles();
     }
 
     @Override

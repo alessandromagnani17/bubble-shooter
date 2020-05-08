@@ -9,7 +9,7 @@ public class BasicMode extends AbstractGameMode {
     private static final int WRONG_SHOTS_BEFORE_NEW_ROW = 5;
 
     public BasicMode() {
-        this.setCurrentLevelTypes(GameType.BASICMODE);
+        this.setCurrentGameType(GameType.BASICMODE);
     }
 
     @Override

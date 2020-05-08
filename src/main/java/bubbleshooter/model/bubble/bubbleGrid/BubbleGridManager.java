@@ -45,7 +45,7 @@ public class BubbleGridManager {
 	}
 
 	public final List<Bubble> getBubbleGrid() {
-		return this.gameMode.getGameObjectManager().getBubbleGrid();
+		return this.gameMode.getBubblesManager().getBubbleGrid();
 	}
 
 	public final int getCreatedRows() {
@@ -53,13 +53,13 @@ public class BubbleGridManager {
 	}
 
 	public final void removeBubble(final Bubble bubble) {
-		this.gameMode.getGameObjectManager().removeGameObject(bubble);
+		this.gameMode.getBubblesManager().removeGameObject(bubble);
 	}
 
 	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
 		Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, BubbleColor.getRandomColor());
 		bubbleToAdd.setColor(bubble.getColor());
-		this.gameMode.getGameObjectManager().addBubble(Collections.singletonList(bubbleToAdd));
+		this.gameMode.getBubblesManager().addBubble(Collections.singletonList(bubbleToAdd));
 		this.gameMode.loadShootingBubble();
 		this.gameMode.loadSwitchBubble();
 		return bubbleToAdd;

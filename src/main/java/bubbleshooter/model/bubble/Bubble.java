@@ -6,10 +6,10 @@ import bubbleshooter.model.component.ComponentType;
 import javafx.geometry.Point2D;
 
 public interface Bubble {
+	
 	static final double RADIUS = 18;
 	static final double WIDTH = RADIUS * 2;
 	
-
     void setPosition(Point2D position);
 
     void setDirection(Point2D direction);
