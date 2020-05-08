@@ -3,7 +3,7 @@ package bubbleshooter.model;
 import java.util.List;
 
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.bubble.GameObjectManager;
+import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
 import bubbleshooter.model.game.gameMode.AbstractGameMode;
 import bubbleshooter.model.game.gameMode.GameMode;
@@ -50,7 +50,7 @@ public interface Model {
     GameStatus getGameStatus();
 
     /**
-     * @return the {@link GameObjectManager} of the Game.
+     * @return the {@link BubblesManager} of the Game.
      */
-    GameObjectManager getGameObjectManager();
+    BubblesManager getGameObjectManager();
 }

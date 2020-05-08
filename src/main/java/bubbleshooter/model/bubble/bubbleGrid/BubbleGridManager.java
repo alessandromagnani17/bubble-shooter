@@ -60,8 +60,8 @@ public class BubbleGridManager {
 		Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, BubbleColor.getRandomColor());
 		bubbleToAdd.setColor(bubble.getColor());
 		this.gameMode.getGameObjectManager().addBubble(Collections.singletonList(bubbleToAdd));
-		this.gameMode.reloadShootingBubble();
-		this.gameMode.reloadSwitchBubble();
+		this.gameMode.loadShootingBubble();
+		this.gameMode.loadSwitchBubble();
 		return bubbleToAdd;
 	}
 

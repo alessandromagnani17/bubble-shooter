@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.bubble.BubbleType;
-import bubbleshooter.model.bubble.GameObjectManager;
+import bubbleshooter.model.bubble.BubblesManager;
 import javafx.geometry.Point2D;
 
 /**
@@ -18,13 +18,13 @@ import javafx.geometry.Point2D;
  */
 public class BubbleGridHelper {
 
-    private final GameObjectManager gameObjectManager;
+    private final BubblesManager gameObjectManager;
     private double diagonalDistance; 
 
     /**
      * @param gameObjectManager The manager of the {@link Bubble} in the Game.
      */
-    public BubbleGridHelper(final GameObjectManager gameObjectManager) {
+    public BubbleGridHelper(final BubblesManager gameObjectManager) {
         this.gameObjectManager = gameObjectManager;
         this.diagonalDistance = Bubble.WIDTH * 1.20; 
     }

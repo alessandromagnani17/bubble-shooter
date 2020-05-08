@@ -3,7 +3,7 @@ package bubbleshooter.model;
 import java.util.List;
 
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.bubble.GameObjectManager;
+import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
 import bubbleshooter.model.game.gameMode.AbstractGameMode;
 import bubbleshooter.model.game.gameMode.BasicMode;
@@ -42,7 +42,7 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public final GameObjectManager getGameObjectManager() {
+    public final BubblesManager getGameObjectManager() {
         return this.gameMode.getGameObjectManager();
     }
 

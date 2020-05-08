@@ -2,17 +2,18 @@ package bubbleshooter.model.bubble;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
  * Class that hold and manages all the {@link Bubble} in the game.
  *
  */
-public class GameObjectManager {
+public class BubblesManager {
 
 	private final List<Bubble> bubbles;
 
-	public GameObjectManager() {
+	public BubblesManager() {
 		this.bubbles = new LinkedList<>();
 	}
 
@@ -23,7 +24,7 @@ public class GameObjectManager {
 	 * @param elapsed
 	 */
 	public final void update(final double elapsed) {
-		this.getShootingBubble().update(elapsed);
+		this.getShootingBubble().get().update(elapsed);
 		this.bubbles.removeAll(this.bubbles.stream().filter(a -> a.isDestroyed()).collect(Collectors.toList()));
 	}
 
@@ -51,15 +52,15 @@ public class GameObjectManager {
 	/**
 	 * @return The {@link ShootingBubble} of the game.
 	 */
-	public final Bubble getShootingBubble() {
-		return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
+	public final Optional<Bubble> getShootingBubble() {
+		return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst();
 	}
 
 	/**
 	 * @return The {@link SwitchBubble} of the game.
 	 */
-	public final Bubble getSwitchBubble() {
-		return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get();
+	public final Optional<Bubble> getSwitchBubble() {
+		return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst();
 	}
 
 	/**

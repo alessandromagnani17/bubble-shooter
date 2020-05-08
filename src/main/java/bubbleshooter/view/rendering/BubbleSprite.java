@@ -23,7 +23,6 @@ public class BubbleSprite implements Sprite {
 
 	@Override
 	public void draw() {
-		this.gc.scale(1, -1);
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
 				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
 
