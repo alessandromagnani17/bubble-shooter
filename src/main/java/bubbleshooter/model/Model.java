@@ -1,11 +1,12 @@
 package bubbleshooter.model;
 
 import java.util.List;
-import bubbleshooter.model.gamemodality.AbstractGameMode;
-import bubbleshooter.model.gamemodality.GameMode;
-import bubbleshooter.model.gamemodality.GameStatus;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.GameObjectManager;
+
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.GameObjectManager;
+import bubbleshooter.model.game.GameStatus;
+import bubbleshooter.model.game.gameMode.AbstractGameMode;
+import bubbleshooter.model.game.gameMode.GameMode;
 
 /**
  *Interface which represent the Logic of the Game in order to respect the MVC design pattern.

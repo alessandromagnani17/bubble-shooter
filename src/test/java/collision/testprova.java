@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleColor;
-import bubbleshooter.model.gameobject.BubbleFactory;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleColor;
+import bubbleshooter.model.bubble.BubbleFactory;
 import javafx.geometry.Point2D;
 
 public class testprova {

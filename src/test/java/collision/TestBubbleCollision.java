@@ -5,11 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleColor;
+import bubbleshooter.model.bubble.GridBubble;
+import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleColor;
-import bubbleshooter.model.gameobject.GridBubble;
-import bubbleshooter.model.gameobject.ShootingBubble;
 import javafx.geometry.Point2D;
 
 /**

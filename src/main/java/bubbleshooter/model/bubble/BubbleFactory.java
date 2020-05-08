@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.bubble;
 
 import javafx.geometry.Point2D;
 

@@ -1,7 +1,7 @@
 package bubbleshooter.model.highscore;
 
-import bubbleshooter.model.gamemodality.GameInfoManager;
-import bubbleshooter.model.gamemodality.LevelTypes;
+import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameType;
 import javafx.collections.ObservableList;
 
 public class ScoreManager {
@@ -14,7 +14,7 @@ public class ScoreManager {
 		this.highscoreStore = new HighscoreStoreImpl();
 	}
 
-	public ObservableList<HighscoreStructure> getHighscores(LevelTypes gameMode) {
+	public ObservableList<HighscoreStructure> getHighscores(GameType gameMode) {
 		return this.highscoreStore.getHighscoresForModality(gameMode);
 	}
 
@@ -34,7 +34,7 @@ public class ScoreManager {
 		return this.scoresManager.getWrongShoots();
 	}
 
-	public void saveScore(String text, LevelTypes currentLevelTypes) {
+	public void saveScore(String text, GameType currentLevelTypes) {
 		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), currentLevelTypes));
 	}
 

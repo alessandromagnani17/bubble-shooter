@@ -1,6 +1,6 @@
 package bubbleshooter.model.highscore;
 
-import bubbleshooter.model.gamemodality.LevelTypes;
+import bubbleshooter.model.game.GameType;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
@@ -19,7 +19,7 @@ public class HighscoreStructure extends Score {
      * @param score     the score made by the player.
      * @param gameMode  the current game modality.
      */
-    public HighscoreStructure(final String name, final Integer score, final LevelTypes gameMode) {
+    public HighscoreStructure(final String name, final Integer score, final GameType gameMode) {
         super(score, gameMode);
         this.name = new SimpleStringProperty(name);
     }

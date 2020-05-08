@@ -1,6 +1,6 @@
 package bubbleshooter.utility;
 
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 import javafx.geometry.Point2D;
 
  public final class PhysicHelper {

@@ -1,6 +1,6 @@
 package bubbleshooter.model.collision;
 
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 /**
  * Class which represent a collision between two {@link Bubble}.
  */

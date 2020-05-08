@@ -4,8 +4,8 @@ import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.Model;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleType;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
@@ -13,7 +13,7 @@ import bubbleshooter.view.cannon.DrawCannon;
 import bubbleshooter.view.cannon.DrawHelpLine;
 import bubbleshooter.view.images.ImagePath;
 import bubbleshooter.view.rendering.Cannon;
-import bubbleshooter.view.rendering.CanvasDrawer;
+import bubbleshooter.view.rendering.BubbleDrawer;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.states.GameState;
 import bubbleshooter.view.states.InGameState;
@@ -38,7 +38,7 @@ public class GameController extends AbstractController {
     @FXML private CheckBox helpCheckBox = new CheckBox("Help");
     @FXML private Button switchButton = new Button();
 
-    private CanvasDrawer canvasDrawer;
+    private BubbleDrawer canvasDrawer;
     private boolean gameOver;
     private GameState currentState;
     private GameState inGameState;
@@ -66,7 +66,7 @@ public class GameController extends AbstractController {
         this.pane.setOnMouseDragged(this.handlerAdapter);
         this.pane.setOnMouseClicked(this.handlerAdapter);
 
-        this.canvasDrawer = new CanvasDrawer(this.canvas);
+        this.canvasDrawer = new BubbleDrawer(this.canvas);
         this.inGameState = new InGameState(this, controller);
         this.inPauseState = new InPauseState(this, controller);
         this.switcherController = new SwitcherController(this.getController().getBubbles());

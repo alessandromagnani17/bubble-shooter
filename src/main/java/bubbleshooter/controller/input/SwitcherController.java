@@ -2,8 +2,8 @@ package bubbleshooter.controller.input;
 
 import java.util.List;
 
-import bubbleshooter.model.gamemodality.GameSwitcher;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.game.GameSwitcher;
 
 public class SwitcherController {
 

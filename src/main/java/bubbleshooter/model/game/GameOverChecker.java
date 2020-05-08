@@ -1,6 +1,7 @@
-package bubbleshooter.model.gamemodality;
+package bubbleshooter.model.game;
 
-import bubbleshooter.model.gameobject.BubbleType;
+import bubbleshooter.model.bubble.BubbleType;
+import bubbleshooter.model.game.gameMode.GameMode;
 
 public class GameOverChecker {
 

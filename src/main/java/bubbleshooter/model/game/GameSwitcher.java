@@ -1,10 +1,10 @@
-package bubbleshooter.model.gamemodality;
+package bubbleshooter.model.game;
 
 import java.util.List;
 
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleColor;
-import bubbleshooter.model.gameobject.BubbleType;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleColor;
+import bubbleshooter.model.bubble.BubbleType;
 
 public class GameSwitcher {
 

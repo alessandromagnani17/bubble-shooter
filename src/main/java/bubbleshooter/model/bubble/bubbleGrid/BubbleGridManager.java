@@ -1,10 +1,13 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.bubble.bubbleGrid;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-import bubbleshooter.model.gamemodality.GameMode;
+
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleColor;
+import bubbleshooter.model.game.gameMode.GameMode;
 import javafx.geometry.Point2D;
 
 public class BubbleGridManager {

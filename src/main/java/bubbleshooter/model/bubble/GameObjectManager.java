@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.bubble;
 
 import java.util.LinkedList;
 import java.util.List;

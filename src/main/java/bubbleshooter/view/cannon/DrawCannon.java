@@ -1,7 +1,7 @@
 package bubbleshooter.view.cannon;
 
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.rendering.Cannon;
 import javafx.geometry.Point2D;

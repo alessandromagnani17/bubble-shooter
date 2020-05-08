@@ -2,8 +2,8 @@ package bubbleshooter.model.collision;
 
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.model.Model;
-import bubbleshooter.model.gamemodality.GameMode;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.game.gameMode.GameMode;
 import javafx.geometry.Point2D;
 
 /**

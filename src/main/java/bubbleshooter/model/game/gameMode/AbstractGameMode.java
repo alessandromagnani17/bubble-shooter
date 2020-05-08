@@ -1,18 +1,23 @@
-package bubbleshooter.model.gamemodality;
+package bubbleshooter.model.game.gameMode;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
+
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleColor;
+import bubbleshooter.model.bubble.BubbleFactory;
+import bubbleshooter.model.bubble.GameObjectManager;
+import bubbleshooter.model.bubble.ShootingBubble;
+import bubbleshooter.model.bubble.SwitchBubble;
+import bubbleshooter.model.bubble.bubbleGrid.BubbleGridHelper;
+import bubbleshooter.model.bubble.bubbleGrid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleColor;
-import bubbleshooter.model.gameobject.BubbleFactory;
-import bubbleshooter.model.gameobject.BubbleGridHelper;
-import bubbleshooter.model.gameobject.BubbleGridManager;
-import bubbleshooter.model.gameobject.GameObjectManager;
-import bubbleshooter.model.gameobject.ShootingBubble;
-import bubbleshooter.model.gameobject.SwitchBubble;
+import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameOverChecker;
+import bubbleshooter.model.game.GameStatus;
+import bubbleshooter.model.game.GameType;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractGameMode implements GameMode {
@@ -28,7 +33,7 @@ public abstract class AbstractGameMode implements GameMode {
 	private GameOverChecker gameOverChecker;
 	private BubbleFactory bubbleFactory;
 	private GameStatus status = GameStatus.PAUSE;
-	private LevelTypes currentLevelTypes;
+	private GameType currentLevelTypes;
 
 	public AbstractGameMode() {
 		this.gameObjectManager = new GameObjectManager();
@@ -111,7 +116,7 @@ public abstract class AbstractGameMode implements GameMode {
 		this.setGameStatus(GameStatus.GAMEOVER);
 	}
 
-	public final void setCurrentLevelTypes(final LevelTypes level) {
+	public final void setCurrentLevelTypes(final GameType level) {
 		this.currentLevelTypes = level;
 	}
 
@@ -147,7 +152,7 @@ public abstract class AbstractGameMode implements GameMode {
 		return this.gameInfoManager;
 	}
 
-	public final LevelTypes getCurrentLevelTypes() {
+	public final GameType getCurrentLevelTypes() {
 		return this.currentLevelTypes;
 	}
 

@@ -1,10 +1,10 @@
 package bubbleshooter.model.collision;
 
 import bubbleshooter.model.Model;
+import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.gamemodality.GameMode;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.game.gameMode.GameMode;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
