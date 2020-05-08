@@ -66,7 +66,7 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final void saveScore(final String text) {
-        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
+        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentGameType());
     }
 
     /**
@@ -88,7 +88,7 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final GameType getCurrentLevel() {
-        return this.model.getLevel().getCurrentLevelTypes();
+        return this.model.getLevel().getCurrentGameType();
     }
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
