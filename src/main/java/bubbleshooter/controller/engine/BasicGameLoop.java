@@ -1,7 +1,7 @@
 package bubbleshooter.controller.engine;
 
 import bubbleshooter.model.Model;
-import bubbleshooter.model.gamemodality.GameStatus;
+import bubbleshooter.model.game.GameStatus;
 import bubbleshooter.view.View;
 
 /**

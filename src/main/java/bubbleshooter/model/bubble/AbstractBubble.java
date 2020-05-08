@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.bubble;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -102,15 +102,18 @@ public abstract class AbstractBubble implements Bubble {
         }
     }
 
-	@Override
-	public double getRadius() {
-		return RADIUS; 
-	}
+    @Override
+    public final double getRadius() {
+        return RADIUS; 
+    }
 
-	@Override
-	public double getWidth() {
-		return RADIUS * 2; 
-	}
-    
-    
+    @Override
+    public final double getWidth() {
+        return RADIUS * 2; 
+    }
+
+    @Override
+    public final double getHeigth() {
+        return RADIUS * 2; 
+    }
 }

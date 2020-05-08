@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.bubble;
 
 /**
  * Enumeration that contains all the type of {@link Bubble} in the game.

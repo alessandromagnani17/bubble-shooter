@@ -34,7 +34,7 @@ public class SoundManager {
      * @throws LineUnavailableException 
      */
     private void loadGameSounds() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        this.clip.open(AudioSystem.getAudioInputStream(getClass().getResource(SoundNames.COFFIN.getPath())));
+        this.clip.open(AudioSystem.getAudioInputStream(getClass().getResource(SoundNames.BACKGROUND.getPath())));
     }
 
     /**

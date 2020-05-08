@@ -1,4 +1,7 @@
-package bubbleshooter.model.gamemodality;
+package bubbleshooter.model.game.gameMode;
+
+import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameType;
 
 public class SurvivalMode extends AbstractGameMode {
 	
@@ -8,7 +11,7 @@ public class SurvivalMode extends AbstractGameMode {
 	private double timeLeft = SECOND_BEFORE_NEW_ROW; 
 
 	public SurvivalMode() {
-        this.setCurrentLevelTypes(LevelTypes.SURVIVALMODE);
+        this.setCurrentLevelTypes(GameType.SURVIVALMODE);
 	}
 	
 	@Override

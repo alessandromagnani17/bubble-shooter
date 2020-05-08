@@ -8,7 +8,7 @@ import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class SpriteImpl implements Sprite {
+public class BubbleSprite implements Sprite {
 
 	private final GraphicsContext gc;
 	private double heigth;
@@ -16,14 +16,13 @@ public class SpriteImpl implements Sprite {
 	private Point2D position;
 	private Image image;
 
-	public SpriteImpl(final GraphicsContext gc) {
+	public BubbleSprite(final GraphicsContext gc) {
 		this.gc = gc;
 
 	}
 
 	@Override
 	public void draw() {
-		this.gc.scale(1, -1);
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
 				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
 

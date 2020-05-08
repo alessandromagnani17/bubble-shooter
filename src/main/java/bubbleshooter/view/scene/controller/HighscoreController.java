@@ -1,7 +1,7 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
-import bubbleshooter.model.gamemodality.LevelTypes;
+import bubbleshooter.model.game.GameType;
 import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
@@ -91,15 +91,15 @@ public class HighscoreController extends AbstractController {
         this.backMenuButton.setLayoutY(this.tableSurvivalView.getLayoutY() + TABLE_HEIGTH + DETACHMENT / 2);
         this.backMenuButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
 
-        this.tableBaseView.setItems(getScores(LevelTypes.BASICMODE));
-        this.tableSurvivalView.setItems(getScores(LevelTypes.SURVIVALMODE));
+        this.tableBaseView.setItems(getScores(GameType.BASICMODE));
+        this.tableSurvivalView.setItems(getScores(GameType.SURVIVALMODE));
 
         this.tableBaseView.setMouseTransparent(true);
         this.tableSurvivalView.setMouseTransparent(true);
 
     }
 
-    private ObservableList<HighscoreStructure> getScores(final LevelTypes gameMode) {
+    private ObservableList<HighscoreStructure> getScores(final GameType gameMode) {
         return this.getController().getScoreManager().getHighscores(gameMode);
     }
 

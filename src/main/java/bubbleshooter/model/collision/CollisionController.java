@@ -1,10 +1,10 @@
 package bubbleshooter.model.collision;
 
 import bubbleshooter.model.Model;
+import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.gamemodality.GameMode;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.game.gameMode.GameMode;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
@@ -41,7 +41,7 @@ public class CollisionController {
      * In case of a {@link Collision} it calls a {@link GridCollisionHandler}.
      */
     private void checkGridCollision() {
-        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble().get();
         for (final Bubble basicbubble : this.level.getGridManager().getBubbleGrid()) {
             if (this.hasCollided(shootingBubble, basicbubble)) {
                 final Collision collision = new Collision(shootingBubble, basicbubble);
@@ -56,7 +56,7 @@ public class CollisionController {
      * In case of a {@link Collision} it calls a {@link BoundsCollisionHandler}.
      */
     private void checkBounceCollision() {
-        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble();
+        final Bubble shootingBubble = this.level.getGameObjectManager().getShootingBubble().get();
         final Point2D pos = shootingBubble.getPosition();
         if ((pos.getX() + shootingBubble.getRadius()) >= Model.WIDTH
             || (pos.getX() - shootingBubble.getRadius()) <= 0

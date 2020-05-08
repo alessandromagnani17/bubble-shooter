@@ -1,12 +1,12 @@
 package bubbleshooter.model;
 
 import java.util.List;
-import bubbleshooter.model.gamemodality.BasicMode;
-import bubbleshooter.model.gamemodality.GameMode;
-import bubbleshooter.model.gamemodality.GameStatus;
-import bubbleshooter.model.gamemodality.SurvivalMode;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.GameObjectManager;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubblesManager;
+import bubbleshooter.model.game.GameStatus;
+import bubbleshooter.model.game.gameMode.BasicMode;
+import bubbleshooter.model.game.gameMode.GameMode;
+import bubbleshooter.model.game.gameMode.SurvivalMode;
 
 /**
  *The class which manage the logic of the game.
@@ -40,7 +40,7 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public final GameObjectManager getGameObjectManager() {
+    public final BubblesManager getGameObjectManager() {
         return this.gameMode.getGameObjectManager();
     }
 

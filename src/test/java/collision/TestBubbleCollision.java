@@ -1,18 +1,16 @@
 package collision;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.GridBubble;
+import bubbleshooter.model.bubble.ShootingBubble;
+import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.gamemodality.BasicMode;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleColor;
-import bubbleshooter.model.gameobject.GridBubble;
-import bubbleshooter.model.gameobject.ShootingBubble;
+import bubbleshooter.model.game.gameMode.BasicMode;
 import javafx.geometry.Point2D;
 
 /**

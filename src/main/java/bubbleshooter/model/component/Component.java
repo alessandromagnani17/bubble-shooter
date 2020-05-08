@@ -1,6 +1,6 @@
 package bubbleshooter.model.component;
 
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 
 /**
  * Interface used to add features to a {@link Bubble}.

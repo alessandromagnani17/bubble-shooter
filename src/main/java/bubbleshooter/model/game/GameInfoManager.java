@@ -1,4 +1,4 @@
-package bubbleshooter.model.gamemodality;
+package bubbleshooter.model.game;
 
 public class GameInfoManager {
 

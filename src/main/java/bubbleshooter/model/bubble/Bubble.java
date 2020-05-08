@@ -1,4 +1,4 @@
-package bubbleshooter.model.gameobject;
+package bubbleshooter.model.bubble;
 
 import java.util.Optional;
 import bubbleshooter.model.component.Component;
@@ -27,6 +27,8 @@ public interface Bubble {
     double getRadius(); 
 
     double getWidth(); 
+    
+    double getHeigth(); 
 
     boolean isDestroyed();
 
