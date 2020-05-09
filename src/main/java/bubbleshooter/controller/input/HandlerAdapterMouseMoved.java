@@ -9,6 +9,12 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
 
+/**
+ * 
+ * Class which implements the {@link EvenHandler<MouseEvent} interface.
+ * Used to rotate the {@link Cannon} and the help line.
+ *
+ */
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
     private Rotate cannonRotation = new Rotate();
@@ -17,7 +23,14 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     private Point2D shootingBubblePosition;
     private Point2D eventPosition;
 
-
+    /**
+     * Constructor for a new HandlerAdapterMouseMoved.
+     * 
+     * @param cannonRotation         the rotation of the cannon.
+     * @param lineRotation           the rotation of the help line.
+     * @param shootingBubblePosition the shooting bubble position.
+     * @param drawHelpLine           the DrawHelpLine.
+     */
     public HandlerAdapterMouseMoved(final Rotate cannonRotation, final Rotate lineRotation, final Point2D shootingBubblePosition,
             final DrawHelpLine drawHelpLine) {
         this.cannonRotation = cannonRotation;
@@ -34,6 +47,11 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         this.checkBounds(eventPosition);
     }
 
+    /**
+     * Private method used to calculate the direction of the bounds line.
+     * 
+     * @param eventPosition position of the mouse.
+     */
     private void checkBounds(final Point2D eventPosition) {
         double angularCoefficient;
         double intercepts;
@@ -79,6 +97,9 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         } 
     }
 
+    /**
+     * @return the rotation of the cannon.
+     */
     public final double getRotationAngle() {
         return this.cannonRotation.getAngle();
     }
