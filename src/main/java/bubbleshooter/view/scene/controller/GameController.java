@@ -32,8 +32,11 @@ import javafx.scene.layout.AnchorPane;
 
 public class GameController extends AbstractController {
 
-    private static final double MAXANGLE =  64.9;
-    private static final double MINANGLE = -64.9;
+    private static final double MAXANGLE =  74.9;
+    private static final double MINANGLE = -74.9;
+    private static final double LIMITS = Settings.getGuiHeigth() / 1.1;
+    private static final double CANNON_SCALE = 700;
+
 
     @FXML private Canvas canvas;
     @FXML private AnchorPane pane;
@@ -59,7 +62,17 @@ public class GameController extends AbstractController {
 
         this.help  = new DrawHelpLine(this.pane);
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
-        this.drawCannon = new DrawCannon(this.pane, this.cannon);
+        this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
+        this.cannon.getCannon().setScaleX(Settings.getGuiHeigth() / CANNON_SCALE);
+
+        this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
+                getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()
+                - getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getRadius());
+
+        this.drawCannon = new DrawCannon(this.pane, this.cannon, this.shootingBubbleInitialPosition);
         this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
         this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
                                         this.startPointFirstLine, this.help);
@@ -75,20 +88,15 @@ public class GameController extends AbstractController {
 
         this.setCurrentState(this.inGameState);
 
-        this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
-                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
-                getController().getBubbles().stream()
-                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY());
-
         this.pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(final MouseEvent event) {
                 Bubble shootingBubble = getController().getBubbles().stream()
                         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-                if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle())) {
+                if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
                     shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX()* ( Model.WORLD_WIDTH / Settings.getGuiWidth()) , event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
+                            new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()), event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
 
                 }
             }
@@ -116,7 +124,7 @@ public class GameController extends AbstractController {
         if (this.helpCheckBox.isSelected()) {
             this.help.drawLine();
         } else {
-        	this.help.deleteLine();
+            this.help.deleteLine();
         }
     }
 
@@ -158,11 +166,12 @@ public class GameController extends AbstractController {
 
     // Clear the canvas after every render. It avoids ghosting effect.
     private void resetCanvas() {
-    	GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
-    	gc.restore();
+        GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
+        gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
         gc.scale(Settings.getGuiWidth()/Model.WORLD_WIDTH,Settings.getGuiHeigth() /  Model.WORLD_HEIGTH);
+
     }
 
     public final GameState getCurrentState() {

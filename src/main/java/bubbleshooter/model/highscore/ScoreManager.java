@@ -2,40 +2,57 @@ package bubbleshooter.model.highscore;
 
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameType;
-import javafx.collections.ObservableList;
 
+/**
+ * 
+ * Class called by {@link ControllerImpl} used to get information about the score.
+ * The informations are taken by calling the {@link GameInfoManager}.
+ *
+ */
 public class ScoreManager {
-	
-	GameInfoManager scoresManager;
-	private HighscoreStore highscoreStore;
 
-	public ScoreManager(GameInfoManager scoresManager) {
-		this.scoresManager = scoresManager;
-		this.highscoreStore = new HighscoreStoreImpl();
-	}
+    private GameInfoManager scoresInfo;
+    private HighscoreStore highscoreStore;
 
-	public ObservableList<HighscoreStructure> getHighscores(GameType gameMode) {
-		return this.highscoreStore.getHighscoresForModality(gameMode);
-	}
+    /**
+     * Constructor for a new ScoreManager.
+     * 
+     * @param scoresInfo the GameInfoManager.
+     */
+    public ScoreManager(final GameInfoManager scoresInfo) {
+        this.scoresInfo = scoresInfo;
+        this.highscoreStore = new HighscoreStoreImpl();
+    }
 
-	public int getScore() {
-		return this.scoresManager.getScore();
-	}
+    /**
+     * @return the score of the game.
+     */
+    public final int getScore() {
+        return this.scoresInfo.getScore();
+    }
 
-	public int getDestroyedBubbles() {
-		return this.scoresManager.getDestroyedBubbles();
-	}
+    /**
+     * @return the destroyed balls of the game.
+     */
+    public final int getDestroyedBubbles() {
+        return this.scoresInfo.getDestroyedBubbles();
+    }
 
-	public double getGameTime() {
-		return this.scoresManager.getGameTime();
-	}
+    /**
+     * @return the game time.
+     */
+    public final double getGameTime() {
+        return this.scoresInfo.getGameTime();
+    }
 
-	public int getWrongShoots() {
-		return this.scoresManager.getWrongShoots();
-	}
-
-	public void saveScore(String text, GameType currentLevelTypes) {
-		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), currentLevelTypes));
-	}
+    /**
+     * Method for save the score in the highscores list.
+     * 
+     * @param username          the name of the player.
+     * @param currentLevelTypes the current game modality.
+     */
+    public final void saveScore(final String username, final GameType currentLevelTypes) {
+        this.highscoreStore.addScore(new HighscoreStructure(username.replace(" ", "_"), this.getScore(), currentLevelTypes));
+    }
 
 }
