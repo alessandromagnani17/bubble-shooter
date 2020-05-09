@@ -76,9 +76,5 @@ public class TestEngine {
         @Override
         public void update() {
         }
-
-        @Override
-        public void render() {
-        }
     }
 }
