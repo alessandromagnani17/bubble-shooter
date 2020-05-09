@@ -14,8 +14,8 @@ import bubbleshooter.model.game.GameStatus;
 import bubbleshooter.model.game.GameType;
 
 /**
- * Represents the game. 
- * It's responsible to initialize all {@link Bubble}s and create new row of bubbles 
+ * Represents the game. It's responsible to initialize all {@link Bubble}s and
+ * create new row of bubbles
  */
 
 public interface GameMode {
