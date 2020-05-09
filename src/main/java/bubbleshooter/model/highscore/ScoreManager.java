@@ -5,37 +5,33 @@ import bubbleshooter.model.game.GameType;
 import javafx.collections.ObservableList;
 
 public class ScoreManager {
-	
-	GameInfoManager scoresManager;
+
+	private GameInfoManager scoresInfo;
 	private HighscoreStore highscoreStore;
 
-	public ScoreManager(GameInfoManager scoresManager) {
-		this.scoresManager = scoresManager;
-		this.highscoreStore = new HighscoreStoreImpl();
+    public ScoreManager(final GameInfoManager scoresInfo) {
+        this.scoresInfo = scoresInfo;
+        this.highscoreStore = new HighscoreStoreImpl();
+    }
+
+    public final ObservableList<HighscoreStructure> getHighscores(final GameType gameMode) {
+        return this.highscoreStore.getHighscoresForModality(gameMode);
+    }
+
+    public final int getScore() {
+        return this.scoresInfo.getScore();
+    }
+
+    public final int getDestroyedBubbles() {
+        return this.scoresInfo.getDestroyedBubbles();
 	}
 
-	public ObservableList<HighscoreStructure> getHighscores(GameType gameMode) {
-		return this.highscoreStore.getHighscoresForModality(gameMode);
+    public final double getGameTime() {
+        return this.scoresInfo.getGameTime();
 	}
 
-	public int getScore() {
-		return this.scoresManager.getScore();
-	}
-
-	public int getDestroyedBubbles() {
-		return this.scoresManager.getDestroyedBubbles();
-	}
-
-	public double getGameTime() {
-		return this.scoresManager.getGameTime();
-	}
-
-	public int getWrongShoots() {
-		return this.scoresManager.getWrongShoots();
-	}
-
-	public void saveScore(String text, GameType currentLevelTypes) {
-		this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), currentLevelTypes));
-	}
+    public final void saveScore(String text, GameType currentLevelTypes) {
+        this.highscoreStore.addScore(new HighscoreStructure(text.replace(" ", "_"), this.getScore(), currentLevelTypes));
+    }
 
 }

@@ -9,10 +9,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
+/**
+ * 
+ * Class used for draw the help line if the 'help' CheckBox is selected.
+ *
+ */
 public class DrawHelpLine {
 
     private AnchorPane pane = new AnchorPane();
-
     private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.WIDTH);
     public static final double DASH_SIZE = Settings.getGuiHeigth() / 70;
     public static final double DASH_WIDTH = Settings.getGuiHeigth() / 200;
@@ -23,6 +27,11 @@ public class DrawHelpLine {
     private Rotate rotation = new Rotate();
     private boolean helpSelected = false;
 
+    /**
+     * Constructor for a new DrawHelpLine.
+     * 
+     * @param pane the pane where draw the help line.
+     */
     public DrawHelpLine(final AnchorPane pane) {
         this.pane = pane;
         this.editLine(this.helpLine);
@@ -35,6 +44,9 @@ public class DrawHelpLine {
         this.pane.getChildren().add(boundsLine);
     }
 
+    /**
+     * Private method for make invisible and mouse transparent all the lines.
+     */
     private void setInvisibleLine() {
         this.helpLine.setVisible(false);
         this.helpLine.setMouseTransparent(true);
@@ -46,57 +58,95 @@ public class DrawHelpLine {
         this.boundsLine.setMouseTransparent(true);
     }
 
+    /**
+     * Private method for edit a line.
+     */
     private void editLine(final Line line) {
         line.setStroke(Color.RED);
         line.setStrokeWidth(DASH_WIDTH);
         line.getStrokeDashArray().add(DASH_SIZE);
     }
 
+    /**
+     * Private method for set the rotation of help line.
+     */
     private void setRotation() {
         this.rotation.setPivotX(START_POINT_FIRST_LINE.getX());
         this.rotation.setPivotY(START_POINT_FIRST_LINE.getY());
         this.helpLine.getTransforms().add(this.rotation);
     }
 
+    /**
+     * Getter for bounds of help line.
+     */
     public final Bounds getHelpBounds() {
         return helpLine.getBoundsInParent();
     }
 
+    /**
+     * Getter for bounds of right line.
+     */
     public final Bounds getRightBounds() {
         return borderRight.getBoundsInParent();
     }
 
+    /**
+     * Getter for bounds of left line.
+     */
     public final Bounds getLeftBounds() {
         return borderLeft.getBoundsInParent();
     }
 
-    public final boolean isHelpSelected() {
-        return this.helpSelected;
+    /**
+     * Getter for the rotation of help line.
+     */
+    public final Rotate getRotation() {
+        return this.rotation;
     }
 
+    /**
+     * Getter for the bounds line.
+     */
+    public final Line getBoundsLine() {
+        return this.boundsLine;
+    }
+
+    /**
+     * Getter for the help line.
+     */
     public final Line getHelpLine() {
         return this.helpLine;
     }
 
+    /**
+     * Method for check if the CheckBox is selected.
+     */
+    public final boolean isHelpSelected() {
+        return this.helpSelected;
+    }
+
+    /**
+     * Method for draw the help line.
+     */
     public final void drawLine() {
-        //this.helpLine.setVisible(true);
         this.helpSelected = true;
     }
 
+    /**
+     * Method for delete the help line.
+     */
     public final void deleteLine() {
         this.helpLine.setVisible(false);
         this.boundsLine.setVisible(false);
         this.helpSelected = false;
     }
 
-    public final Rotate getRotation() {
-        return this.rotation;
-    }
-
-    public final Line getBoundsLine() {
-        return this.boundsLine;
-    }
-
+    /**
+     * Method for draw the bounds line passing start point and end point.
+     * 
+     * @param startPointSecondLine the start point.
+     * @param endPointSecondLine   the end point.
+     */
     public final void drawBoundsLine(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
         this.boundsLine.setStartX(startPointSecondLine.getX());
         this.boundsLine.setStartY(startPointSecondLine.getY());

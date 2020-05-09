@@ -32,7 +32,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private Map<GameType, List<HighscoreStructure>> mapOfItems;
     private static final int CAPACITY = 10;
     private boolean flag;
-	
+
 	/**
 	 * Constructor of the {@link HighscoreStore} used for create the file if necessary and
 	 * for allocate the HashMap.
@@ -81,7 +81,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 	}
 
 	/**
-     * Method for add a score for a game modality
+     * Method for add a score for a game modality.
      * 
      * @param score the current {@link HighscoreStructure} to save.
      */
@@ -123,20 +123,20 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
 		List<HighscoreStructure> itemsSet = new ArrayList<>();
 		String modality = whichMod(gameMode);
-		String stringaLetta;
+		String readString;
 
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 
-			stringaLetta = br.readLine();
-			while (!stringaLetta.equals("END_OF_FILE_END_OF_FILE")) {
-				stringaLetta = br.readLine();
-				if (stringaLetta.equals(modality)) {
-					stringaLetta = br.readLine();
-					while (!stringaLetta.equals("END_OF_HIGH_END_OF_HIGH")) {
-						itemsSet.add(generateHighscore(stringaLetta, gameMode));
-						stringaLetta = br.readLine();
+			readString = br.readLine();
+			while (!readString.equals("END_OF_FILE_END_OF_FILE")) {
+				readString = br.readLine();
+				if (readString.equals(modality)) {
+					readString = br.readLine();
+					while (!readString.equals("END_OF_HIGH_END_OF_HIGH")) {
+						itemsSet.add(generateHighscore(readString, gameMode));
+						readString = br.readLine();
 					}
 				}
 
@@ -166,9 +166,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
 		case SURVIVALMODE:
 			return "SURVIVAL_MODE_HIGHSCORES...";
 		default:
-			break;
+			return null;
 		}
-		return null;
 	}
 
     /**
@@ -179,19 +178,19 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * 
      * @return the {@link HighscoreStructure}.
      */
-	private HighscoreStructure generateHighscore(final String stringa, final GameType gameMode) {
+	private HighscoreStructure generateHighscore(final String readString, final GameType gameMode) {
 		String name = "", score = "";
-		char spazio = ' ';
+		char space = ' ';
 		boolean flag = true;
 
-		for (int i = 0; i < stringa.length(); i++) {
+		for (int i = 0; i < readString.length(); i++) {
 
 			if (!flag) {
-				score = score + stringa.charAt(i);
+				score = score + readString.charAt(i);
 			}
 
-			if (!(stringa.charAt(i) == spazio) && flag) {
-				name = name + stringa.charAt(i);
+			if (!(readString.charAt(i) == space) && flag) {
+				name = name + readString.charAt(i);
 			} else {
 				flag = false;
 			}
@@ -232,7 +231,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * Private method used for re-writing the file with the new modify.
      */
 	private void reWriteFile() {
-		String appoggio;
+		String stringToWrite;
 		try {
 			this.file.delete();
 			if (!file.getParentFile().exists()) {
@@ -248,14 +247,14 @@ public class HighscoreStoreImpl implements HighscoreStore {
 			bw.write("HIGHSCORES!!\n\n");
 			bw.write("BASIC_MODE_HIGHSCORES...\n");
 			for (HighscoreStructure o : this.mapOfItems.get(GameType.BASICMODE)) {
-				appoggio = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
-				bw.write(appoggio);
+				stringToWrite = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
+				bw.write(stringToWrite);
 			}
 			bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
 			bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
 			for (HighscoreStructure o : this.mapOfItems.get(GameType.SURVIVALMODE)) {
-				appoggio = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
-				bw.write(appoggio);
+				stringToWrite = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
+				bw.write(stringToWrite);
 			}
 			bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
 			bw.write("END_OF_FILE_END_OF_FILE");
@@ -264,7 +263,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 			bw.close();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error in re-writing of the file !!!");
 			e.printStackTrace();
 		}
 
