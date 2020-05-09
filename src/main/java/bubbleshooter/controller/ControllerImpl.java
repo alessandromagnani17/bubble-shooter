@@ -58,6 +58,7 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
+
     /**
      * Method used for save the scores in the highscores.
      * 
@@ -65,10 +66,10 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final void saveScore(final String text) {
-        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
+        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentGameType());
     }
-	
-	/**
+
+    /**
      * Method called by {@link GameOverController} and {@link HighscoreController}
      * for have informations about the scores.
      * 
@@ -79,14 +80,15 @@ public class ControllerImpl implements Controller {
         return this.scoresManager;
     }
 
-	/**
+
+    /**
      * Method used to have the current game modality.
      * 
      * @return the current game modality.
      */
     @Override
     public final GameType getCurrentLevel() {
-        return this.model.getLevel().getCurrentLevelTypes();
+        return this.model.getLevel().getCurrentGameType();
     }
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
@@ -94,6 +96,6 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final GameLoop getGameEngine() {
-        return this.engine;
+         return this.engine;
     }
 }

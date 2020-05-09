@@ -45,10 +45,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
 			}
 			if (!file.exists()) {
 				this.file.createNewFile();
-				System.out.println("-------->File creato");
 				flag = true;
 			} else {
-				System.out.println("-------->File già esistente");
 				flag = false;
 			}
 			if (flag) {

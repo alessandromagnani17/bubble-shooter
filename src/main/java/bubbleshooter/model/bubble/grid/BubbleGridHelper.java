@@ -1,4 +1,4 @@
-package bubbleshooter.model.bubble.bubbleGrid;
+package bubbleshooter.model.bubble.grid;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -19,14 +19,13 @@ import javafx.geometry.Point2D;
 public class BubbleGridHelper {
 
     private final BubblesManager gameObjectManager;
-    private double diagonalDistance; 
+    private final double diagonalDistance = Bubble.WIDTH * 1.20;
 
     /**
      * @param gameObjectManager The manager of the {@link Bubble} in the Game.
      */
     public BubbleGridHelper(final BubblesManager gameObjectManager) {
         this.gameObjectManager = gameObjectManager;
-        this.diagonalDistance = Bubble.WIDTH * 1.20; 
     }
 
     /**
@@ -95,7 +94,7 @@ public class BubbleGridHelper {
         final Set<Bubble> firstLineBubbles = this.getBubbleGrid().stream()
                 .filter(a -> a.getPosition().getY() == Bubble.WIDTH / 2 && !a.isDestroyed())
                 .collect(Collectors.toSet());
-        final Set<Bubble> linkedBubbles = new HashSet<Bubble>();
+        final Set<Bubble> linkedBubbles = new HashSet<>();
         linkedBubbles.addAll(firstLineBubbles);
         for (final Bubble bubble : firstLineBubbles) {
             linkedBubbles.addAll(this.getLinkedBubbles(bubble, new LinkedList<Bubble>()));
@@ -118,13 +117,13 @@ public class BubbleGridHelper {
                 new Point2D(bubblePos.getX() - Bubble.WIDTH / 2, bubblePos.getY() + Bubble.WIDTH),
                 new Point2D(bubblePos.getX() + Bubble.WIDTH / 2, bubblePos.getY() + Bubble.WIDTH));
     }
-    
+
     /**
      * @return The currents {@link BubbleColor} in the game.
      * Useful to not generate some other colors in the end of the game.
      */
     public final List<BubbleColor> getRemainingColors() {
-    	return this.getBubbleGrid().stream()
+        return this.getBubbleGrid().stream()
                                    .filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
                                    .map(b -> b.getColor()).distinct().collect(Collectors.toList());
     }

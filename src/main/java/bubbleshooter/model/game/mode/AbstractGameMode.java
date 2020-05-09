@@ -1,4 +1,4 @@
-package bubbleshooter.model.game.gameMode;
+package bubbleshooter.model.game.mode;
 
 import java.util.Collections;
 import java.util.List;
@@ -9,8 +9,8 @@ import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.bubble.BubbleFactory;
 import bubbleshooter.model.bubble.BubblesManager;
-import bubbleshooter.model.bubble.bubbleGrid.BubbleGridHelper;
-import bubbleshooter.model.bubble.bubbleGrid.BubbleGridManager;
+import bubbleshooter.model.bubble.grid.BubbleGridHelper;
+import bubbleshooter.model.bubble.grid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameOverChecker;
@@ -24,16 +24,16 @@ public abstract class AbstractGameMode implements GameMode {
 	private static final int NUM_ROWS = 8;
 	private static final int MILLISECONDS_IN_A_SECOND = 1000;
 
-	private BubblesManager bubblesManager;
-	private BubbleGridManager bubbleGridManager;
-	private BubbleGridHelper bubbleGridHelper;
-	private CollisionController collisionController;
-	private GameInfoManager gameInfoManager;
-	private GameOverChecker gameOverChecker;
-	private BubbleFactory bubbleFactory;
-	private GameStatus status = GameStatus.PAUSE;
-	private GameType currentGameType;
-
+	private final BubblesManager bubblesManager;
+	private final BubbleGridManager bubbleGridManager;
+	private final BubbleGridHelper bubbleGridHelper;
+	private final CollisionController collisionController;
+	private final GameInfoManager gameInfoManager;
+	private final GameOverChecker gameOverChecker;
+	private final BubbleFactory bubbleFactory;
+	private GameStatus status;
+    private GameType currentGameType;
+	
 	public AbstractGameMode() {
 		this.bubblesManager = new BubblesManager();
 		this.bubbleGridManager = new BubbleGridManager(this);
@@ -108,7 +108,6 @@ public abstract class AbstractGameMode implements GameMode {
 		}
 	}
 
-	@Override
 	public final BubblesManager getBubblesManager() {
 		return this.bubblesManager;
 	}
@@ -162,7 +161,6 @@ public abstract class AbstractGameMode implements GameMode {
 		return this.gameInfoManager;
 	}
 
-	@Override
 	public final GameType getCurrentGameType() {
 		return this.currentGameType;
 	}
@@ -173,12 +171,12 @@ public abstract class AbstractGameMode implements GameMode {
 	}
 
 	@Override
-	public int getNumRows() {
+	public final int getNumRows() {
 		return NUM_ROWS;
 	}
 
 	@Override
-	public int getBubblesPerRow() {
+	public final int getBubblesPerRow() {
 		return NUM_BUBBLES;
 	}
 

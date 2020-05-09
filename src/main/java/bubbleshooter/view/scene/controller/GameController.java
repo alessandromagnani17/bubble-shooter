@@ -102,7 +102,6 @@ public class GameController extends AbstractController {
         // da aggiungere anche la chiamata al controller per sapere lo score corrente
         this.resetCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
-        
     }
 
     public final void switchBall() {
@@ -164,8 +163,6 @@ public class GameController extends AbstractController {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
         gc.scale(Settings.getGuiWidth()/Model.WIDTH,Settings.getGuiHeigth() /  Model.HEIGTH);
-        
-		
     }
 
     public final GameState getCurrentState() {

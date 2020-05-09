@@ -8,23 +8,25 @@ import bubbleshooter.model.bubble.BubbleType;
 
 public class GameSwitcher {
 
-    private List<Bubble> bubbles;
+    private final List<Bubble> bubbles;
 
     public GameSwitcher(final List<Bubble> bubbles) {
         this.bubbles = bubbles;
     }
 
     public final void switchBall() {
-        BubbleColor bubbleColor = bubbles.stream()
-                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getColor();
-
-        bubbles.stream()
-        .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
-        .setColor(bubbles.stream()
-                .filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get().getColor());
-
-        bubbles.stream()
-        .filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE)).findFirst().get()
-        .setColor(bubbleColor);
+        final BubbleColor bubbleColor = bubbles.stream()
+                                               .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                                               .findFirst().get().getColor();
+        this.bubbles.stream()
+                    .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                    .findFirst().get()
+                    .setColor(bubbles.stream()
+                    .filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE))
+                    .findFirst().get().getColor());
+        this.bubbles.stream()
+                    .filter(a -> a.getType().equals(BubbleType.SWITCH_BUBBLE))
+                    .findFirst().get()
+                    .setColor(bubbleColor);
     }
 }

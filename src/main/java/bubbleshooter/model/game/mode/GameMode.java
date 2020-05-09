@@ -1,13 +1,12 @@
-package bubbleshooter.model.game.gameMode;
+package bubbleshooter.model.game.mode;
 
 import java.util.List;
+
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleFactory;
 import bubbleshooter.model.bubble.BubblesManager;
-import bubbleshooter.model.bubble.ShootingBubble;
-import bubbleshooter.model.bubble.SwitchBubble;
-import bubbleshooter.model.bubble.bubbleGrid.BubbleGridHelper;
-import bubbleshooter.model.bubble.bubbleGrid.BubbleGridManager;
+import bubbleshooter.model.bubble.grid.BubbleGridHelper;
+import bubbleshooter.model.bubble.grid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameStatus;
@@ -30,7 +29,7 @@ public interface GameMode {
 	 * 
 	 * @param elapsed
 	 */
-	void update(final double elapsed);
+	void update(double elapsed);
 
 	/**
 	 * loads the {@link ShootingBubble}
@@ -54,14 +53,14 @@ public interface GameMode {
 	 * 
 	 * @param the {@link GameType}
 	 */
-	void setCurrentGameType(final GameType gameType);
+	void setCurrentGameType(GameType gameType);
 
 	/**
 	 * sets the {@link GameStatus}
 	 * 
 	 * @param the {@link GameStatus}
 	 */
-	void setGameStatus(final GameStatus status);
+	void setGameStatus(GameStatus status);
 
 	/**
 	 * gets the {@link GameStatus}

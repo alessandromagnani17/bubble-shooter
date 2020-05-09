@@ -28,6 +28,7 @@ public interface Controller {
      */
     GameLoop getGameEngine();
 
+
     /**
      * Method used for save the scores in the highscores.
      * 

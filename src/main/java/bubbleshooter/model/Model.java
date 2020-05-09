@@ -1,22 +1,26 @@
 package bubbleshooter.model;
 
 import java.util.List;
-
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.gameMode.AbstractGameMode;
-import bubbleshooter.model.game.gameMode.GameMode;
+import bubbleshooter.model.game.mode.GameMode;
 
 /**
  *Interface which represent the Logic of the Game in order to respect the MVC design pattern.
  */
 public interface Model {
 
-	
-	static final int WIDTH = 705;
-	static final int HEIGTH = 700;
-	
+    /**
+     * The width of the game used by Model.
+     */
+    double WIDTH = 705;
+
+    /**
+     * The Heigth of the game used by Model.
+     */
+    double HEIGTH = 700;
+
     /**
      * Method called in the {@link Controller} class to start a {@link BasicMode}.
      */
