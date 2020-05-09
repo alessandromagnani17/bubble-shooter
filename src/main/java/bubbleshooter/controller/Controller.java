@@ -2,9 +2,11 @@ package bubbleshooter.controller;
 
 import java.util.List;
 import bubbleshooter.controller.engine.GameLoop;
+import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.game.GameType;
 import bubbleshooter.model.highscore.ScoreManager;
+import bubbleshooter.view.View;
 
 /**
  * Interface Controller used to dialogue with {@link Model} and {@link View} in order to respect MVC design pattern.
@@ -50,4 +52,9 @@ public interface Controller {
      * @return the ScoreManager.
      */
     ScoreManager getScoreManager();
+
+    /**It's called by the {@link View} to return the {@link SwitcherController}.
+     * @return the Controller of Switch.
+     */
+    SwitcherController getSwitcherController();
 }

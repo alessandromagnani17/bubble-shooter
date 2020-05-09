@@ -2,6 +2,7 @@ package bubbleshooter.controller;
 
 import java.util.List;
 import bubbleshooter.controller.engine.GameLoop;
+import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.controller.sound.SoundGameEngine;
 import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
@@ -20,6 +21,7 @@ public class ControllerImpl implements Controller {
     private final View view;
     private GameLoop engine;
     private ScoreManager scoresManager;
+    private SwitcherController switcherController;
 
     /**
      * @param model The {@link Model} of the Game.
@@ -39,6 +41,7 @@ public class ControllerImpl implements Controller {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
      this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
+     this.switcherController = new SwitcherController(this.getBubbles());
      this.engine.startLoop();
     }
 
@@ -96,6 +99,14 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final GameLoop getGameEngine() {
-         return this.engine;
+        return this.engine;
+    }
+
+    /**It's called by the {@link View} to return the {@link SwitcherController}.
+     * @return the Controller of Switch.
+     */
+    @Override
+    public SwitcherController getSwitcherController() {
+        return this.switcherController;
     }
 }

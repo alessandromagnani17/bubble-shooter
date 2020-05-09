@@ -2,7 +2,6 @@ package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
-import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleType;
@@ -31,176 +30,170 @@ import javafx.scene.layout.AnchorPane;
 
 public class GameController extends AbstractController {
 
-	private static final double MAXANGLE = 74.9;
-	private static final double MINANGLE = -74.9;
-	private static final double LIMITS = Settings.getGuiHeigth() / 1.1;
-	private static final double CANNON_SCALE = 700;
 
-	@FXML
-	private Canvas canvas;
-	@FXML
-	private AnchorPane pane;
-	@FXML
-	private Button pause; 
-	@FXML
-	private CheckBox helpCheckBox = new CheckBox("Help");
-	@FXML
-	private Button switchButton = new Button();
-	
+    private static final double MAXANGLE =  74.9;
+    private static final double MINANGLE = -74.9;
+    private static final double LIMITS = Settings.getGuiHeigth() / 1.1;
+    private static final double CANNON_SCALE = 700;
 
-	private BubbleDrawer canvasDrawer;
-	private boolean gameOver;
-	private GameState currentState;
-	private GameState inGameState;
-	private GameState inPauseState;
-	private DrawHelpLine help;
-	private DrawCannon drawCannon;
-	private Cannon cannon;
-	private SwitcherController switcherController;
-	private HandlerAdapterMouseMoved handlerAdapter;
-	private Point2D startPointFirstLine;
-	private Point2D shootingBubbleInitialPosition;
 
-	@Override
-	public final void init(final Controller controller, final View view) {
-		super.init(controller, view);
-		this.help = new DrawHelpLine(this.pane);
-		this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
-		this.cannon.getCannon().setScaleX(Settings.getGuiWidth() / CANNON_SCALE);
-		this.cannon.getCannon().setScaleX(Settings.getGuiHeigth() / CANNON_SCALE);
+    @FXML private Canvas canvas;
+    @FXML private AnchorPane pane;
+    @FXML private CheckBox helpCheckBox = new CheckBox("Help");
+    @FXML private Button switchButton = new Button();
 
-		this.shootingBubbleInitialPosition = new Point2D(
-				getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-						.findFirst().get().getPosition().getX(),
-				getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-						.findFirst().get().getPosition().getY()
-						- getController().getBubbles().stream()
-								.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()
-								.getRadius());
+    private BubbleDrawer canvasDrawer;
+    private boolean gameOver;
+    private GameState currentState;
+    private GameState inGameState;
+    private GameState inPauseState;
+    private DrawHelpLine help;
+    private DrawCannon drawCannon;
+    private Cannon cannon;
+    private HandlerAdapterMouseMoved handlerAdapter;
+    private Point2D startPointFirstLine;
+    private Point2D shootingBubbleInitialPosition;
 
-		this.drawCannon = new DrawCannon(this.pane, this.cannon, this.shootingBubbleInitialPosition);
-		this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(),
-				this.help.getHelpLine().getStartY());
-		this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(),
-				this.startPointFirstLine, this.help);
+    @Override
+    public final void init(final Controller controller, final View view) {
+        super.init(controller, view);
 
-		this.pane.setOnMouseMoved(this.handlerAdapter);
-		this.pane.setOnMouseDragged(this.handlerAdapter);
-		this.pane.setOnMouseClicked(this.handlerAdapter);
+        this.help  = new DrawHelpLine(this.pane);
+        this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
+        this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
+        this.cannon.getCannon().setScaleY(Settings.getGuiHeigth() / CANNON_SCALE);
 
-		this.canvasDrawer = new BubbleDrawer(this.canvas);
-		this.inGameState = new InGameState(this, controller);
-		this.inPauseState = new InPauseState(this, controller);
-		this.switcherController = new SwitcherController(this.getController().getBubbles());
+        this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
+                getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()
+                - getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getRadius());
 
-		this.setCurrentState(this.inGameState);
+        this.drawCannon = new DrawCannon(this.pane, this.cannon, this.shootingBubbleInitialPosition);
+        this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
+        this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
+                                        this.startPointFirstLine, this.help);
 
-		this.pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        this.pane.setOnMouseMoved(this.handlerAdapter);
+        this.pane.setOnMouseDragged(this.handlerAdapter);
+        this.pane.setOnMouseClicked(this.handlerAdapter);
 
-			@Override
-			public void handle(final MouseEvent event) {
-				Bubble shootingBubble = getController().getBubbles().stream()
-						.filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
-				if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX()
-						&& checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
-					shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-							new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()),
-									event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())),
-							shootingBubble.getPosition()));
+        this.canvasDrawer = new BubbleDrawer(this.canvas);
+        this.inGameState = new InGameState(this, controller);
+        this.inPauseState = new InPauseState(this, controller);
 
-				}
-			}
-		});
-	}
+        this.setCurrentState(this.inGameState);
+        this.controlSwitchButton();
 
-	public final void render() {
-		if (this.isGameOver()) {
-			this.nextScene();
-		}
-		// da aggiungere anche la chiamata al controller per sapere lo score corrente
-		this.resetCanvas();
-		canvasDrawer.draw(this.getController().getBubbles());
-	}
 
-	public final void switchBall() {
-		this.switcherController.switchControl();
-		if (this.switcherController.isSwitchEnd()) {
-			this.switchButton.setText("Ended");
-			this.switchButton.setMouseTransparent(true);
-		}
-	}
+        this.pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-	public final void helpSelected() {
-		if (this.helpCheckBox.isSelected()) {
-			this.help.drawLine();
-		} else {
-			this.help.deleteLine();
-		}
-	}
+            @Override
+            public void handle(final MouseEvent event) {
+                Bubble shootingBubble = getController().getBubbles().stream()
+                        .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
+                if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
+                    shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
+                            new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()), event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
+                }
+            }
+        });
+    }
 
-	public final void pause() {
-		this.getController().getGameEngine().pauseLoop();
-		this.getView().loadScene(FXMLPath.PAUSE);
-	}
+    public final void render() {
+        if (this.isGameOver()) {
+            this.nextScene();
+        }
+        // da aggiungere anche la chiamata al controller per sapere lo score corrente
+        this.resetCanvas();
+        canvasDrawer.draw(this.getController().getBubbles());
+    }
 
-	public final void restart() {
-		this.getController().getGameEngine().pauseLoop();
-		this.getController().startGame(this.getController().getCurrentLevel());
-		this.getController().getGameEngine().resumeLoop();
-		this.switcherController.setInitialNumSwitch();
-		this.switchButton.setText("Switch");
-		this.switchButton.setMouseTransparent(false);
-	}
+    public final void switchBall() {
+        this.getController().getSwitcherController().switchControl();
+        this.controlSwitchButton();
+    }
 
-	@Override
-	public final FXMLPath getNextScene() {
-		return FXMLPath.GAMEOVER;
-	}
+    public final void controlSwitchButton() {
+        if (this.getController().getSwitcherController().isSwitchEnd()) {
+            this.switchButton.setText("Ended");
+            this.switchButton.setMouseTransparent(true);
+        }
+    }
 
-	@Override
-	protected final FXMLPath getPreviousScene() {
-		return FXMLPath.MAIN;
-	}
+    public final void helpSelected() {
+        if (this.helpCheckBox.isSelected()) {
+            this.help.drawLine();
+        } else {
+            this.help.deleteLine();
+        }
+    }
 
-	public final boolean isGameOver() {
-		return this.gameOver;
-	}
+    public final void pause() {
+        this.getController().getGameEngine().pauseLoop();
+        this.getView().loadScene(FXMLPath.PAUSE);
+    }
 
-	public final void setGameOver() {
-		this.gameOver = true;
-	}
+    public final void restart() {
+        this.getController().getGameEngine().pauseLoop();
+        this.getController().startGame(this.getController().getCurrentLevel());
+        this.getController().getGameEngine().resumeLoop();
+        this.getController().getSwitcherController().setInitialNumSwitch();
+        this.switchButton.setText("Switch");
+        this.switchButton.setMouseTransparent(false);
+    }
 
-	public final boolean checkAngle(final double angle) {
-		return !(angle > MAXANGLE || angle < MINANGLE);
-	}
+    @Override
+    public final FXMLPath getNextScene() {
+        return FXMLPath.GAMEOVER;
+    }
 
-	// Clear the canvas after every render. It avoids ghosting effect.
-	private void resetCanvas() {
-		GraphicsContext gc = this.canvas.getGraphicsContext2D();
-		gc.restore();
-		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		gc.save();
-		gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeigth() / Model.WORLD_HEIGTH);
+    @Override
+    protected final FXMLPath getPreviousScene() {
+        return FXMLPath.MAIN;
+    }
 
-	}
+    public final boolean isGameOver() {
+        return this.gameOver;
+    }
 
-	public final GameState getCurrentState() {
-		return currentState;
-	}
+    public final void setGameOver() {
+        this.gameOver = true;
+    }
 
-	public final void setCurrentState(final GameState state) {
-		if (currentState != null) {
-			this.currentState.exit();
-		}
-		this.currentState = state;
-		this.currentState.enter();
-	}
+    public final boolean checkAngle(final double angle) {
+        return !(angle > MAXANGLE || angle < MINANGLE);
+    }
 
-	public final GameState getInGameState() {
-		return inGameState;
-	}
+    // Clear the canvas after every render. It avoids ghosting effect.
+    private void resetCanvas() {
+        GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
+        gc.restore();
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.save();
+        gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeigth() /  Model.WORLD_HEIGTH);
 
-	public final GameState getInPauseState() {
-		return inPauseState;
-	}
+    }
+
+    public final GameState getCurrentState() {
+        return currentState;
+    }
+
+    public final void setCurrentState(final GameState state) {
+        if (currentState != null) {
+            this.currentState.exit();
+        }
+        this.currentState = state;
+        this.currentState.enter();
+    }
+
+    public final GameState getInGameState() {
+        return inGameState;
+    }
+
+    public final GameState getInPauseState() {
+        return inPauseState;
+    }
+
 }
