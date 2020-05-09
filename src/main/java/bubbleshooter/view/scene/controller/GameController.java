@@ -5,6 +5,7 @@ import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleType;
+import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
@@ -28,8 +29,8 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class GameController extends AbstractController {
 
+public class GameController extends AbstractController {
 
     private static final double MAXANGLE =  74.9;
     private static final double MINANGLE = -74.9;
@@ -67,10 +68,9 @@ public class GameController extends AbstractController {
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
                 getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()
-                - getController().getBubbles().stream()
-                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getRadius());
+                - ShootingBubble.RADIUS);
 
-        this.drawCannon = new DrawCannon(this.pane, this.cannon, this.shootingBubbleInitialPosition);
+        this.drawCannon = new DrawCannon(this.pane, this.cannon);
         this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
         this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
                                         this.startPointFirstLine, this.help);
@@ -195,5 +195,4 @@ public class GameController extends AbstractController {
     public final GameState getInPauseState() {
         return inPauseState;
     }
-
 }
