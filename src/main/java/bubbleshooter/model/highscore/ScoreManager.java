@@ -44,12 +44,12 @@ public class ScoreManager {
     public final double getGameTime() {
         return this.scoresInfo.getGameTime();
     }
-    
+
     /**
      * @return the highscoreStore.
      */
     public final HighscoreStore getHighscoreStore() {
-    	return this.highscoreStore;
+        return this.highscoreStore;
     }
 
     /**
