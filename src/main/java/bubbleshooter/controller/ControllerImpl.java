@@ -65,8 +65,8 @@ public class ControllerImpl implements Controller {
      * @param text the name of the player.
      */
     @Override
-    public final void saveScore(final String text) {
-        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentGameType());
+    public final void saveScore(final String username) {
+        this.scoresManager.saveScore(username, this.getCurrentLevel());
     }
 
     /**
