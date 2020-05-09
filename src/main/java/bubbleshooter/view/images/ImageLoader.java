@@ -7,29 +7,36 @@ import java.util.Map;
 import javafx.scene.image.Image;
 
 /**
- * A simple image loader with caching.
+ * Image loader
  */
-
 public class ImageLoader {
 
-	private static final Map<ImagePath, Image> images = new HashMap<>();
+	/**
+	 * map used as a cache for already created images
+	 */
+	private static final Map<ImagePath, Image> IMAGES = new HashMap<>();
 
 	/**
 	 * @param imagePath the path of the image to get.
-	 * @return the image of the object required.
+	 * @return the image that refers to the specified {@link ImagePath}
 	 */
 	public static Image getImage(final ImagePath imagePath) {
-		return images.get(imagePath);
+		return IMAGES.get(imagePath);
 	}
 
 	/**
 	 * Loads all images.
 	 */
 	public static void loadAll() {
-		Arrays.stream(ImagePath.values()).forEach(p -> images.put(p, loadImage(p.getPath())));
+		Arrays.stream(ImagePath.values()).forEach(p -> IMAGES.put(p, loadImage(p.getPath())));
 
 	}
 
+	/**
+	 * 
+	 * @param the imagePath to take the image.
+	 * @return the created image.
+	 */
 	private static Image loadImage(final String imagePath) {
 		return new Image(ImageLoader.class.getResourceAsStream(imagePath));
 	}

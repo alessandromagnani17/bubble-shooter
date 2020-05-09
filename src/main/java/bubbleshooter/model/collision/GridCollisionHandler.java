@@ -39,7 +39,7 @@ public class GridCollisionHandler implements CollisionHandler {
         if (this.canExplode()) {
             this.explode();
           } else {
-                this.level.getGameInfoManager().addWrongShoots();
+                this.level.getGameInfoManager().addWrongShoot();
             }
     }
 
@@ -107,7 +107,7 @@ public class GridCollisionHandler implements CollisionHandler {
                                                                       .stream()
                                                                       .anyMatch(b -> b.getPosition().equals(a)))
                                                                       .filter(a -> a.getX() >= Bubble.RADIUS && a.getX() 
-                                                                      <= Model.WIDTH - Bubble.RADIUS)
+                                                                      <= Model.WORLD_WIDTH - Bubble.RADIUS)
                                                                       .collect(Collectors.toSet());
      }
 

@@ -88,7 +88,7 @@ public class GameController extends AbstractController {
                         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
                 if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle())) {
                     shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX()* ( Model.WIDTH / Settings.getGuiWidth()) , event.getY() * (Model.HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
+                            new Point2D(event.getX()* ( Model.WORLD_WIDTH / Settings.getGuiWidth()) , event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
 
                 }
             }
@@ -162,7 +162,7 @@ public class GameController extends AbstractController {
     	gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
-        gc.scale(Settings.getGuiWidth()/Model.WIDTH,Settings.getGuiHeigth() /  Model.HEIGTH);
+        gc.scale(Settings.getGuiWidth()/Model.WORLD_WIDTH,Settings.getGuiHeigth() /  Model.WORLD_HEIGTH);
     }
 
     public final GameState getCurrentState() {

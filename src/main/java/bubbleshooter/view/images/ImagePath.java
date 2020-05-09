@@ -1,57 +1,51 @@
 package bubbleshooter.view.images;
 
+/**
+ * Identifies an image stored on the disk and its path.
+ */
 public enum ImagePath {
-        /**
-         * Ball color blue.
-         */
-        BLUE_BUBBLE("/view/bubbles/blue.png"),
-        /**
-         * Ball color lightblue.
-         */
-        LIGHT_BLUE_BUBBLE("/view/bubbles/lightBlue.png"),
-        /**
-         * Ball color red.
-         */
-        RED_BUBBLE("/view/bubbles/red.png"),
-        /**
-         * Ball color green.
-         */
-        GREEN_BUBBLE("/view/bubbles/green.png"),
-        /**
-         * Ball color yellow.
-         */
-        YELLOW_BUBBLE("/view/bubbles/yellow.png"),
-        /**
-         * Ball color purple.
-         */
-        PURPLE_BUBBLE("/view/bubbles/purple.png"),
-    
-        /**
-         * The image for Player.
-         */
-        CANNON("/view/cannon/cannon.png"),
+	/**
+	 * Blue bubble.
+	 */
+	BLUE_BUBBLE("/view/bubbles/blue.png"),
+	/**
+	 * Light-blue bubble.
+	 */
+	LIGHT_BLUE_BUBBLE("/view/bubbles/lightBlue.png"),
+	/**
+	 * Red bubble.
+	 */
+	RED_BUBBLE("/view/bubbles/red.png"),
+	/**
+	 * Green bubble.
+	 */
+	GREEN_BUBBLE("/view/bubbles/green.png"),
+	/**
+	 * Yellow bubble.
+	 */
+	YELLOW_BUBBLE("/view/bubbles/yellow.png"),
+	/**
+	 * Purple bubble.
+	 */
+	PURPLE_BUBBLE("/view/bubbles/purple.png"),
 
-        /**
-         * The image for background.
-         */
-        BACKGROUND("/view/background/background.png"),
-        /**
-         * The image for explosion.
-         */
-        ARROW("/view/arrow/arrow.png");
+	/**
+	 * The Cannon.
+	 */
+	CANNON("/view/cannon/cannon.png");
 
-        private final String path;
+	private final String path;
 
-        ImagePath(final String path) {
-            this.path = path;
-        }
+	ImagePath(final String path) {
+		this.path = path;
+	}
 
-        /**
-         * 
-         * @return the path of the image.
-         */
-        public String getPath() {
-            return this.path;
-        }
+	/**
+	 * getter for the path of image
+	 * 
+	 * @return the path of the image.
+	 */
+	public String getPath() {
+		return this.path;
+	}
 }
-

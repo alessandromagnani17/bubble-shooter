@@ -72,9 +72,9 @@ public class BoundsCollisionHandler implements CollisionHandler {
      * @return the right position of the {@link Bubble} in the top wall.
      */
     private Point2D getPositionToLink() {
-        double min = Model.WIDTH;
+        double min = Model.WORLD_WIDTH;
         double finalPos = this.shootingBubble.getPosition().getX();
-        final double offset = !this.level.getGridManager().isOffsetRaw() ? shootingBubble.getWidth() : shootingBubble.getRadius();
+        final double offset = !this.level.getGridManager().isOffsetRow() ? shootingBubble.getWidth() : shootingBubble.getRadius();
         for (double i = 0; i <= level.getBubblesPerRow(); i++) {
             final double xPos = i * shootingBubble.getWidth() + offset;
             final double distance = Math.abs(xPos - shootingBubble.getPosition().getX());

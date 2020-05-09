@@ -14,12 +14,12 @@ public interface Model {
     /**
      * The width of the game used by Model.
      */
-    double WIDTH = 705;
+    double WORLD_WIDTH = 705;
 
     /**
      * The Heigth of the game used by Model.
      */
-    double HEIGTH = 700;
+    double WORLD_HEIGTH = 700;
 
     /**
      * Method called in the {@link Controller} class to start a {@link BasicMode}.
