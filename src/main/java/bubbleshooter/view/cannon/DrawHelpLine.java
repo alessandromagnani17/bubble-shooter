@@ -11,7 +11,7 @@ import javafx.scene.transform.Rotate;
 
 /**
  * 
- * Class used for draw the help line if the 'help' CheckBox is selected.
+ * Class used for draw the help line if the 'help' CheckBox in {@link GameController} is selected.
  *
  */
 public class DrawHelpLine {
@@ -77,49 +77,49 @@ public class DrawHelpLine {
     }
 
     /**
-     * Getter for bounds of help line.
+     * @return the bounds of help line.
      */
     public final Bounds getHelpBounds() {
         return helpLine.getBoundsInParent();
     }
 
     /**
-     * Getter for bounds of right line.
+     * @return the bounds of right line.
      */
     public final Bounds getRightBounds() {
         return borderRight.getBoundsInParent();
     }
 
     /**
-     * Getter for bounds of left line.
+     * @return the bounds of left line.
      */
     public final Bounds getLeftBounds() {
         return borderLeft.getBoundsInParent();
     }
 
     /**
-     * Getter for the rotation of help line.
+     * @return the rotation of help line.
      */
     public final Rotate getRotation() {
         return this.rotation;
     }
 
     /**
-     * Getter for the bounds line.
+     * @return the bounds line.
      */
     public final Line getBoundsLine() {
         return this.boundsLine;
     }
 
     /**
-     * Getter for the help line.
+     * @return the help line.
      */
     public final Line getHelpLine() {
         return this.helpLine;
     }
 
     /**
-     * Method for check if the CheckBox is selected.
+     * @return the value of help CheckBox.
      */
     public final boolean isHelpSelected() {
         return this.helpSelected;
