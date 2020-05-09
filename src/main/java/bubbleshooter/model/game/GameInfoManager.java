@@ -1,46 +1,91 @@
 package bubbleshooter.model.game;
 
+import bubbleshooter.model.bubble.GridBubble;
+
+/**
+ * Represents a class that collects game information.
+ */
 public class GameInfoManager {
 
-    private double gameTime;
-    private int destroyedBubbles;
-    private int wrongShoots;
-    private int score;
+	private double gameTime;
+	private int destroyedBubbles;
+	private int wrongShoots;
+	private int score;
 
-    public final void updateGameTime(final double elapsed) {
-        this.gameTime += elapsed;
-    }
+	/**
+	 * Updates the game time.
+	 * 
+	 * @param elapsed.
+	 */
+	public final void updateGameTime(final double elapsed) {
+		this.gameTime += elapsed;
+	}
 
-    public final void addDestroyedBubble() {
-        this.destroyedBubbles += 1;
-    }
+	/**
+	 * Adds one destroyed bubble.
+	 */
+	public final void addDestroyedBubble() {
+		this.destroyedBubbles += 1;
+	}
 
-    // tiri sbagliati consecutivamente
-    public final void addWrongShoots() {
-        this.wrongShoots += 1;
-    }
+	/**
+	 * Adds one wrong shoot.
+	 */
+	public final void addWrongShoot() {
+		this.wrongShoots += 1;
+	}
 
-    public final void updateScore(final int score) {
-        this.score = score;
-    }
+	/**
+	 * Update the game score.
+	 * 
+	 * @param score.
+	 */
+	public final void updateScore(final int score) {
+		this.score = score;
+	}
 
-    public final int getGameTime() {
-        return (int) gameTime;
-    }
+	/**
+	 * Gets the game time.
+	 * 
+	 * @return the game time.
+	 */
+	public final int getGameTime() {
+		return (int) gameTime;
+	}
 
-    public final int getDestroyedBubbles() {
-        return destroyedBubbles;
-    }
+	/**
+	 * Gets the number of destroyed bubbles in the game.
+	 * 
+	 * @return the number of destroyed bubbles.
+	 */
+	public final int getDestroyedBubbles() {
+		return destroyedBubbles;
+	}
 
-    public final int getWrongShoots() {
-        return wrongShoots;
-    }
+	/**
+	 * Gets number of wrong shots after the generation of the last row of
+	 * {@link GridBubble}s.
+	 * 
+	 * @return the wrong shoots.
+	 */
+	public final int getWrongShoots() {
+		return wrongShoots;
+	}
 
-    public final void clearWrongShoots() {
-        this.wrongShoots = 0; 
-    }
+	/**
+	 * Resets the number of wrong shots. it is called after the generation of a new
+	 * row of {@link GridBubble}s.
+	 */
+	public final void clearWrongShoots() {
+		this.wrongShoots = 0;
+	}
 
-    public final int getScore() {
-        return score;
-    }
+	/**
+	 * Gets the score.
+	 * 
+	 * @return the score.
+	 */
+	public final int getScore() {
+		return score;
+	}
 }

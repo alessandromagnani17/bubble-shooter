@@ -58,7 +58,7 @@ public class CollisionController {
     private void checkBounceCollision() {
         final Bubble shootingBubble = this.level.getBubblesManager().getShootingBubble().get();
         final Point2D pos = shootingBubble.getPosition();
-        if ((pos.getX() + shootingBubble.getRadius()) >= Model.WIDTH
+        if ((pos.getX() + shootingBubble.getRadius()) >= Model.WORLD_WIDTH
             || (pos.getX() - shootingBubble.getRadius()) <= 0
             || (pos.getY() + shootingBubble.getRadius()) <= 0) {
                 final CollisionHandler handler = new BoundsCollisionHandler(shootingBubble, this.level);

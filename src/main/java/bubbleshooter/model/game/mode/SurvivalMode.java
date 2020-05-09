@@ -6,12 +6,13 @@ import bubbleshooter.model.game.GameType;
 public class SurvivalMode extends AbstractGameMode {
 
     private static final int ONE_SECOND_SCORE = 20; 
-    private static final int SECOND_BEFORE_NEW_ROW = 10; 
+    private static final int TIME_LEFT_BEFORE_NEW_ROW = 10; 
 
-    private double timeLeft = SECOND_BEFORE_NEW_ROW; 
+    private double timeLeft; 
 
     public SurvivalMode() {
         this.setCurrentGameType(GameType.SURVIVALMODE);
+        this.timeLeft = TIME_LEFT_BEFORE_NEW_ROW; 
     }
 
     @Override
@@ -22,11 +23,11 @@ public class SurvivalMode extends AbstractGameMode {
 
     @Override
     public final boolean isTimeToNewRow(final double elapsed) {
-        this.timeLeft -= elapsed / 1000;
+        this.timeLeft -= elapsed;
         if (this.timeLeft <= 0) {
-            this.timeLeft = SECOND_BEFORE_NEW_ROW; 
+            this.timeLeft = TIME_LEFT_BEFORE_NEW_ROW; 
             return true;
         }
-            return false;	
+        return false;	
     }
 }

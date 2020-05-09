@@ -57,7 +57,7 @@ public abstract class AbstractGameMode implements GameMode {
 		this.collisionController.checkCollisions();
 		this.gameInfoManager.updateGameTime(elapsed);
 		this.updateScore(elapsed / MILLISECONDS_IN_A_SECOND);
-		if (this.isTimeToNewRow(elapsed)) {
+		if (this.isTimeToNewRow(elapsed / MILLISECONDS_IN_A_SECOND)) {
 			this.createNewRow();
 		}
 		if (this.checkGameOver()) {
@@ -85,12 +85,12 @@ public abstract class AbstractGameMode implements GameMode {
 	public final void loadShootingBubble() {
 		if (this.bubblesManager.getShootingBubble().isPresent()) {
 			Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
-			shootingBubble.setPosition(new Point2D(Model.WIDTH / 2, Model.HEIGTH - 50));
+			shootingBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGTH - 50));
 			shootingBubble.setDirection(shootingBubble.getPosition());
 			shootingBubble.setColor(this.bubblesManager.getSwitchBubble().get().getColor());
 		} else {
 			this.bubblesManager.addBubble(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-					new Point2D(Model.WIDTH / 2, Model.HEIGTH - 50), BubbleColor.getRandomColor())));
+					new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGTH - 50), BubbleColor.getRandomColor())));
 		}
 	}
 
@@ -99,12 +99,12 @@ public abstract class AbstractGameMode implements GameMode {
 		if (this.bubblesManager.getSwitchBubble().isPresent()) {
 			final Random rand = new Random();
 			Bubble switchBubble = this.bubblesManager.getSwitchBubble().get();
-			switchBubble.setPosition(new Point2D(Model.WIDTH / 4, Model.HEIGTH - 50));
+			switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGTH - 50));
 			switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
 					.get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
 		} else {
 			this.bubblesManager.addBubble(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-					new Point2D(Model.WIDTH / 4, Model.HEIGTH - 50), BubbleColor.getRandomColor())));
+					new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGTH - 50), BubbleColor.getRandomColor())));
 		}
 	}
 
