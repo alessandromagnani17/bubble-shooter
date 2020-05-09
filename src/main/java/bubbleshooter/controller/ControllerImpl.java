@@ -5,8 +5,8 @@ import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.controller.sound.SoundGameEngine;
 import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
-import bubbleshooter.model.gamemodality.LevelTypes;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.game.GameType;
 import bubbleshooter.model.highscore.ScoreManager;
 import bubbleshooter.view.View;
 
@@ -35,17 +35,17 @@ public class ControllerImpl implements Controller {
     * @param levelType
     */
     @Override
-    public final void startGame(final LevelTypes levelType) {
+    public final void startGame(final GameType levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
      this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
      this.engine.startLoop();
     }
 
-    private void startSelectedGame(final LevelTypes levelType) {
-        if (levelType.equals(LevelTypes.BASICMODE)) {
+    private void startSelectedGame(final GameType levelType) {
+        if (levelType.equals(GameType.BASICMODE)) {
             this.model.startBasicGame();
-        } else if (levelType.equals(LevelTypes.SURVIVALMODE)) {
+        } else if (levelType.equals(GameType.SURVIVALMODE)) {
             this.model.startSurvivalGame();
         }
     }
@@ -58,6 +58,7 @@ public class ControllerImpl implements Controller {
         return this.model.getBubbles();
     }
 
+
     /**
      * Method used for save the scores in the highscores.
      * 
@@ -65,10 +66,10 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final void saveScore(final String text) {
-        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentLevelTypes());
+        this.scoresManager.saveScore(text, this.model.getLevel().getCurrentGameType());
     }
-	
-	/**
+
+    /**
      * Method called by {@link GameOverController} and {@link HighscoreController}
      * for have informations about the scores.
      * 
@@ -79,14 +80,15 @@ public class ControllerImpl implements Controller {
         return this.scoresManager;
     }
 
-	/**
+
+    /**
      * Method used to have the current game modality.
      * 
      * @return the current game modality.
      */
     @Override
-    public final LevelTypes getCurrentLevel() {
-        return this.model.getLevel().getCurrentLevelTypes();
+    public final GameType getCurrentLevel() {
+        return this.model.getLevel().getCurrentGameType();
     }
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
@@ -94,6 +96,6 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final GameLoop getGameEngine() {
-        return this.engine;
+         return this.engine;
     }
 }

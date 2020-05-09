@@ -1,6 +1,6 @@
 package bubbleshooter.view.cannon;
 
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;

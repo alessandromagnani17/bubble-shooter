@@ -2,7 +2,8 @@ package bubbleshooter.model.highscore;
 
 import java.io.File;
 import java.io.Serializable;
-import bubbleshooter.model.gamemodality.LevelTypes;
+
+import bubbleshooter.model.game.GameType;
 import javafx.collections.ObservableList;
 
 /**
@@ -31,6 +32,6 @@ public interface HighscoreStore extends Serializable {
      * @param gameMode game modality which we want the scores.
      * @return the scores for a game modality.
      */
-    ObservableList<HighscoreStructure> getHighscoresForModality(LevelTypes gameMode);
+    ObservableList<HighscoreStructure> getHighscoresForModality(GameType gameMode);
 
 }

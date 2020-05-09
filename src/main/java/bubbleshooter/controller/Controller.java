@@ -2,8 +2,8 @@ package bubbleshooter.controller;
 
 import java.util.List;
 import bubbleshooter.controller.engine.GameLoop;
-import bubbleshooter.model.gamemodality.LevelTypes;
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.game.GameType;
 import bubbleshooter.model.highscore.ScoreManager;
 
 /**
@@ -16,7 +16,7 @@ public interface Controller {
      * The method called by the {@link View} to start the Game in the {@link Model}.
      * @param levelType
      */
-    void startGame(LevelTypes levelType);
+    void startGame(GameType levelType);
 
     /**
      * @return The List of the current Bubble in the Game.
@@ -27,6 +27,7 @@ public interface Controller {
      * @return The Engine of the Game.
      */
     GameLoop getGameEngine();
+
 
     /**
      * Method used for save the scores in the highscores.
@@ -40,7 +41,7 @@ public interface Controller {
      * 
      * @return the current game modality.
      */
-    LevelTypes getCurrentLevel();
+    GameType getCurrentLevel();
 
     /**
      * Method called by {@link GameOverController} and {@link HighscoreController}

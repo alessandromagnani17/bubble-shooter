@@ -1,6 +1,6 @@
 package bubbleshooter.model.component;
 
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 
 /**
  * Abstract class to implement the generic methods of {@link Component} interface.

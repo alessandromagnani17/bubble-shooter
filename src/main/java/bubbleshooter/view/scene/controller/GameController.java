@@ -4,16 +4,16 @@ import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
 import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.Model;
-import bubbleshooter.model.gameobject.Bubble;
-import bubbleshooter.model.gameobject.BubbleType;
+import bubbleshooter.model.bubble.Bubble;
+import bubbleshooter.model.bubble.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
+import bubbleshooter.view.cannon.Cannon;
 import bubbleshooter.view.cannon.DrawCannon;
 import bubbleshooter.view.cannon.DrawHelpLine;
 import bubbleshooter.view.images.ImagePath;
-import bubbleshooter.view.rendering.Cannon;
-import bubbleshooter.view.rendering.CanvasDrawer;
+import bubbleshooter.view.rendering.BubbleDrawer;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.states.GameState;
 import bubbleshooter.view.states.InGameState;
@@ -22,11 +22,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
 
 public class GameController extends AbstractController {
 
@@ -38,7 +40,7 @@ public class GameController extends AbstractController {
     @FXML private CheckBox helpCheckBox = new CheckBox("Help");
     @FXML private Button switchButton = new Button();
 
-    private CanvasDrawer canvasDrawer;
+    private BubbleDrawer canvasDrawer;
     private boolean gameOver;
     private GameState currentState;
     private GameState inGameState;
@@ -66,7 +68,7 @@ public class GameController extends AbstractController {
         this.pane.setOnMouseDragged(this.handlerAdapter);
         this.pane.setOnMouseClicked(this.handlerAdapter);
 
-        this.canvasDrawer = new CanvasDrawer(this.canvas);
+        this.canvasDrawer = new BubbleDrawer(this.canvas);
         this.inGameState = new InGameState(this, controller);
         this.inPauseState = new InPauseState(this, controller);
         this.switcherController = new SwitcherController(this.getController().getBubbles());
@@ -82,9 +84,12 @@ public class GameController extends AbstractController {
 
             @Override
             public void handle(final MouseEvent event) {
+<<<<<<< HEAD
                 System.out.println(pane.getWidth());
                 System.out.println(pane.getHeight()); 
                 System.out.println("mouse event = " + event.getX() * (Model.WIDTH / Settings.getGuiWidth()) + " " + event.getY() * (Model.HEIGTH / Settings.getGuiHeigth()));
+=======
+>>>>>>> a08d0405b5852e285e466fbdd984491a0c2dab8e
                 Bubble shootingBubble = getController().getBubbles().stream()
                         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
                 if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle())) {
@@ -101,7 +106,7 @@ public class GameController extends AbstractController {
             this.nextScene();
         }
         // da aggiungere anche la chiamata al controller per sapere lo score corrente
-        this.clearCanvas();
+        this.resetCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
     }
 
@@ -158,12 +163,21 @@ public class GameController extends AbstractController {
     }
 
     // Clear the canvas after every render. It avoids ghosting effect.
+<<<<<<< HEAD
     private void clearCanvas() {
         this.canvas.getGraphicsContext2D().restore();
         this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         this.canvas.getGraphicsContext2D().save();
         this.canvas.getGraphicsContext2D().scale(1, -1);
         this.canvas.getGraphicsContext2D().scale(Settings.getGuiWidth() / Model.WIDTH, Settings.getGuiHeigth() /  Model.HEIGTH);
+=======
+    private void resetCanvas() {
+    	GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
+    	gc.restore();
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.save();
+        gc.scale(Settings.getGuiWidth()/Model.WIDTH,Settings.getGuiHeigth() /  Model.HEIGTH);
+>>>>>>> a08d0405b5852e285e466fbdd984491a0c2dab8e
     }
 
     public final GameState getCurrentState() {

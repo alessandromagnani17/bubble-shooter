@@ -1,6 +1,6 @@
 package bubbleshooter.model.component;
 
-import bubbleshooter.model.gameobject.Bubble;
+import bubbleshooter.model.bubble.Bubble;
 import javafx.geometry.Point2D;
 
 /**

@@ -6,7 +6,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import bubbleshooter.controller.engine.GameEngineDecorator;
 import bubbleshooter.controller.engine.GameLoop;
-import javafx.scene.media.MediaException;
 
 /**
  * Class which Decorate the {@link BasicGameLoop} through the {@link GameEngineDecorator}
