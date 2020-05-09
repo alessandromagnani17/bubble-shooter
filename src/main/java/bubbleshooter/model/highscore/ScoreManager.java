@@ -44,6 +44,13 @@ public class ScoreManager {
     public final double getGameTime() {
         return this.scoresInfo.getGameTime();
     }
+    
+    /**
+     * @return the highscoreStore.
+     */
+    public final HighscoreStore getHighscoreStore() {
+    	return this.highscoreStore;
+    }
 
     /**
      * Method for save the score in the highscores list.
