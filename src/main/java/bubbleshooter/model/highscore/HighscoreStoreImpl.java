@@ -42,7 +42,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
         try {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
-		    }
+            }
             if (!file.exists()) {
                 this.file.createNewFile();
                 flag = true;
@@ -74,7 +74,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * Method for get the file where scores are saved.
      * 
      * @return the file where the scores are saved.
-     */	
+     */
     @Override
     public final File getFile() {
         return this.file;
@@ -163,11 +163,11 @@ public class HighscoreStoreImpl implements HighscoreStore {
         switch (gameMode) {
         case BASICMODE:
             return "BASIC_MODE_HIGHSCORES...";
-	    case SURVIVALMODE:
-	        return "SURVIVAL_MODE_HIGHSCORES...";
-	    default:
-	        return null;
-	    }
+        case SURVIVALMODE:
+            return "SURVIVAL_MODE_HIGHSCORES...";
+        default:
+            return null;
+        }
     }
 
     /**
