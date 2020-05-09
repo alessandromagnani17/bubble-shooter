@@ -84,17 +84,11 @@ public class GameController extends AbstractController {
 
             @Override
             public void handle(final MouseEvent event) {
-<<<<<<< HEAD
-                System.out.println(pane.getWidth());
-                System.out.println(pane.getHeight()); 
-                System.out.println("mouse event = " + event.getX() * (Model.WIDTH / Settings.getGuiWidth()) + " " + event.getY() * (Model.HEIGTH / Settings.getGuiHeigth()));
-=======
->>>>>>> a08d0405b5852e285e466fbdd984491a0c2dab8e
                 Bubble shootingBubble = getController().getBubbles().stream()
                         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
                 if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle())) {
                     shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX() * (Model.WIDTH / Settings.getGuiWidth()), event.getY() * (Model.HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
+                            new Point2D(event.getX()* ( Model.WIDTH / Settings.getGuiWidth()) , event.getY() * (Model.HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
 
                 }
             }
@@ -163,21 +157,12 @@ public class GameController extends AbstractController {
     }
 
     // Clear the canvas after every render. It avoids ghosting effect.
-<<<<<<< HEAD
-    private void clearCanvas() {
-        this.canvas.getGraphicsContext2D().restore();
-        this.canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        this.canvas.getGraphicsContext2D().save();
-        this.canvas.getGraphicsContext2D().scale(1, -1);
-        this.canvas.getGraphicsContext2D().scale(Settings.getGuiWidth() / Model.WIDTH, Settings.getGuiHeigth() /  Model.HEIGTH);
-=======
     private void resetCanvas() {
     	GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
     	gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
         gc.scale(Settings.getGuiWidth()/Model.WIDTH,Settings.getGuiHeigth() /  Model.HEIGTH);
->>>>>>> a08d0405b5852e285e466fbdd984491a0c2dab8e
     }
 
     public final GameState getCurrentState() {
