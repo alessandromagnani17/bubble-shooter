@@ -12,23 +12,22 @@ import javafx.scene.transform.Rotate;
 public class DrawCannon {
 
     private static final Point2D CANNON_POSITION = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() / 1.36);
+    private static final Point2D PIVOT = new Point2D(Settings.getGuiWidth() / 700, Settings.getGuiHeigth() / 5.35);
+
 
     private AnchorPane pane = new AnchorPane();
     private Rotate rotation = new Rotate();
     private Cannon cannon;
-    private Point2D shootingBubblePosition;
 
     /**
      * Constructor for a new DrawCannon.
      * 
      * @param pane                   the panel where draw the {@link Cannon}.
      * @param cannon                 the {@link Cannon} to draw.
-     * @param shootingBubblePosition the position of the {@link ShootingBubble}.
      */
-    public DrawCannon(final AnchorPane pane, final Cannon cannon, final Point2D shootingBubblePosition) {
+    public DrawCannon(final AnchorPane pane, final Cannon cannon) {
         this.pane = pane;
         this.cannon = cannon;
-        this.shootingBubblePosition = shootingBubblePosition;
         this.editCannon();
         this.setRotation();
         this.pane.getChildren().add(this.cannon.getCannon());
@@ -46,8 +45,8 @@ public class DrawCannon {
      * Method to set the angle of {@link Cannon} rotation.
      */
     private void setRotation() {
-        this.rotation.setPivotX(shootingBubblePosition.getX() - CANNON_POSITION.getX() + this.cannon.getCannon().getImage().getWidth() / 2);
-        this.rotation.setPivotY(shootingBubblePosition.getY() - CANNON_POSITION.getY());
+        this.rotation.setPivotX(PIVOT.getX() + this.cannon.getCannon().getImage().getWidth() / 2);
+        this.rotation.setPivotY(PIVOT.getY());
         this.cannon.getCannon().getTransforms().add(rotation);
     }
 
