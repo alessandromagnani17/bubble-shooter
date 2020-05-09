@@ -6,11 +6,11 @@ import javafx.scene.Scene;
 public class SceneWrapperImpl implements SceneWrapper {
 
     private final Scene scene;
-    private final AbstractController guiController;
+    private final AbstractController sceneController;
 
     public SceneWrapperImpl(final Scene scene, final AbstractController controller) {
         this.scene = scene;
-        this.guiController = controller;
+        this.sceneController = controller;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class SceneWrapperImpl implements SceneWrapper {
 
     @Override
     public AbstractController getController() {
-        return this.guiController;
+        return this.sceneController;
     }
 
 }
