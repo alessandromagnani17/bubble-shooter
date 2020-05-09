@@ -2,7 +2,6 @@ package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
-import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleType;
@@ -51,7 +50,6 @@ public class GameController extends AbstractController {
     private DrawHelpLine help;
     private DrawCannon drawCannon;
     private Cannon cannon;
-    private SwitcherController switcherController;
     private HandlerAdapterMouseMoved handlerAdapter;
     private Point2D startPointFirstLine;
     private Point2D shootingBubbleInitialPosition;
@@ -63,7 +61,7 @@ public class GameController extends AbstractController {
         this.help  = new DrawHelpLine(this.pane);
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
         this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
-        this.cannon.getCannon().setScaleX(Settings.getGuiHeigth() / CANNON_SCALE);
+        this.cannon.getCannon().setScaleY(Settings.getGuiHeigth() / CANNON_SCALE);
 
         this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
@@ -84,9 +82,10 @@ public class GameController extends AbstractController {
         this.canvasDrawer = new BubbleDrawer(this.canvas);
         this.inGameState = new InGameState(this, controller);
         this.inPauseState = new InPauseState(this, controller);
-        this.switcherController = new SwitcherController(this.getController().getBubbles());
 
         this.setCurrentState(this.inGameState);
+        this.controlSwitchButton();
+
 
         this.pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -97,7 +96,6 @@ public class GameController extends AbstractController {
                 if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
                     shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
                             new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()), event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
-
                 }
             }
         });
@@ -113,8 +111,12 @@ public class GameController extends AbstractController {
     }
 
     public final void switchBall() {
-        this.switcherController.switchControl();
-        if (this.switcherController.isSwitchEnd()) {
+        this.getController().getSwitcherController().switchControl();
+        this.controlSwitchButton();
+    }
+
+    public final void controlSwitchButton() {
+        if (this.getController().getSwitcherController().isSwitchEnd()) {
             this.switchButton.setText("Ended");
             this.switchButton.setMouseTransparent(true);
         }
@@ -137,7 +139,7 @@ public class GameController extends AbstractController {
         this.getController().getGameEngine().pauseLoop();
         this.getController().startGame(this.getController().getCurrentLevel());
         this.getController().getGameEngine().resumeLoop();
-        this.switcherController.setInitialNumSwitch();
+        this.getController().getSwitcherController().setInitialNumSwitch();
         this.switchButton.setText("Switch");
         this.switchButton.setMouseTransparent(false);
     }
@@ -170,7 +172,7 @@ public class GameController extends AbstractController {
         gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
-        gc.scale(Settings.getGuiWidth()/Model.WORLD_WIDTH,Settings.getGuiHeigth() /  Model.WORLD_HEIGTH);
+        gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeigth() /  Model.WORLD_HEIGTH);
 
     }
 
