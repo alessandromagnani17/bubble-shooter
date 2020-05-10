@@ -5,6 +5,7 @@ import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.highscore.HighscoreStore;
 import bubbleshooter.model.highscore.ScoreManager;
 import bubbleshooter.view.View;
 
@@ -57,4 +58,9 @@ public interface Controller {
      * @return the Controller of Switch.
      */
     SwitcherController getSwitcherController();
+
+    /**
+     * @return the HighscoreStore.
+     */
+    HighscoreStore getHighscoreStore();
 }
