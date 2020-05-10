@@ -17,12 +17,12 @@ import javafx.scene.text.Font;
  */
 public class GameOverController extends AbstractController {
 
-    @FXML private Label gameOverLabel = new Label();
-    @FXML private Label scoreLabel = new Label();
-    @FXML private Label destroyedBubbleLabel = new Label();
-    @FXML private Label gameTimeLabel = new Label();
-    @FXML private TextArea textArea = new TextArea();
-    @FXML private Button buttonAdd = new Button();
+    @FXML private final Label gameOverLabel = new Label();
+    @FXML private final Label scoreLabel = new Label();
+    @FXML private final Label destroyedBubbleLabel = new Label();
+    @FXML private final Label gameTimeLabel = new Label();
+    @FXML private final TextArea textArea = new TextArea();
+    @FXML private final Button buttonAdd = new Button();
 
     private static final double TITLE_DISTANCE = Settings.getGuiHeigth() / 10;
     private static final double TITLE_HEIGTH = Settings.getGuiHeigth() / 8;
@@ -48,19 +48,19 @@ public class GameOverController extends AbstractController {
         this.gameOverLabel.setAlignment(Pos.BOTTOM_CENTER);
         this.gameOverLabel.setPrefSize(TITLE_WIDTH, TITLE_HEIGTH);
 
-        this.scoreLabel.setText("Your score: " + String.valueOf(this.getController().getScoreManager().getScore()));
+        this.scoreLabel.setText("Your score: " + this.getController().getScoreManager().getScore());
         this.scoreLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.scoreLabel.setLayoutX(LABEL_X);
         this.scoreLabel.setLayoutY(TITLE_HEIGTH + TITLE_DISTANCE);
         this.scoreLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGTH);
 
-        this.destroyedBubbleLabel.setText("Destroyed bubbles: " + String.valueOf(this.getController().getScoreManager().getDestroyedBubbles()));
+        this.destroyedBubbleLabel.setText("Destroyed bubbles: " + this.getController().getScoreManager().getDestroyedBubbles());
         this.destroyedBubbleLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.destroyedBubbleLabel.setLayoutX(LABEL_X);
         this.destroyedBubbleLabel.setLayoutY(this.scoreLabel.getLayoutY() + LABEL_DISTANCE);
         this.destroyedBubbleLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGTH);
 
-        this.gameTimeLabel.setText("Your game time: " + String.valueOf(this.getController().getScoreManager().getGameTime()));
+        this.gameTimeLabel.setText("Your game time: " + this.getController().getScoreManager().getGameTime());
         this.gameTimeLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.gameTimeLabel.setLayoutX(LABEL_X);
         this.gameTimeLabel.setLayoutY(this.destroyedBubbleLabel.getLayoutY() + LABEL_DISTANCE);
