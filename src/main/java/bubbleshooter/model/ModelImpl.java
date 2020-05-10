@@ -4,9 +4,9 @@ import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.mode.BasicMode;
-import bubbleshooter.model.game.mode.GameMode;
-import bubbleshooter.model.game.mode.SurvivalMode;
+import bubbleshooter.model.game.mode.BasicLevel;
+import bubbleshooter.model.game.mode.Level;
+import bubbleshooter.model.game.mode.SurvivalLevel;
 
 /**
  *The class which manage the logic of the game.
@@ -14,17 +14,17 @@ import bubbleshooter.model.game.mode.SurvivalMode;
  */
 public class ModelImpl implements Model {
 
-    private GameMode gameMode;
+    private Level gameMode;
 
     @Override
     public final void startBasicGame() {
-        this.gameMode = new BasicMode();
+        this.gameMode = new BasicLevel();
         this.gameMode.start();
     }
 
     @Override
     public final void startSurvivalGame() {
-        this.gameMode = new SurvivalMode();
+        this.gameMode = new SurvivalLevel();
         this.gameMode.start();
     }
 
@@ -50,7 +50,7 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public final GameMode getLevel() {
+    public final Level getLevel() {
         return this.gameMode;
     }
 }

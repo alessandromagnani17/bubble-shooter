@@ -17,7 +17,7 @@ import bubbleshooter.model.game.GameType;
  * create new row of bubbles
  */
 
-public interface GameMode {
+public interface Level {
 
 	/**
 	 * starts selected game and initialize all bubbles

@@ -3,14 +3,14 @@ package bubbleshooter.model.game.mode;
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameType;
 
-public class SurvivalMode extends AbstractGameMode {
+public class SurvivalLevel extends AbstractLevel {
 
     private static final int ONE_SECOND_SCORE = 20; 
     private static final int TIME_LEFT_BEFORE_NEW_ROW = 10; 
 
     private double timeLeft; 
 
-    public SurvivalMode() {
+    public SurvivalLevel() {
         this.setCurrentGameType(GameType.SURVIVALMODE);
         this.timeLeft = TIME_LEFT_BEFORE_NEW_ROW; 
     }

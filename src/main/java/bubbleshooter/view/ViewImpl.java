@@ -47,6 +47,7 @@ public class ViewImpl implements View {
 
 	@Override
 	public void loadScene(final FXMLPath scene) {
+		System.out.println(scene);
 		try {
 			final SceneWrapper wrapper = SceneLoader.getLoader().getScene(scene);
 			wrapper.getController().init(controller, this);
@@ -77,9 +78,7 @@ public class ViewImpl implements View {
 
 	@Override
 	public void showGameOver() {
-		this.currentSceneController.setGameover();
 		this.currentSceneController.nextScene();
-
 	}
 
 }

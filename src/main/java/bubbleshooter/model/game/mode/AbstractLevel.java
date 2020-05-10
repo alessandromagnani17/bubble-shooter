@@ -18,7 +18,7 @@ import bubbleshooter.model.game.GameStatus;
 import bubbleshooter.model.game.GameType;
 import javafx.geometry.Point2D;
 
-public abstract class AbstractGameMode implements GameMode {
+public abstract class AbstractLevel implements Level {
 
     private static final int NUM_BUBBLES = 19;
     private static final int NUM_ROWS = 8;
@@ -36,7 +36,7 @@ public abstract class AbstractGameMode implements GameMode {
 	private GameStatus status;
     private GameType currentGameType;
 	
-	public AbstractGameMode() {
+	public AbstractLevel() {
 		this.bubblesManager = new BubblesManager();
 		this.bubbleGridManager = new BubbleGridManager(this);
 		this.bubbleGridHelper = new BubbleGridHelper(this.bubblesManager);
