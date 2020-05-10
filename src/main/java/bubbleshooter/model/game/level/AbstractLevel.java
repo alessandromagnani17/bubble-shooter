@@ -3,7 +3,6 @@ package bubbleshooter.model.game.level;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Stream;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
@@ -19,7 +18,7 @@ import javafx.geometry.Point2D;
 
 public abstract class AbstractLevel implements Level {
 
-	private static final int NUM_BUBBLES = 19;
+	private static final int NUM_BUBBLES_PER_ROW= 19;
 	private static final int NUM_ROWS = 8;
 	private static final int MILLISECONDS_IN_A_SECOND = 1000;
 	private static final double LIMITS_SHOOTING_BUBBLE_Y = 1.08;
@@ -69,7 +68,9 @@ public abstract class AbstractLevel implements Level {
 	 * initialize the bubbles in the game.
 	 */
 	private void initBubbles() {
-		Stream.iterate(1, i -> i += 1).limit(NUM_ROWS).forEach(i -> this.createNewRow());
+		for(int i = 0; i < NUM_ROWS; i++) {
+			this.createNewRow();
+		}
 		this.loadSwitchBubble();
 		this.loadShootingBubble();
 	}
@@ -78,7 +79,7 @@ public abstract class AbstractLevel implements Level {
 	 * creates new row of {@link Bubble}.
 	 */
 	private void createNewRow() {
-		this.bubblesManager.addBubbles(this.bubbleGridManager.createNewRow());
+		this.bubblesManager.addBubbles(this.bubbleGridManager.createNewRow(NUM_BUBBLES_PER_ROW));
 	}
 
 	@Override
@@ -180,7 +181,7 @@ public abstract class AbstractLevel implements Level {
 
 	@Override
 	public final int getBubblesPerRow() {
-		return NUM_BUBBLES;
+		return NUM_BUBBLES_PER_ROW;
 	}
 
 	/**
