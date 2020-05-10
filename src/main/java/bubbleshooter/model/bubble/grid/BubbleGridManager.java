@@ -46,6 +46,22 @@ public class BubbleGridManager {
 	}
 
 	/**
+	 * Creates a new bubble and tells the {@link BubblesManager} to add it to the
+	 * game.
+	 * 
+	 * @param the {@link Bubble} to add.
+	 * @param the position of new bubble.
+	 * @return the created {@link Bubble}.
+	 */
+	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
+		final Bubble bubbleToAdd = this.level.getBubbleFactory().createGridBubble(position, bubble.getColor());
+		this.level.getBubblesManager().addBubbles(Collections.singletonList(bubbleToAdd));
+		this.level.loadShootingBubble();
+		this.level.loadSwitchBubble();
+		return bubbleToAdd;
+	}
+
+	/**
 	 * Moves all the balls one row down to create a new one.
 	 */
 	private void moveDownBubbles() {
@@ -80,20 +96,5 @@ public class BubbleGridManager {
 		return this.level.getBubblesManager().getBubbleGrid();
 	}
 
-	/**
-	 * Creates a new bubble and tells the {@link BubblesManager} to add it to the
-	 * game.
-	 * 
-	 * @param the {@link Bubble} to add.
-	 * @param the position of new bubble.
-	 * @return the created {@link Bubble}.
-	 */
-	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
-		final Bubble bubbleToAdd = this.level.getBubbleFactory().createGridBubble(position, bubble.getColor());
-		this.level.getBubblesManager().addBubbles(Collections.singletonList(bubbleToAdd));
-		this.level.loadShootingBubble();
-		this.level.loadSwitchBubble();
-		return bubbleToAdd;
-	}
 
 }
