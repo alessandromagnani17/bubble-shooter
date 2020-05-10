@@ -33,13 +33,14 @@ public class BubbleGridManager {
 	 * 
 	 * @return a row of bubbles.
 	 */
-	public final List<Bubble> createNewRow() {
+	public final List<Bubble> createNewRow(int bubblesPerRow) {
 		final List<Bubble> newRow = new LinkedList<>();
 		final double offset = this.offsetRow ? Bubble.WIDTH : Bubble.RADIUS;
 		this.moveDownBubbles();
-		Stream.iterate(0, x -> x += 1).limit(level.getBubblesPerRow())
-				.forEach(x -> newRow.add(this.level.getBubbleFactory().createGridBubble(
-						new Point2D(x * Bubble.WIDTH + offset, Bubble.RADIUS), BubbleColor.getRandomColor())));
+		for (int x = 0; x < bubblesPerRow; x++) {
+			newRow.add(this.level.getBubbleFactory().createGridBubble(
+					new Point2D(x * Bubble.WIDTH + offset, Bubble.RADIUS), BubbleColor.getRandomColor()));
+		}
 		this.createdRows++;
 		this.offsetRow = !offsetRow;
 		return newRow;

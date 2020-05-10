@@ -19,6 +19,11 @@ import bubbleshooter.model.game.GameStatus;
 public interface Level {
 
 	/**
+	 * starts selected game and initialize all bubbles
+	 */
+	void start();
+
+	/**
 	 * updates the game
 	 * 
 	 * @param elapsed
@@ -33,11 +38,6 @@ public interface Level {
 	BubblesManager getBubblesManager();
 
 	/**
-	 * starts selected game and initialize all bubbles
-	 */
-	void start();
-
-	/**
 	 * loads the {@link ShootingBubble}
 	 */
 	void loadShootingBubble();
@@ -46,7 +46,6 @@ public interface Level {
 	 * loads the {@link SwitchBubble}
 	 */
 	void loadSwitchBubble();
-
 
 	/**
 	 * sets current {@link LevelType}
