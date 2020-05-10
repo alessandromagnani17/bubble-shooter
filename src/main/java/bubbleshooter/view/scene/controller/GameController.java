@@ -63,7 +63,6 @@ public class GameController extends AbstractController {
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
         this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
         this.cannon.getCannon().setScaleY(Settings.getGuiHeigth() / CANNON_SCALE);
-
         this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
                 getController().getBubbles().stream()
@@ -102,9 +101,6 @@ public class GameController extends AbstractController {
     }
 
     public final void render() {
-        if (this.isGameOver()) {
-            this.nextScene();
-        }
         // da aggiungere anche la chiamata al controller per sapere lo score corrente
         this.resetCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
@@ -159,6 +155,7 @@ public class GameController extends AbstractController {
     }
 
     public final void setGameOver() {
+    	System.out.println("gameOver");
         this.gameOver = true;
     }
 
