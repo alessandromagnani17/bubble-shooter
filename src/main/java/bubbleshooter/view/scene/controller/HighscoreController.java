@@ -37,7 +37,7 @@ public class HighscoreController extends AbstractController {
     private static final double TITLE_HEIGTH = Settings.getGuiHeigth() / 8;
     private static final double TITLE_WIDTH = Settings.getGuiWidth();
     private static final double TITLE_FONT_SIZE = TITLE_HEIGTH / 1.5;
-    private static final double TABLE_HEIGTH = Settings.getGuiHeigth() / 2;
+    private static final double TABLE_HEIGTH = Settings.getGuiHeigth() / 1.9;
     private static final double TABLE_WIDTH = Settings.getGuiWidth() / 2.2;
     private static final double DETACHMENT = Settings.getGuiWidth() - 2 * TABLE_WIDTH;
     private static final double LABEL_HEIGTH = Settings.getGuiHeigth() / 10;
