@@ -28,9 +28,9 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final String SEP = System.getProperty("file.separator");
     private static final String DIR_PATH = System.getProperty("user.home") + SEP + ".Bubbleshooter";
     private static final String FILE_PATH = SEP + "Highscores.txt";
+    private static final int CAPACITY = 10;
     private final File file;
     private Map<GameType, List<HighscoreStructure>> mapOfItems;
-    private static final int CAPACITY = 10;
     private boolean flag;
 
     /**
@@ -50,8 +50,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 flag = false;
             }
             if (flag) {
-                FileWriter fw = new FileWriter(this.file);
-                BufferedWriter bw = new BufferedWriter(fw);
+                final FileWriter fw = new FileWriter(this.file);
+                final BufferedWriter bw = new BufferedWriter(fw);
 
                 bw.write("HIGHSCORES!!\n\n");
                 bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
@@ -105,8 +105,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @return the map contains the different scores.
      */
     private Map<GameType, List<HighscoreStructure>> readFile() {
-        Map<GameType, List<HighscoreStructure>> map = new HashMap<>();
-        for (GameType tipo : GameType.values()) {
+        final Map<GameType, List<HighscoreStructure>> map = new HashMap<>();
+        for (final GameType tipo : GameType.values()) {
             map.put(tipo, readFromFile(tipo));
         }
         return map;
@@ -121,13 +121,13 @@ public class HighscoreStoreImpl implements HighscoreStore {
      */
     private List<HighscoreStructure> readFromFile(final GameType gameMode) {
 
-        List<HighscoreStructure> itemsSet = new ArrayList<>();
-        String modality = whichMod(gameMode);
+        final List<HighscoreStructure> itemsSet = new ArrayList<>();
+        final String modality = whichMod(gameMode);
         String readString;
 
         try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
+            final FileReader fr = new FileReader(file);
+            final BufferedReader br = new BufferedReader(fr);
 
             readString = br.readLine();
             while (!readString.equals("END_OF_FILE_END_OF_FILE")) {
@@ -180,17 +180,17 @@ public class HighscoreStoreImpl implements HighscoreStore {
      */
     private HighscoreStructure generateHighscore(final String readString, final GameType gameMode) {
         String name = "", score = "";
-        char space = ' ';
+        final char space = ' ';
         boolean flag = true;
 
         for (int i = 0; i < readString.length(); i++) {
 
             if (!flag) {
-                score = score + readString.charAt(i);
+                score += readString.charAt(i);
             }
 
-            if (!(readString.charAt(i) == space) && flag) {
-                name = name + readString.charAt(i);
+            if (readString.charAt(i) != space && flag) {
+                name += readString.charAt(i);
             } else {
                 flag = false;
             }
@@ -205,7 +205,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @param itemsSet a list of {@link HighscoreStructure}.
      */
     private void sort(final List<HighscoreStructure> itemsSet) {
-        Comparator<HighscoreStructure> comp = new Comparator<>() {
+        final Comparator<HighscoreStructure> comp = new Comparator<>() {
             @Override
             public int compare(final HighscoreStructure o1, final HighscoreStructure o2) {
                 return o2.getScore() - o1.getScore();
@@ -241,19 +241,19 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 this.file.createNewFile();
             }
 
-            FileWriter fw = new FileWriter(this.file);
-            BufferedWriter bw = new BufferedWriter(fw);
+            final FileWriter fw = new FileWriter(this.file);
+            final BufferedWriter bw = new BufferedWriter(fw);
 
             bw.write("HIGHSCORES!!\n\n");
             bw.write("BASIC_MODE_HIGHSCORES...\n");
-            for (HighscoreStructure o : this.mapOfItems.get(GameType.BASICMODE)) {
-                stringToWrite = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
+            for (final HighscoreStructure o : this.mapOfItems.get(GameType.BASICMODE)) {
+                stringToWrite = o.getName() + " " + o.getScore() + "\n";
                 bw.write(stringToWrite);
             }
             bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
             bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
-            for (HighscoreStructure o : this.mapOfItems.get(GameType.SURVIVALMODE)) {
-                stringToWrite = o.getName() + " " + String.valueOf(o.getScore()) + "\n";
+            for (final HighscoreStructure o : this.mapOfItems.get(GameType.SURVIVALMODE)) {
+                stringToWrite = o.getName() + " " + o.getScore() + "\n";
                 bw.write(stringToWrite);
             }
             bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
@@ -276,7 +276,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      */
     @Override
     public final ObservableList<HighscoreStructure> getHighscoresForModality(final GameType gameMode) {
-        ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();
+        final ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();
         this.mapOfItems = readFile();
         if (this.mapOfItems.containsKey(gameMode)) {
             result.addAll(this.mapOfItems.get(gameMode));
