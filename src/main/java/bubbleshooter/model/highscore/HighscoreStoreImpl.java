@@ -45,10 +45,10 @@ public class HighscoreStoreImpl implements HighscoreStore {
         this.file = new File(DIR_PATH + FILE_PATH);
         try {
             if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
-                System.out.println("Can't create directory !!");
+                System.out.println("Can't create directory !!!");
             }
             if (!file.exists() && !this.file.createNewFile()) {
-                System.out.println("Can't create the file !!");
+                System.out.println("Can't create the file !!!");
                 flag = true;
             } else {
                 flag = false;
@@ -151,7 +151,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
             br.close();
 
         } catch (IOException e) {
-            System.out.println("ERROR !!! Can't create file...");
+            System.out.println("Error in reading of file !!!");
             e.printStackTrace();
         }
 
@@ -240,13 +240,13 @@ public class HighscoreStoreImpl implements HighscoreStore {
         String stringToWrite;
         try {
             if (!this.file.delete()) {
-                System.out.println("Can't delete the file !!");
+                System.out.println("Can't delete the file !!!");
             }
             if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
-                System.out.println("Can't create directory !!");
+                System.out.println("Can't create directory !!!");
             }
             if (!file.exists() && !this.file.createNewFile()) {
-                System.out.println("Can't create the file !!");
+                System.out.println("Can't create the file !!!");
             }
 
             final FileWriter fw = new FileWriter(this.file);
