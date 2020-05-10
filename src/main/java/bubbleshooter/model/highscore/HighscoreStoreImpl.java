@@ -31,6 +31,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final String END_FILE = "END_OF_FILE_END_OF_FILE";
     private static final String BASIC = "BASIC_MODE_HIGHSCORES...";
     private static final String SURVIVAL = "SURVIVAL_MODE_HIGHSCORES...";
+    private static final String NEW_LINE = "\n";
     private static final int CAPACITY = 10;
     private final File file;
     private Map<GameType, List<HighscoreStructure>> mapOfItems;
@@ -43,32 +44,30 @@ public class HighscoreStoreImpl implements HighscoreStore {
     public HighscoreStoreImpl() {
         this.file = new File(DIR_PATH + FILE_PATH);
         try {
-            if (!file.getParentFile().exists()) {
-                if (!file.getParentFile().mkdirs()) {
-                    System.out.println("Can't create directory !!");
-                }
+            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
+                System.out.println("Can't create directory !!");
             }
-            if (!file.exists()) {
-                if (!this.file.createNewFile()) {
-                    System.out.println("Can't create the file !!");
-                }
+            if (!file.exists() && !this.file.createNewFile()) {
+                System.out.println("Can't create the file !!");
                 flag = true;
             } else {
                 flag = false;
             }
+
             if (flag) {
                 final FileWriter fw = new FileWriter(this.file);
                 final BufferedWriter bw = new BufferedWriter(fw);
 
-                bw.write("HIGHSCORES!!\n\n");
-                bw.write(BASIC + "\n");
-                bw.write(END_HIGH + "\n\n");
-                bw.write(SURVIVAL + "\n");
-                bw.write(END_HIGH + "\n\n");
+                bw.write("HIGHSCORES!!" + NEW_LINE + NEW_LINE);
+                bw.write(BASIC + NEW_LINE);
+                bw.write(END_HIGH + NEW_LINE + NEW_LINE);
+                bw.write(SURVIVAL + NEW_LINE);
+                bw.write(END_HIGH + NEW_LINE + NEW_LINE);
                 bw.write(END_FILE);
 
                 bw.flush();
                 bw.close();
+                fw.close();
             }
 
         } catch (IOException e) {
@@ -243,33 +242,29 @@ public class HighscoreStoreImpl implements HighscoreStore {
             if (!this.file.delete()) {
                 System.out.println("Can't delete the file !!");
             }
-            if (!file.getParentFile().exists()) {
-                if (!file.getParentFile().mkdirs()) {
-                    System.out.println("Can't create the directory !!");
-                }
+            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
+                System.out.println("Can't create directory !!");
             }
-            if (!file.exists()) {
-                if (!this.file.createNewFile()) {
-                    System.out.println("Can't create the file !!");
-                }
-            } 
+            if (!file.exists() && !this.file.createNewFile()) {
+                System.out.println("Can't create the file !!");
+            }
 
             final FileWriter fw = new FileWriter(this.file);
             final BufferedWriter bw = new BufferedWriter(fw);
 
             bw.write("HIGHSCORES!!\n\n");
-            bw.write(BASIC + "\n");
+            bw.write(BASIC + NEW_LINE);
             for (final HighscoreStructure o : this.mapOfItems.get(GameType.BASICMODE)) {
-                stringToWrite = o.getName() + " " + o.getScore() + "\n";
+                stringToWrite = o.getName() + " " + o.getScore() + NEW_LINE;
                 bw.write(stringToWrite);
             }
-            bw.write(END_HIGH + "\n\n");
-            bw.write(SURVIVAL + "\n");
+            bw.write(END_HIGH + NEW_LINE + NEW_LINE);
+            bw.write(SURVIVAL + NEW_LINE);
             for (final HighscoreStructure o : this.mapOfItems.get(GameType.SURVIVALMODE)) {
-                stringToWrite = o.getName() + " " + o.getScore() + "\n";
+                stringToWrite = o.getName() + " " + o.getScore() + NEW_LINE;
                 bw.write(stringToWrite);
             }
-            bw.write(END_HIGH + "\n\n");
+            bw.write(END_HIGH + NEW_LINE + NEW_LINE);
             bw.write(END_FILE);
 
             bw.flush();
