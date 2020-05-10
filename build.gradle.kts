@@ -40,8 +40,6 @@ val javaFXModules = listOf(
 val supportedPlatforms = listOf("linux", "mac", "win")
 
 dependencies {
-    implementation("com.google.guava:guava:28.1-jre")
-	implementation("org.locationtech.jts:jts-core:1.15.0")
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:13:$platform")
