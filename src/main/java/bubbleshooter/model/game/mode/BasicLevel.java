@@ -3,12 +3,12 @@ package bubbleshooter.model.game.mode;
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameType;
 
-public class BasicMode extends AbstractGameMode {
+public class BasicLevel extends AbstractLevel {
 
     private static final int BUBBLE_SCORE = 20;
     private static final int WRONG_SHOTS_BEFORE_NEW_ROW = 5;
 
-    public BasicMode() {
+    public BasicLevel() {
         this.setCurrentGameType(GameType.BASICMODE);
     }
 

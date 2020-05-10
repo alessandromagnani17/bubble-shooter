@@ -1,7 +1,5 @@
 package bubbleshooter.model.game;
 
-import bubbleshooter.model.bubble.GridBubble;
-
 /**
  * Represents a class that collects game information.
  */
@@ -38,7 +36,7 @@ public class GameInfoManager {
 	/**
 	 * Update the game score.
 	 * 
-	 * @param score.
+	 * @param score
 	 */
 	public final void updateScore(final int score) {
 		this.score = score;

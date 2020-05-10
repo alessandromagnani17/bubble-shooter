@@ -5,6 +5,7 @@ import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.highscore.HighscoreStore;
 import bubbleshooter.model.highscore.ScoreManager;
 
 /**
@@ -28,7 +29,6 @@ public interface Controller {
      * @return The Engine of the Game.
      */
     GameLoop getGameEngine();
-
 
     /**
      * Method used for save the scores in the highscores.
@@ -56,4 +56,9 @@ public interface Controller {
      * @return the Controller of Switch.
      */
     SwitcherController getSwitcherController();
+
+    /**
+     * @return the HighscoreStore.
+     */
+    HighscoreStore getHighscoreStore();
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.mode.GameMode;
+import bubbleshooter.model.game.mode.Level;
 
 /**
  *Interface which represent the Logic of the Game in order to respect the MVC design pattern.
@@ -22,12 +22,12 @@ public interface Model {
     double WORLD_HEIGTH = 700;
 
     /**
-     * Method called in the {@link Controller} class to start a {@link BasicMode}.
+     * Method called in the {@link Controller} class to start a {@link BasicLevel}.
      */
     void startBasicGame();
 
     /**
-     * Method called in the {@link Controller} class to start a {@link SurvivalMode}.
+     * Method called in the {@link Controller} class to start a {@link SurvivalLevel}.
      */
     void startSurvivalGame();
 
@@ -38,7 +38,7 @@ public interface Model {
     List<Bubble> getBubbles();
 
     /**
-     * Method used to update the {@link GameMode}.
+     * Method used to update the {@link Level}.
      * @param elapsed
      */
     void update(double elapsed);
@@ -46,7 +46,7 @@ public interface Model {
     /**
      * @return the current level of the Game.
      */
-    GameMode getLevel();
+    Level getLevel();
 
     /**
      * @return the current status of the Game.

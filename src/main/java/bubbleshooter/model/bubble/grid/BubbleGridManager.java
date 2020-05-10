@@ -8,7 +8,7 @@ import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.GridBubble;
-import bubbleshooter.model.game.mode.GameMode;
+import bubbleshooter.model.game.mode.Level;
 import javafx.geometry.Point2D;
 
 /**
@@ -20,9 +20,9 @@ public class BubbleGridManager {
 
 	private int createdRows;
 	private boolean offsetRow;
-	private GameMode gameMode;
+	private Level gameMode;
 
-	public BubbleGridManager(final GameMode gameMode) {
+	public BubbleGridManager(final Level gameMode) {
 		this.gameMode = gameMode;
 		this.offsetRow = false;
 		this.createdRows = 0;

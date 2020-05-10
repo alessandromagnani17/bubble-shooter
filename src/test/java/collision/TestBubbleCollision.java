@@ -10,7 +10,7 @@ import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.game.mode.BasicMode;
+import bubbleshooter.model.game.mode.BasicLevel;
 import javafx.geometry.Point2D;
 
 /**
@@ -18,7 +18,7 @@ import javafx.geometry.Point2D;
  */
 public class TestBubbleCollision {
 
-    private final  CollisionController collisionController = new CollisionController(new BasicMode());
+    private final  CollisionController collisionController = new CollisionController(new BasicLevel());
 
     /**
      * Method to test if a {@link GridBubble} contains the {@link CollisionComponent}.
