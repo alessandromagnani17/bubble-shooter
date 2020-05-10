@@ -8,29 +8,28 @@ import bubbleshooter.controller.Controller;
  */
 public interface View {
 
-	/**
-	 * Sets the controller to be used, loads all images and sets stage size and
-	 * title.
-	 * 
-	 * @param controller
-	 */
-	void launch(Controller controller);
+    /**
+     * Sets the controller to be used, loads all images and sets stage size and
+     * title.
+     * 
+     * @param controller
+     */
+    void launch(Controller controller);
 
-	/**
-	 * Loads the scene and change the current scene displayed.
-	 * 
-	 * @param the scene to loads
-	 */
-	void loadScene(FXMLPath scene);
+    /**
+     * Loads the scene and change the current scene displayed.
+     * 
+     * @param scene The scene to loads
+     */
+    void loadScene(FXMLPath scene);
 
-	/**
-	 * show game over scene
-	 */
-	void showGameOver();
+    /**
+     * show game over scene.
+     */
+    void showGameOver();
 
-	/**
-	 * tells to the current scene to update the view
-	 */
-	void update();
-
+    /**
+     * tells to the current scene to update the view.
+     */
+    void update();
 }
