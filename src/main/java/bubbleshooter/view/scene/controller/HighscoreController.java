@@ -22,10 +22,10 @@ import javafx.scene.text.Font;
  */
 public class HighscoreController extends AbstractController {
 
-    @FXML private Label titleLabel = new Label();
-    @FXML private Label basicModeLabel = new Label();
-    @FXML private Label survivalModeLabel = new Label();
-    @FXML private Button backMenuButton = new Button();
+    @FXML private final Label titleLabel = new Label();
+    @FXML private final Label basicModeLabel = new Label();
+    @FXML private final Label survivalModeLabel = new Label();
+    @FXML private final Button backMenuButton = new Button();
     @FXML private TableView<HighscoreStructure> tableBaseView;
     @FXML private TableColumn<HighscoreStructure, String> nameBaseColumn;
     @FXML private TableColumn<HighscoreStructure, Integer> scoreBaseColumn;
