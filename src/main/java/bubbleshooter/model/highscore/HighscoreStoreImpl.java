@@ -24,7 +24,6 @@ import javafx.collections.ObservableList;
  */
 public class HighscoreStoreImpl implements HighscoreStore {
 
-    private static final long serialVersionUID = -3738961252432967724L;
     private static final String SEP = System.getProperty("file.separator");
     private static final String DIR_PATH = System.getProperty("user.home") + SEP + ".Bubbleshooter";
     private static final String FILE_PATH = SEP + "Highscores.txt";
