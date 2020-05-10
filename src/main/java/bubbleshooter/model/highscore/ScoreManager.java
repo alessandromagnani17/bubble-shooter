@@ -1,7 +1,6 @@
 package bubbleshooter.model.highscore;
 
 import bubbleshooter.model.game.GameInfoManager;
-import bubbleshooter.model.game.GameType;
 
 /**
  * 
@@ -11,8 +10,7 @@ import bubbleshooter.model.game.GameType;
  */
 public class ScoreManager {
 
-    private GameInfoManager scoresInfo;
-    private HighscoreStore highscoreStore;
+    private final GameInfoManager scoresInfo;
 
     /**
      * Constructor for a new ScoreManager.
@@ -21,7 +19,6 @@ public class ScoreManager {
      */
     public ScoreManager(final GameInfoManager scoresInfo) {
         this.scoresInfo = scoresInfo;
-        this.highscoreStore = new HighscoreStoreImpl();
     }
 
     /**
@@ -43,23 +40,6 @@ public class ScoreManager {
      */
     public final double getGameTime() {
         return this.scoresInfo.getGameTime();
-    }
-
-    /**
-     * @return the highscoreStore.
-     */
-    public final HighscoreStore getHighscoreStore() {
-        return this.highscoreStore;
-    }
-
-    /**
-     * Method for save the score in the highscores list.
-     * 
-     * @param username          the name of the player.
-     * @param currentLevelTypes the current game modality.
-     */
-    public final void saveScore(final String username, final GameType currentLevelTypes) {
-        this.highscoreStore.addScore(new HighscoreStructure(username.replace(" ", "_"), this.getScore(), currentLevelTypes));
     }
 
 }
