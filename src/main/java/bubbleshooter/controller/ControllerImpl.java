@@ -8,6 +8,9 @@ import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.highscore.HighscoreStore;
+import bubbleshooter.model.highscore.HighscoreStoreImpl;
+import bubbleshooter.model.highscore.HighscoreStructure;
 import bubbleshooter.model.highscore.ScoreManager;
 import bubbleshooter.view.View;
 
@@ -20,6 +23,7 @@ public class ControllerImpl implements Controller {
     private final Model model;
     private final View view;
     private GameLoop engine;
+    private final HighscoreStore highscoreStore;
     private ScoreManager scoresManager;
     private SwitcherController switcherController;
 
@@ -30,6 +34,7 @@ public class ControllerImpl implements Controller {
     public ControllerImpl(final Model model, final View view) {
      this.model = model;
      this.view = view;
+     this.highscoreStore = new HighscoreStoreImpl();
     }
 
     /**
@@ -65,11 +70,12 @@ public class ControllerImpl implements Controller {
     /**
      * Method used for save the scores in the highscores.
      * 
-     * @param text the name of the player.
+     * @param username the name of the player.
      */
     @Override
     public final void saveScore(final String username) {
-        this.scoresManager.saveScore(username, this.getCurrentLevel());
+        this.highscoreStore.addScore(new HighscoreStructure(username.replace(" ", "_"), 
+                this.getScoreManager().getScore(), this.getCurrentLevel()));
     }
 
     /**
@@ -83,6 +89,10 @@ public class ControllerImpl implements Controller {
         return this.scoresManager;
     }
 
+    @Override
+    public final HighscoreStore getHighscoreStore() {
+        return this.highscoreStore;
+    }
 
     /**
      * Method used to have the current game modality.
