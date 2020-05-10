@@ -89,6 +89,9 @@ public class ControllerImpl implements Controller {
         return this.scoresManager;
     }
 
+    /**
+     * @return the HighscoreStore.
+     */
     @Override
     public final HighscoreStore getHighscoreStore() {
         return this.highscoreStore;
