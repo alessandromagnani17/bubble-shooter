@@ -110,7 +110,7 @@ public class HighscoreController extends AbstractController {
      * @return the list of scores.
      */
     private ObservableList<HighscoreStructure> getScores(final GameType gameMode) {
-    	return this.getController().getHighscoreStore().getHighscoresForModality(gameMode);
+        return this.getController().getHighscoreStore().getHighscoresForModality(gameMode);
     }
 
     /**
