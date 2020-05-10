@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
  */
 public class Score {
 
-    private final SimpleIntegerProperty score;
+    private final SimpleIntegerProperty theScore;
     private final GameType gameMode;
 
     /**
@@ -20,7 +20,7 @@ public class Score {
      * @param gameMode    The modality of this game.
      */
     public Score(final Integer score, final GameType gameMode) {
-        this.score = new SimpleIntegerProperty(score);
+        this.theScore = new SimpleIntegerProperty(score);
         this.gameMode = gameMode;
     }
 
@@ -30,7 +30,7 @@ public class Score {
      * @return the Integer value of score.
      */
     public Integer getScore() {
-        return score.get();
+        return theScore.get();
     }
 
     /**
