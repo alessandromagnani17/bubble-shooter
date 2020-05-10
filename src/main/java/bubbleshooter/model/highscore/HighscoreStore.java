@@ -1,8 +1,6 @@
 package bubbleshooter.model.highscore;
 
 import java.io.File;
-import java.io.Serializable;
-
 import bubbleshooter.model.game.GameType;
 import javafx.collections.ObservableList;
 
@@ -10,7 +8,7 @@ import javafx.collections.ObservableList;
  * Interface of the {@link HighscoreStore] of the game.
  * It's used to read, save and modify the scores from a file.
  */
-public interface HighscoreStore extends Serializable {
+public interface HighscoreStore {
 
     /**
      * Method for get the file where scores are saved.
