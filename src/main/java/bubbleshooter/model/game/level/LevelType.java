@@ -1,6 +1,6 @@
-package bubbleshooter.model.game;
+package bubbleshooter.model.game.level;
 
-public enum GameType {
+public enum LevelType {
 
     /**
      * The levels of the game.

@@ -4,57 +4,62 @@ import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.mode.Level;
+import bubbleshooter.model.game.level.Level;
 
 /**
- *Interface which represent the Logic of the Game in order to respect the MVC design pattern.
+ * Interface which represent the Logic of the Game in order to respect the MVC
+ * design pattern.
  */
 public interface Model {
 
-    /**
-     * The width of the game used by Model.
-     */
-    double WORLD_WIDTH = 705;
+	/**
+	 * The width of the game used by Model.
+	 */
+	double WORLD_WIDTH = 705;
 
-    /**
-     * The Heigth of the game used by Model.
-     */
-    double WORLD_HEIGTH = 700;
+	/**
+	 * The Heigth of the game used by Model.
+	 */
+	double WORLD_HEIGTH = 700;
 
-    /**
-     * Method called in the {@link Controller} class to start a {@link BasicLevel}.
-     */
-    void startBasicGame();
+	/**
+	 * Method used to update the {@link Level}.
+	 * 
+	 * @param elapsed
+	 */
+	void update(double elapsed);
 
-    /**
-     * Method called in the {@link Controller} class to start a {@link SurvivalLevel}.
-     */
-    void startSurvivalGame();
+	/**
+	 * Method called in the {@link Controller} class.
+	 * 
+	 * @return the list of the currents {@link Bubble} in the game.
+	 */
+	List<Bubble> getBubbles();
 
-    /**
-     * Method called in the {@link Controller} class.
-     * @return the list of the currents {@link Bubble} in the game.
-     */
-    List<Bubble> getBubbles();
+	/**
+	 * Method called in the {@link Controller} class to start a {@link BasicLevel}.
+	 */
+	void startBasicGame();
 
-    /**
-     * Method used to update the {@link Level}.
-     * @param elapsed
-     */
-    void update(double elapsed);
+	/**
+	 * Method called in the {@link Controller} class to start a
+	 * {@link SurvivalLevel}.
+	 */
+	void startSurvivalGame();
 
-    /**
-     * @return the current level of the Game.
-     */
-    Level getLevel();
 
-    /**
-     * @return the current status of the Game.
-     */
-    GameStatus getGameStatus();
+	/**
+	 * @return the current level of the Game.
+	 */
+	Level getLevel();
 
-    /**
-     * @return the {@link BubblesManager} of the Game.
-     */
-    BubblesManager getGameObjectManager();
+	/**
+	 * @return the current status of the Game.
+	 */
+	GameStatus getGameStatus();
+
+	/**
+	 * @return the {@link BubblesManager} of the Game.
+	 */
+	BubblesManager getBubblesManager();
 }

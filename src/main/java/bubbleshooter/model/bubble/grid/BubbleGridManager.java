@@ -8,7 +8,7 @@ import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.GridBubble;
-import bubbleshooter.model.game.mode.Level;
+import bubbleshooter.model.game.level.Level;
 import javafx.geometry.Point2D;
 
 /**
@@ -20,10 +20,10 @@ public class BubbleGridManager {
 
 	private int createdRows;
 	private boolean offsetRow;
-	private Level gameMode;
+	private Level level;
 
-	public BubbleGridManager(final Level gameMode) {
-		this.gameMode = gameMode;
+	public BubbleGridManager(final Level level) {
+		this.level = level;
 		this.offsetRow = false;
 		this.createdRows = 0;
 	}
@@ -38,8 +38,8 @@ public class BubbleGridManager {
 		final double offset = this.offsetRow ? Bubble.WIDTH : Bubble.RADIUS;
 
 		this.moveDownBubbles();
-		Stream.iterate(0, x -> x += 1).limit(gameMode.getBubblesPerRow())
-				.forEach(x -> newRow.add(this.gameMode.getBubbleFactory().createGridBubble(
+		Stream.iterate(0, x -> x += 1).limit(level.getBubblesPerRow())
+				.forEach(x -> newRow.add(this.level.getBubbleFactory().createGridBubble(
 						new Point2D(x * Bubble.WIDTH + offset, Bubble.RADIUS), BubbleColor.getRandomColor())));
 		this.createdRows++;
 		this.offsetRow = !offsetRow;
@@ -57,44 +57,42 @@ public class BubbleGridManager {
 
 	/**
 	 * Gets all bubbles in the grid.
+	 * 
 	 * @return a {@link List} of all {@link GridBubble}s.
 	 */
 	public final List<Bubble> getBubbleGrid() {
-		return this.gameMode.getBubblesManager().getBubbleGrid();
+		return this.level.getBubblesManager().getBubbleGrid();
 	}
 
 	/**
 	 * Gets the number of all created row in the game.
+	 * 
 	 * @return the created rows
 	 */
 	public final int getCreatedRows() {
 		return this.createdRows;
 	}
-	/**
-	 * Tells the {@link BubblesManager} to remove the specified bubble.
-	 * @param the bubble to be removed.
-	 */
-	public final void removeBubble(final Bubble bubble) {
-		this.gameMode.getBubblesManager().removeGameObject(bubble);
-	}
 
 	/**
-	 * Creates a new bubble and tells the {@link BubblesManager} to add it to the game.
+	 * Creates a new bubble and tells the {@link BubblesManager} to add it to the
+	 * game.
+	 * 
 	 * @param the {@link Bubble} to add.
 	 * @param the position of new bubble.
 	 * @return the created {@link Bubble}.
 	 */
 	public final Bubble addToGrid(final Bubble bubble, final Point2D position) {
-		final Bubble bubbleToAdd = this.gameMode.getBubbleFactory().createGridBubble(position, bubble.getColor());
-		this.gameMode.getBubblesManager().addBubble(Collections.singletonList(bubbleToAdd));
-		this.gameMode.loadShootingBubble();
-		this.gameMode.loadSwitchBubble();
+		final Bubble bubbleToAdd = this.level.getBubbleFactory().createGridBubble(position, bubble.getColor());
+		this.level.getBubblesManager().addBubbles(Collections.singletonList(bubbleToAdd));
+		this.level.loadShootingBubble();
+		this.level.loadSwitchBubble();
 		return bubbleToAdd;
 	}
 
 	/**
-	 * Return true if the next row is an offset row, false otherwise. 
-	 * @return offsetRow. 
+	 * Return true if the next row is an offset row, false otherwise.
+	 * 
+	 * @return offsetRow.
 	 */
 	public final boolean isOffsetRow() {
 		return this.offsetRow;

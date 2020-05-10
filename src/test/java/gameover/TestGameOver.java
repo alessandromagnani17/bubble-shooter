@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import bubbleshooter.model.game.GameOverChecker;
-import bubbleshooter.model.game.mode.BasicMode;
-import bubbleshooter.model.game.mode.GameMode;
-import bubbleshooter.model.game.mode.SurvivalMode;
+import bubbleshooter.model.game.level.BasicMode;
+import bubbleshooter.model.game.level.GameMode;
+import bubbleshooter.model.game.level.SurvivalMode;
 
 /**
  * JUnit Test class to test the {@link GameOverChecker} of the Game.

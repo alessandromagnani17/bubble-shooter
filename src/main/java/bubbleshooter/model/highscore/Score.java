@@ -1,6 +1,6 @@
 package bubbleshooter.model.highscore;
 
-import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.game.level.LevelType;
 import javafx.beans.property.SimpleIntegerProperty;
 
 /**
@@ -11,7 +11,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Score {
 
     private final SimpleIntegerProperty score;
-    private final GameType gameMode;
+    private final LevelType level;
 
     /**
      * Constructor for a new score specifying the modality.
@@ -19,9 +19,9 @@ public class Score {
      * @param score       Score of this game.
      * @param gameMode    The modality of this game.
      */
-    public Score(final Integer score, final GameType gameMode) {
+    public Score(final Integer score, final LevelType gameMode) {
         this.score = new SimpleIntegerProperty(score);
-        this.gameMode = gameMode;
+        this.level = gameMode;
     }
 
     /**
@@ -38,8 +38,8 @@ public class Score {
      * 
      * @return the game modality of this score.
      */
-    public final GameType getGameMode() {
-        return gameMode;
+    public final LevelType getGameMode() {
+        return level;
     }
 
 }

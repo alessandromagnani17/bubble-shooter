@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.game.level.LevelType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -30,7 +30,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final String FILE_PATH = SEP + "Highscores.txt";
     private static final int CAPACITY = 10;
     private final File file;
-    private Map<GameType, List<HighscoreStructure>> mapOfItems;
+    private Map<LevelType, List<HighscoreStructure>> mapOfItems;
     private boolean flag;
 
     /**
@@ -104,9 +104,9 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * 
      * @return the map contains the different scores.
      */
-    private Map<GameType, List<HighscoreStructure>> readFile() {
-        final Map<GameType, List<HighscoreStructure>> map = new HashMap<>();
-        for (final GameType tipo : GameType.values()) {
+    private Map<LevelType, List<HighscoreStructure>> readFile() {
+        final Map<LevelType, List<HighscoreStructure>> map = new HashMap<>();
+        for (final LevelType tipo : LevelType.values()) {
             map.put(tipo, readFromFile(tipo));
         }
         return map;
@@ -119,7 +119,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * 
      * @return the list of scores for the specific game modality.
      */
-    private List<HighscoreStructure> readFromFile(final GameType gameMode) {
+    private List<HighscoreStructure> readFromFile(final LevelType gameMode) {
 
         final List<HighscoreStructure> itemsSet = new ArrayList<>();
         final String modality = whichMod(gameMode);
@@ -159,7 +159,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * 
      * @return the String for the game modality.
      */
-    private String whichMod(final GameType gameMode) {
+    private String whichMod(final LevelType gameMode) {
         switch (gameMode) {
         case BASICMODE:
             return "BASIC_MODE_HIGHSCORES...";
@@ -178,7 +178,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * 
      * @return the {@link HighscoreStructure}.
      */
-    private HighscoreStructure generateHighscore(final String readString, final GameType gameMode) {
+    private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
         String name = "", score = "";
         final char space = ' ';
         boolean flag = true;
@@ -246,13 +246,13 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
             bw.write("HIGHSCORES!!\n\n");
             bw.write("BASIC_MODE_HIGHSCORES...\n");
-            for (final HighscoreStructure o : this.mapOfItems.get(GameType.BASICMODE)) {
+            for (final HighscoreStructure o : this.mapOfItems.get(LevelType.BASICMODE)) {
                 stringToWrite = o.getName() + " " + o.getScore() + "\n";
                 bw.write(stringToWrite);
             }
             bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
             bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
-            for (final HighscoreStructure o : this.mapOfItems.get(GameType.SURVIVALMODE)) {
+            for (final HighscoreStructure o : this.mapOfItems.get(LevelType.SURVIVALMODE)) {
                 stringToWrite = o.getName() + " " + o.getScore() + "\n";
                 bw.write(stringToWrite);
             }
@@ -275,7 +275,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @return the scores for a game modality.
      */
     @Override
-    public final ObservableList<HighscoreStructure> getHighscoresForModality(final GameType gameMode) {
+    public final ObservableList<HighscoreStructure> getHighscoresForModality(final LevelType gameMode) {
         final ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();
         this.mapOfItems = readFile();
         if (this.mapOfItems.containsKey(gameMode)) {
