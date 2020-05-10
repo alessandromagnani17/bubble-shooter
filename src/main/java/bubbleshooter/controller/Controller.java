@@ -6,7 +6,6 @@ import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.game.GameType;
 import bubbleshooter.model.highscore.ScoreManager;
-import bubbleshooter.view.View;
 
 /**
  * Interface Controller used to dialogue with {@link Model} and {@link View} in order to respect MVC design pattern.

@@ -15,7 +15,7 @@ public class GameInfoManager {
 	/**
 	 * Updates the game time.
 	 * 
-	 * @param elapsed.
+	 * @param elapsed
 	 */
 	public final void updateGameTime(final double elapsed) {
 		this.gameTime += elapsed;

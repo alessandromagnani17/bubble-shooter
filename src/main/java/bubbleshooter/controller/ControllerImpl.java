@@ -65,7 +65,6 @@ public class ControllerImpl implements Controller {
     /**
      * Method used for save the scores in the highscores.
      * 
-     * @param text the name of the player.
      */
     @Override
     public final void saveScore(final String username) {
