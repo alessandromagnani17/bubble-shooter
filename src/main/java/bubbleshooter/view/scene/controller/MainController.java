@@ -18,11 +18,11 @@ import javafx.scene.text.TextAlignment;
  */
 public final class MainController extends AbstractController {
 
-    @FXML private final Button basicModeButton = new Button();
-    @FXML private final Button survivalModeButton = new Button();
-    @FXML private final Button highscoresButton = new Button();
-    @FXML private final Button quitButton = new Button();
-    @FXML private final Label titleLabel = new Label();
+    @FXML private Button basicModeButton = new Button();
+    @FXML private Button survivalModeButton = new Button();
+    @FXML private Button highscoresButton = new Button();
+    @FXML private Button quitButton = new Button();
+    @FXML private Label titleLabel = new Label();
     private static final double TITLE_DISTANCE = Settings.getGuiHeigth() / 10;
     private static final double TITLE_HEIGTH = Settings.getGuiHeigth() / 8;
     private static final double TITLE_WIDTH = Settings.getGuiWidth();
