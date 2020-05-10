@@ -17,10 +17,10 @@ import javafx.scene.text.TextAlignment;
  */
 public class PauseController extends AbstractController {
 
-    @FXML private Label titleLabel = new Label();
-    @FXML private Button resumeButton = new Button();
-    @FXML private Button restartButton = new Button();
-    @FXML private Button quitButton = new Button();
+    @FXML private final Label titleLabel = new Label();
+    @FXML private final Button resumeButton = new Button();
+    @FXML private final Button restartButton = new Button();
+    @FXML private final Button quitButton = new Button();
 
     private static final double TITLE_DISTANCE = Settings.getGuiHeigth() / 10;
     private static final double TITLE_HEIGTH = Settings.getGuiHeigth() / 8;
