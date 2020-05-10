@@ -27,6 +27,10 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final String SEP = System.getProperty("file.separator");
     private static final String DIR_PATH = System.getProperty("user.home") + SEP + ".Bubbleshooter";
     private static final String FILE_PATH = SEP + "Highscores.txt";
+    private static final String END_HIGH = "END_OF_HIGH_END_OF_HIGH";
+    private static final String END_FILE = "END_OF_FILE_END_OF_FILE";
+    private static final String BASIC = "BASIC_MODE_HIGHSCORES...";
+    private static final String SURVIVAL = "SURVIVAL_MODE_HIGHSCORES...";
     private static final int CAPACITY = 10;
     private final File file;
     private Map<GameType, List<HighscoreStructure>> mapOfItems;
@@ -40,10 +44,14 @@ public class HighscoreStoreImpl implements HighscoreStore {
         this.file = new File(DIR_PATH + FILE_PATH);
         try {
             if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
+                if (!file.getParentFile().mkdirs()) {
+                    System.out.println("Can't create directory !!");
+                }
             }
             if (!file.exists()) {
-                this.file.createNewFile();
+                if (!this.file.createNewFile()) {
+                    System.out.println("Can't create the file !!");
+                }
                 flag = true;
             } else {
                 flag = false;
@@ -53,17 +61,17 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 final BufferedWriter bw = new BufferedWriter(fw);
 
                 bw.write("HIGHSCORES!!\n\n");
-                bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-                bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
-                bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-                bw.write("END_OF_FILE_END_OF_FILE");
+                bw.write(BASIC + "\n");
+                bw.write(END_HIGH + "\n\n");
+                bw.write(SURVIVAL + "\n");
+                bw.write(END_HIGH + "\n\n");
+                bw.write(END_FILE);
 
                 bw.flush();
                 bw.close();
             }
 
         } catch (IOException e) {
-            System.out.println("ERROR !!! Can't create file...");
             e.printStackTrace();
         }
         this.mapOfItems = new HashMap<>();
@@ -129,11 +137,11 @@ public class HighscoreStoreImpl implements HighscoreStore {
             final BufferedReader br = new BufferedReader(fr);
 
             readString = br.readLine();
-            while (!readString.equals("END_OF_FILE_END_OF_FILE")) {
+            while (readString != null && !readString.equals(END_FILE)) {
                 readString = br.readLine();
-                if (readString.equals(modality)) {
+                if (readString != null && readString.equals(modality)) {
                     readString = br.readLine();
-                    while (!readString.equals("END_OF_HIGH_END_OF_HIGH")) {
+                    while (readString != null && !readString.equals(END_HIGH)) {
                         itemsSet.add(generateHighscore(readString, gameMode));
                         readString = br.readLine();
                     }
@@ -161,9 +169,9 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private String whichMod(final GameType gameMode) {
         switch (gameMode) {
         case BASICMODE:
-            return "BASIC_MODE_HIGHSCORES...";
+            return BASIC;
         case SURVIVALMODE:
-            return "SURVIVAL_MODE_HIGHSCORES...";
+            return SURVIVAL;
         default:
             return null;
         }
@@ -232,31 +240,37 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private void reWriteFile() {
         String stringToWrite;
         try {
-            this.file.delete();
+            if (!this.file.delete()) {
+                System.out.println("Can't delete the file !!");
+            }
             if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
+                if (!file.getParentFile().mkdirs()) {
+                    System.out.println("Can't create the directory !!");
+                }
             }
             if (!file.exists()) {
-                this.file.createNewFile();
-            }
+                if (!this.file.createNewFile()) {
+                    System.out.println("Can't create the file !!");
+                }
+            } 
 
             final FileWriter fw = new FileWriter(this.file);
             final BufferedWriter bw = new BufferedWriter(fw);
 
             bw.write("HIGHSCORES!!\n\n");
-            bw.write("BASIC_MODE_HIGHSCORES...\n");
+            bw.write(BASIC + "\n");
             for (final HighscoreStructure o : this.mapOfItems.get(GameType.BASICMODE)) {
                 stringToWrite = o.getName() + " " + o.getScore() + "\n";
                 bw.write(stringToWrite);
             }
-            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-            bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
+            bw.write(END_HIGH + "\n\n");
+            bw.write(SURVIVAL + "\n");
             for (final HighscoreStructure o : this.mapOfItems.get(GameType.SURVIVALMODE)) {
                 stringToWrite = o.getName() + " " + o.getScore() + "\n";
                 bw.write(stringToWrite);
             }
-            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-            bw.write("END_OF_FILE_END_OF_FILE");
+            bw.write(END_HIGH + "\n\n");
+            bw.write(END_FILE);
 
             bw.flush();
             bw.close();
