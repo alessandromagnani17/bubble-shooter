@@ -4,7 +4,7 @@ import java.util.List;
 import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.controller.input.SwitcherController;
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.game.level.LevelType;
 import bubbleshooter.model.highscore.HighscoreStore;
 import bubbleshooter.model.highscore.ScoreManager;
 
@@ -18,7 +18,7 @@ public interface Controller {
      * The method called by the {@link View} to start the Game in the {@link Model}.
      * @param levelType
      */
-    void startGame(GameType levelType);
+    void startGame(LevelType levelType);
 
     /**
      * @return The List of the current Bubble in the Game.
@@ -42,7 +42,7 @@ public interface Controller {
      * 
      * @return the current game modality.
      */
-    GameType getCurrentLevel();
+    LevelType getCurrentLevel();
 
     /**
      * Method called by {@link GameOverController} and {@link HighscoreController}

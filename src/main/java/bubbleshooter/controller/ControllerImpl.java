@@ -7,7 +7,7 @@ import bubbleshooter.controller.sound.SoundGameEngine;
 import bubbleshooter.controller.engine.BasicGameLoop;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.game.level.LevelType;
 import bubbleshooter.model.highscore.HighscoreStore;
 import bubbleshooter.model.highscore.HighscoreStoreImpl;
 import bubbleshooter.model.highscore.HighscoreStructure;
@@ -42,7 +42,7 @@ public class ControllerImpl implements Controller {
     * @param levelType
     */
     @Override
-    public final void startGame(final GameType levelType) {
+    public final void startGame(final LevelType levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
      this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
@@ -50,10 +50,10 @@ public class ControllerImpl implements Controller {
      this.engine.startLoop();
     }
 
-    private void startSelectedGame(final GameType levelType) {
-        if (levelType.equals(GameType.BASICMODE)) {
+    private void startSelectedGame(final LevelType levelType) {
+        if (levelType.equals(LevelType.BASICMODE)) {
             this.model.startBasicGame();
-        } else if (levelType.equals(GameType.SURVIVALMODE)) {
+        } else if (levelType.equals(LevelType.SURVIVALMODE)) {
             this.model.startSurvivalGame();
         }
     }
@@ -103,7 +103,7 @@ public class ControllerImpl implements Controller {
      * @return the current game modality.
      */
     @Override
-    public final GameType getCurrentLevel() {
+    public final LevelType getCurrentLevel() {
         return this.model.getLevel().getCurrentGameType();
     }
 

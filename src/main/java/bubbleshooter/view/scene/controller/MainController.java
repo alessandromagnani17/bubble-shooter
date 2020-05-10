@@ -1,7 +1,7 @@
 package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
-import bubbleshooter.model.game.GameType;
+import bubbleshooter.model.game.level.LevelType;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
@@ -76,7 +76,7 @@ public final class MainController extends AbstractController {
      */
     @FXML
     public void basicMode() {
-        this.getController().startGame(GameType.BASICMODE);
+        this.getController().startGame(LevelType.BASICMODE);
         this.nextScene();
     }
 
@@ -85,7 +85,7 @@ public final class MainController extends AbstractController {
      */
     @FXML
     public void survivalMode() {
-        this.getController().startGame(GameType.SURVIVALMODE);
+        this.getController().startGame(LevelType.SURVIVALMODE);
         this.nextScene();
     }
 
