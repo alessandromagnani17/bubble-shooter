@@ -29,4 +29,13 @@ public class GameOverChecker {
         return this.gameMode.getCurrentBubbles().stream().filter(b -> b.getType()
                 .equals(BubbleType.GRID_BUBBLE)).anyMatch(b -> b.getPosition().getY() > LIMITS); 
     }
+
+    /**
+     * Method that checks if the {@link Level} is in GameOver.
+     * @param bubblePosition , the position of {@link Bubble}
+     * @return the position of the {@link Bubble}s is greater than the maximum limit
+     */
+    public final boolean isGameOver(final double bubblePosition) {
+        return bubblePosition > LIMITS;
+    }
 }
