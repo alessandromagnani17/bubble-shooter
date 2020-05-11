@@ -291,4 +291,15 @@ public class HighscoreStoreImpl implements HighscoreStore {
         }
         return result;
     }
+
+    /**
+     * Method used for clean file.
+     */
+    @Override
+    public void cleanFile() {
+        this.mapOfItems.clear();
+        this.mapOfItems.put(GameType.BASICMODE, new ArrayList<HighscoreStructure>());
+        this.mapOfItems.put(GameType.SURVIVALMODE, new ArrayList<HighscoreStructure>());
+        this.reWriteFile();
+    }
 }
