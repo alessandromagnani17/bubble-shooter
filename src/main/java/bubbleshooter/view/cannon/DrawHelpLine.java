@@ -6,7 +6,6 @@ import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
@@ -18,13 +17,12 @@ import javafx.scene.transform.Rotate;
 public class DrawHelpLine {
 
     private AnchorPane pane = new AnchorPane();
-    private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() - Bubble.WIDTH - ShootingBubble.RADIUS);
-    public static final double DASH_SIZE = Settings.getGuiHeigth() / 70;
-    public static final double DASH_WIDTH = Settings.getGuiHeigth() / 200;
-    private Line helpLine = new Line(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), START_POINT_FIRST_LINE.getX(), 0);
-    private Line borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
-    private Line borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
-    private Line boundsLine = new Line(0, 0, 0, 0);
+    private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, 
+                                 Settings.getGuiHeigth() - Bubble.WIDTH - ShootingBubble.RADIUS);
+    private HelpLine helpLine;
+    private HelpLine boundsLine;
+    private HelpLine borderRight;
+    private HelpLine borderLeft;
     private Rotate rotation = new Rotate();
     private boolean helpSelected = false;
 
@@ -35,37 +33,21 @@ public class DrawHelpLine {
      */
     public DrawHelpLine(final AnchorPane pane) {
         this.pane = pane;
-        this.editLine(this.helpLine);
-        this.editLine(this.boundsLine);
+        /*this.helpLine = new HelpLine(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), 
+                                     START_POINT_FIRST_LINE.getX(), 0);*/
+        this.helpLine = new HelpLine(START_POINT_FIRST_LINE, new Point2D(START_POINT_FIRST_LINE.getX(), 0));
+        this.boundsLine = new HelpLine(new Point2D(0, 0), new Point2D(0, 0));
+        this.borderRight = new HelpLine(new Point2D(Settings.getGuiWidth(), 0), 
+        		                        new Point2D(Settings.getGuiWidth(), Settings.getGuiHeigth()));
+        this.borderLeft = new HelpLine(new Point2D(0, 0), new Point2D(0, Settings.getGuiHeigth()));
+
         this.setRotation();
-        this.setInvisibleLine();
-        this.pane.getChildren().add(helpLine);
-        this.pane.getChildren().add(borderRight);
-        this.pane.getChildren().add(borderLeft);
-        this.pane.getChildren().add(boundsLine);
-    }
 
-    /**
-     * Private method for make invisible and mouse transparent all the lines.
-     */
-    private void setInvisibleLine() {
-        this.helpLine.setVisible(false);
-        this.helpLine.setMouseTransparent(true);
-        this.borderRight.setVisible(false);
-        this.borderRight.setMouseTransparent(true);
-        this.borderLeft.setVisible(false);
-        this.borderLeft.setMouseTransparent(true);
-        this.boundsLine.setVisible(false);
-        this.boundsLine.setMouseTransparent(true);
-    }
+        this.pane.getChildren().add(helpLine.getLine());
+        this.pane.getChildren().add(boundsLine.getLine());
+        this.pane.getChildren().add(borderRight.getLine());
+        this.pane.getChildren().add(borderLeft.getLine());
 
-    /**
-     * Private method for edit a line.
-     */
-    private void editLine(final Line line) {
-        line.setStroke(Color.RED);
-        line.setStrokeWidth(DASH_WIDTH);
-        line.getStrokeDashArray().add(DASH_SIZE);
     }
 
     /**
@@ -74,28 +56,28 @@ public class DrawHelpLine {
     private void setRotation() {
         this.rotation.setPivotX(START_POINT_FIRST_LINE.getX());
         this.rotation.setPivotY(START_POINT_FIRST_LINE.getY());
-        this.helpLine.getTransforms().add(this.rotation);
+        this.helpLine.getLine().getTransforms().add(this.rotation);
     }
 
     /**
      * @return the bounds of help line.
      */
     public final Bounds getHelpBounds() {
-        return helpLine.getBoundsInParent();
+        return helpLine.getLine().getBoundsInParent();
     }
 
     /**
      * @return the bounds of right line.
      */
     public final Bounds getRightBounds() {
-        return borderRight.getBoundsInParent();
+        return borderRight.getLine().getBoundsInParent();
     }
 
     /**
      * @return the bounds of left line.
      */
     public final Bounds getLeftBounds() {
-        return borderLeft.getBoundsInParent();
+        return borderLeft.getLine().getBoundsInParent();
     }
 
     /**
@@ -109,14 +91,14 @@ public class DrawHelpLine {
      * @return the bounds line.
      */
     public final Line getBoundsLine() {
-        return this.boundsLine;
+        return this.boundsLine.getLine();
     }
 
     /**
      * @return the help line.
      */
     public final Line getHelpLine() {
-        return this.helpLine;
+        return this.helpLine.getLine();
     }
 
     /**
@@ -137,8 +119,8 @@ public class DrawHelpLine {
      * Method for delete the help line.
      */
     public final void deleteLine() {
-        this.helpLine.setVisible(false);
-        this.boundsLine.setVisible(false);
+        this.helpLine.getLine().setVisible(false);
+        this.boundsLine.getLine().setVisible(false);
         this.helpSelected = false;
     }
 
@@ -149,10 +131,10 @@ public class DrawHelpLine {
      * @param endPointSecondLine   the end point.
      */
     public final void drawBoundsLine(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
-        this.boundsLine.setStartX(startPointSecondLine.getX());
-        this.boundsLine.setStartY(startPointSecondLine.getY());
-        this.boundsLine.setEndX(endPointSecondLine.getX());
-        this.boundsLine.setEndY(endPointSecondLine.getY());
-        this.boundsLine.setVisible(true);
+        this.boundsLine.getLine().setStartX(startPointSecondLine.getX());
+        this.boundsLine.getLine().setStartY(startPointSecondLine.getY());
+        this.boundsLine.getLine().setEndX(endPointSecondLine.getX());
+        this.boundsLine.getLine().setEndY(endPointSecondLine.getY());
+        this.boundsLine.getLine().setVisible(true);
     }
 }
