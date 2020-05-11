@@ -1,5 +1,7 @@
 package bubbleshooter.view;
 
+import java.io.IOException;
+
 import bubbleshooter.controller.Controller;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
@@ -8,7 +10,7 @@ import bubbleshooter.view.scene.SceneLoader;
 import bubbleshooter.view.scene.SceneWrapper;
 import bubbleshooter.view.scene.controller.AbstractController;
 import javafx.application.Platform;
-import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -24,10 +26,12 @@ public class ViewImpl implements View {
 	private AbstractController currentSceneController;
 	private final Stage stage;
 	private boolean viewStarted;
+	private SceneLoader sceneLoader; 
 
 	public ViewImpl(final Stage startingStage) {
 		this.stage = startingStage;
 		this.viewStarted = false;
+		this.sceneLoader = new SceneLoader(); 
 	}
 
 	@Override
@@ -47,16 +51,26 @@ public class ViewImpl implements View {
 
 	@Override
 	public final void loadScene(final FXMLPath scene) {
+//		try {
+//			final SceneWrapper wrapper = SceneLoader.getLoader().getScene(scene);
+//			wrapper.getController().init(controller, this);
+//			this.currentSceneController = wrapper.getController();
+//			wrapper.getScene().getRoot().requestFocus();
+//			Platform.runLater(() -> this.initStage(wrapper.getScene()));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		try {
-			final SceneWrapper wrapper = SceneLoader.getLoader().getScene(scene);
-			wrapper.getController().init(controller, this);
-			this.currentSceneController = wrapper.getController();
-			final Parent root = wrapper.getScene().getRoot();
-			root.requestFocus();
-			Platform.runLater(() -> this.initStage(wrapper));
-		} catch (Exception e) {
+			this.sceneLoader.loadScene(scene);
+			this.currentSceneController = this.sceneLoader.getController(); 
+			this.currentSceneController.init(controller, this);
+			this.sceneLoader.getScene().getRoot().requestFocus();
+			Platform.runLater(() -> this.initStage(this.sceneLoader.getScene()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
@@ -64,8 +78,8 @@ public class ViewImpl implements View {
 		Platform.runLater(() -> this.currentSceneController.render());
 	}
 
-	private void initStage(final SceneWrapper wrapper) {
-		this.stage.setScene(wrapper.getScene());
+	private void initStage(final Scene scene) {
+		this.stage.setScene(scene);
 		this.stage.setWidth(this.stage.getWidth());
 		this.stage.setHeight(this.stage.getHeight());
 		if (!this.viewStarted) {
