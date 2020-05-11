@@ -17,10 +17,10 @@ import javafx.scene.transform.Rotate;
  */
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
-    private Rotate cannonRotation = new Rotate();
-    private Rotate lineRotation = new Rotate();
-    private DrawHelpLine drawHelpLine;
-    private Point2D shootingBubblePosition;
+    private final Rotate cannonRotation;
+    private final Rotate lineRotation;
+    private final DrawHelpLine drawHelpLine;
+    private final Point2D shootingBubblePosition;
     private Point2D eventPosition;
 
     /**
@@ -56,7 +56,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         double angularCoefficient;
         double intercepts;
         boolean flag = false;
-        Point2D startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
+        final Point2D startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
                       this.drawHelpLine.getHelpLine().getStartY());
         Point2D startPointSecondLine = null;
         Point2D endPointSecondLine = null;
