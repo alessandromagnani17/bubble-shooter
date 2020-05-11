@@ -298,8 +298,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
     @Override
     public void cleanFile() {
         this.mapOfItems.clear();
-        this.mapOfItems.put(GameType.BASICMODE, new ArrayList<HighscoreStructure>());
-        this.mapOfItems.put(GameType.SURVIVALMODE, new ArrayList<HighscoreStructure>());
+        this.mapOfItems.put(LevelType.BASICMODE, new ArrayList<HighscoreStructure>());
+        this.mapOfItems.put(LevelType.SURVIVALMODE, new ArrayList<HighscoreStructure>());
         this.reWriteFile();
     }
 }
