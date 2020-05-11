@@ -11,8 +11,8 @@ import javafx.scene.transform.Rotate;
  */
 public class DrawCannon {
 
-    private static final Point2D CANNON_POSITION = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() / 1.36);
-    private static final Point2D PIVOT = new Point2D(Settings.getGuiWidth() / 700, Settings.getGuiHeigth() / 5.35);
+    private static final Point2D CANNON_POSITION = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeight() / 1.36);
+    private static final Point2D PIVOT = new Point2D(Settings.getGuiWidth() / 700, Settings.getGuiHeight() / 5.35);
 
 
     private final AnchorPane pane;

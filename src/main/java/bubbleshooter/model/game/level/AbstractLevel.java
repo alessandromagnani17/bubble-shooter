@@ -85,12 +85,12 @@ public abstract class AbstractLevel implements Level {
 		if (this.bubblesManager.getShootingBubble().isPresent()) {
 			Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
 			shootingBubble
-					.setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y));
+					.setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
 			shootingBubble.setDirection(shootingBubble.getPosition());
 			shootingBubble.setColor(this.bubblesManager.getSwitchBubble().get().getColor());
 		} else {
 			this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-					new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y),
+					new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y),
 					BubbleColor.getRandomColor())));
 		}
 	}
@@ -100,12 +100,12 @@ public abstract class AbstractLevel implements Level {
 		if (this.bubblesManager.getSwitchBubble().isPresent()) {
 			final Random rand = new Random();
 			Bubble switchBubble = this.bubblesManager.getSwitchBubble().get();
-			switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y));
+			switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
 			switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
 					.get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
 		} else {
 			this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-					new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y),
+					new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y),
 					BubbleColor.getRandomColor())));
 		}
 	}

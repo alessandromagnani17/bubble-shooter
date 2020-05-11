@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 public class BubbleSprite implements Sprite {
 
 	private final GraphicsContext gc;
-	private double heigth;
+	private double height;
 	private double width;
 	private Point2D position;
 	private Image image;
@@ -23,12 +23,12 @@ public class BubbleSprite implements Sprite {
 	@Override
 	public void draw() {
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
-				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
+				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeight());
 
 	}
 
 	private Point2D getTopLeftFromCenter(Point2D center) {
-		return new Point2D(this.position.getX() - (this.getWidth() / 2), this.position.getY() - (this.getHeigth() / 2));
+		return new Point2D(this.position.getX() - (this.getWidth() / 2), this.position.getY() - (this.getHeight() / 2));
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class BubbleSprite implements Sprite {
 
 	@Override
 	public void setSource(ImagePath source) throws FileNotFoundException {
-		this.image = ImageLoader.getImage(source);
+		this.image = new ImageLoader().getImage(source);
 
 	}
 
@@ -59,13 +59,13 @@ public class BubbleSprite implements Sprite {
 	}
 
 	@Override
-	public double getHeigth() {
-		return this.heigth;
+	public double getHeight() {
+		return this.height;
 	}
 
 	@Override
-	public void setHeigth(double heigth) {
-		this.heigth = heigth;
+	public void setHeight(double height) {
+		this.height = height;
 
 	}
 

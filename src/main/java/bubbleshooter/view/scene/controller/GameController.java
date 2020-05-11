@@ -33,7 +33,7 @@ public class GameController extends AbstractController {
 
     private static final double MAXANGLE =  74.9;
     private static final double MINANGLE = -74.9;
-    private static final double LIMITS = Settings.getGuiHeigth() / 1.1;
+    private static final double LIMITS = Settings.getGuiHeight() / 1.1;
     private static final double CANNON_SCALE = 700;
 
 
@@ -62,7 +62,7 @@ public class GameController extends AbstractController {
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 
         this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
-        this.cannon.getCannon().setScaleY(Settings.getGuiHeigth() / CANNON_SCALE);
+        this.cannon.getCannon().setScaleY(Settings.getGuiHeight() / CANNON_SCALE);
 
         this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
@@ -94,7 +94,7 @@ public class GameController extends AbstractController {
                         .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get();
                 if (shootingBubble.getPosition().getX() == shootingBubbleInitialPosition.getX() && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
                     shootingBubble.setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()), event.getY() * (Model.WORLD_HEIGTH / Settings.getGuiHeigth())), shootingBubble.getPosition()));
+                            new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()), event.getY() * (Model.WORLD_HEIGHT / Settings.getGuiHeight())), shootingBubble.getPosition()));
                 }
             }
         });
@@ -163,7 +163,7 @@ public class GameController extends AbstractController {
         gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
-        gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeigth() /  Model.WORLD_HEIGTH);
+        gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeight() /  Model.WORLD_HEIGHT);
 
     }
 

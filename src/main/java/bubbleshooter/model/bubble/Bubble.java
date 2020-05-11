@@ -89,7 +89,7 @@ public interface Bubble {
 	/**
 	 * @return The height of the bubble.
 	 */
-	double getHeigth();
+	double getHeight();
 
 	/**
 	 * 

@@ -35,8 +35,8 @@ public class BubbleDrawer {
 		try {
 			sprite.setSource(this.colorMap.get(bubble.getColor()));
 			sprite.setPosition(bubble.getPosition());
-			sprite.setHeigth(bubble.getWidth());
-			sprite.setWidth(bubble.getHeigth());
+			sprite.setHeight(bubble.getWidth());
+			sprite.setWidth(bubble.getHeight());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

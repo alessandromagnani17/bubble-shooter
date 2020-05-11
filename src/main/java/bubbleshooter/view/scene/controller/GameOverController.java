@@ -24,19 +24,19 @@ public class GameOverController extends AbstractController {
     @FXML private TextArea textArea = new TextArea();
     @FXML private Button buttonAdd = new Button();
 
-    private static final double TITLE_DISTANCE = Settings.getGuiHeigth() / 10;
-    private static final double TITLE_HEIGTH = Settings.getGuiHeigth() / 8;
+    private static final double TITLE_DISTANCE = Settings.getGuiHeight() / 10;
+    private static final double TITLE_HEIGTH = Settings.getGuiHeight() / 8;
     private static final double TITLE_WIDTH = Settings.getGuiWidth();
     private static final double TITLE_FONT_SIZE = TITLE_HEIGTH / 1.5;
-    private static final double LABEL_HEIGTH = Settings.getGuiHeigth() / 10;
+    private static final double LABEL_HEIGTH = Settings.getGuiHeight() / 10;
     private static final double LABEL_WIDTH = Settings.getGuiWidth();
     private static final double LABEL_X = Settings.getGuiWidth() / 2 - LABEL_WIDTH / 4;
-    private static final double LABEL_DISTANCE = Settings.getGuiHeigth() / 10;
+    private static final double LABEL_DISTANCE = Settings.getGuiHeight() / 10;
     private static final double LABEL_FONT_SIZE = LABEL_HEIGTH / 2;
     private static final double TEXT_AREA_HEIGTH = LABEL_HEIGTH;
     private static final double TEXT_AREA_WIDTH = Settings.getGuiWidth() / 2;
     private static final double BUTTON_WIDTH = Settings.getGuiWidth() / 2;
-    private static final double BUTTON_HEIGTH = Settings.getGuiHeigth() / 10;
+    private static final double BUTTON_HEIGTH = Settings.getGuiHeight() / 10;
     private static final double BUTTON_FONT_SIZE = BUTTON_HEIGTH / 2.5;
 
     @Override
