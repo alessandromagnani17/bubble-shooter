@@ -14,9 +14,9 @@ import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.model.bubble.SwitchBubble;
-import bubbleshooter.model.game.mode.BasicLevel;
-import bubbleshooter.model.game.mode.Level;
-import bubbleshooter.model.game.mode.SurvivalLevel;
+import bubbleshooter.model.game.level.BasicLevel;
+import bubbleshooter.model.game.level.Level;
+import bubbleshooter.model.game.level.SurvivalLevel;
 import javafx.geometry.Point2D;
 
 /**
@@ -75,7 +75,7 @@ public class TestSwitchBubble {
     public final void testBasicSwitchAfterShot() {
         this.bubblesManager.add(testShootingBubble);
         this.bubblesManager.add(testSwitchBubble);
-        this.basicLevel.getBubblesManager().addBubble(bubblesManager);
+        this.basicLevel.getBubblesManager().addBubbles(bubblesManager);
         this.basicLevel.loadShootingBubble();
 
         assertTrue(this.basicLevel.getBubblesManager().getShootingBubble().get().getColor().equals(BubbleColor.GREEN));
@@ -89,7 +89,7 @@ public class TestSwitchBubble {
     public final void testSurvivalSwitchAfterShot() {
         this.bubblesManager.add(testShootingBubble);
         this.bubblesManager.add(testSwitchBubble);
-        this.survivalLevel.getBubblesManager().addBubble(bubblesManager);
+        this.survivalLevel.getBubblesManager().addBubbles(bubblesManager);
         this.survivalLevel.loadShootingBubble();
 
         assertTrue(this.survivalLevel.getBubblesManager().getShootingBubble().get().getColor().equals(BubbleColor.GREEN));
