@@ -5,22 +5,21 @@ import javafx.geometry.Point2D;
 import bubbleshooter.view.images.ImagePath;
 
 public interface Sprite {
-
 	
-    void setPosition(Point2D coordinate); 
+	void draw();
 
-    Point2D getPosition(); 
+	void setPosition(Point2D coordinate);
 
-    void setSource(ImagePath source) throws FileNotFoundException;
+	void setSource(ImagePath source) throws FileNotFoundException;
 
-    void draw(); 
+	void setHeigth(double heigth);
 
-    double getWidth(); 
+	void setWidth(double width);
 
-    double getHeigth(); 
+	Point2D getPosition();
 
-    void setHeigth(double heigth); 
+	double getWidth();
 
-    void setWidth(double width); 
+	double getHeigth();
 
 }

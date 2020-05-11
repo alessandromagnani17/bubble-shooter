@@ -102,8 +102,7 @@ public class GameController extends AbstractController {
     }
 
     public final void render() {
-        // da aggiungere anche la chiamata al controller per sapere lo score corrente
-        this.resetCanvas();
+    	this.resetCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
     }
 
@@ -153,10 +152,6 @@ public class GameController extends AbstractController {
 
     public final boolean isGameOver() {
         return this.gameOver;
-    }
-
-    public final void setGameOver() {
-        this.gameOver = true;
     }
 
     public final boolean checkAngle(final double angle) {

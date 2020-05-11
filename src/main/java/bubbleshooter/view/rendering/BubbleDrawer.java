@@ -21,6 +21,15 @@ public class BubbleDrawer {
 		this.canvas = canvas;
 	}
 
+	public final void draw(final List<Bubble> bubbles) {
+		final GraphicsContext gc = this.canvas.getGraphicsContext2D();
+		this.createSpriteList(bubbles).forEach(s -> {
+			gc.save();
+			s.draw();
+			gc.restore();
+		});
+	}
+
 	private Sprite generateSprite(Bubble bubble) {
 		Sprite sprite = new BubbleSprite(this.canvas.getGraphicsContext2D());
 		try {
@@ -38,14 +47,6 @@ public class BubbleDrawer {
 		return canvas;
 	}
 
-	public final void draw(final List<Bubble> bubbles) {
-		final GraphicsContext gc = this.canvas.getGraphicsContext2D();
-		this.createSpriteList(bubbles).forEach(s -> {
-			gc.save();
-			s.draw();
-			gc.restore();
-		});
-	}
 
 	private List<Sprite> createSpriteList(final List<Bubble> bubbles) {
 		return bubbles.stream().map(this::generateSprite).collect(Collectors.toList());

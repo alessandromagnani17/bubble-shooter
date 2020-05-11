@@ -18,7 +18,7 @@ import javafx.geometry.Point2D;
 
 public abstract class AbstractLevel implements Level {
 
-	private static final int NUM_BUBBLES_PER_ROW= 19;
+	private static final int NUM_BUBBLES_PER_ROW = 19;
 	private static final int NUM_ROWS = 8;
 	private static final int MILLISECONDS_IN_A_SECOND = 1000;
 	private static final double LIMITS_SHOOTING_BUBBLE_Y = 1.08;
@@ -68,7 +68,7 @@ public abstract class AbstractLevel implements Level {
 	 * initialize the bubbles in the game.
 	 */
 	private void initBubbles() {
-		for(int i = 0; i < NUM_ROWS; i++) {
+		for (int i = 0; i < NUM_ROWS; i++) {
 			this.createNewRow();
 		}
 		this.loadSwitchBubble();
@@ -173,17 +173,6 @@ public abstract class AbstractLevel implements Level {
 	public final BubbleFactory getBubbleFactory() {
 		return this.bubbleFactory;
 	}
-
-	@Override
-	public final int getNumRows() {
-		return NUM_ROWS;
-	}
-
-	@Override
-	public final int getBubblesPerRow() {
-		return NUM_BUBBLES_PER_ROW;
-	}
-
 	/**
 	 * updates the score
 	 * 
@@ -198,4 +187,16 @@ public abstract class AbstractLevel implements Level {
 	 * @return true if it's time to create new row, false otherwise
 	 */
 	protected abstract boolean isTimeToNewRow(double elapsed);
+
+	@Override
+	public int getBubblesPerRow() {
+		return NUM_BUBBLES_PER_ROW; 
+	}
+
+	@Override
+	public int getNumRow() {
+		return NUM_ROWS; 
+	}
+	
+	
 }
