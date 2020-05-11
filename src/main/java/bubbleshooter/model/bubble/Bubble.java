@@ -20,6 +20,19 @@ public interface Bubble {
      */
     double WIDTH = RADIUS * 2;
 
+	/**
+	 * Method to update the {@link Bubble} every GameLoop cycle.
+	 * 
+	 * @param elapsed
+	 */
+	void update(double elapsed);
+
+	/**
+	 * 
+	 * @return True if the bubble is exploded.
+	 */
+	boolean isDestroyed();
+
     /**
      * Method to set the position of the {@link Bubble} in the game.
      * @param position 
@@ -43,11 +56,6 @@ public interface Bubble {
      */
     void destroy();
 
-    /**
-     * Method to update the {@link Bubble} every GameLoop cycle.
-     * @param elapsed
-     */
-    void update(double elapsed);
 
     /**
      * 
@@ -76,11 +84,6 @@ public interface Bubble {
      */
     double getHeigth(); 
 
-    /**
-     * 
-     * @return True if the bubble is exploded.
-     */
-    boolean isDestroyed();
 
     /**
      * 

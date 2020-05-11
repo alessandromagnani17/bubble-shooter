@@ -10,7 +10,7 @@ import bubbleshooter.model.bubble.BubbleColor;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.component.CollisionComponent;
 import bubbleshooter.model.component.ComponentType;
-import bubbleshooter.model.game.mode.BasicLevel;
+import bubbleshooter.model.game.level.BasicLevel;
 import javafx.geometry.Point2D;
 
 /**

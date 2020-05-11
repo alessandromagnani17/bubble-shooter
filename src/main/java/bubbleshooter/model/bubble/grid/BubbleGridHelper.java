@@ -18,14 +18,14 @@ import javafx.geometry.Point2D;
  */
 public class BubbleGridHelper {
 
-    private final BubblesManager gameObjectManager;
+    private final BubblesManager bubblesManager;
     private final double diagonalDistance = Bubble.WIDTH * 1.20;
 
     /**
-     * @param gameObjectManager The manager of the {@link Bubble} in the Game.
+     * @param bubblesManager The manager of the {@link Bubble} in the Game.
      */
-    public BubbleGridHelper(final BubblesManager gameObjectManager) {
-        this.gameObjectManager = gameObjectManager;
+    public BubbleGridHelper(final BubblesManager bubblesManager) {
+        this.bubblesManager = bubblesManager;
     }
 
     /**
@@ -40,7 +40,7 @@ public class BubbleGridHelper {
      * @return The current grid of {@link Bubble} in the game.
      */
     public final List<Bubble> getBubbleGrid() {
-        return this.gameObjectManager.getBubbleGrid();
+        return this.bubblesManager.getBubbleGrid();
     }
 
     /**

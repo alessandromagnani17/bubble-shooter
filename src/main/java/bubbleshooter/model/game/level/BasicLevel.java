@@ -1,7 +1,6 @@
-package bubbleshooter.model.game.mode;
+package bubbleshooter.model.game.level;
 
 import bubbleshooter.model.game.GameInfoManager;
-import bubbleshooter.model.game.GameType;
 
 public class BasicLevel extends AbstractLevel {
 
@@ -9,7 +8,7 @@ public class BasicLevel extends AbstractLevel {
     private static final int WRONG_SHOTS_BEFORE_NEW_ROW = 5;
 
     public BasicLevel() {
-        this.setCurrentGameType(GameType.BASICMODE);
+        this.setCurrentGameType(LevelType.BASICMODE);
     }
 
     @Override
