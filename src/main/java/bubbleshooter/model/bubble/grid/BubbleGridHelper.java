@@ -22,7 +22,7 @@ public class BubbleGridHelper {
     private final double diagonalDistance = Bubble.WIDTH * 1.20;
 
     /**
-     * @param gameObjectManager The manager of the {@link Bubble} in the Game.
+     * @param bubblesManager The manager of the {@link Bubble} in the Game.
      */
     public BubbleGridHelper(final BubblesManager bubblesManager) {
         this.bubblesManager = bubblesManager;
