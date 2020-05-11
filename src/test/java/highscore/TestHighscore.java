@@ -29,19 +29,9 @@ public class TestHighscore {
 
             ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
             ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-
-<<<<<<< HEAD
-            this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS, GameType.BASICMODE));
-            scoreList.addAll(this.highscoreStore.getHighscoresForModality(GameType.BASICMODE));
-
-            rightList.add(new HighscoreStructure("Player", POINTS, GameType.BASICMODE));
-=======
-        this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS, LevelType.BASICMODE));
-        scoreList.addAll(this.highscoreStore.getHighscoresForModality(LevelType.BASICMODE));
-
-        rightList.add(new HighscoreStructure("Player", POINTS, LevelType.BASICMODE));
->>>>>>> Accursi
-
+            this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS, LevelType.BASICMODE));
+            scoreList.addAll(this.highscoreStore.getHighscoresForModality(LevelType.BASICMODE));
+            rightList.add(new HighscoreStructure("Player", POINTS, LevelType.BASICMODE));
             assertTrue(rightList.get(0).getName().equals(scoreList.get(0).getName()));
             assertTrue(rightList.get(0).getScore().equals(scoreList.get(0).getScore()));
         }
@@ -60,17 +50,10 @@ public class TestHighscore {
             ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
             ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
 
-<<<<<<< HEAD
-            this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS, GameType.SURVIVALMODE));
-            scoreList.addAll(this.highscoreStore.getHighscoresForModality(GameType.SURVIVALMODE));
+            this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS, LevelType.SURVIVALMODE));
+            scoreList.addAll(this.highscoreStore.getHighscoresForModality(LevelType.SURVIVALMODE));
 
-            rightList.add(new HighscoreStructure("Player", POINTS, GameType.SURVIVALMODE));
-=======
-        this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS, LevelType.SURVIVALMODE));
-        scoreList.addAll(this.highscoreStore.getHighscoresForModality(LevelType.SURVIVALMODE));
-
-        rightList.add(new HighscoreStructure("Player", POINTS, LevelType.SURVIVALMODE));
->>>>>>> Accursi
+            rightList.add(new HighscoreStructure("Player", POINTS, LevelType.SURVIVALMODE));
 
             assertTrue(rightList.get(0).getName().equals(scoreList.get(0).getName()));
             assertTrue(rightList.get(0).getScore().equals(scoreList.get(0).getScore()));
@@ -89,18 +72,6 @@ public class TestHighscore {
 
             ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
             ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-
-<<<<<<< HEAD
-            this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS * 2, GameType.BASICMODE));
-            this.highscoreStore.addScore(new HighscoreStructure("Player1", POINTS, GameType.BASICMODE));
-            this.highscoreStore.addScore(new HighscoreStructure("Player2", POINTS * 3, GameType.BASICMODE));
-
-            scoreList.addAll(this.highscoreStore.getHighscoresForModality(GameType.BASICMODE));
-
-            rightList.add(new HighscoreStructure("Player2", POINTS * 3, GameType.BASICMODE));
-            rightList.add(new HighscoreStructure("Player", POINTS * 2, GameType.BASICMODE));
-            rightList.add(new HighscoreStructure("Player1", POINTS, GameType.BASICMODE));
-=======
         this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS * 2, LevelType.BASICMODE));
         this.highscoreStore.addScore(new HighscoreStructure("Player1", POINTS, LevelType.BASICMODE));
         this.highscoreStore.addScore(new HighscoreStructure("Player2", POINTS * 3, LevelType.BASICMODE));
@@ -110,7 +81,6 @@ public class TestHighscore {
         rightList.add(new HighscoreStructure("Player2", POINTS * 3, LevelType.BASICMODE));
         rightList.add(new HighscoreStructure("Player", POINTS * 2, LevelType.BASICMODE));
         rightList.add(new HighscoreStructure("Player1", POINTS, LevelType.BASICMODE));
->>>>>>> Accursi
 
             for (int i = 0; i < rightList.size(); i++) {
                 assertTrue(rightList.get(i).getName().equals(scoreList.get(i).getName()));
@@ -131,18 +101,6 @@ public class TestHighscore {
 
             ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
             ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-
-<<<<<<< HEAD
-            this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS * 2, GameType.SURVIVALMODE));
-            this.highscoreStore.addScore(new HighscoreStructure("Player1", POINTS, GameType.SURVIVALMODE));
-            this.highscoreStore.addScore(new HighscoreStructure("Player2", POINTS * 3, GameType.SURVIVALMODE));
-
-            scoreList.addAll(this.highscoreStore.getHighscoresForModality(GameType.SURVIVALMODE));
-
-            rightList.add(new HighscoreStructure("Player2", POINTS * 3, GameType.SURVIVALMODE));
-            rightList.add(new HighscoreStructure("Player", POINTS * 2, GameType.SURVIVALMODE));
-            rightList.add(new HighscoreStructure("Player1", POINTS, GameType.SURVIVALMODE));
-=======
         this.highscoreStore.addScore(new HighscoreStructure("Player", POINTS * 2, LevelType.SURVIVALMODE));
         this.highscoreStore.addScore(new HighscoreStructure("Player1", POINTS, LevelType.SURVIVALMODE));
         this.highscoreStore.addScore(new HighscoreStructure("Player2", POINTS * 3, LevelType.SURVIVALMODE));
@@ -152,7 +110,6 @@ public class TestHighscore {
         rightList.add(new HighscoreStructure("Player2", POINTS * 3, LevelType.SURVIVALMODE));
         rightList.add(new HighscoreStructure("Player", POINTS * 2, LevelType.SURVIVALMODE));
         rightList.add(new HighscoreStructure("Player1", POINTS, LevelType.SURVIVALMODE));
->>>>>>> Accursi
 
             for (int i = 0; i < rightList.size(); i++) {
                 assertTrue(rightList.get(i).getName().equals(scoreList.get(i).getName()));
@@ -173,20 +130,6 @@ public class TestHighscore {
 
             ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
             ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-
-<<<<<<< HEAD
-            for (int i = 0; i < LIMIT * 2; i++) {
-                this.highscoreStore.addScore(new HighscoreStructure("Player" + i, POINTS + i, GameType.BASICMODE));
-            }
-            scoreList.addAll(this.highscoreStore.getHighscoresForModality(GameType.BASICMODE));
-
-            for (int j = 0; j < LIMIT; j++) {
-                rightList.add(new HighscoreStructure("Player" + j, POINTS + j, GameType.BASICMODE));
-            }
-
-            assertFalse(scoreList.size() > LIMIT);
-            assertTrue(rightList.size() == scoreList.size());
-=======
         for (int i = 0; i < LIMIT * 2; i++) {
             this.highscoreStore.addScore(new HighscoreStructure("Player" + i, POINTS + i, LevelType.BASICMODE));
         }
@@ -194,9 +137,11 @@ public class TestHighscore {
 
         for (int j = 0; j < LIMIT; j++) {
             rightList.add(new HighscoreStructure("Player" + j, POINTS + j, LevelType.BASICMODE));
->>>>>>> Accursi
         }
 
+        assertFalse(scoreList.size() > LIMIT);
+        assertTrue(rightList.size() == scoreList.size());
+        }
      }
 
     /**
@@ -211,20 +156,6 @@ public class TestHighscore {
 
             ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
             ObservableList<HighscoreStructure> scoreList = FXCollections.observableArrayList();
-
-<<<<<<< HEAD
-            for (int i = 0; i < LIMIT * 2; i++) {
-                this.highscoreStore.addScore(new HighscoreStructure("Player" + i, POINTS + i, GameType.SURVIVALMODE));
-            }
-            scoreList.addAll(this.highscoreStore.getHighscoresForModality(GameType.SURVIVALMODE));
-
-            for (int j = 0; j < LIMIT; j++) {
-                rightList.add(new HighscoreStructure("Player" + j, POINTS + j, GameType.SURVIVALMODE));
-            }
-
-            assertFalse(scoreList.size() > LIMIT);
-            assertTrue(rightList.size() == scoreList.size());
-=======
         for (int i = 0; i < LIMIT * 2; i++) {
             this.highscoreStore.addScore(new HighscoreStructure("Player" + i, POINTS + i, LevelType.SURVIVALMODE));
         }
@@ -232,9 +163,10 @@ public class TestHighscore {
 
         for (int j = 0; j < LIMIT; j++) {
             rightList.add(new HighscoreStructure("Player" + j, POINTS + j, LevelType.SURVIVALMODE));
->>>>>>> Accursi
         }
-
+        assertFalse(scoreList.size() > LIMIT);
+        assertTrue(rightList.size() == scoreList.size());
      }
 
+    }
 }
