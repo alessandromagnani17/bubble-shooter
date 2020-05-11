@@ -66,7 +66,6 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
                 bw.flush();
                 bw.close();
-                fw.close();
             }
 
         } catch (IOException e) {
@@ -183,12 +182,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @return the {@link HighscoreStructure}.
      */
     private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
-<<<<<<< HEAD
-        String name = "", score = "";
-=======
         StringBuilder nameBuilder = new StringBuilder("");
         StringBuilder scoreBuilder = new StringBuilder("");
->>>>>>> fbb45cb6d3eab38bb95a718442308875bcad585e
         final char space = ' ';
         boolean flag = true;
 
@@ -244,17 +239,10 @@ public class HighscoreStoreImpl implements HighscoreStore {
         try {
             if (!this.file.delete()) {
                 System.out.println("Can't delete the file !!!");
-<<<<<<< HEAD
             }
             if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
                 System.out.println("Can't create directory !!!");
             }
-=======
-            }
-            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
-                System.out.println("Can't create directory !!!");
-            }
->>>>>>> fbb45cb6d3eab38bb95a718442308875bcad585e
             if (!file.exists() && !this.file.createNewFile()) {
                 System.out.println("Can't create the file !!!");
             }
