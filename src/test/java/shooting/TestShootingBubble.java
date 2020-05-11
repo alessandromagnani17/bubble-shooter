@@ -17,16 +17,16 @@ import javafx.geometry.Point2D;
  */
 public class TestShootingBubble {
 
-    private Bubble testShootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+    private final Bubble shootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
 
     /**
      * Method to test if the {@link ShootingBubble} contains the {@link ShootingComponent}.
      */
     @Test
     public final void testShootingComponent() {
-        assertTrue(this.testShootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).isPresent());
-        final ShootingComponent component = (ShootingComponent) this.testShootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
-        assertTrue(component.getContainer().equals(this.testShootingBubble));
+        assertTrue(this.shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).isPresent());
+        final ShootingComponent component = (ShootingComponent) this.shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
+        assertTrue(component.getContainer().equals(this.shootingBubble));
     }
 
     /**
@@ -34,9 +34,9 @@ public class TestShootingBubble {
      */
     @Test
     public final void testDirection() {
-        final Point2D startingDirection = this.testShootingBubble.getDirection().get();
-        this.testShootingBubble.setDirection(new Point2D(100, 100));
-        assertFalse(startingDirection.equals(this.testShootingBubble.getDirection().get()));
+        final Point2D startingDirection = this.shootingBubble.getDirection().get();
+        this.shootingBubble.setDirection(new Point2D(100, 100));
+        assertFalse(startingDirection.equals(this.shootingBubble.getDirection().get()));
     }
 
     /**
@@ -44,12 +44,12 @@ public class TestShootingBubble {
      */
     @Test
     public final void testShoot() {
-        final ShootingComponent component = (ShootingComponent) this.testShootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
-        final Point2D startingPos = this.testShootingBubble.getPosition();
-        this.testShootingBubble.setDirection(new Point2D(1000, 1000));
+        final ShootingComponent component = (ShootingComponent) this.shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
+        final Point2D startingPos = this.shootingBubble.getPosition();
+        this.shootingBubble.setDirection(new Point2D(1000, 1000));
         component.update(1);
         component.update(1);
-        final Point2D finalPos = this.testShootingBubble.getPosition();
+        final Point2D finalPos = this.shootingBubble.getPosition();
         assertFalse(startingPos.equals(finalPos));
     }
 
@@ -58,9 +58,9 @@ public class TestShootingBubble {
      */
     @Test
     public final void testStartingDirection() {
-        assertTrue(this.testShootingBubble.getPosition().equals(this.testShootingBubble.getDirection().get()));
-        final ShootingComponent component = (ShootingComponent) this.testShootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
+        assertTrue(this.shootingBubble.getPosition().equals(this.shootingBubble.getDirection().get()));
+        final ShootingComponent component = (ShootingComponent) this.shootingBubble.getComponent(ComponentType.SHOOTINGCOMPONENT).get();
         component.update(1);
-        assertTrue(this.testShootingBubble.getPosition().equals(this.testShootingBubble.getDirection().get()));
+        assertTrue(this.shootingBubble.getPosition().equals(this.shootingBubble.getDirection().get()));
     }
 }
