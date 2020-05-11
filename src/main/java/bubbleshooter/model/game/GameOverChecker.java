@@ -1,7 +1,9 @@
 package bubbleshooter.model.game;
 
+import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.BubbleType;
 import bubbleshooter.model.game.mode.Level;
+import bubbleshooter.utility.Settings;
 
 /**
  * Class that checks if the {@link Level} is in GameOver.
@@ -9,7 +11,7 @@ import bubbleshooter.model.game.mode.Level;
  */
 public class GameOverChecker {
 
-    private static final double LIMITS = 574;
+    private static final double LIMITS = Model.WORLD_HEIGTH / 1.3;
     private final Level gameMode;
 
     /**
