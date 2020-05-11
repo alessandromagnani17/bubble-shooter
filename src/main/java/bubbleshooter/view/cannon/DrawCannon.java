@@ -15,9 +15,9 @@ public class DrawCannon {
     private static final Point2D PIVOT = new Point2D(Settings.getGuiWidth() / 700, Settings.getGuiHeigth() / 5.35);
 
 
-    private AnchorPane pane = new AnchorPane();
-    private Rotate rotation = new Rotate();
-    private Cannon cannon;
+    private final AnchorPane pane;
+    private final Rotate rotation = new Rotate();
+    private final Cannon cannon;
 
     /**
      * Constructor for a new DrawCannon.
@@ -38,7 +38,7 @@ public class DrawCannon {
      */
     private void editCannon() {
         this.cannon.getCannon().setLayoutX(CANNON_POSITION.getX() - this.cannon.getCannon().getImage().getWidth() / 2);
-        this.cannon.getCannon().setLayoutY(CANNON_POSITION.getY());
+        this.cannon.getCannon().setLayoutY(CANNON_POSITION.getY() - Settings.getGuiHeigth() / 700);
     }
 
     /**
@@ -46,7 +46,7 @@ public class DrawCannon {
      */
     private void setRotation() {
         this.rotation.setPivotX(PIVOT.getX() + this.cannon.getCannon().getImage().getWidth() / 2);
-        this.rotation.setPivotY(PIVOT.getY());
+        this.rotation.setPivotY(PIVOT.getY() + Settings.getGuiHeigth() / 700);
         this.cannon.getCannon().getTransforms().add(rotation);
     }
 
