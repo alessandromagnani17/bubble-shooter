@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javafx.geometry.Point2D;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.game.mode.Level;
+import bubbleshooter.model.game.level.Level;
 
 /**
  * The Handler implementation of the {@link CollisionHandler} which manage the bubbles after a {@link Collision}.

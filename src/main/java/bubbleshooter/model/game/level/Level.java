@@ -1,4 +1,4 @@
-package bubbleshooter.model.game.mode;
+package bubbleshooter.model.game.level;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import bubbleshooter.model.bubble.grid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
 import bubbleshooter.model.game.GameInfoManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.GameType;
 
 /**
  * Represents the game. It's responsible to initialize all {@link Bubble}s and
@@ -32,6 +31,13 @@ public interface Level {
 	void update(double elapsed);
 
 	/**
+	 * gets the {@link BubblesManager}
+	 * 
+	 * @return {@link BubblesManager}
+	 */
+	BubblesManager getBubblesManager();
+
+	/**
 	 * loads the {@link ShootingBubble}
 	 */
 	void loadShootingBubble();
@@ -42,18 +48,11 @@ public interface Level {
 	void loadSwitchBubble();
 
 	/**
-	 * gets the {@link BubblesManager}
+	 * sets current {@link LevelType}
 	 * 
-	 * @return {@link BubblesManager}
+	 * @param the {@link LevelType}
 	 */
-	BubblesManager getBubblesManager();
-
-	/**
-	 * sets current {@link GameType}
-	 * 
-	 * @param the {@link GameType}
-	 */
-	void setCurrentGameType(GameType gameType);
+	void setCurrentGameType(LevelType gameType);
 
 	/**
 	 * sets the {@link GameStatus}
@@ -105,11 +104,11 @@ public interface Level {
 	GameInfoManager getGameInfoManager();
 
 	/**
-	 * gets the current {@link GameType}
+	 * gets the current {@link LevelType}
 	 * 
-	 * @return the {@link GameType}
+	 * @return the {@link LevelType}
 	 */
-	GameType getCurrentGameType();
+	LevelType getCurrentGameType();
 
 	/**
 	 * gets the {@link BubbleFactory}

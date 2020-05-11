@@ -3,7 +3,7 @@ package bubbleshooter.model.collision;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.game.mode.Level;
+import bubbleshooter.model.game.level.Level;
 import javafx.geometry.Point2D;
 
 /**

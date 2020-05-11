@@ -4,9 +4,9 @@ import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.game.GameStatus;
-import bubbleshooter.model.game.mode.BasicLevel;
-import bubbleshooter.model.game.mode.Level;
-import bubbleshooter.model.game.mode.SurvivalLevel;
+import bubbleshooter.model.game.level.BasicLevel;
+import bubbleshooter.model.game.level.Level;
+import bubbleshooter.model.game.level.SurvivalLevel;
 
 /**
  *The class which manage the logic of the game.
@@ -14,43 +14,43 @@ import bubbleshooter.model.game.mode.SurvivalLevel;
  */
 public class ModelImpl implements Model {
 
-    private Level gameMode;
+    private Level level;
 
     @Override
     public final void startBasicGame() {
-        this.gameMode = new BasicLevel();
-        this.gameMode.start();
+        this.level = new BasicLevel();
+        this.level.start();
     }
 
     @Override
     public final void startSurvivalGame() {
-        this.gameMode = new SurvivalLevel();
-        this.gameMode.start();
+        this.level = new SurvivalLevel();
+        this.level.start();
     }
 
 
     @Override
     public final void update(final double elapsed) {
-        this.gameMode.update(elapsed);
+        this.level.update(elapsed);
     }
 
     @Override
     public final GameStatus getGameStatus() {
-        return this.gameMode.getGameStatus();
+        return this.level.getGameStatus();
     }
 
     @Override
-    public final BubblesManager getGameObjectManager() {
-        return this.gameMode.getBubblesManager();
+    public final BubblesManager getBubblesManager() {
+        return this.level.getBubblesManager();
     }
 
     @Override
     public final List<Bubble> getBubbles() {
-        return this.gameMode.getBubblesManager().getAllBubbles();
+        return this.level.getBubblesManager().getAllBubbles();
     }
 
     @Override
     public final Level getLevel() {
-        return this.gameMode;
+        return this.level;
     }
 }
