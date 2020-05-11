@@ -182,24 +182,25 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @return the {@link HighscoreStructure}.
      */
     private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
-        String name = "", score = "";
+        StringBuilder nameBuilder = new StringBuilder("");
+        StringBuilder scoreBuilder = new StringBuilder("");
         final char space = ' ';
         boolean flag = true;
+
 
         for (int i = 0; i < readString.length(); i++) {
 
             if (!flag) {
-                score += readString.charAt(i);
+                scoreBuilder.append(readString.charAt(i));
             }
 
             if (readString.charAt(i) != space && flag) {
-                name += readString.charAt(i);
+                nameBuilder.append(readString.charAt(i));
             } else {
                 flag = false;
             }
         }
-
-        return new HighscoreStructure(name, Integer.parseInt(score), gameMode);
+        return new HighscoreStructure(nameBuilder.toString(), Integer.parseInt(scoreBuilder.toString()), gameMode);
     }
 
     /**
