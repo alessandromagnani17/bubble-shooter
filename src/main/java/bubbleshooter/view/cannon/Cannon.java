@@ -5,11 +5,11 @@ import javafx.scene.image.ImageView;
 
 /**
  * Class which represents the Cannon of the game
- * Class which implements {@link ImageView}.
+ * Class which extends {@link ImageView}.
  */
 public class Cannon extends ImageView {
 
-    private ImageView cannon;
+    private final ImageView imageCannon;
     private double angle;
 
     /**
@@ -18,7 +18,7 @@ public class Cannon extends ImageView {
      * @param img , the image of Cannon.
      */
     public Cannon(final Image img) {
-        this.cannon = new ImageView(img);
+        this.imageCannon = new ImageView(img);
     }
 
     /**
@@ -26,7 +26,7 @@ public class Cannon extends ImageView {
      * @return the {@link ImageView} of the {@link Cannon}.
      */
     public final ImageView getCannon() {
-        return cannon;
+        return imageCannon;
     }
 
     /**

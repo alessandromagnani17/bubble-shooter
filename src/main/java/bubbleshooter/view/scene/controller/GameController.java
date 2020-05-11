@@ -61,13 +61,14 @@ public class GameController extends AbstractController {
 
         this.help  = new DrawHelpLine(this.pane);
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
+
         this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
         this.cannon.getCannon().setScaleY(Settings.getGuiHeigth() / CANNON_SCALE);
+
         this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
                 getController().getBubbles().stream()
-                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY()
-                - ShootingBubble.RADIUS);
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY());
 
         this.drawCannon = new DrawCannon(this.pane, this.cannon);
         this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
@@ -155,7 +156,6 @@ public class GameController extends AbstractController {
     }
 
     public final void setGameOver() {
-    	System.out.println("gameOver");
         this.gameOver = true;
     }
 
