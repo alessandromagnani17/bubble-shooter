@@ -7,7 +7,6 @@ import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.scene.SceneLoader;
-import bubbleshooter.view.scene.SceneWrapper;
 import bubbleshooter.view.scene.controller.AbstractController;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -51,15 +50,6 @@ public class ViewImpl implements View {
 
 	@Override
 	public final void loadScene(final FXMLPath scene) {
-//		try {
-//			final SceneWrapper wrapper = SceneLoader.getLoader().getScene(scene);
-//			wrapper.getController().init(controller, this);
-//			this.currentSceneController = wrapper.getController();
-//			wrapper.getScene().getRoot().requestFocus();
-//			Platform.runLater(() -> this.initStage(wrapper.getScene()));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
 		try {
 			this.sceneLoader.loadScene(scene);
 			this.currentSceneController = this.sceneLoader.getController(); 
@@ -67,7 +57,6 @@ public class ViewImpl implements View {
 			this.sceneLoader.getScene().getRoot().requestFocus();
 			Platform.runLater(() -> this.initStage(this.sceneLoader.getScene()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
