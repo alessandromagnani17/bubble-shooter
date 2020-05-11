@@ -69,7 +69,9 @@ public class GameController extends AbstractController {
                 getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getY());
 
-        this.drawCannon = new DrawCannon(this.pane, this.cannon);
+        this.drawCannon = new DrawCannon(this.pane, this.cannon, getController().getBubbles().stream()
+                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get());
+
         this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
         this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
                                         this.startPointFirstLine, this.help);
