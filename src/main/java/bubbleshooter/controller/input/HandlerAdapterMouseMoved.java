@@ -12,7 +12,7 @@ import javafx.scene.transform.Rotate;
 /**
  * 
  * Class which implements the {@link EvenHandler<MouseEvent>} interface.
- * Used to rotate the {@link Cannon} and the help line.
+ * Used to rotate the {@link Cannon} and the {@link HelpLine}.
  *
  */
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
@@ -48,7 +48,8 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     /**
-     * Private method used to calculate the direction of the bounds line.
+     * Private method used to calculate the direction of the bounds line and draw it by calling
+     * the method drawBoundsLine of {@link DrawHelpLine}.
      * 
      * @param eventPosition position of the mouse.
      */
