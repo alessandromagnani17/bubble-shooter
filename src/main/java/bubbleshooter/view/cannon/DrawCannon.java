@@ -38,7 +38,7 @@ public class DrawCannon {
      */
     private void editCannon() {
         this.cannon.getCannon().setLayoutX(CANNON_POSITION.getX() - this.cannon.getCannon().getImage().getWidth() / 2);
-        this.cannon.getCannon().setLayoutY(CANNON_POSITION.getY() - Settings.getGuiHeigth() / 700);
+        this.cannon.getCannon().setLayoutY(CANNON_POSITION.getY());
     }
 
     /**
@@ -46,7 +46,7 @@ public class DrawCannon {
      */
     private void setRotation() {
         this.rotation.setPivotX(PIVOT.getX() + this.cannon.getCannon().getImage().getWidth() / 2);
-        this.rotation.setPivotY(PIVOT.getY() + Settings.getGuiHeigth() / 700);
+        this.rotation.setPivotY(PIVOT.getY());
         this.cannon.getCannon().getTransforms().add(rotation);
     }
 
