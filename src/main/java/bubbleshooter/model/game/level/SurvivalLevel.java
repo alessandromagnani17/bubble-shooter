@@ -5,13 +5,13 @@ import bubbleshooter.model.game.GameInfoManager;
 public class SurvivalLevel extends AbstractLevel {
 
     private static final int ONE_SECOND_SCORE = 20; 
-    private static final int TIME_LEFT_BEFORE_NEW_ROW = 10; 
+    private static final int TIME_BEFORE_NEXT_ROW= 10; 
 
     private double timeLeft; 
 
     public SurvivalLevel() {
         this.setCurrentGameType(LevelType.SURVIVALMODE);
-        this.timeLeft = TIME_LEFT_BEFORE_NEW_ROW; 
+        this.timeLeft = TIME_BEFORE_NEXT_ROW; 
     }
 
     @Override
@@ -24,7 +24,7 @@ public class SurvivalLevel extends AbstractLevel {
     public final boolean isTimeToNewRow(final double elapsed) {
         this.timeLeft -= elapsed;
         if (this.timeLeft <= 0) {
-            this.timeLeft = TIME_LEFT_BEFORE_NEW_ROW; 
+            this.timeLeft = TIME_BEFORE_NEXT_ROW; 
             return true;
         }
         return false;	
