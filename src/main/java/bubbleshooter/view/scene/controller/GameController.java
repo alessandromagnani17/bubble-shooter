@@ -11,7 +11,7 @@ import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;
 import bubbleshooter.view.cannon.Cannon;
 import bubbleshooter.view.cannon.DrawCannon;
-import bubbleshooter.view.cannon.DrawHelpLine;
+import bubbleshooter.view.helpline.DrawHelpLine;
 import bubbleshooter.view.images.ImagePath;
 import bubbleshooter.view.rendering.BubbleDrawer;
 import bubbleshooter.view.scene.FXMLPath;

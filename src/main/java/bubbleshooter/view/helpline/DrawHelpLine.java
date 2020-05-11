@@ -1,7 +1,5 @@
-package bubbleshooter.view.cannon;
+package bubbleshooter.view.helpline;
 
-import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;

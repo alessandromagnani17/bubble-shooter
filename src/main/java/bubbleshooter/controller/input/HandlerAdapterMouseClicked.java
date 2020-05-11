@@ -1,6 +1,6 @@
 package bubbleshooter.controller.input;
 
-import bubbleshooter.view.cannon.DrawHelpLine;
+import bubbleshooter.view.helpline.DrawHelpLine;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
