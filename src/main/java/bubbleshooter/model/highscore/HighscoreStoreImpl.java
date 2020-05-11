@@ -55,8 +55,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
             }
 
             if (flag) {
-                final FileWriter fw = new FileWriter(this.file);
-                final BufferedWriter bw = new BufferedWriter(fw);
+                final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
 
                 bw.write("HIGHSCORES!!" + NEW_LINE + NEW_LINE);
                 bw.write(BASIC + NEW_LINE);
@@ -67,7 +66,6 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
                 bw.flush();
                 bw.close();
-                fw.close();
             }
 
         } catch (IOException e) {
@@ -132,8 +130,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
         String readString;
 
         try {
-            final FileReader fr = new FileReader(file);
-            final BufferedReader br = new BufferedReader(fr);
+            final BufferedReader br = new BufferedReader(new FileReader(file));
 
             readString = br.readLine();
             while (readString != null && !readString.equals(END_FILE)) {
@@ -249,8 +246,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 System.out.println("Can't create the file !!!");
             }
 
-            final FileWriter fw = new FileWriter(this.file);
-            final BufferedWriter bw = new BufferedWriter(fw);
+            final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
 
             bw.write("HIGHSCORES!!\n\n");
             bw.write("BASIC_MODE_HIGHSCORES...\n");
