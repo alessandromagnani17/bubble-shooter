@@ -18,8 +18,8 @@ public class TestGameOver {
     private static final double BUBBLE_POSITION_TRUE  = Model.WORLD_HEIGTH / 1.1;
     private static final double BUBBLE_POSITION_FALSE = 0;
 
-    private Level basicMode = new BasicLevel();
-    private Level survivalMode = new SurvivalLevel();
+    private final Level basicMode = new BasicLevel();
+    private final Level survivalMode = new SurvivalLevel();
 
     /**
      * Method to test if {@link GameOverChecker} launch a GameOver
@@ -27,7 +27,7 @@ public class TestGameOver {
      */
     @Test
     public final void testBasicGameOver() {
-        GameOverChecker gameOverChecker = new GameOverChecker(this.basicMode);
+        final GameOverChecker gameOverChecker = new GameOverChecker(this.basicMode);
         assertTrue(gameOverChecker.isGameOver(BUBBLE_POSITION_TRUE));
         assertFalse(gameOverChecker.isGameOver(BUBBLE_POSITION_FALSE));
      }
@@ -38,7 +38,7 @@ public class TestGameOver {
      */
     @Test
     public final void testSurvivalGameOver() {
-        GameOverChecker gameOverChecker = new GameOverChecker(this.survivalMode);
+        final GameOverChecker gameOverChecker = new GameOverChecker(this.survivalMode);
         assertTrue(gameOverChecker.isGameOver(BUBBLE_POSITION_TRUE));
         assertFalse(gameOverChecker.isGameOver(BUBBLE_POSITION_FALSE));
      }
