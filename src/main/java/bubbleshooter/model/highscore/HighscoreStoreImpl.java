@@ -32,6 +32,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final String BASIC = "BASIC_MODE_HIGHSCORES...";
     private static final String SURVIVAL = "SURVIVAL_MODE_HIGHSCORES...";
     private static final String NEW_LINE = "\n";
+    private static final char SPACE = ' ';
     private static final int CAPACITY = 10;
     private final File file;
     private Map<LevelType, List<HighscoreStructure>> mapOfItems;
@@ -182,9 +183,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @return the {@link HighscoreStructure}.
      */
     private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
-        StringBuilder nameBuilder = new StringBuilder("");
-        StringBuilder scoreBuilder = new StringBuilder("");
-        final char space = ' ';
+        final StringBuilder nameBuilder = new StringBuilder("");
+        final StringBuilder scoreBuilder = new StringBuilder("");
         boolean flag = true;
 
 
@@ -194,7 +194,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 scoreBuilder.append(readString.charAt(i));
             }
 
-            if (readString.charAt(i) != space && flag) {
+            if (readString.charAt(i) != SPACE && flag) {
                 nameBuilder.append(readString.charAt(i));
             } else {
                 flag = false;
@@ -250,15 +250,15 @@ public class HighscoreStoreImpl implements HighscoreStore {
             final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
 
             bw.write("HIGHSCORES!!\n\n");
-            bw.write("BASIC_MODE_HIGHSCORES...\n");
+            bw.write(BASIC + NEW_LINE);
             for (final HighscoreStructure o : this.mapOfItems.get(LevelType.BASICMODE)) {
-                stringToWrite = o.getName() + " " + o.getScore() + "\n";
+                stringToWrite = o.getName() + SPACE + o.getScore() + NEW_LINE;
                 bw.write(stringToWrite);
             }
-            bw.write("END_OF_HIGH_END_OF_HIGH\n\n");
-            bw.write("SURVIVAL_MODE_HIGHSCORES...\n");
+            bw.write(END_HIGH + NEW_LINE + NEW_LINE);
+            bw.write(SURVIVAL + NEW_LINE);
             for (final HighscoreStructure o : this.mapOfItems.get(LevelType.SURVIVALMODE)) {
-                stringToWrite = o.getName() + " " + o.getScore() + "\n";
+                stringToWrite = o.getName() + SPACE + o.getScore() + NEW_LINE;
                 bw.write(stringToWrite);
             }
             bw.write(END_HIGH + NEW_LINE + NEW_LINE);

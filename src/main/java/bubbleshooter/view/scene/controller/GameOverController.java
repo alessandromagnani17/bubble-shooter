@@ -41,26 +41,32 @@ public class GameOverController extends AbstractController {
 
     @Override
     public final void init(final Controller controller, final View view) {
+        int score, destroyedBubble;
+        double gameTime;
         super.init(controller, view);
         this.getController().getGameEngine().stopLoop();
+
         this.gameOverLabel.setText("Game Over");
         this.gameOverLabel.setFont(Font.font(TITLE_FONT_SIZE));
         this.gameOverLabel.setAlignment(Pos.BOTTOM_CENTER);
         this.gameOverLabel.setPrefSize(TITLE_WIDTH, TITLE_HEIGTH);
 
-        this.scoreLabel.setText("Your score: " + this.getController().getScoreManager().getScore());
+        score = this.getController().getScoreManager().getScore();
+        this.scoreLabel.setText("Your score: " + score);
         this.scoreLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.scoreLabel.setLayoutX(LABEL_X);
         this.scoreLabel.setLayoutY(TITLE_HEIGTH + TITLE_DISTANCE);
         this.scoreLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGTH);
 
-        this.destroyedBubbleLabel.setText("Destroyed bubbles: " + this.getController().getScoreManager().getDestroyedBubbles());
+        destroyedBubble = this.getController().getScoreManager().getDestroyedBubbles();
+        this.destroyedBubbleLabel.setText("Destroyed bubbles: " + destroyedBubble);
         this.destroyedBubbleLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.destroyedBubbleLabel.setLayoutX(LABEL_X);
         this.destroyedBubbleLabel.setLayoutY(this.scoreLabel.getLayoutY() + LABEL_DISTANCE);
         this.destroyedBubbleLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGTH);
 
-        this.gameTimeLabel.setText("Your game time: " + this.getController().getScoreManager().getGameTime());
+        gameTime = this.getController().getScoreManager().getGameTime() / 1000;
+        this.gameTimeLabel.setText("Your game time: " + gameTime + "s");
         this.gameTimeLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.gameTimeLabel.setLayoutX(LABEL_X);
         this.gameTimeLabel.setLayoutY(this.destroyedBubbleLabel.getLayoutY() + LABEL_DISTANCE);

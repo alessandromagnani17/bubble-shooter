@@ -3,7 +3,7 @@ package bubbleshooter.controller.input;
 
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
-import bubbleshooter.view.cannon.DrawHelpLine;
+import bubbleshooter.view.helpline.DrawHelpLine;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
@@ -12,15 +12,15 @@ import javafx.scene.transform.Rotate;
 /**
  * 
  * Class which implements the {@link EvenHandler<MouseEvent>} interface.
- * Used to rotate the {@link Cannon} and the help line.
+ * Used to rotate the {@link Cannon} and the {@link HelpLine}.
  *
  */
 public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
-    private Rotate cannonRotation = new Rotate();
-    private Rotate lineRotation = new Rotate();
-    private DrawHelpLine drawHelpLine;
-    private Point2D shootingBubblePosition;
+    private final Rotate cannonRotation;
+    private final Rotate lineRotation;
+    private final DrawHelpLine drawHelpLine;
+    private final Point2D shootingBubblePosition;
     private Point2D eventPosition;
 
     /**
@@ -48,7 +48,8 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     /**
-     * Private method used to calculate the direction of the bounds line.
+     * Private method used to calculate the direction of the bounds line and draw it by calling
+     * the method drawBoundsLine of {@link DrawHelpLine}.
      * 
      * @param eventPosition position of the mouse.
      */
@@ -56,7 +57,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         double angularCoefficient;
         double intercepts;
         boolean flag = false;
-        Point2D startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
+        final Point2D startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
                       this.drawHelpLine.getHelpLine().getStartY());
         Point2D startPointSecondLine = null;
         Point2D endPointSecondLine = null;

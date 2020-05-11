@@ -1,4 +1,4 @@
-package bubbleshooter.view.cannon;
+package bubbleshooter.view.helpline;
 
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Point2D;
@@ -13,7 +13,7 @@ public class HelpLine {
     public static final double DASH_SIZE = Settings.getGuiHeigth() / 70;
     public static final double DASH_WIDTH = Settings.getGuiHeigth() / 200;
 
-    private Line line;
+    private final Line line;
 
     /**
      * Constructor for a new Line passing the start and end point.

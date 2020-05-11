@@ -1,7 +1,5 @@
-package bubbleshooter.view.cannon;
+package bubbleshooter.view.helpline;
 
-import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -20,8 +18,8 @@ public class DrawHelpLine {
     private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() / 1.08);
     private final HelpLine helpLine;
     private final HelpLine boundsLine;
-    private final HelpLine borderRight;
-    private final HelpLine borderLeft;
+    private final Line borderRight;
+    private final Line borderLeft;
     private final Rotate rotation = new Rotate();
     private boolean helpSelected;
 
@@ -34,17 +32,17 @@ public class DrawHelpLine {
         this.pane = pane;
         this.helpLine = new HelpLine(START_POINT_FIRST_LINE, new Point2D(START_POINT_FIRST_LINE.getX(), 0));
         this.boundsLine = new HelpLine(new Point2D(0, 0), new Point2D(0, 0));
-        this.borderRight = new HelpLine(new Point2D(Settings.getGuiWidth(), 0), 
-                                        new Point2D(Settings.getGuiWidth(), Settings.getGuiHeigth()));
-        this.borderLeft = new HelpLine(new Point2D(0, 0), new Point2D(0, Settings.getGuiHeigth()));
+        this.borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeigth());
+        this.borderRight.setVisible(false);
+        this.borderLeft = new Line(0, 0, 0, Settings.getGuiHeigth());
+        this.borderLeft.setVisible(false);
 
         this.setRotation();
 
         this.pane.getChildren().add(helpLine.getLine());
         this.pane.getChildren().add(boundsLine.getLine());
-        this.pane.getChildren().add(borderRight.getLine());
-        this.pane.getChildren().add(borderLeft.getLine());
-
+        this.pane.getChildren().add(borderRight);
+        this.pane.getChildren().add(borderLeft);
     }
 
     /**
@@ -67,14 +65,14 @@ public class DrawHelpLine {
      * @return the bounds of right line.
      */
     public final Bounds getRightBounds() {
-        return borderRight.getLine().getBoundsInParent();
+        return borderRight.getBoundsInParent();
     }
 
     /**
      * @return the bounds of left line.
      */
     public final Bounds getLeftBounds() {
-        return borderLeft.getLine().getBoundsInParent();
+        return borderLeft.getBoundsInParent();
     }
 
     /**
@@ -122,7 +120,8 @@ public class DrawHelpLine {
     }
 
     /**
-     * Method for draw the bounds line passing start point and end point.
+     * Method called by {@link HandlerAdapterMouseMoved} for draw the bounds line 
+     * passing start point and end point.
      * 
      * @param startPointSecondLine the start point.
      * @param endPointSecondLine   the end point.
