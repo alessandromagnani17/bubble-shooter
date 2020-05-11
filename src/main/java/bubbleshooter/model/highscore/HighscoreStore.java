@@ -32,4 +32,9 @@ public interface HighscoreStore {
      */
     ObservableList<HighscoreStructure> getHighscoresForModality(GameType gameMode);
 
+    /**
+     * Method used for clean file.
+     */
+    void cleanFile();
+
 }
