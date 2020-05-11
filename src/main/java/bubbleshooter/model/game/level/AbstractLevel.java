@@ -18,8 +18,6 @@ import javafx.geometry.Point2D;
 
 public abstract class AbstractLevel implements Level {
 
-	private static final int NUM_BUBBLES_PER_ROW = 19;
-	private static final int NUM_ROWS = 8;
 	private static final int MILLISECONDS_IN_A_SECOND = 1000;
 	private static final double LIMITS_SHOOTING_BUBBLE_Y = 1.08;
 
@@ -188,15 +186,5 @@ public abstract class AbstractLevel implements Level {
 	 */
 	protected abstract boolean isTimeToNewRow(double elapsed);
 
-	@Override
-	public int getBubblesPerRow() {
-		return NUM_BUBBLES_PER_ROW; 
-	}
-
-	@Override
-	public int getNumRow() {
-		return NUM_ROWS; 
-	}
-	
 	
 }

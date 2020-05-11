@@ -4,7 +4,6 @@ import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.controller.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 
 public abstract class AbstractController {
 

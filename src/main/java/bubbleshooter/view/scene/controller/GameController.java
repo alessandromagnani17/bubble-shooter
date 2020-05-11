@@ -5,7 +5,6 @@ import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
 import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleType;
-import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
 import bubbleshooter.view.View;

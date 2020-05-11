@@ -75,7 +75,7 @@ public class BoundsCollisionHandler implements CollisionHandler {
         double min = Model.WORLD_WIDTH;
         double finalPos = this.shootingBubble.getPosition().getX();
         final double offset = !this.level.getGridManager().isOffsetRow() ? shootingBubble.getWidth() : shootingBubble.getRadius();
-        for (double i = 0; i <= level.getBubblesPerRow(); i++) {
+        for (double i = 0; i <= Level.NUM_BUBBLES_PER_ROW; i++) {
             final double xPos = i * shootingBubble.getWidth() + offset;
             final double distance = Math.abs(xPos - shootingBubble.getPosition().getX());
             if (distance < min) {

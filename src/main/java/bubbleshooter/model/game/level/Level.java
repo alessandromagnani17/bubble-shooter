@@ -18,6 +18,10 @@ import bubbleshooter.model.game.GameStatus;
 
 public interface Level {
 
+	static int NUM_BUBBLES_PER_ROW = 19;
+
+	static int NUM_ROWS = 8;
+
 	/**
 	 * Starts selected game and initialize all bubbles.
 	 */
@@ -116,15 +120,5 @@ public interface Level {
 	 * @return the {@link BubbleFactory}.
 	 */
 	BubbleFactory getBubbleFactory();
-	
-	/**
-	 * 
-	 * @return
-	 */
-	int getBubblesPerRow();
-	
-	int getNumRow(); 
-	
-	
 
 }
