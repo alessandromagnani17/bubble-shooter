@@ -55,8 +55,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
             }
 
             if (flag) {
-                final FileWriter fw = new FileWriter(this.file);
-                final BufferedWriter bw = new BufferedWriter(fw);
+                final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
 
                 bw.write("HIGHSCORES!!" + NEW_LINE + NEW_LINE);
                 bw.write(BASIC + NEW_LINE);
@@ -132,8 +131,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
         String readString;
 
         try {
-            final FileReader fr = new FileReader(file);
-            final BufferedReader br = new BufferedReader(fr);
+            final BufferedReader br = new BufferedReader(new FileReader(file));
 
             readString = br.readLine();
             while (readString != null && !readString.equals(END_FILE)) {
@@ -185,24 +183,29 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @return the {@link HighscoreStructure}.
      */
     private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
+<<<<<<< HEAD
         String name = "", score = "";
+=======
+        StringBuilder nameBuilder = new StringBuilder("");
+        StringBuilder scoreBuilder = new StringBuilder("");
+>>>>>>> fbb45cb6d3eab38bb95a718442308875bcad585e
         final char space = ' ';
         boolean flag = true;
+
 
         for (int i = 0; i < readString.length(); i++) {
 
             if (!flag) {
-                score += readString.charAt(i);
+                scoreBuilder.append(readString.charAt(i));
             }
 
             if (readString.charAt(i) != space && flag) {
-                name += readString.charAt(i);
+                nameBuilder.append(readString.charAt(i));
             } else {
                 flag = false;
             }
         }
-
-        return new HighscoreStructure(name, Integer.parseInt(score), gameMode);
+        return new HighscoreStructure(nameBuilder.toString(), Integer.parseInt(scoreBuilder.toString()), gameMode);
     }
 
     /**
@@ -241,16 +244,22 @@ public class HighscoreStoreImpl implements HighscoreStore {
         try {
             if (!this.file.delete()) {
                 System.out.println("Can't delete the file !!!");
+<<<<<<< HEAD
             }
             if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
                 System.out.println("Can't create directory !!!");
             }
+=======
+            }
+            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
+                System.out.println("Can't create directory !!!");
+            }
+>>>>>>> fbb45cb6d3eab38bb95a718442308875bcad585e
             if (!file.exists() && !this.file.createNewFile()) {
                 System.out.println("Can't create the file !!!");
             }
 
-            final FileWriter fw = new FileWriter(this.file);
-            final BufferedWriter bw = new BufferedWriter(fw);
+            final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
 
             bw.write("HIGHSCORES!!\n\n");
             bw.write("BASIC_MODE_HIGHSCORES...\n");

@@ -15,7 +15,12 @@ import javafx.scene.transform.Rotate;
 public class DrawHelpLine {
 
     private final AnchorPane pane;
+<<<<<<< HEAD
     private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeigth() / 1.08);
+=======
+    private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, 
+                                 Settings.getGuiHeigth() - Bubble.WIDTH - ShootingBubble.RADIUS);
+>>>>>>> fbb45cb6d3eab38bb95a718442308875bcad585e
     private final HelpLine helpLine;
     private final HelpLine boundsLine;
     private final HelpLine borderRight;
