@@ -16,15 +16,15 @@ import javafx.scene.transform.Rotate;
  */
 public class DrawHelpLine {
 
-    private AnchorPane pane = new AnchorPane();
+    private final AnchorPane pane;
     private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, 
                                  Settings.getGuiHeigth() - Bubble.WIDTH - ShootingBubble.RADIUS);
-    private HelpLine helpLine;
-    private HelpLine boundsLine;
-    private HelpLine borderRight;
-    private HelpLine borderLeft;
-    private Rotate rotation = new Rotate();
-    private boolean helpSelected = false;
+    private final HelpLine helpLine;
+    private final HelpLine boundsLine;
+    private final HelpLine borderRight;
+    private final HelpLine borderLeft;
+    private final Rotate rotation = new Rotate();
+    private boolean helpSelected;
 
     /**
      * Constructor for a new DrawHelpLine.
@@ -33,12 +33,10 @@ public class DrawHelpLine {
      */
     public DrawHelpLine(final AnchorPane pane) {
         this.pane = pane;
-        /*this.helpLine = new HelpLine(START_POINT_FIRST_LINE.getX(), START_POINT_FIRST_LINE.getY(), 
-                                     START_POINT_FIRST_LINE.getX(), 0);*/
         this.helpLine = new HelpLine(START_POINT_FIRST_LINE, new Point2D(START_POINT_FIRST_LINE.getX(), 0));
         this.boundsLine = new HelpLine(new Point2D(0, 0), new Point2D(0, 0));
         this.borderRight = new HelpLine(new Point2D(Settings.getGuiWidth(), 0), 
-        		                        new Point2D(Settings.getGuiWidth(), Settings.getGuiHeigth()));
+                                        new Point2D(Settings.getGuiWidth(), Settings.getGuiHeigth()));
         this.borderLeft = new HelpLine(new Point2D(0, 0), new Point2D(0, Settings.getGuiHeigth()));
 
         this.setRotation();
