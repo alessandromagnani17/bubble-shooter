@@ -47,7 +47,7 @@ public class GameController extends AbstractController {
     private GameState currentState;
     private GameState inGameState;
     private GameState inPauseState;
-    private DrawHelpLine help;
+    private DrawHelpLine drawHelpLine;
     private DrawCannon drawCannon;
     private Cannon cannon;
     private HandlerAdapterMouseMoved handlerAdapter;
@@ -58,7 +58,7 @@ public class GameController extends AbstractController {
     public final void init(final Controller controller, final View view) {
         super.init(controller, view);
 
-        this.help  = new DrawHelpLine(this.pane);
+        this.drawHelpLine  = new DrawHelpLine(this.pane);
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 
         this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
@@ -69,9 +69,9 @@ public class GameController extends AbstractController {
         this.drawCannon = new DrawCannon(this.pane, this.cannon, getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get());
 
-        this.startPointFirstLine = new Point2D(this.help.getHelpLine().getStartX(), this.help.getHelpLine().getStartY());
-        this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.help.getRotation(), 
-                                        this.startPointFirstLine, this.help);
+        this.startPointFirstLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), this.drawHelpLine.getHelpLine().getStartY());
+        this.handlerAdapter = new HandlerAdapterMouseMoved(this.drawCannon.getRotation(), this.drawHelpLine.getRotation(), 
+                                        this.startPointFirstLine, this.drawHelpLine);
 
         this.pane.setOnMouseMoved(this.handlerAdapter);
         this.pane.setOnMouseDragged(this.handlerAdapter);
@@ -118,9 +118,9 @@ public class GameController extends AbstractController {
 
     public final void helpSelected() {
         if (this.helpCheckBox.isSelected()) {
-            this.help.drawLine();
+            this.drawHelpLine.drawLine();
         } else {
-            this.help.deleteLine();
+            this.drawHelpLine.deleteLine();
         }
     }
 
