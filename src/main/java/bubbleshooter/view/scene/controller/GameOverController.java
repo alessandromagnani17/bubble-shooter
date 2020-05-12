@@ -87,13 +87,8 @@ public class GameOverController extends AbstractController {
     }
 
     @Override
-    public final FXMLPath getNextScene() {
-        return FXMLPath.HIGHSCORE;
-    }
-
-    @Override
-    protected final FXMLPath getPreviousScene() {
-        return FXMLPath.GAME;
+    public final void setNextScene(final FXMLPath nextScene) {
+        this.getView().loadScene(nextScene);
     }
 
     /**
@@ -103,7 +98,7 @@ public class GameOverController extends AbstractController {
     public final void addToHighscore() {
         if (!this.textArea.getText().isEmpty()) {
             this.getController().saveScore(this.textArea.getText());
-            this.nextScene();
+            this.setNextScene(FXMLPath.HIGHSCORE);
         }
     }
 

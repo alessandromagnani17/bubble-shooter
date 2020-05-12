@@ -70,7 +70,7 @@ public class PauseController extends AbstractController {
     @FXML
     public final void resume() {
         this.getController().getGameEngine().resumeLoop();
-        this.getView().loadScene(FXMLPath.GAME);
+        this.setNextScene(FXMLPath.GAME);
     }
 
     /**
@@ -79,7 +79,7 @@ public class PauseController extends AbstractController {
     @FXML
     public final void restart() {
         this.getController().startGame(this.getController().getCurrentLevel());
-        this.nextScene();
+        this.setNextScene(FXMLPath.GAME);
     }
 
     /**
@@ -91,12 +91,7 @@ public class PauseController extends AbstractController {
     }
 
     @Override
-    public final FXMLPath getNextScene() {
-        return FXMLPath.GAME; 
-    }
-
-    @Override
-    protected final FXMLPath getPreviousScene() {
-        return FXMLPath.GAME; 
+    public final void setNextScene(final FXMLPath nextScene) {
+        this.getView().loadScene(nextScene);
     }
 }

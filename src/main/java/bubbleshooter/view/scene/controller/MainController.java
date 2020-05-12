@@ -77,7 +77,7 @@ public final class MainController extends AbstractController {
     @FXML
     public void basicMode() {
         this.getController().startGame(LevelType.BASICMODE);
-        this.nextScene();
+        this.setNextScene(FXMLPath.GAME);
     }
 
     /**
@@ -86,7 +86,7 @@ public final class MainController extends AbstractController {
     @FXML
     public void survivalMode() {
         this.getController().startGame(LevelType.SURVIVALMODE);
-        this.nextScene();
+        this.setNextScene(FXMLPath.GAME);
     }
 
     /**
@@ -94,7 +94,7 @@ public final class MainController extends AbstractController {
      */
     @FXML
     public void highscores() {
-        this.getView().loadScene(FXMLPath.HIGHSCORE);
+        this.setNextScene(FXMLPath.HIGHSCORE);
     }
 
     /**
@@ -106,12 +106,7 @@ public final class MainController extends AbstractController {
     }
 
     @Override
-    public FXMLPath getNextScene() {
-        return FXMLPath.GAME; 
-    }
-
-    @Override
-    protected FXMLPath getPreviousScene() {
-        return FXMLPath.MAIN; 
+    public void setNextScene(final FXMLPath nextScene) {
+        this.getView().loadScene(nextScene);
     }
 }

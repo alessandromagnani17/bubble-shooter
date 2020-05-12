@@ -100,7 +100,7 @@ public class GameController extends AbstractController {
     }
 
     public final void render() {
-    	this.resetCanvas();
+        this.resetCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
     }
 
@@ -139,13 +139,8 @@ public class GameController extends AbstractController {
     }
 
     @Override
-    public final FXMLPath getNextScene() {
-        return FXMLPath.GAMEOVER;
-    }
-
-    @Override
-    protected final FXMLPath getPreviousScene() {
-        return FXMLPath.MAIN;
+    public final void setNextScene(final FXMLPath nextScene) {
+        this.getView().loadScene(nextScene);
     }
 
     public final boolean isGameOver() {
