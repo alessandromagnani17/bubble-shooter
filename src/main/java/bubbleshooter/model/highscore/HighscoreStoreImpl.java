@@ -86,6 +86,33 @@ public class HighscoreStoreImpl implements HighscoreStore {
     }
 
     /**
+     * Method used for clean file.
+     */
+    @Override
+    public void cleanFile() {
+        this.mapOfItems.clear();
+        this.mapOfItems.put(LevelType.BASICMODE, new ArrayList<HighscoreStructure>());
+        this.mapOfItems.put(LevelType.SURVIVALMODE, new ArrayList<HighscoreStructure>());
+        this.reWriteFile();
+    }
+
+    /**
+     * Method to have a list of scores for a specific game modality.
+     * 
+     * @param gameMode game modality which we want the scores.
+     * @return the scores for a game modality.
+     */
+    @Override
+    public final ObservableList<HighscoreStructure> getHighscoresForModality(final LevelType gameMode) {
+        final ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();
+        this.mapOfItems = readFile();
+        if (this.mapOfItems.containsKey(gameMode)) {
+            result.addAll(this.mapOfItems.get(gameMode));
+        }
+        return result;
+    }
+
+    /**
      * Method for add a score for a game modality.
      * 
      * @param score the current {@link HighscoreStructure} to save.
@@ -273,30 +300,4 @@ public class HighscoreStoreImpl implements HighscoreStore {
         }
     }
 
-    /**
-     * Method to have a list of scores for a specific game modality.
-     * 
-     * @param gameMode game modality which we want the scores.
-     * @return the scores for a game modality.
-     */
-    @Override
-    public final ObservableList<HighscoreStructure> getHighscoresForModality(final LevelType gameMode) {
-        final ObservableList<HighscoreStructure> result = FXCollections.observableArrayList();
-        this.mapOfItems = readFile();
-        if (this.mapOfItems.containsKey(gameMode)) {
-            result.addAll(this.mapOfItems.get(gameMode));
-        }
-        return result;
-    }
-
-    /**
-     * Method used for clean file.
-     */
-    @Override
-    public void cleanFile() {
-        this.mapOfItems.clear();
-        this.mapOfItems.put(LevelType.BASICMODE, new ArrayList<HighscoreStructure>());
-        this.mapOfItems.put(LevelType.SURVIVALMODE, new ArrayList<HighscoreStructure>());
-        this.reWriteFile();
-    }
 }

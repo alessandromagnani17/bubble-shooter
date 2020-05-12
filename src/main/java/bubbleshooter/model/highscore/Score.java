@@ -11,7 +11,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Score {
 
 
-    private final SimpleIntegerProperty theScore;
+    private final int theScore;
     private final LevelType level;
 
     /**
@@ -20,8 +20,8 @@ public class Score {
      * @param score       Score of this game.
      * @param level    The modality of this game.
      */
-    public Score(final Integer score, final LevelType level) {
-        this.theScore = new SimpleIntegerProperty(score);
+    public Score(final int score, final LevelType level) {
+        this.theScore = score;
         this.level = level;
     }
 
@@ -30,8 +30,8 @@ public class Score {
      * 
      * @return the Integer value of score.
      */
-    public Integer getScore() {
-        return theScore.get();
+    public int getScore() {
+        return this.theScore;
     }
 
     /**
@@ -40,7 +40,7 @@ public class Score {
      * @return the game modality of this score.
      */
     public final LevelType getGameMode() {
-        return level;
+        return this.level;
     }
 
 }
