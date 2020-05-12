@@ -34,18 +34,18 @@ public class HighscoreController extends AbstractController {
     @FXML private TableColumn<HighscoreStructure, Integer> scoreSurvivalColumn;
 
     private static final double TITLE_DISTANCE = Settings.getGuiHeight() / 40;
-    private static final double TITLE_HEIGTH = Settings.getGuiHeight() / 8;
+    private static final double TITLE_HEIGHT = Settings.getGuiHeight() / 8;
     private static final double TITLE_WIDTH = Settings.getGuiWidth();
-    private static final double TITLE_FONT_SIZE = TITLE_HEIGTH / 1.5;
-    private static final double TABLE_HEIGTH = Settings.getGuiHeight() / 1.9;
+    private static final double TITLE_FONT_SIZE = TITLE_HEIGHT / 1.5;
+    private static final double TABLE_HEIGHT = Settings.getGuiHeight() / 1.9;
     private static final double TABLE_WIDTH = Settings.getGuiWidth() / 2.2;
     private static final double DETACHMENT = Settings.getGuiWidth() - 2 * TABLE_WIDTH;
-    private static final double LABEL_HEIGTH = Settings.getGuiHeight() / 10;
+    private static final double LABEL_HEIGHT = Settings.getGuiHeight() / 10;
     private static final double LABEL_WIDTH = TABLE_WIDTH;
-    private static final double LABEL_FONT_SIZE = LABEL_HEIGTH / 3;
+    private static final double LABEL_FONT_SIZE = LABEL_HEIGHT / 3;
     private static final double BUTTON_WIDTH = TABLE_WIDTH - TABLE_WIDTH / 4;
-    private static final double BUTTON_HEIGTH = Settings.getGuiHeight() / 10;
-    private static final double BUTTON_FONT_SIZE = BUTTON_HEIGTH / 2.5;
+    private static final double BUTTON_HEIGHT = Settings.getGuiHeight() / 10;
+    private static final double BUTTON_FONT_SIZE = BUTTON_HEIGHT / 2.5;
 
     @Override
     public final void init(final Controller controller, final View view) {
@@ -54,26 +54,26 @@ public class HighscoreController extends AbstractController {
         this.titleLabel.setText("Highscores");
         this.titleLabel.setFont(Font.font(TITLE_FONT_SIZE));
         this.titleLabel.setAlignment(Pos.BOTTOM_CENTER);
-        this.titleLabel.setPrefSize(TITLE_WIDTH, TITLE_HEIGTH);
+        this.titleLabel.setPrefSize(TITLE_WIDTH, TITLE_HEIGHT);
 
         this.basicModeLabel.setText("Basic Mode Highscores");
         this.basicModeLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.basicModeLabel.setLayoutX(DETACHMENT / 4);
-        this.basicModeLabel.setLayoutY(TITLE_HEIGTH + TITLE_DISTANCE);
-        this.basicModeLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGTH);
+        this.basicModeLabel.setLayoutY(TITLE_HEIGHT + TITLE_DISTANCE);
+        this.basicModeLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGHT);
 
         this.survivalModeLabel.setText("Survival Mode Highscores");
         this.survivalModeLabel.setFont(Font.font(LABEL_FONT_SIZE));
         this.survivalModeLabel.setLayoutX(TABLE_WIDTH + DETACHMENT / 4 + DETACHMENT / 2);
-        this.survivalModeLabel.setLayoutY(TITLE_HEIGTH + TITLE_DISTANCE);
-        this.survivalModeLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGTH);
+        this.survivalModeLabel.setLayoutY(TITLE_HEIGHT + TITLE_DISTANCE);
+        this.survivalModeLabel.setPrefSize(LABEL_WIDTH, LABEL_HEIGHT);
 
         this.tableBaseView.setLayoutX(DETACHMENT / 4);
-        this.tableBaseView.setLayoutY(this.basicModeLabel.getLayoutY() + LABEL_HEIGTH - DETACHMENT / 4);
-        this.tableBaseView.setPrefSize(TABLE_WIDTH, TABLE_HEIGTH);
+        this.tableBaseView.setLayoutY(this.basicModeLabel.getLayoutY() + LABEL_HEIGHT - DETACHMENT / 4);
+        this.tableBaseView.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
         this.tableSurvivalView.setLayoutX(TABLE_WIDTH + DETACHMENT / 4 + DETACHMENT / 2);
-        this.tableSurvivalView.setLayoutY(this.survivalModeLabel.getLayoutY() + LABEL_HEIGTH - DETACHMENT / 4);
-        this.tableSurvivalView.setPrefSize(TABLE_WIDTH, TABLE_HEIGTH);
+        this.tableSurvivalView.setLayoutY(this.survivalModeLabel.getLayoutY() + LABEL_HEIGHT - DETACHMENT / 4);
+        this.tableSurvivalView.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
 
         this.nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
         this.nameBaseColumn.setText("Player");
@@ -86,14 +86,14 @@ public class HighscoreController extends AbstractController {
         this.nameSurvivalColumn.setText("Player");
         this.nameSurvivalColumn.setPrefWidth(TABLE_WIDTH / 2);
         this.scoreSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
-        this.scoreSurvivalColumn.setText("Time");
+        this.scoreSurvivalColumn.setText("Score");
         this.scoreSurvivalColumn.setPrefWidth(TABLE_WIDTH / 2);
 
         this.backMenuButton.setText("Back to menu");
         this.backMenuButton.setFont(Font.font(BUTTON_FONT_SIZE));
         this.backMenuButton.setLayoutX(this.tableSurvivalView.getLayoutX() + TABLE_WIDTH / 4);
-        this.backMenuButton.setLayoutY(this.tableSurvivalView.getLayoutY() + TABLE_HEIGTH + DETACHMENT / 2);
-        this.backMenuButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGTH);
+        this.backMenuButton.setLayoutY(this.tableSurvivalView.getLayoutY() + TABLE_HEIGHT + DETACHMENT / 2);
+        this.backMenuButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
 
         this.tableBaseView.setItems(getScores(LevelType.BASICMODE));
         this.tableSurvivalView.setItems(getScores(LevelType.SURVIVALMODE));
@@ -118,17 +118,12 @@ public class HighscoreController extends AbstractController {
      */
     @FXML
     public final void backToMenu() {
-        this.getView().loadScene(FXMLPath.MAIN);
+        this.setNextScene(FXMLPath.MAIN);
     }
 
     @Override
-    public final FXMLPath getNextScene() {
-        return FXMLPath.MAIN;
-    }
-
-    @Override
-    protected final FXMLPath getPreviousScene() {
-        return FXMLPath.MAIN;
+    public final void setNextScene(final FXMLPath nextScene) {
+        this.getView().loadScene(nextScene);
     }
 
 }
