@@ -115,7 +115,7 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public final void setCurrentGameType(final LevelType gameType) {
+	public final void setLevelType(final LevelType gameType) {
 		this.currentGameType = gameType;
 	}
 
@@ -154,16 +154,11 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public final List<Bubble> getCurrentBubbles() {
-		return this.bubblesManager.getAllBubbles();
-	}
-
-	@Override
 	public final GameData getGameData() {
 		return this.gameData;
 	}
 
-	public final LevelType getCurrentGameType() {
+	public final LevelType getLevelType() {
 		return this.currentGameType;
 	}
 
@@ -171,6 +166,7 @@ public abstract class AbstractLevel implements Level {
 	public final BubbleFactory getBubbleFactory() {
 		return this.bubbleFactory;
 	}
+
 	/**
 	 * updates the score
 	 * 
@@ -186,5 +182,4 @@ public abstract class AbstractLevel implements Level {
 	 */
 	protected abstract boolean isTimeToNewRow(double elapsed);
 
-	
 }

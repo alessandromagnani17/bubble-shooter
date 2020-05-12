@@ -10,7 +10,7 @@ public class SurvivalLevel extends AbstractLevel {
 	private double timeLeft;
 
 	public SurvivalLevel() {
-		this.setCurrentGameType(LevelType.SURVIVALMODE);
+		this.setLevelType(LevelType.SURVIVALMODE);
 		this.timeLeft = TIME_BEFORE_NEXT_ROW;
 	}
 

@@ -31,8 +31,8 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
      * @param shootingBubblePosition the shooting bubble position.
      * @param drawHelpLine           the DrawHelpLine.
      */
-    public HandlerAdapterMouseMoved(final Rotate cannonRotation, final Rotate lineRotation, final Point2D shootingBubblePosition,
-            final DrawHelpLine drawHelpLine) {
+    public HandlerAdapterMouseMoved(final Rotate cannonRotation, final Rotate lineRotation, 
+            final Point2D shootingBubblePosition, final DrawHelpLine drawHelpLine) {
         this.cannonRotation = cannonRotation;
         this.lineRotation = lineRotation;
         this.shootingBubblePosition = shootingBubblePosition;
