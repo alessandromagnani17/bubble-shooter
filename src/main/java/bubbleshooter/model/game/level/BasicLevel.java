@@ -8,7 +8,7 @@ public class BasicLevel extends AbstractLevel {
     private static final int WRONG_SHOTS_BEFORE_NEW_ROW = 5;
 
     public BasicLevel() {
-        this.setCurrentGameType(LevelType.BASICMODE);
+        this.setLevelType(LevelType.BASICMODE);
     }
 
     @Override

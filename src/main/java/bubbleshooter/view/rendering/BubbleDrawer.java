@@ -1,5 +1,6 @@
 package bubbleshooter.view.rendering;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
@@ -21,6 +22,11 @@ public class BubbleDrawer {
 		this.canvas = canvas;
 	}
 
+	/**
+	 * Draw all {@link Sprite}s.
+	 * 
+	 * @param bubbles
+	 */
 	public final void draw(final List<Bubble> bubbles) {
 		final GraphicsContext gc = this.canvas.getGraphicsContext2D();
 		this.createSpriteList(bubbles).forEach(s -> {
@@ -30,7 +36,13 @@ public class BubbleDrawer {
 		});
 	}
 
-	private Sprite generateSprite(Bubble bubble) {
+	/**
+	 * Generates and sets the {@link BubbleSprite}.
+	 * 
+	 * @param bubble to generate the sprite.
+	 * @return new Sprite.
+	 */
+	private Sprite generateBubbleSprite(Bubble bubble) {
 		Sprite sprite = new BubbleSprite(this.canvas.getGraphicsContext2D());
 		try {
 			sprite.setSource(this.colorMap.get(bubble.getColor()));
@@ -43,13 +55,20 @@ public class BubbleDrawer {
 		return sprite;
 	}
 
+	/**
+	 * @return canvas.
+	 */
 	public final Canvas getCanvas() {
 		return canvas;
 	}
 
-
+	/**
+	 * Creates {@link Sprite} list.
+	 * @param list of {@link Bubble}s.
+	 * @return list of {@link Sprite}s.
+	 */
 	private List<Sprite> createSpriteList(final List<Bubble> bubbles) {
-		return bubbles.stream().map(this::generateSprite).collect(Collectors.toList());
+		return Collections.unmodifiableList(bubbles.stream().map(this::generateBubbleSprite).collect(Collectors.toList()));
 	}
 
 }

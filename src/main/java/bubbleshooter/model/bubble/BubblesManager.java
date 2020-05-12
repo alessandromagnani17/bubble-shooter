@@ -1,5 +1,6 @@
 package bubbleshooter.model.bubble;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class BubblesManager {
 	 * @return all the{@link Bubble} currently in the game.
 	 */
 	public final List<Bubble> getAllBubbles() {
-		return this.bubbles;
+		return Collections.unmodifiableList(this.bubbles);
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class BubblesManager {
 	 * @return The {@link Bubble} that are in the game's grid.
 	 */
 	public final List<Bubble> getBubbleGrid() {
-		return this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.GRID_BUBBLE))
-				.collect(Collectors.toList());
+		return Collections.unmodifiableList(this.bubbles.stream().filter(a -> a.getType().equals(BubbleType.GRID_BUBBLE))
+				.collect(Collectors.toList()));
 	}
 }

@@ -27,7 +27,7 @@ public class GameOverChecker {
      * @return the position of the {@link Bubble}s is greater than the maximum limit
      */
     public final boolean checkGameOver() {
-        return this.level.getCurrentBubbles().stream().filter(b -> b.getType()
+        return this.level.getBubblesManager().getAllBubbles().stream().filter(b -> b.getType()
                 .equals(BubbleType.GRID_BUBBLE)).anyMatch(b -> b.getPosition().getY() > LIMITS); 
     }
 

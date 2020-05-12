@@ -1,5 +1,6 @@
 package bubbleshooter.controller;
 
+import java.util.Collections;
 import java.util.List;
 import bubbleshooter.controller.engine.GameLoop;
 import bubbleshooter.controller.input.SwitcherController;
@@ -63,7 +64,7 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final List<Bubble> getBubbles() {
-        return this.model.getBubbles();
+        return Collections.unmodifiableList(this.model.getBubbles());
     }
 
 
@@ -104,7 +105,7 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public final LevelType getCurrentLevel() {
-        return this.model.getLevel().getCurrentGameType();
+        return this.model.getLevel().getLevelType();
     }
 
     /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
