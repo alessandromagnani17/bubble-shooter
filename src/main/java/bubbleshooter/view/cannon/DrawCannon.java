@@ -15,8 +15,6 @@ public class DrawCannon {
     private static final double CANNON_FIT_WIDTH = 10;
     private static final double CANNON_FIT_HEIGTH = 5;
 
-
-    private final AnchorPane pane;
     private final Rotate rotation = new Rotate();
     private final Cannon cannon;
     private final Bubble shootingBubble;
@@ -29,12 +27,11 @@ public class DrawCannon {
      * @param shootingBubble         the {@link ShootingBubble}.
      */
     public DrawCannon(final AnchorPane pane, final Cannon cannon, final Bubble shootingBubble) {
-        this.pane = pane;
         this.cannon = cannon;
         this.shootingBubble = shootingBubble;
         this.editCannon();
         this.setRotation();
-        this.pane.getChildren().add(this.cannon.getCannon());
+        pane.getChildren().add(this.cannon.getCannon());
     }
 
     /**
