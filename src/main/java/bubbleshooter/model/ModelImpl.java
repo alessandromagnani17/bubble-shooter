@@ -10,8 +10,8 @@ import bubbleshooter.model.game.level.Level;
 import bubbleshooter.model.game.level.SurvivalLevel;
 
 /**
- *The class which manage the logic of the game.
- *Implements the {@link Model} interface.
+ * The class which manage the logic of the game. Implements the {@link Model}
+ * interface.
  */
 public class ModelImpl implements Model {
 
@@ -28,7 +28,6 @@ public class ModelImpl implements Model {
         this.level = new SurvivalLevel();
         this.level.start();
     }
-
 
     @Override
     public final void update(final double elapsed) {
