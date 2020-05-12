@@ -35,7 +35,6 @@ public class HighscoreStoreImpl implements HighscoreStore {
     private static final int CAPACITY = 10;
     private final File file;
     private Map<LevelType, List<HighscoreStructure>> mapOfItems;
-    private boolean flag;
 
     /**
      * Constructor of the {@link HighscoreStore} used for create the file if necessary and
@@ -43,33 +42,22 @@ public class HighscoreStoreImpl implements HighscoreStore {
      */
     public HighscoreStoreImpl() {
         this.file = new File(DIR_PATH + FILE_PATH);
-        try {
-            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
-                System.out.println("Can't create directory !!!");
-            }
-            if (!file.exists() && !this.file.createNewFile()) {
-                System.out.println("Can't create the file !!!");
-                flag = true;
-            } else {
-                flag = false;
-            }
 
-            if (flag) {
-                final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
-
+        if (!file.getParentFile().exists() && !this.createDirectory()) {
+            System.out.println("Can't create the directory !!!");
+        }
+        if (!file.exists()) {
+            this.createFile();
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.file))) {
                 bw.write("HIGHSCORES!!" + NEW_LINE + NEW_LINE);
                 bw.write(BASIC + NEW_LINE);
                 bw.write(END_HIGH + NEW_LINE + NEW_LINE);
                 bw.write(SURVIVAL + NEW_LINE);
                 bw.write(END_HIGH + NEW_LINE + NEW_LINE);
                 bw.write(END_FILE);
-
-                bw.flush();
-                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         this.mapOfItems = new HashMap<>();
     }
@@ -131,6 +119,28 @@ public class HighscoreStoreImpl implements HighscoreStore {
     }
 
     /**
+     * Private method used for create the file.
+     */
+    private void createFile() {
+        try {
+            this.file.createNewFile();
+        } catch (IOException e) {
+            System.out.println("Can't create file !!! Exception --> " + e);
+        }
+    }
+
+    /**
+     * Private method used for create the directory.
+     */
+    private boolean createDirectory() {
+        return this.file.getParentFile().mkdirs();
+    }
+
+    private boolean deleteFile() {
+        return this.file.delete();
+    }
+
+    /**
      * Private method used for put in map every the type of scores saved.
      * 
      * @return the map contains the different scores.
@@ -156,9 +166,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
         final String modality = whichMod(gameMode);
         String readString;
 
-        try {
-            final BufferedReader br = new BufferedReader(new FileReader(file));
-
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             readString = br.readLine();
             while (readString != null && !readString.equals(END_FILE)) {
                 readString = br.readLine();
@@ -169,16 +177,10 @@ public class HighscoreStoreImpl implements HighscoreStore {
                         readString = br.readLine();
                     }
                 }
-
             }
-
-            br.close();
-
         } catch (IOException e) {
-            System.out.println("Error in reading of file !!!");
-            e.printStackTrace();
+            System.out.println("Error in reading of file !!! Exception --> " + e);
         }
-
         return itemsSet;
     }
 
@@ -262,19 +264,16 @@ public class HighscoreStoreImpl implements HighscoreStore {
      */
     private void reWriteFile() {
         String stringToWrite;
-        try {
-            if (!this.file.delete()) {
-                System.out.println("Can't delete the file !!!");
-            }
-            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
-                System.out.println("Can't create directory !!!");
-            }
-            if (!file.exists() && !this.file.createNewFile()) {
-                System.out.println("Can't create the file !!!");
-            }
-
-            final BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
-
+        if (!this.deleteFile()) {
+            System.out.println("Can't delete the file !!!");
+        }
+        if (!file.getParentFile().exists() && !this.createDirectory()) {
+            System.out.println("Can't create the directory !!!");
+        }
+        if (!file.exists()) {
+            this.createFile();
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.file))) {
             bw.write("HIGHSCORES!!\n\n");
             bw.write(BASIC + NEW_LINE);
             for (final HighscoreStructure o : this.mapOfItems.get(LevelType.BASICMODE)) {
@@ -289,12 +288,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
             }
             bw.write(END_HIGH + NEW_LINE + NEW_LINE);
             bw.write(END_FILE);
-
-            bw.flush();
-            bw.close();
-
         } catch (IOException e) {
-            System.out.println("Error in re-writing of the file !!!");
             e.printStackTrace();
         }
     }
