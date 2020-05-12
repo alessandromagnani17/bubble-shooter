@@ -9,7 +9,7 @@ import javafx.scene.transform.Rotate;
 /**
  * 
  * Class which implements the {@link EvenHandler<MouseEvent>} interface.
- * Used to rotate the {@link Cannon} and the help line.
+ * Used to rotate the {@link Cannon} and the {@link HelpLine}.
  *
  */
 public class HandlerAdapterMouseClicked implements EventHandler<MouseEvent> {
