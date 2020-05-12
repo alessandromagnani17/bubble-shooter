@@ -39,7 +39,7 @@ public class GridCollisionHandler implements CollisionHandler {
         if (this.canExplode()) {
             this.explode();
           } else {
-                this.level.getGameInfoManager().addWrongShoot();
+                this.level.getGameData().addWrongShoot();
             }
     }
 
@@ -62,7 +62,7 @@ public class GridCollisionHandler implements CollisionHandler {
         final Set<Bubble> isolatedBubbles = this.level.getGridHelper().getIsolatedBubbles();
         isolatedBubbles.forEach(a -> a.destroy());
         toExplode.addAll(isolatedBubbles);
-        toExplode.forEach(a -> this.level.getGameInfoManager().addDestroyedBubble());
+        toExplode.forEach(a -> this.level.getGameData().addDestroyedBubble());
     }
 
     /**

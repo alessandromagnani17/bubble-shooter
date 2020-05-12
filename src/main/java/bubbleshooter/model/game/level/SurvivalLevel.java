@@ -16,7 +16,7 @@ public class SurvivalLevel extends AbstractLevel {
 
 	@Override
 	public final void updateScore(final double elapsed) {
-		final GameData infoManager = this.getGameInfoManager();
+		final GameData infoManager = this.getGameData();
 		infoManager.updateScore(infoManager.getGameTime() * ONE_SECOND_SCORE);
 	}
 

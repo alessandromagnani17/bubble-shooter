@@ -25,7 +25,7 @@ public abstract class AbstractLevel implements Level {
 	private final BubbleGridManager bubbleGridManager;
 	private final BubbleGridHelper bubbleGridHelper;
 	private final CollisionController collisionController;
-	private final GameData gameInfoManager;
+	private final GameData gameData;
 	private final GameOverChecker gameOverChecker;
 	private final BubbleFactory bubbleFactory;
 	private GameStatus status;
@@ -36,7 +36,7 @@ public abstract class AbstractLevel implements Level {
 		this.bubbleGridManager = new BubbleGridManager(this);
 		this.bubbleGridHelper = new BubbleGridHelper(this.bubblesManager);
 		this.collisionController = new CollisionController(this);
-		this.gameInfoManager = new GameData();
+		this.gameData = new GameData();
 		this.gameOverChecker = new GameOverChecker(this);
 		this.bubbleFactory = new BubbleFactory();
 		this.status = GameStatus.PAUSE;
@@ -46,7 +46,7 @@ public abstract class AbstractLevel implements Level {
 	public final void update(final double elapsed) {
 		this.bubblesManager.update(elapsed);
 		this.collisionController.checkCollisions();
-		this.gameInfoManager.updateGameTime(elapsed);
+		this.gameData.updateGameTime(elapsed);
 		this.updateScore(elapsed / MILLISECONDS_IN_A_SECOND);
 		if (this.isTimeToNewRow(elapsed / MILLISECONDS_IN_A_SECOND)) {
 			this.createNewRow();
@@ -159,8 +159,8 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public final GameData getGameInfoManager() {
-		return this.gameInfoManager;
+	public final GameData getGameData() {
+		return this.gameData;
 	}
 
 	public final LevelType getCurrentGameType() {

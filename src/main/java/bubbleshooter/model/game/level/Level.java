@@ -105,7 +105,7 @@ public interface Level {
 	 * 
 	 * @return the {@link GameData}.
 	 */
-	GameData getGameInfoManager();
+	GameData getGameData();
 
 	/**
 	 * Gets the current {@link LevelType}.
