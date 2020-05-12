@@ -14,9 +14,6 @@ import bubbleshooter.view.helpline.DrawHelpLine;
 import bubbleshooter.view.images.ImagePath;
 import bubbleshooter.view.rendering.BubbleDrawer;
 import bubbleshooter.view.scene.FXMLPath;
-import bubbleshooter.view.states.GameState;
-import bubbleshooter.view.states.InGameState;
-import bubbleshooter.view.states.InPauseState;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -45,10 +42,6 @@ public class GameController extends AbstractController {
     private Button switchButton = new Button();
 
     private BubbleDrawer canvasDrawer;
-    private boolean gameOver;
-    private GameState currentState;
-    private GameState inGameState;
-    private GameState inPauseState;
     private DrawHelpLine drawHelpLine;
     private DrawCannon drawCannon;
     private Cannon cannon;
@@ -82,10 +75,6 @@ public class GameController extends AbstractController {
         this.pane.setOnMouseClicked(this.handlerAdapter);
 
         this.canvasDrawer = new BubbleDrawer(this.canvas);
-        this.inGameState = new InGameState(this, controller);
-        this.inPauseState = new InPauseState(this, controller);
-
-        this.setCurrentState(this.inGameState);
         this.controlSwitchButton();
 
         this.pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -160,23 +149,4 @@ public class GameController extends AbstractController {
 
     }
 
-    public final GameState getCurrentState() {
-        return currentState;
-    }
-
-    public final void setCurrentState(final GameState state) {
-        if (currentState != null) {
-            this.currentState.exit();
-        }
-        this.currentState = state;
-        this.currentState.enter();
-    }
-
-    public final GameState getInGameState() {
-        return inGameState;
-    }
-
-    public final GameState getInPauseState() {
-        return inPauseState;
-    }
 }

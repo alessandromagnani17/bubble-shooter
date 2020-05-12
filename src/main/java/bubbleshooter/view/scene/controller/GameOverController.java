@@ -17,12 +17,12 @@ import javafx.scene.text.Font;
  */
 public class GameOverController extends AbstractController {
 
-    @FXML private Label gameOverLabel = new Label();
-    @FXML private Label scoreLabel = new Label();
-    @FXML private Label destroyedBubbleLabel = new Label();
-    @FXML private Label gameTimeLabel = new Label();
-    @FXML private TextArea textArea = new TextArea();
-    @FXML private Button buttonAdd = new Button();
+    @FXML private final Label gameOverLabel = new Label();
+    @FXML private final Label scoreLabel = new Label();
+    @FXML private final Label destroyedBubbleLabel = new Label();
+    @FXML private final Label gameTimeLabel = new Label();
+    @FXML private final TextArea textArea = new TextArea();
+    @FXML private final Button buttonAdd = new Button();
 
     private static final double TITLE_DISTANCE = Settings.getGuiHeight() / 10;
     private static final double TITLE_HEIGHT = Settings.getGuiHeight() / 8;
