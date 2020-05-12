@@ -1,7 +1,6 @@
 package bubbleshooter.model.highscore;
 
 import bubbleshooter.model.game.level.LevelType;
-import javafx.beans.property.SimpleStringProperty;
 
 /**
  * 

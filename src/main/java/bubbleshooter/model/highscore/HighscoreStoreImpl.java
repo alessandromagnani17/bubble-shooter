@@ -12,7 +12,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import bubbleshooter.model.game.level.LevelType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
