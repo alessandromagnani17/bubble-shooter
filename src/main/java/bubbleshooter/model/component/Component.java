@@ -9,7 +9,7 @@ public interface Component {
 
     /**
      * Method used to update the {@link Component} of a {@link Bubble}.
-     * @param elapsed
+     * @param elapsed the time elapsed after a GameLoop cycle.
      */
     void update(double elapsed);
 

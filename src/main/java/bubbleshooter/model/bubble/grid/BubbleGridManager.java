@@ -19,6 +19,10 @@ public class BubbleGridManager {
     private boolean offsetRow;
     private final Level level;
 
+    /**
+     * Constructor of {@link BubbleGridManager} used to initialize the {@link Level}.
+     * @param level the {@link Level} of the game.
+     */
     public BubbleGridManager(final Level level) {
         this.level = level;
         this.offsetRow = false;
@@ -28,7 +32,7 @@ public class BubbleGridManager {
     /**
      * Creates new Row on the top of the grid.
      * 
-     * @param bubblesPerRow
+     * @param bubblesPerRow The number of {@link Bubble} in the row.
      * @return new row
      */
     public final List<Bubble> createNewRow(final int bubblesPerRow) {

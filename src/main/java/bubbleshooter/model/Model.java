@@ -25,7 +25,7 @@ public interface Model {
     /**
      * Method used to update the {@link Level}.
      * 
-     * @param elapsed
+     * @param elapsed The time elapsed every {@link GameLoop} cycle.
      */
     void update(double elapsed);
 

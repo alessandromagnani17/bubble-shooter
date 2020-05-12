@@ -57,8 +57,8 @@ public class BubbleGridHelper {
     }
 
     /**
-     * @param bubbleAt
-     * @param bubbleTo
+     * @param bubbleAt The first bubble in the method.
+     * @param bubbleTo The second bubble in the method.
      * @return True if the 2 bubbles given are near in the game's grid.
      */
     public final boolean isNear(final Bubble bubbleAt, final Bubble bubbleTo) {
@@ -67,8 +67,8 @@ public class BubbleGridHelper {
     }
 
     /**
-     * @param bubbleAt
-     * @param bubbleTo
+     * @param bubbleAt The first bubble in the method.
+     * @param bubbleTo The second bubble in the method.
      * @return True if the 2 bubbles are of the same {@link BubbleColor}.
      */
     public final boolean areEquals(final Bubble bubbleAt, final Bubble bubbleTo) {
@@ -106,7 +106,7 @@ public class BubbleGridHelper {
 
     /**
      * 
-     * @param bubble
+     * @param bubble The bubble to calculate the neighbors positions.
      * @return The Set of position which a {@link Bubble} can snap on.
      */
     public final Set<Point2D> getNeighbourPosition(final Bubble bubble) {

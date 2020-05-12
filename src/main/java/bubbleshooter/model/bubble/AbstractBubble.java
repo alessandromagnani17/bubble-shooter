@@ -8,6 +8,10 @@ import bubbleshooter.model.component.ComponentType;
 import bubbleshooter.model.component.ShootingComponent;
 import javafx.geometry.Point2D;
 
+/**
+ * Abstract class which contains the main methods of {@link Bubble}.
+ *
+ */
 public abstract class AbstractBubble implements Bubble {
 
     private Point2D position;
@@ -16,7 +20,12 @@ public abstract class AbstractBubble implements Bubble {
     private BubbleColor color;
     private final List<Component> components;
 
-
+    /**
+     * 
+     * @param type The {@link BubbleType} of the bubble.
+     * @param position The position of the bubble.
+     * @param color The {@link BubbleColor} of the bubble.
+     */
     public AbstractBubble(final BubbleType type, final Point2D position, final BubbleColor color) {
         this.color = color; 
         this.position = position;
@@ -27,6 +36,9 @@ public abstract class AbstractBubble implements Bubble {
         this.setComponents();
     }
 
+    /**
+     * Template method used for choose {@link Component} in subclasses.
+     */
     protected abstract void setComponents();
 
     @Override

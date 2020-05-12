@@ -27,7 +27,7 @@ public interface Bubble {
     /**
      * Method to update the {@link Bubble} every GameLoop cycle.
      * 
-     * @param elapsed
+     * @param elapsed The time elapsed every {@link GameLoop} cycle.
      */
     void update(double elapsed);
 
@@ -40,21 +40,21 @@ public interface Bubble {
     /**
      * Method to set the position of the {@link Bubble} in the game.
      * 
-     * @param position
+     * @param position The position of the bubble.
      */
     void setPosition(Point2D position);
 
     /**
      * Method to set the direction of the {@link ShootingBubble} in the game.
      * 
-     * @param direction
+     * @param direction The direction of the {@link ShootingBubble}.
      */
     void setDirection(Point2D direction);
 
     /**
      * Method to set the type of the {@link Bubble}.
      * 
-     * @param type
+     * @param type The type of the bubble.
      */
     void setType(BubbleType type);
 
@@ -72,7 +72,7 @@ public interface Bubble {
     /**
      * Method to add a {@link Component} to a {@link Bubble}.
      * 
-     * @param component
+     * @param component The Component to add.
      */
     void addComponent(Component component);
 

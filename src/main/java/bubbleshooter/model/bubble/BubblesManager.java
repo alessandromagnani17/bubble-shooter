@@ -14,6 +14,9 @@ public class BubblesManager {
 
     private final List<Bubble> bubbles;
 
+    /**
+     * Constructor used to initialize bubbles list.
+     */
     public BubblesManager() {
         this.bubbles = new LinkedList<>();
     }
@@ -22,7 +25,7 @@ public class BubblesManager {
      * Method to update the {@link ShootingBubble} and to remove the destroyed
      * {@link Bubble}.
      * 
-     * @param elapsed
+     * @param elapsed The time elapsed every {@link GameLoop} cycle.
      */
     public final void update(final double elapsed) {
         this.getShootingBubble().get().update(elapsed);

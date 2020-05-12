@@ -1,5 +1,9 @@
 package bubbleshooter.model.component;
 
+/**
+ * Enum which contains the type of {@link Component} in the game.
+ *
+ */
 public enum ComponentType {
 
      /**

@@ -19,6 +19,10 @@ public enum BubbleColor {
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
 
+    /**
+     * 
+     * @return a random Color from the possibles colors in {@link BubbleColor} enumeration.
+     */
     public static BubbleColor getRandomColor() {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }

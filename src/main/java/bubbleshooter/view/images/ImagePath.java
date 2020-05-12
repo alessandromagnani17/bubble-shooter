@@ -41,7 +41,7 @@ public enum ImagePath {
     }
 
     /**
-     * getter for the path of image
+     * getter for the path of image.
      * 
      * @return the path of the image.
      */

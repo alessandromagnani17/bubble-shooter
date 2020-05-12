@@ -16,7 +16,7 @@ public interface Controller {
 
      /**
      * The method called by the {@link View} to start the Game in the {@link Model}.
-     * @param levelType
+     * @param levelType The type of the level that the player choose.
      */
     void startGame(LevelType levelType);
 

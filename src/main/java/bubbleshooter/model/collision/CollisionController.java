@@ -68,8 +68,8 @@ public class CollisionController {
 
     /**
      * Method which uses the {@link CollisionComponent} of the {@link Bubble} and check for a {@link Collision}.
-     * @param bubbleAt
-     * @param bubbleTo
+     * @param bubbleAt The first bubble shoot.
+     * @param bubbleTo the bubble in the grid.
      * @return true if two {@link Bubble} have collided.
      */
     public final boolean hasCollided(final Bubble bubbleAt, final Bubble bubbleTo) {
