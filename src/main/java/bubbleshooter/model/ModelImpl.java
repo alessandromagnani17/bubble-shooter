@@ -1,5 +1,6 @@
 package bubbleshooter.model;
 
+import java.util.Collections;
 import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubblesManager;
@@ -46,7 +47,7 @@ public class ModelImpl implements Model {
 
     @Override
     public final List<Bubble> getBubbles() {
-        return this.level.getBubblesManager().getAllBubbles();
+        return Collections.unmodifiableList(this.level.getBubblesManager().getAllBubbles());
     }
 
     @Override

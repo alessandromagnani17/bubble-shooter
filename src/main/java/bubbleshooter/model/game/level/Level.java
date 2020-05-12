@@ -1,7 +1,5 @@
 package bubbleshooter.model.game.level;
 
-import java.util.List;
-
 import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleFactory;
 import bubbleshooter.model.bubble.BubblesManager;
@@ -56,7 +54,7 @@ public interface Level {
 	 * 
 	 * @param the {@link LevelType}.
 	 */
-	void setCurrentGameType(LevelType gameType);
+	void setLevelType(LevelType levelType);
 
 	/**
 	 * Sets the {@link GameStatus}.
@@ -94,13 +92,6 @@ public interface Level {
 	CollisionController getCollisionController();
 
 	/**
-	 * Returns a list of current {@link Bubble}s.
-	 * 
-	 * @return a {@link List} of all {@link Bubble}s.
-	 */
-	List<Bubble> getCurrentBubbles();
-
-	/**
 	 * Gets the {@link GameData}.
 	 * 
 	 * @return the {@link GameData}.
@@ -112,7 +103,7 @@ public interface Level {
 	 * 
 	 * @return the {@link LevelType}.
 	 */
-	LevelType getCurrentGameType();
+	LevelType getLevelType();
 
 	/**
 	 * Gets the {@link BubbleFactory}.
