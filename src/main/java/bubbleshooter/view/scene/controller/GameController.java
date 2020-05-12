@@ -39,8 +39,8 @@ public class GameController extends AbstractController {
 
     @FXML private Canvas canvas;
     @FXML private AnchorPane pane;
-    @FXML private CheckBox helpCheckBox = new CheckBox("Help");
-    @FXML private Button switchButton = new Button();
+    @FXML private CheckBox helpCheckBox;
+    @FXML private Button switchButton;
 
     private BubbleDrawer canvasDrawer;
     private boolean gameOver;

@@ -31,7 +31,7 @@ public abstract class AbstractController {
     /**
      * @return The {@link View}.
      */
-    protected View getView() {
+    public View getView() {
         return this.view;
     }
 
