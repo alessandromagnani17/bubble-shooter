@@ -11,7 +11,7 @@ public class GridBubble extends AbstractBubble {
 
     /**
      * @param position The position on the grid.
-     * @param color The {@link BubbleColor} of the bubble.
+     * @param color    The {@link BubbleColor} of the bubble.
      */
     public GridBubble(final Point2D position, final BubbleColor color) {
         super(BubbleType.GRID_BUBBLE, position, color);

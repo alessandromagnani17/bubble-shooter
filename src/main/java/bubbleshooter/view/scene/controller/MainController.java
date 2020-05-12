@@ -18,11 +18,11 @@ import javafx.scene.text.TextAlignment;
  */
 public final class MainController extends AbstractController {
 
-    @FXML private Button basicModeButton = new Button();
-    @FXML private Button survivalModeButton = new Button();
-    @FXML private Button highscoresButton = new Button();
-    @FXML private Button quitButton = new Button();
-    @FXML private Label titleLabel = new Label();
+    @FXML private Button basicModeButton;
+    @FXML private Button survivalModeButton;
+    @FXML private Button highscoresButton;
+    @FXML private Button quitButton;
+    @FXML private Label titleLabel;
     private static final double TITLE_DISTANCE = Settings.getGuiHeight() / 10;
     private static final double TITLE_HEIGHT = Settings.getGuiHeight() / 8;
     private static final double TITLE_WIDTH = Settings.getGuiWidth();
@@ -78,6 +78,7 @@ public final class MainController extends AbstractController {
     public void basicMode() {
         this.getController().startGame(LevelType.BASICMODE);
         this.setNextScene(FXMLPath.GAME);
+        this.loadNextScene();
     }
 
     /**
@@ -87,6 +88,7 @@ public final class MainController extends AbstractController {
     public void survivalMode() {
         this.getController().startGame(LevelType.SURVIVALMODE);
         this.setNextScene(FXMLPath.GAME);
+        this.loadNextScene();
     }
 
     /**
@@ -95,6 +97,7 @@ public final class MainController extends AbstractController {
     @FXML
     public void highscores() {
         this.setNextScene(FXMLPath.HIGHSCORE);
+        this.loadNextScene();
     }
 
     /**
@@ -103,10 +106,5 @@ public final class MainController extends AbstractController {
     @FXML
     public void quit() {
         System.exit(0);
-    }
-
-    @Override
-    public void setNextScene(final FXMLPath nextScene) {
-        this.getView().loadScene(nextScene);
     }
 }

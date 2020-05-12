@@ -18,7 +18,8 @@ public class SwitchBubble extends AbstractBubble {
     }
 
     /**
-     * It has no component because it's useful only as {@link SwitchBubble} and it has no functions in the game.
+     * It has no component because it's useful only as {@link SwitchBubble} and it
+     * has no functions in the game.
      */
     @Override
     protected void setComponents() {

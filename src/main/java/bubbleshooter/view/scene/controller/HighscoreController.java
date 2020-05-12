@@ -22,10 +22,10 @@ import javafx.scene.text.Font;
  */
 public class HighscoreController extends AbstractController {
 
-    @FXML private Label titleLabel = new Label();
-    @FXML private Label basicModeLabel = new Label();
-    @FXML private Label survivalModeLabel = new Label();
-    @FXML private Button backMenuButton = new Button();
+    @FXML private Label titleLabel;
+    @FXML private Label basicModeLabel;
+    @FXML private Label survivalModeLabel;
+    @FXML private Button backMenuButton;
     @FXML private TableView<HighscoreStructure> tableBaseView;
     @FXML private TableColumn<HighscoreStructure, String> nameBaseColumn;
     @FXML private TableColumn<HighscoreStructure, Integer> scoreBaseColumn;
@@ -46,6 +46,8 @@ public class HighscoreController extends AbstractController {
     private static final double BUTTON_WIDTH = TABLE_WIDTH - TABLE_WIDTH / 4;
     private static final double BUTTON_HEIGHT = Settings.getGuiHeight() / 10;
     private static final double BUTTON_FONT_SIZE = BUTTON_HEIGHT / 2.5;
+    private static final String NAME = "Name";
+    private static final String SCORE = "Score";
 
     @Override
     public final void init(final Controller controller, final View view) {
@@ -75,18 +77,18 @@ public class HighscoreController extends AbstractController {
         this.tableSurvivalView.setLayoutY(this.survivalModeLabel.getLayoutY() + LABEL_HEIGHT - DETACHMENT / 4);
         this.tableSurvivalView.setPrefSize(TABLE_WIDTH, TABLE_HEIGHT);
 
-        this.nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
+        this.nameBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>(NAME));
         this.nameBaseColumn.setText("Player");
         this.nameBaseColumn.setPrefWidth(TABLE_WIDTH / 2);
-        this.scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
-        this.scoreBaseColumn.setText("Score");
+        this.scoreBaseColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>(SCORE));
+        this.scoreBaseColumn.setText(SCORE);
         this.scoreBaseColumn.setPrefWidth(TABLE_WIDTH / 2);
 
-        this.nameSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>("Name"));
+        this.nameSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, String>(NAME));
         this.nameSurvivalColumn.setText("Player");
         this.nameSurvivalColumn.setPrefWidth(TABLE_WIDTH / 2);
-        this.scoreSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>("Score"));
-        this.scoreSurvivalColumn.setText("Score");
+        this.scoreSurvivalColumn.setCellValueFactory(new PropertyValueFactory<HighscoreStructure, Integer>(SCORE));
+        this.scoreSurvivalColumn.setText(SCORE);
         this.scoreSurvivalColumn.setPrefWidth(TABLE_WIDTH / 2);
 
         this.backMenuButton.setText("Back to menu");
@@ -119,11 +121,6 @@ public class HighscoreController extends AbstractController {
     @FXML
     public final void backToMenu() {
         this.setNextScene(FXMLPath.MAIN);
+        this.loadNextScene();
     }
-
-    @Override
-    public final void setNextScene(final FXMLPath nextScene) {
-        this.getView().loadScene(nextScene);
-    }
-
 }

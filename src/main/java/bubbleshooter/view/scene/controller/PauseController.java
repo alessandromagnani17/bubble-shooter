@@ -17,10 +17,10 @@ import javafx.scene.text.TextAlignment;
  */
 public class PauseController extends AbstractController {
 
-    @FXML private Label titleLabel = new Label();
-    @FXML private Button resumeButton = new Button();
-    @FXML private Button restartButton = new Button();
-    @FXML private Button quitButton = new Button();
+    @FXML private Label titleLabel;
+    @FXML private Button resumeButton;
+    @FXML private Button restartButton;
+    @FXML private Button quitButton;
 
     private static final double TITLE_DISTANCE = Settings.getGuiHeight() / 10;
     private static final double TITLE_HEIGHT = Settings.getGuiHeight() / 8;
@@ -71,6 +71,7 @@ public class PauseController extends AbstractController {
     public final void resume() {
         this.getController().getGameEngine().resumeLoop();
         this.setNextScene(FXMLPath.GAME);
+        this.loadNextScene();
     }
 
     /**
@@ -80,6 +81,7 @@ public class PauseController extends AbstractController {
     public final void restart() {
         this.getController().startGame(this.getController().getCurrentLevel());
         this.setNextScene(FXMLPath.GAME);
+        this.loadNextScene();
     }
 
     /**
@@ -88,10 +90,5 @@ public class PauseController extends AbstractController {
     @FXML
     public final void quit() {
         System.exit(0);
-    }
-
-    @Override
-    public final void setNextScene(final FXMLPath nextScene) {
-        this.getView().loadScene(nextScene);
     }
 }

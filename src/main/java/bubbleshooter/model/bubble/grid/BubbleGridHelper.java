@@ -13,8 +13,8 @@ import bubbleshooter.model.bubble.BubblesManager;
 import javafx.geometry.Point2D;
 
 /**
- * Class used to manage the grid of {@link Bubble} in the Game.
- * It's used also by the {@link GridCollisionHandler} class to get the info about grid.
+ * Class used to manage the grid of {@link Bubble} in the Game. It's used also
+ * by the {@link GridCollisionHandler} class to get the info about grid.
  */
 public class BubbleGridHelper {
 
@@ -53,7 +53,7 @@ public class BubbleGridHelper {
         final Point2D bubbleAtPos = bubbleAt.getPosition();
         final Point2D bubbleToPos = bubbleTo.getPosition();
         return Math.sqrt(Math.pow(bubbleAtPos.getX() - bubbleToPos.getX(), 2)
-             + Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2));
+                + Math.pow(bubbleAtPos.getY() - bubbleToPos.getY(), 2));
     }
 
     /**
@@ -63,7 +63,7 @@ public class BubbleGridHelper {
      */
     public final boolean isNear(final Bubble bubbleAt, final Bubble bubbleTo) {
         return this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) <= this.diagonalDistance
-            && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
+                && this.getDistanceBetweenBubbles(bubbleAt, bubbleTo) > 0;
     }
 
     /**
@@ -78,17 +78,19 @@ public class BubbleGridHelper {
     /**
      * @param starting
      * @param linkedBubbles
-     * @return Recursive method to return the list of {@link Bubble} linked to the startingBubble.
+     * @return Recursive method to return the list of {@link Bubble} linked to the
+     *         startingBubble.
      */
     private List<Bubble> getLinkedBubbles(final Bubble starting, final List<Bubble> linkedBubbles) {
         this.getBubbleNeighbours(starting).stream()
-                                          .filter(a -> !linkedBubbles.contains(a) && !a.isDestroyed() && linkedBubbles.add(a))
-                                          .forEach(a -> this.getLinkedBubbles(a, linkedBubbles));
+                .filter(a -> !linkedBubbles.contains(a) && !a.isDestroyed() && linkedBubbles.add(a))
+                .forEach(a -> this.getLinkedBubbles(a, linkedBubbles));
         return linkedBubbles;
     }
 
     /**
-     * @return The Set of {@link Bubble} which there are no more linked to the game's grid.
+     * @return The Set of {@link Bubble} which there are no more linked to the
+     *         game's grid.
      */
     public final Set<Bubble> getIsolatedBubbles() {
         final Set<Bubble> firstLineBubbles = this.getBubbleGrid().stream()
@@ -101,7 +103,6 @@ public class BubbleGridHelper {
         }
         return this.getBubbleGrid().stream().filter(a -> !linkedBubbles.contains(a)).collect(Collectors.toSet());
     }
-
 
     /**
      * 
@@ -119,12 +120,11 @@ public class BubbleGridHelper {
     }
 
     /**
-     * @return The currents {@link BubbleColor} in the game.
-     * Useful to not generate some other colors in the end of the game.
+     * @return The currents {@link BubbleColor} in the game. Useful to not generate
+     *         some other colors in the end of the game.
      */
     public final List<BubbleColor> getRemainingColors() {
-        return this.getBubbleGrid().stream()
-                                   .filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
-                                   .map(b -> b.getColor()).distinct().collect(Collectors.toList());
+        return this.getBubbleGrid().stream().filter(b -> b.getType().equals(BubbleType.GRID_BUBBLE))
+                .map(b -> b.getColor()).distinct().collect(Collectors.toList());
     }
 }

@@ -13,11 +13,9 @@ import javafx.scene.transform.Rotate;
  */
 public class HandlerAdapterMouseClicked implements EventHandler<MouseEvent> {
 
-    private Rotate cannonRotation = new Rotate();
-    private Rotate lineRotation = new Rotate();
-    private Point2D shootingBubblePosition;
-    private HandlerAdapterMouseMoved handlerAdapter;
-    private Point2D eventPosition;
+    private final Rotate cannonRotation;
+    private final Rotate lineRotation;
+    private final Point2D shootingBubblePosition;
 
     /**
      * Constructor for a new HandlerAdapterMouseMoved.
@@ -35,11 +33,13 @@ public class HandlerAdapterMouseClicked implements EventHandler<MouseEvent> {
 
     @Override
     public final void handle(final MouseEvent event) {
-        this.eventPosition = new Point2D(event.getX(), event.getY());
-        this.handlerAdapter = new HandlerAdapterMouseMoved(this.cannonRotation, this.lineRotation, 
+    	HandlerAdapterMouseMoved handlerAdapter;
+    	Point2D eventPosition;
+        eventPosition = new Point2D(event.getX(), event.getY());
+        handlerAdapter = new HandlerAdapterMouseMoved(this.cannonRotation, this.lineRotation, 
                 this.shootingBubblePosition, null);
         handlerAdapter.handle(event);
-        System.out.println(this.eventPosition);
+        System.out.println(eventPosition);
     }
 }
 

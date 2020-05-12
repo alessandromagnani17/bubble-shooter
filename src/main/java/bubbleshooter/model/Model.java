@@ -29,6 +29,12 @@ public interface Model {
      */
     void update(double elapsed);
 
+    /** Method called in the {@link Controller} class.
+     * 
+     * @return the list of the currents {@link Bubble} in the game.
+     */
+    List<Bubble> getBubbles();
+
     /**
      * Method called in the {@link Controller} class to start a {@link BasicLevel}.
      */
@@ -39,13 +45,6 @@ public interface Model {
      * {@link SurvivalLevel}.
      */
     void startSurvivalGame();
-
-    /**
-     * Method called in the {@link Controller} class.
-     * 
-     * @return the list of the currents {@link Bubble} in the game.
-     */
-    List<Bubble> getBubbles();
 
     /**
      * @return the current level of the Game.
