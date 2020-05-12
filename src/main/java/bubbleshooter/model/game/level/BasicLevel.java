@@ -1,6 +1,6 @@
 package bubbleshooter.model.game.level;
 
-import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameData;
 
 public class BasicLevel extends AbstractLevel {
 
@@ -13,13 +13,13 @@ public class BasicLevel extends AbstractLevel {
 
     @Override
     public final void updateScore(final double elapsed) {
-        final GameInfoManager infoManager = this.getGameInfoManager();
+        final GameData infoManager = this.getGameInfoManager();
         infoManager.updateScore(infoManager.getDestroyedBubbles() * BUBBLE_SCORE);
     }
 
     @Override
     public final boolean isTimeToNewRow(final double elapsed) {
-        final GameInfoManager infoManager = this.getGameInfoManager();
+        final GameData infoManager = this.getGameInfoManager();
         if (infoManager.getWrongShoots() == WRONG_SHOTS_BEFORE_NEW_ROW) {
             infoManager.clearWrongShoots();
             return true;

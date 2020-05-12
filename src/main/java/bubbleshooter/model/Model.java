@@ -18,9 +18,9 @@ public interface Model {
 	double WORLD_WIDTH = 705;
 
 	/**
-	 * The Heigth of the game used by Model.
+	 * The Height of the game used by Model.
 	 */
-	double WORLD_HEIGTH = 700;
+	double WORLD_HEIGHT = 700;
 
 	/**
 	 * Method used to update the {@link Level}.

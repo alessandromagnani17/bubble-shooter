@@ -23,13 +23,13 @@ public final class MainController extends AbstractController {
     @FXML private Button highscoresButton = new Button();
     @FXML private Button quitButton = new Button();
     @FXML private Label titleLabel = new Label();
-    private static final double TITLE_DISTANCE = Settings.getGuiHeigth() / 10;
-    private static final double TITLE_HEIGTH = Settings.getGuiHeigth() / 8;
+    private static final double TITLE_DISTANCE = Settings.getGuiHeight() / 10;
+    private static final double TITLE_HEIGTH = Settings.getGuiHeight() / 8;
     private static final double TITLE_WIDTH = Settings.getGuiWidth();
     private static final double TITLE_FONT_SIZE = TITLE_HEIGTH / 1.5;
-    private static final double BUTTON_DISTANCE = Settings.getGuiHeigth() / 50;
+    private static final double BUTTON_DISTANCE = Settings.getGuiHeight() / 50;
     private static final double BUTTON_WIDTH = Settings.getGuiWidth() / 2;
-    private static final double BUTTON_HEIGTH = Settings.getGuiHeigth() / 10;
+    private static final double BUTTON_HEIGTH = Settings.getGuiHeight() / 10;
     private static final double BUTTON_X = Settings.getGuiWidth() / 2 - BUTTON_WIDTH / 2;
     private static final double BUTTON_FONT_SIZE = BUTTON_HEIGTH / 2.5;
 
