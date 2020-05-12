@@ -45,7 +45,7 @@ public class ControllerImpl implements Controller {
     public final void startGame(final LevelType levelType) {
      this.engine = new SoundGameEngine(new BasicGameLoop(this.view, this.model));
      this.startSelectedGame(levelType);
-     this.scoresManager = new ScoreManager(this.model.getLevel().getGameInfoManager());
+     this.scoresManager = new ScoreManager(this.model.getLevel().getGameData());
      this.switcherController = new SwitcherController(this.getBubbles());
      this.engine.startLoop();
     }

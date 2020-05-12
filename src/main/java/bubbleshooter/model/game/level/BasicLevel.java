@@ -13,13 +13,13 @@ public class BasicLevel extends AbstractLevel {
 
     @Override
     public final void updateScore(final double elapsed) {
-        final GameData infoManager = this.getGameInfoManager();
+        final GameData infoManager = this.getGameData();
         infoManager.updateScore(infoManager.getDestroyedBubbles() * BUBBLE_SCORE);
     }
 
     @Override
     public final boolean isTimeToNewRow(final double elapsed) {
-        final GameData infoManager = this.getGameInfoManager();
+        final GameData infoManager = this.getGameData();
         if (infoManager.getWrongShoots() == WRONG_SHOTS_BEFORE_NEW_ROW) {
             infoManager.clearWrongShoots();
             return true;
