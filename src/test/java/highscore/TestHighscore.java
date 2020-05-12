@@ -26,6 +26,7 @@ public class TestHighscore {
      */
     @Test
     public final void testAddABasicModeScore() {
+        final Integer score1, score2;
         this.highscoreStore.cleanFile();
 
         final ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
@@ -37,7 +38,9 @@ public class TestHighscore {
         rightList.add(new HighscoreStructure(PLAYER, POINTS, LevelType.BASICMODE));
 
         assertTrue(rightList.get(0).getName().equals(scoreList.get(0).getName()));
-        assertTrue(rightList.get(0).getScore().equals(scoreList.get(0).getScore()));
+        score1 = rightList.get(0).getScore();
+        score2 = scoreList.get(0).getScore();
+        assertTrue(score1.equals(score2));
 
      }
 
@@ -47,6 +50,7 @@ public class TestHighscore {
      */
     @Test
     public final void testAddASurvivalModeScore() {
+    	final Integer score1, score2;
         this.highscoreStore.cleanFile();
 
         final ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
@@ -58,7 +62,9 @@ public class TestHighscore {
         rightList.add(new HighscoreStructure(PLAYER, POINTS, LevelType.SURVIVALMODE));
 
         assertTrue(rightList.get(0).getName().equals(scoreList.get(0).getName()));
-        assertTrue(rightList.get(0).getScore().equals(scoreList.get(0).getScore()));
+        score1 = rightList.get(0).getScore();
+        score2 = scoreList.get(0).getScore();
+        assertTrue(score1.equals(score2));
 
      }
 
@@ -68,6 +74,7 @@ public class TestHighscore {
      */
     @Test
     public final void testOrderBasicModeScore() {
+    	Integer score1, score2;
         this.highscoreStore.cleanFile();
 
         final ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
@@ -85,7 +92,9 @@ public class TestHighscore {
 
         for (int i = 0; i < rightList.size(); i++) {
             assertTrue(rightList.get(i).getName().equals(scoreList.get(i).getName()));
-            assertTrue(rightList.get(i).getScore().equals(scoreList.get(i).getScore()));
+            score1 = rightList.get(i).getScore();
+            score2 = scoreList.get(i).getScore();
+            assertTrue(score1.equals(score2));
         }
      }
 
@@ -95,6 +104,7 @@ public class TestHighscore {
      */
     @Test
     public final void testOrderSurvivalModeScore() {
+    	Integer score1, score2;
         this.highscoreStore.cleanFile();
 
         final ObservableList<HighscoreStructure> rightList = FXCollections.observableArrayList();
@@ -112,7 +122,9 @@ public class TestHighscore {
 
         for (int i = 0; i < rightList.size(); i++) {
             assertTrue(rightList.get(i).getName().equals(scoreList.get(i).getName()));
-            assertTrue(rightList.get(i).getScore().equals(scoreList.get(i).getScore()));
+            score1 = rightList.get(i).getScore();
+            score2 = scoreList.get(i).getScore();
+            assertTrue(score1.equals(score2));
         }
      }
 
