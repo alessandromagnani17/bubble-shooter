@@ -8,6 +8,7 @@ public abstract class AbstractController {
 
     private Controller controller;
     private View view;
+    private FXMLPath nextScene;
 
     /**
      * Method that initialized the controller and the view.
@@ -42,10 +43,19 @@ public abstract class AbstractController {
     }
 
     /**
+     * Method that load the next scene.
+     */
+    public void loadNextScene() {
+        this.view.loadScene(this.nextScene);
+    }
+
+    /**
      * Method that set the next {@link GameScenes}.
      * 
      * @param nextScene the scene to load.
      */
-    public abstract void setNextScene(FXMLPath nextScene);
+    public void setNextScene(final FXMLPath nextScene) {
+        this.nextScene = nextScene;
+    }
 
 }
