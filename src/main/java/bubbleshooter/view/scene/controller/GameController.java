@@ -99,6 +99,7 @@ public class GameController extends AbstractController {
         });
     }
 
+    @Override
     public final void render() {
         this.resetCanvas();
         canvasDrawer.draw(this.getController().getBubbles());
@@ -143,9 +144,6 @@ public class GameController extends AbstractController {
         this.getView().loadScene(nextScene);
     }
 
-    public final boolean isGameOver() {
-        return this.gameOver;
-    }
 
     public final boolean checkAngle(final double angle) {
         return !(angle > MAXANGLE || angle < MINANGLE);
@@ -153,7 +151,7 @@ public class GameController extends AbstractController {
 
     // Clear the canvas after every render. It avoids ghosting effect.
     private void resetCanvas() {
-        GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
+        final GraphicsContext gc = this.canvas.getGraphicsContext2D(); 
         gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();

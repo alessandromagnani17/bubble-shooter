@@ -82,7 +82,7 @@ public abstract class AbstractLevel implements Level {
     @Override
     public final void loadShootingBubble() {
         if (this.bubblesManager.getShootingBubble().isPresent()) {
-            Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
+            final Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
             shootingBubble
                     .setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
             shootingBubble.setDirection(shootingBubble.getPosition());
@@ -98,7 +98,7 @@ public abstract class AbstractLevel implements Level {
     public final void loadSwitchBubble() {
         if (this.bubblesManager.getSwitchBubble().isPresent()) {
             final Random rand = new Random();
-            Bubble switchBubble = this.bubblesManager.getSwitchBubble().get();
+            final Bubble switchBubble = this.bubblesManager.getSwitchBubble().get();
             switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
             switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
                     .get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
@@ -109,6 +109,7 @@ public abstract class AbstractLevel implements Level {
         }
     }
 
+    @Override
     public final BubblesManager getBubblesManager() {
         return this.bubblesManager;
     }
@@ -157,6 +158,7 @@ public abstract class AbstractLevel implements Level {
         return this.gameData;
     }
 
+    @Override
     public final LevelType getLevelType() {
         return this.currentGameType;
     }

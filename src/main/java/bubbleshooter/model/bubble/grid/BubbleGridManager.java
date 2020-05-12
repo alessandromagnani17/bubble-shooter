@@ -17,7 +17,7 @@ public class BubbleGridManager {
 
     private int createdRows;
     private boolean offsetRow;
-    private Level level;
+    private final Level level;
 
     public BubbleGridManager(final Level level) {
         this.level = level;

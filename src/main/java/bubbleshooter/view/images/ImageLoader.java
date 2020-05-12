@@ -7,37 +7,40 @@ import java.util.Map;
 import javafx.scene.image.Image;
 
 /**
- * Image loader
+ * Image loader.
  */
-public class ImageLoader {
+public final class ImageLoader {
 
-	/**
-	 * map used as a cache for already created images
-	 */
-	private static final Map<ImagePath, Image> IMAGES = new HashMap<>();
+    /**
+     * map used as a cache for already created images.
+     */
+    private static final Map<ImagePath, Image> IMAGES = new HashMap<>();
 
-	/**
-	 * @param imagePath the path of the image to get.
-	 * @return the image that refers to the specified {@link ImagePath}
-	 */
-	public static Image getImage(final ImagePath imagePath) {
-		return IMAGES.get(imagePath);
-	}
+    private ImageLoader() {
+    }
 
-	/**
-	 * Loads all images.
-	 */
-	public static void loadAll() {
-		Arrays.stream(ImagePath.values()).forEach(p -> IMAGES.put(p, loadImage(p.getPath())));
+    /**
+     * @param imagePath the path of the image to get.
+     * @return the image that refers to the specified {@link ImagePath}
+     */
+    public static Image getImage(final ImagePath imagePath) {
+        return IMAGES.get(imagePath);
+    }
 
-	}
+    /**
+     * Loads all images.
+     */
+    public static void loadAll() {
+        Arrays.stream(ImagePath.values()).forEach(p -> IMAGES.put(p, loadImage(p.getPath())));
 
-	/**
-	 * 
-	 * @param the imagePath to take the image.
-	 * @return the created image.
-	 */
-	private static Image loadImage(final String imagePath) {
-		return new Image(ImageLoader.class.getResourceAsStream(imagePath));
-	}
+    }
+
+    /**
+     * 
+     * @param the imagePath to take the image.
+     * @return the created image.
+     */
+    private static Image loadImage(final String imagePath) {
+        return new Image(ImageLoader.class.getResourceAsStream(imagePath));
+    }
 }

@@ -25,7 +25,7 @@ public class ViewImpl implements View {
     private AbstractController currentSceneController;
     private final Stage stage;
     private boolean viewStarted;
-    private SceneLoader sceneLoader;
+    private final SceneLoader sceneLoader;
 
     public ViewImpl(final Stage startingStage) {
         this.stage = startingStage;
