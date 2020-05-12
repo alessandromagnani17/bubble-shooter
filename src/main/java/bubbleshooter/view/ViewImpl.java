@@ -20,27 +20,30 @@ public class ViewImpl implements View {
 
 	private static final String TITLE = "BUBBLE SHOOTER";
 	private static final double MIN_WIDTH = Settings.getGuiWidth();
-	private static final double MIN_HEIGHT = Settings.getGuiHeigth();
+	private static final double MIN_HEIGHT = Settings.getGuiHeight();
 	private Controller controller;
 	private AbstractController currentSceneController;
 	private final Stage stage;
 	private boolean viewStarted;
-	private SceneLoader sceneLoader; 
+	private SceneLoader sceneLoader;
 
 	public ViewImpl(final Stage startingStage) {
 		this.stage = startingStage;
 		this.viewStarted = false;
-		this.sceneLoader = new SceneLoader(); 
+		this.sceneLoader = new SceneLoader();
 	}
 
 	@Override
 	public final void launch(final Controller controller) {
 		this.controller = controller;
-		ImageLoader.loadAll();
 		this.initialize();
 	}
 
+	/**
+	 * Loads all images, sets the stage and loads first scene.
+	 */
 	private void initialize() {
+		ImageLoader.loadAll();
 		this.stage.setTitle(TITLE);
 		this.stage.setMinHeight(MIN_HEIGHT);
 		this.stage.setMinWidth(MIN_WIDTH);
@@ -52,21 +55,21 @@ public class ViewImpl implements View {
 	public final void loadScene(final FXMLPath scene) {
 		try {
 			this.sceneLoader.loadScene(scene);
-			this.currentSceneController = this.sceneLoader.getController(); 
+			this.currentSceneController = this.sceneLoader.getController();
 			this.currentSceneController.init(controller, this);
 			this.sceneLoader.getScene().getRoot().requestFocus();
 			Platform.runLater(() -> this.initStage(this.sceneLoader.getScene()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	@Override
-	public final void update() {
-		Platform.runLater(() -> this.currentSceneController.render());
-	}
-
+	/**
+	 * Sets the stage for the newly loaded scene.
+	 * 
+	 * @param the loaded scene.
+	 */
 	private void initStage(final Scene scene) {
 		this.stage.setScene(scene);
 		this.stage.setWidth(this.stage.getWidth());
@@ -76,6 +79,11 @@ public class ViewImpl implements View {
 			this.stage.show();
 			this.viewStarted = true;
 		}
+	}
+
+	@Override
+	public final void update() {
+		Platform.runLater(() -> this.currentSceneController.render());
 	}
 
 	@Override

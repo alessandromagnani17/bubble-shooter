@@ -2,6 +2,7 @@ package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,7 +11,7 @@ import javafx.scene.image.Image;
 public class BubbleSprite implements Sprite {
 
 	private final GraphicsContext gc;
-	private double heigth;
+	private double height;
 	private double width;
 	private Point2D position;
 	private Image image;
@@ -23,12 +24,16 @@ public class BubbleSprite implements Sprite {
 	@Override
 	public void draw() {
 		this.gc.drawImage(this.image, this.getTopLeftFromCenter(this.getPosition()).getX(),
-				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeigth());
+				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeight());
 
 	}
-
+	/**
+	 * Gets the top-left point of the image.
+	 * @param center of the {@link Bubble}.
+	 * @return the top-left point.
+	 */
 	private Point2D getTopLeftFromCenter(Point2D center) {
-		return new Point2D(this.position.getX() - (this.getWidth() / 2), this.position.getY() - (this.getHeigth() / 2));
+		return new Point2D(this.position.getX() - (this.getWidth() / 2), this.position.getY() - (this.getHeight() / 2));
 	}
 
 	@Override
@@ -59,13 +64,13 @@ public class BubbleSprite implements Sprite {
 	}
 
 	@Override
-	public double getHeigth() {
-		return this.heigth;
+	public double getHeight() {
+		return this.height;
 	}
 
 	@Override
-	public void setHeigth(double heigth) {
-		this.heigth = heigth;
+	public void setHeight(double height) {
+		this.height = height;
 
 	}
 

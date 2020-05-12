@@ -1,9 +1,13 @@
 package bubbleshooter.model.bubble;
 
 import java.util.Optional;
+
+import bubbleshooter.model.Model;
 import bubbleshooter.model.component.Component;
 import bubbleshooter.model.component.ComponentType;
+import bubbleshooter.model.game.level.Level;
 import javafx.geometry.Point2D;
+
 /**
  * The class which represent the main entity of the game.
  *
@@ -11,14 +15,14 @@ import javafx.geometry.Point2D;
 public interface Bubble {
 
     /**
-     * The radius of the {@link Bubble} in the game.
-     */
-    double RADIUS = 18;
-
-    /**
      * The width of the {@link Bubble} in the game.
      */
-    double WIDTH = RADIUS * 2;
+    double WIDTH = Model.WORLD_WIDTH / (Level.NUM_BUBBLES_PER_ROW + 0.5);
+
+    /**
+     * The radius of the {@link Bubble} in the game.
+     */
+    double RADIUS = WIDTH / 2;
 
     /**
      * Method to update the {@link Bubble} every GameLoop cycle.
@@ -35,36 +39,39 @@ public interface Bubble {
 
     /**
      * Method to set the position of the {@link Bubble} in the game.
-     * @param position 
+     * 
+     * @param position
      */
     void setPosition(Point2D position);
 
     /**
      * Method to set the direction of the {@link ShootingBubble} in the game.
-     * @param direction 
+     * 
+     * @param direction
      */
     void setDirection(Point2D direction);
 
     /**
      * Method to set the type of the {@link Bubble}.
-     * @param type 
+     * 
+     * @param type
      */
-    void setType(BubbleType type); 
+    void setType(BubbleType type);
 
     /**
      * Method to destroy a {@link Bubble} and remove it from the grid.
      */
     void destroy();
 
-
     /**
      * 
      * @param color The {@link BubbleColor} of the bubble.
      */
-    void setColor(BubbleColor color); 
+    void setColor(BubbleColor color);
 
     /**
      * Method to add a {@link Component} to a {@link Bubble}.
+     * 
      * @param component
      */
     void addComponent(Component component);
@@ -72,30 +79,29 @@ public interface Bubble {
     /**
      * @return The radius of the bubble.
      */
-    double getRadius(); 
+    double getRadius();
 
     /**
      * @return The width of the bubble.
      */
-    double getWidth(); 
+    double getWidth();
 
     /**
      * @return The height of the bubble.
      */
-    double getHeigth(); 
-
+    double getHeight();
 
     /**
      * 
      * @return The {@link BubbleType} of the {@link Bubble}.
      */
-    BubbleType getType(); 
+    BubbleType getType();
 
     /**
      * 
      * @return The {@link BubbleColor} of the {@link Bubble}.
      */
-    BubbleColor getColor(); 
+    BubbleColor getColor();
 
     /**
      * 
@@ -107,7 +113,7 @@ public interface Bubble {
     /**
      * @return The position of the {@link Bubble} in the grid.
      */
-    Point2D getPosition(); 
+    Point2D getPosition();
 
     /**
      * @return The direction of the {@link ShootingBubble}.

@@ -3,7 +3,7 @@ package bubbleshooter.model.game;
 /**
  * Represents a class that collects game information.
  */
-public class GameInfoManager {
+public class GameData {
 
 	private double gameTime;
 	private int destroyedBubbles;

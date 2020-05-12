@@ -24,12 +24,12 @@ public interface View {
     void loadScene(FXMLPath scene);
 
     /**
-     * show game over scene.
+     * Show game over scene.
      */
     void showGameOver();
 
     /**
-     * tells to the current scene to update the view.
+     * Tells to the current scene to update the view.
      */
     void update();
 }

@@ -114,7 +114,7 @@ public abstract class AbstractBubble implements Bubble {
     }
 
     @Override
-    public final double getHeigth() {
+    public final double getHeight() {
         return RADIUS * 2; 
     }
 }

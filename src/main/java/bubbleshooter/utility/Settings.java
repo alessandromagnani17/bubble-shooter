@@ -5,8 +5,8 @@ import java.awt.Toolkit;
 public final class Settings {
 
     private static final double SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    private static final double SCREEN_HEIGTH = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-    private static final double GUI_HEIGTH = SCREEN_HEIGTH / 1.60;
+    private static final double SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    private static final double GUI_HEIGHT = SCREEN_HEIGHT / 1.60;
     private static final double GUI_WIDTH = SCREEN_WIDTH / 2.72;
 
     private Settings() {
@@ -16,12 +16,12 @@ public final class Settings {
         return SCREEN_WIDTH;
     }
 
-    public static double getScreenHeigth() {
-        return SCREEN_HEIGTH;
+    public static double getScreenHeight() {
+        return SCREEN_HEIGHT;
     }
 
-    public static double getGuiHeigth() {
-        return GUI_HEIGTH;
+    public static double getGuiHeight() {
+        return GUI_HEIGHT;
     }
 
     public static double getGuiWidth() {

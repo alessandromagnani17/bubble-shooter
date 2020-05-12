@@ -11,15 +11,13 @@ import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.grid.BubbleGridHelper;
 import bubbleshooter.model.bubble.grid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameData;
 import bubbleshooter.model.game.GameOverChecker;
 import bubbleshooter.model.game.GameStatus;
 import javafx.geometry.Point2D;
 
 public abstract class AbstractLevel implements Level {
 
-	private static final int NUM_BUBBLES_PER_ROW = 19;
-	private static final int NUM_ROWS = 8;
 	private static final int MILLISECONDS_IN_A_SECOND = 1000;
 	private static final double LIMITS_SHOOTING_BUBBLE_Y = 1.08;
 
@@ -27,7 +25,7 @@ public abstract class AbstractLevel implements Level {
 	private final BubbleGridManager bubbleGridManager;
 	private final BubbleGridHelper bubbleGridHelper;
 	private final CollisionController collisionController;
-	private final GameInfoManager gameInfoManager;
+	private final GameData gameInfoManager;
 	private final GameOverChecker gameOverChecker;
 	private final BubbleFactory bubbleFactory;
 	private GameStatus status;
@@ -38,7 +36,7 @@ public abstract class AbstractLevel implements Level {
 		this.bubbleGridManager = new BubbleGridManager(this);
 		this.bubbleGridHelper = new BubbleGridHelper(this.bubblesManager);
 		this.collisionController = new CollisionController(this);
-		this.gameInfoManager = new GameInfoManager();
+		this.gameInfoManager = new GameData();
 		this.gameOverChecker = new GameOverChecker(this);
 		this.bubbleFactory = new BubbleFactory();
 		this.status = GameStatus.PAUSE;
@@ -87,12 +85,12 @@ public abstract class AbstractLevel implements Level {
 		if (this.bubblesManager.getShootingBubble().isPresent()) {
 			Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
 			shootingBubble
-					.setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y));
+					.setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
 			shootingBubble.setDirection(shootingBubble.getPosition());
 			shootingBubble.setColor(this.bubblesManager.getSwitchBubble().get().getColor());
 		} else {
 			this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-					new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y),
+					new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y),
 					BubbleColor.getRandomColor())));
 		}
 	}
@@ -102,12 +100,12 @@ public abstract class AbstractLevel implements Level {
 		if (this.bubblesManager.getSwitchBubble().isPresent()) {
 			final Random rand = new Random();
 			Bubble switchBubble = this.bubblesManager.getSwitchBubble().get();
-			switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y));
+			switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
 			switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
 					.get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
 		} else {
 			this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-					new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGTH / LIMITS_SHOOTING_BUBBLE_Y),
+					new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y),
 					BubbleColor.getRandomColor())));
 		}
 	}
@@ -161,7 +159,7 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public final GameInfoManager getGameInfoManager() {
+	public final GameData getGameInfoManager() {
 		return this.gameInfoManager;
 	}
 
@@ -188,15 +186,5 @@ public abstract class AbstractLevel implements Level {
 	 */
 	protected abstract boolean isTimeToNewRow(double elapsed);
 
-	@Override
-	public int getBubblesPerRow() {
-		return NUM_BUBBLES_PER_ROW; 
-	}
-
-	@Override
-	public int getNumRow() {
-		return NUM_ROWS; 
-	}
-	
 	
 }
