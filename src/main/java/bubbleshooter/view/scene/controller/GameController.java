@@ -61,9 +61,6 @@ public class GameController extends AbstractController {
         this.help  = new DrawHelpLine(this.pane);
         this.cannon = new Cannon(new Image(ImagePath.CANNON.getPath()));
 
-        this.cannon.getCannon().setScaleX(Settings.getGuiWidth()  / CANNON_SCALE);
-        this.cannon.getCannon().setScaleY(Settings.getGuiHeigth() / CANNON_SCALE);
-
         this.shootingBubbleInitialPosition = new Point2D(getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition().getX(), 
                 getController().getBubbles().stream()
