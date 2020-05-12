@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="bubbleshooter.controller.input.HandlerAdapterMouseClicked" project="bubbleshooter" 
+    file="/bubbleshooter/src/main/java/bubbleshooter/controller/input/HandlerAdapterMouseClicked.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="79" width="252" x="73" y="133"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="bubbleshooter.controller.input.HandlerAdapterMouseMoved" project="bubbleshooter" 
+    file="/bubbleshooter/src/main/java/bubbleshooter/controller/input/HandlerAdapterMouseMoved.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="79" width="218" x="572" y="127"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="bubbleshooter.view.scene.controller.GameController" project="bubbleshooter" 
+    file="/bubbleshooter/src/main/java/bubbleshooter/view/scene/controller/GameController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="72" width="221" x="571" y="348"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="bubbleshooter.view.helpline.DrawHelpLine" project="bubbleshooter" 
+    file="/bubbleshooter/src/main/java/bubbleshooter/view/helpline/DrawHelpLine.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="87" width="197" x="105" y="344"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="bubbleshooter.view.helpline.HelpLine" project="bubbleshooter" 
+    file="/bubbleshooter/src/main/java/bubbleshooter/view/helpline/HelpLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="204" y="592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <association id="6">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="7" name="drawHelpLine"/>      
+      <multiplicity id="8" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="9">    
+    <bendpoint x="252" y="493"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="10" name="boundsLine">        
+        <position height="19" width="71" x="235" y="540"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="17" width="26" x="247" y="698"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="13" name="handlerAdapter"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="16" name="drawHelpLine"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <bendpoint x="156" y="494"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="19" name="helpLine">        
+        <position height="19" width="54" x="121" y="541"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="17" width="26" x="155" y="672"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="22" name="drawHelpLine"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="24">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="25" name="handlerAdapter"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
