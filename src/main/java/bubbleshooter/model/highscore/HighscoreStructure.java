@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class HighscoreStructure extends Score {
 
-    private final SimpleStringProperty name;
+    private final String name;
 
     /**
      * Constructor for a new HighscoreStructure.
@@ -19,9 +19,9 @@ public class HighscoreStructure extends Score {
      * @param score     the score made by the player.
      * @param gameMode  the current game modality.
      */
-    public HighscoreStructure(final String name, final Integer score, final LevelType gameMode) {
+    public HighscoreStructure(final String name, final double score, final LevelType gameMode) {
         super(score, gameMode);
-        this.name = new SimpleStringProperty(name);
+        this.name = name;
     }
 
     /**
@@ -30,7 +30,7 @@ public class HighscoreStructure extends Score {
      * @return the String value of the player name.
      */
     public final String getName() {
-        return name.get();
+        return this.name;
     }
 
 }
