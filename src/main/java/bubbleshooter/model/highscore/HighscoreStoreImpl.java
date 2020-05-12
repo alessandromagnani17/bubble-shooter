@@ -227,8 +227,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
                 flag = false;
             }
         }
-        //return new HighscoreStructure(nameBuilder.toString(), Integer.parseInt(scoreBuilder.toString()), gameMode);
-        return new HighscoreStructure(nameBuilder.toString(), Double.valueOf(scoreBuilder.toString()), gameMode);
+        return new HighscoreStructure(nameBuilder.toString(), Integer.parseInt(scoreBuilder.toString()), gameMode);
     }
 
     /**
@@ -240,7 +239,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
         final Comparator<HighscoreStructure> comp = new Comparator<>() {
             @Override
             public int compare(final HighscoreStructure o1, final HighscoreStructure o2) {
-                return (int)o2.getScore() - (int)o1.getScore();
+                return o2.getScore() - o1.getScore();
             }
         };
         Collections.sort(itemsSet, comp);
