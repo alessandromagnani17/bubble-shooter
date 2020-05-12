@@ -8,15 +8,15 @@ public enum BubbleType {
     /**
      * The {@link GridBubble} that is in the game's grid.
      */
-    GRID_BUBBLE, 
+    GRID_BUBBLE,
 
     /**
      * The {@link ShootingBubble} that is ready to be shot.
      */
-    SHOOTING_BUBBLE, 
+    SHOOTING_BUBBLE,
 
     /**
      * The {@link SwitchBubble} that you can switch.
      */
-    SWITCH_BUBBLE; 
+    SWITCH_BUBBLE;
 }

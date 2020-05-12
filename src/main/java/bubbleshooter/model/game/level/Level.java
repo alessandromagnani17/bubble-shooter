@@ -1,6 +1,5 @@
 package bubbleshooter.model.game.level;
 
-import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.model.bubble.BubbleFactory;
 import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.grid.BubbleGridHelper;
@@ -16,100 +15,106 @@ import bubbleshooter.model.game.GameStatus;
 
 public interface Level {
 
-	static int NUM_BUBBLES_PER_ROW = 19;
+    /**
+     * Number of bubble per row in the game.
+     */
+    int NUM_BUBBLES_PER_ROW = 19;
 
-	static int NUM_ROWS = 8;
+    /**
+     * Number of row of bubbles in the game.
+     */
+    int NUM_ROWS = 8;
 
-	/**
-	 * Starts selected game and initialize all bubbles.
-	 */
-	void start();
+    /**
+     * Starts selected game and initialize all bubbles.
+     */
+    void start();
 
-	/**
-	 * Updates the game.
-	 * 
-	 * @param elapsed.
-	 */
-	void update(double elapsed);
+    /**
+     * Updates the game.
+     * 
+     * @param elapsed
+     */
+    void update(double elapsed);
 
-	/**
-	 * Gets the {@link BubblesManager}.
-	 * 
-	 * @return {@link BubblesManager}.
-	 */
-	BubblesManager getBubblesManager();
+    /**
+     * Gets the {@link BubblesManager}.
+     * 
+     * @return {@link BubblesManager}.
+     */
+    BubblesManager getBubblesManager();
 
-	/**
-	 * Loads the {@link ShootingBubble}.
-	 */
-	void loadShootingBubble();
+    /**
+     * Loads the {@link ShootingBubble}.
+     */
+    void loadShootingBubble();
 
-	/**
-	 * Loads the {@link SwitchBubble}.
-	 */
-	void loadSwitchBubble();
+    /**
+     * Loads the {@link SwitchBubble}.
+     */
+    void loadSwitchBubble();
 
-	/**
-	 * Sets current {@link LevelType}.
-	 * 
-	 * @param the {@link LevelType}.
-	 */
-	void setLevelType(LevelType levelType);
+    /**
+     * Sets current {@link LevelType}.
+     * 
+     * @param levelType
+     */
+    void setLevelType(LevelType levelType);
 
-	/**
-	 * Sets the {@link GameStatus}.
-	 * 
-	 * @param the {@link GameStatus}.
-	 */
-	void setGameStatus(GameStatus status);
+    /**
+     * Sets the {@link GameStatus}.
+     * 
+     * @param status
+     */
+    void setGameStatus(GameStatus status);
 
-	/**
-	 * Gets the {@link GameStatus}.
-	 * 
-	 * @return the {@link GameStatus}.
-	 */
-	GameStatus getGameStatus();
+    /**
+     * Gets the {@link GameStatus}.
+     * 
+     * @return the {@link GameStatus}.
+     */
+    GameStatus getGameStatus();
 
-	/**
-	 * Gets the {@link BubblesManager}.
-	 * 
-	 * @return {@link BubblesManager}.
-	 */
-	BubbleGridManager getGridManager();
+    /**
+     * Gets the {@link BubblesManager}.
+     * 
+     * @return {@link BubblesManager}
+     */
+    BubbleGridManager getGridManager();
 
-	/**
-	 * Gets the {@link BubbleGridHelper}.
-	 * 
-	 * @return the {@link BubbleGridHelper}.
-	 */
-	BubbleGridHelper getGridHelper();
+    /**
+     * Gets the {@link BubbleGridHelper}.
+     * 
+     * @return the {@link BubbleGridHelper}
+     */
+    BubbleGridHelper getGridHelper();
 
-	/**
-	 * Gets the {@link CollisionController}.
-	 * 
-	 * @return the {@link CollisionController}.
-	 */
-	CollisionController getCollisionController();
+    /**
+     * Gets the {@link CollisionController}.
+     * 
+     * @return the {@link CollisionController}.
+     */
+    CollisionController getCollisionController();
 
-	/**
-	 * Gets the {@link GameData}.
-	 * 
-	 * @return the {@link GameData}.
-	 */
-	GameData getGameData();
+    /**
+     * Gets the {@link GameData}.
+     * 
+     * @return the {@link GameData}.
+     */
+    GameData getGameData();
 
-	/**
-	 * Gets the current {@link LevelType}.
-	 * 
-	 * @return the {@link LevelType}.
-	 */
-	LevelType getLevelType();
+    /**
+     * Gets the current {@link LevelType}.
+     * 
+     * @return the {@link LevelType}.
+     */
+    LevelType getLevelType();
 
-	/**
-	 * Gets the {@link BubbleFactory}.
-	 * 
-	 * @return the {@link BubbleFactory}.
-	 */
-	BubbleFactory getBubbleFactory();
+    /**
+     * Gets the {@link BubbleFactory}.
+     * 
+     * @return the {@link BubbleFactory}.
+     */
+    BubbleFactory getBubbleFactory();
 
 }
