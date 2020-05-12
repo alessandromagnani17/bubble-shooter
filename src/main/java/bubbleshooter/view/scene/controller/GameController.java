@@ -126,7 +126,8 @@ public class GameController extends AbstractController {
 
     public final void pause() {
         this.getController().getGameEngine().pauseLoop();
-        this.getView().loadScene(FXMLPath.PAUSE);
+        this.setNextScene(FXMLPath.PAUSE);
+        this.loadNextScene();
     }
 
     public final void restart() {
@@ -136,11 +137,6 @@ public class GameController extends AbstractController {
         this.getController().getSwitcherController().setInitialNumSwitch();
         this.switchButton.setText("Switch");
         this.switchButton.setMouseTransparent(false);
-    }
-
-    @Override
-    public final void setNextScene(final FXMLPath nextScene) {
-        this.getView().loadScene(nextScene);
     }
 
     public final boolean isGameOver() {

@@ -119,11 +119,6 @@ public class HighscoreController extends AbstractController {
     @FXML
     public final void backToMenu() {
         this.setNextScene(FXMLPath.MAIN);
+        this.loadNextScene();
     }
-
-    @Override
-    public final void setNextScene(final FXMLPath nextScene) {
-        this.getView().loadScene(nextScene);
-    }
-
 }
