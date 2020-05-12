@@ -1,6 +1,6 @@
 package bubbleshooter.model.game.level;
 
-import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameData;
 
 public class SurvivalLevel extends AbstractLevel {
 
@@ -16,7 +16,7 @@ public class SurvivalLevel extends AbstractLevel {
 
 	@Override
 	public final void updateScore(final double elapsed) {
-		final GameInfoManager infoManager = this.getGameInfoManager();
+		final GameData infoManager = this.getGameInfoManager();
 		infoManager.updateScore(infoManager.getGameTime() * ONE_SECOND_SCORE);
 	}
 

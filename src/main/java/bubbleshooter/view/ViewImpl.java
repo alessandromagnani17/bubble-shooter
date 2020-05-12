@@ -43,7 +43,7 @@ public class ViewImpl implements View {
 	 * Loads all images, sets the stage and loads first scene.
 	 */
 	private void initialize() {
-		new ImageLoader().loadAll();
+		ImageLoader.loadAll();
 		this.stage.setTitle(TITLE);
 		this.stage.setMinHeight(MIN_HEIGHT);
 		this.stage.setMinWidth(MIN_WIDTH);
@@ -65,11 +65,6 @@ public class ViewImpl implements View {
 
 	}
 
-	@Override
-	public final void update() {
-		Platform.runLater(() -> this.currentSceneController.render());
-	}
-
 	/**
 	 * Sets the stage for the newly loaded scene.
 	 * 
@@ -84,6 +79,11 @@ public class ViewImpl implements View {
 			this.stage.show();
 			this.viewStarted = true;
 		}
+	}
+
+	@Override
+	public final void update() {
+		Platform.runLater(() -> this.currentSceneController.render());
 	}
 
 	@Override

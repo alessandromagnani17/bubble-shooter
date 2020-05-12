@@ -11,7 +11,7 @@ import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.grid.BubbleGridHelper;
 import bubbleshooter.model.bubble.grid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameData;
 import bubbleshooter.model.game.GameOverChecker;
 import bubbleshooter.model.game.GameStatus;
 import javafx.geometry.Point2D;
@@ -25,7 +25,7 @@ public abstract class AbstractLevel implements Level {
 	private final BubbleGridManager bubbleGridManager;
 	private final BubbleGridHelper bubbleGridHelper;
 	private final CollisionController collisionController;
-	private final GameInfoManager gameInfoManager;
+	private final GameData gameInfoManager;
 	private final GameOverChecker gameOverChecker;
 	private final BubbleFactory bubbleFactory;
 	private GameStatus status;
@@ -36,7 +36,7 @@ public abstract class AbstractLevel implements Level {
 		this.bubbleGridManager = new BubbleGridManager(this);
 		this.bubbleGridHelper = new BubbleGridHelper(this.bubblesManager);
 		this.collisionController = new CollisionController(this);
-		this.gameInfoManager = new GameInfoManager();
+		this.gameInfoManager = new GameData();
 		this.gameOverChecker = new GameOverChecker(this);
 		this.bubbleFactory = new BubbleFactory();
 		this.status = GameStatus.PAUSE;
@@ -159,7 +159,7 @@ public abstract class AbstractLevel implements Level {
 	}
 
 	@Override
-	public final GameInfoManager getGameInfoManager() {
+	public final GameData getGameInfoManager() {
 		return this.gameInfoManager;
 	}
 

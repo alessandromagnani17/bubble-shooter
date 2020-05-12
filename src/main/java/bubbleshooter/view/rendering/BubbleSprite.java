@@ -2,6 +2,7 @@ package bubbleshooter.view.rendering;
 
 import java.io.FileNotFoundException;
 import javafx.geometry.Point2D;
+import bubbleshooter.model.bubble.Bubble;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,7 +27,11 @@ public class BubbleSprite implements Sprite {
 				this.getTopLeftFromCenter(this.getPosition()).getY(), this.getWidth(), this.getHeight());
 
 	}
-
+	/**
+	 * Gets the top-left point of the image.
+	 * @param center of the {@link Bubble}.
+	 * @return the top-left point.
+	 */
 	private Point2D getTopLeftFromCenter(Point2D center) {
 		return new Point2D(this.position.getX() - (this.getWidth() / 2), this.position.getY() - (this.getHeight() / 2));
 	}
@@ -44,7 +49,7 @@ public class BubbleSprite implements Sprite {
 
 	@Override
 	public void setSource(ImagePath source) throws FileNotFoundException {
-		this.image = new ImageLoader().getImage(source);
+		this.image = ImageLoader.getImage(source);
 
 	}
 

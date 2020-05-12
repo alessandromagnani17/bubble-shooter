@@ -20,14 +20,14 @@ public class ImageLoader {
 	 * @param imagePath the path of the image to get.
 	 * @return the image that refers to the specified {@link ImagePath}
 	 */
-	public Image getImage(final ImagePath imagePath) {
+	public static Image getImage(final ImagePath imagePath) {
 		return IMAGES.get(imagePath);
 	}
 
 	/**
 	 * Loads all images.
 	 */
-	public void loadAll() {
+	public static void loadAll() {
 		Arrays.stream(ImagePath.values()).forEach(p -> IMAGES.put(p, loadImage(p.getPath())));
 
 	}
@@ -37,7 +37,7 @@ public class ImageLoader {
 	 * @param the imagePath to take the image.
 	 * @return the created image.
 	 */
-	private Image loadImage(final String imagePath) {
+	private static Image loadImage(final String imagePath) {
 		return new Image(ImageLoader.class.getResourceAsStream(imagePath));
 	}
 }
