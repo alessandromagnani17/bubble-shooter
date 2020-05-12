@@ -37,7 +37,7 @@ public class HandlerAdapterMouseClicked implements EventHandler<MouseEvent> {
     public final void handle(final MouseEvent event) {
         this.eventPosition = new Point2D(event.getX(), event.getY());
         this.handlerAdapter = new HandlerAdapterMouseMoved(this.cannonRotation, this.lineRotation, 
-                this.shootingBubblePosition);
+                this.shootingBubblePosition, null);
         handlerAdapter.handle(event);
         System.out.println(this.eventPosition);
     }
