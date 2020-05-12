@@ -19,7 +19,7 @@ public class HighscoreStructure extends Score {
      * @param score     the score made by the player.
      * @param gameMode  the current game modality.
      */
-    public HighscoreStructure(final String name, final double score, final LevelType gameMode) {
+    public HighscoreStructure(final String name, final int score, final LevelType gameMode) {
         super(score, gameMode);
         this.name = name;
     }
