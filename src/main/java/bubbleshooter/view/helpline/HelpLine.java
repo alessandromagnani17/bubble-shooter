@@ -10,8 +10,8 @@ import javafx.scene.shape.Line;
  */
 public class HelpLine {
 
-    public static final double DASH_SIZE = Settings.getGuiHeigth() / 70;
-    public static final double DASH_WIDTH = Settings.getGuiHeigth() / 200;
+    public static final double DASH_SIZE = Settings.getGuiHeight() / 70;
+    public static final double DASH_WIDTH = Settings.getGuiHeight() / 200;
 
     private final Line line;
 

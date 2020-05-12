@@ -8,7 +8,7 @@ import bubbleshooter.model.bubble.BubblesManager;
 import bubbleshooter.model.bubble.grid.BubbleGridHelper;
 import bubbleshooter.model.bubble.grid.BubbleGridManager;
 import bubbleshooter.model.collision.CollisionController;
-import bubbleshooter.model.game.GameInfoManager;
+import bubbleshooter.model.game.GameData;
 import bubbleshooter.model.game.GameStatus;
 
 /**
@@ -101,11 +101,11 @@ public interface Level {
 	List<Bubble> getCurrentBubbles();
 
 	/**
-	 * Gets the {@link GameInfoManager}.
+	 * Gets the {@link GameData}.
 	 * 
-	 * @return the {@link GameInfoManager}.
+	 * @return the {@link GameData}.
 	 */
-	GameInfoManager getGameInfoManager();
+	GameData getGameInfoManager();
 
 	/**
 	 * Gets the current {@link LevelType}.

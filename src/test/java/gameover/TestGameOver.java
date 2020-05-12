@@ -15,7 +15,7 @@ import bubbleshooter.model.game.level.SurvivalLevel;
  */
 public class TestGameOver {
 
-    private static final double BUBBLE_POSITION_TRUE  = Model.WORLD_HEIGTH / 1.1;
+    private static final double BUBBLE_POSITION_TRUE  = Model.WORLD_HEIGHT / 1.1;
     private static final double BUBBLE_POSITION_FALSE = 0;
 
     private final Level basicMode = new BasicLevel();

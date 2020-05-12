@@ -31,7 +31,7 @@ public class GridCollisionHandler implements CollisionHandler {
 
     /**
      * The method which handle the {@link Collision}.
-     * It also notify the {@link GameInfoManager} to update the score.
+     * It also notify the {@link GameData} to update the score.
      */
     @Override
     public final void handle() {

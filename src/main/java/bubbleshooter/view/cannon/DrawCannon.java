@@ -15,6 +15,7 @@ public class DrawCannon {
     private static final double CANNON_FIT_WIDTH = 10;
     private static final double CANNON_FIT_HEIGTH = 5;
 
+
     private final AnchorPane pane;
     private final Rotate rotation = new Rotate();
     private final Cannon cannon;
@@ -43,10 +44,10 @@ public class DrawCannon {
         this.cannon.getCannon().setLayoutX((shootingBubble.getPosition().getX() - this.cannon.getCannon().getImage().getWidth() / 2)
                 * (Settings.getGuiWidth() / Model.WORLD_WIDTH));
         this.cannon.getCannon().setLayoutY((shootingBubble.getPosition().getY() - this.cannon.getCannon().getImage().getHeight() 
-                - shootingBubble.getRadius())  * (Settings.getGuiHeigth() / Model.WORLD_HEIGTH));
+                - shootingBubble.getRadius())  * (Settings.getGuiHeight() / Model.WORLD_HEIGHT));
 
         this.cannon.getCannon().setFitWidth(Settings.getGuiWidth() / CANNON_FIT_WIDTH);
-        this.cannon.getCannon().setFitHeight(Settings.getGuiHeigth() / CANNON_FIT_HEIGTH);
+        this.cannon.getCannon().setFitHeight(Settings.getGuiHeight() / CANNON_FIT_HEIGTH);
     }
 
     /**
