@@ -39,21 +39,6 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         this.drawHelpLine = drawHelpLine;
     }
 
-    /**
-     * Constructor for a new HandlerAdapterMouseMoved.
-     * 
-     * @param cannonRotation         the rotation of the cannon.
-     * @param lineRotation           the rotation of the help line.
-     * @param shootingBubblePosition the shooting bubble position.
-     */
-    public HandlerAdapterMouseMoved(final Rotate cannonRotation, final Rotate lineRotation, 
-            final Point2D shootingBubblePosition) {
-        this.cannonRotation = cannonRotation;
-        this.lineRotation = lineRotation;
-        this.shootingBubblePosition = shootingBubblePosition;
-        this.drawHelpLine = null;
-    }
-
     @Override
     public final void handle(final MouseEvent event) {
         this.eventPosition = new Point2D(event.getX(), event.getY());
