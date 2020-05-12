@@ -53,7 +53,7 @@ public class GameController extends AbstractController {
                         .findFirst().get().getPosition().getY());
 
         this.handlerAdapter = new HandlerAdapterMouseMoved(new DrawCannon(this.pane, new Cannon(new Image(ImagePath.CANNON.getPath())), 
-        		getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()).getRotation(),
+                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get()).getRotation(),
                 this.drawHelpLine.getRotation(), new Point2D(this.drawHelpLine.getHelpLine().getStartX(),
                 this.drawHelpLine.getHelpLine().getStartY()), this.drawHelpLine);
 
@@ -69,11 +69,11 @@ public class GameController extends AbstractController {
             @Override
             public void handle(final MouseEvent event) {
                 if (getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                		.findFirst().get().getPosition().getX() == shootingBubbleInitialPosition.getX()
+                        .findFirst().get().getPosition().getX() == shootingBubbleInitialPosition.getX()
                         && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
 
-                	getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                	.findFirst().get().setDirection(PhysicHelper.calculateShootingDirection(
+                    getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                    .findFirst().get().setDirection(PhysicHelper.calculateShootingDirection(
                             new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()),
                                     event.getY() * (Model.WORLD_HEIGHT / Settings.getGuiHeight())),
                             getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))

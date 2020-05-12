@@ -11,6 +11,7 @@ import javafx.geometry.Point2D;
 
     private static final double MAXANGLE =  75.0;
     private static final double MINANGLE = -75.0;
+    private static final double SENSIBILITY = 0.01;
 
     /** 
      * private constructor used to avoid initializations of this class.
@@ -73,9 +74,9 @@ import javafx.geometry.Point2D;
     public static boolean angleTooHigh(final Point2D startPointFirstLine, final Point2D startPointSecondLine) {
         double angle;
         angle = PhysicHelper.calculateAngle(startPointFirstLine, startPointSecondLine);
-        if (angle > MAXANGLE - 0.01) {
+        if (angle > MAXANGLE - SENSIBILITY) {
             return false;
-        } else if (angle < MINANGLE + 0.01) {
+        } else if (angle < MINANGLE + SENSIBILITY) {
             return false;
         }
         return true;
