@@ -123,4 +123,20 @@ public class ControllerImpl implements Controller {
     public SwitcherController getSwitcherController() {
         return this.switcherController;
     }
+
+    /**It's called by the {@link View} to return the width of the game.
+     * @return the width of the game.
+     */
+    @Override
+    public final double getWorldWidth() {
+        return Model.WORLD_WIDTH;
+    }
+
+    /**It's called by the {@link View} to return the heigth of the game.
+     * @return the height of the game.
+     */
+    @Override
+    public final double getWorldHeight() {
+        return Model.WORLD_HEIGHT;
+    }
 }
