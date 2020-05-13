@@ -27,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * The Controller related to the game.fxml GUI.
  */
-public class GameController extends BasicController {
+public class GameController extends AbstractController {
 
     private static final double MAXANGLE = 74.9;
     private static final double MINANGLE = -74.9;

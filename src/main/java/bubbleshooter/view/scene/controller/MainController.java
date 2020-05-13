@@ -15,7 +15,7 @@ import javafx.scene.text.TextAlignment;
 /**
  * The Controller related to the main.fxml GUI.
  */
-public final class MainController extends BasicController {
+public final class MainController extends AbstractController {
 
     @FXML private Button basicModeButton;
     @FXML private Button survivalModeButton;
