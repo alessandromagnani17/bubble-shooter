@@ -2,7 +2,6 @@ package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
-import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
@@ -56,9 +55,7 @@ public class GameController extends BasicController {
                         .findFirst().get().getPosition().getY());
 
         this.handlerAdapter = new HandlerAdapterMouseMoved(new DrawCannon(this.pane, new Cannon(new Image(ImagePath.CANNON.getPath())), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition(),
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getRadius(),
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getWidth()).getRotation(),
+                this.getController()).getRotation(),
                 this.drawHelpLine.getRotation(), new Point2D(this.drawHelpLine.getHelpLine().getStartX(),
                 this.drawHelpLine.getHelpLine().getStartY()), this.drawHelpLine);
 
@@ -79,8 +76,8 @@ public class GameController extends BasicController {
 
                     getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                     .findFirst().get().setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()),
-                                    event.getY() * (Model.WORLD_HEIGHT / Settings.getGuiHeight())),
+                            new Point2D(event.getX() * (getController().getWorldWidth() / Settings.getGuiWidth()),
+                                    event.getY() * (getController().getWorldHeight() / Settings.getGuiHeight())),
                             getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                             .findFirst().get().getPosition()));
                 }
@@ -139,7 +136,7 @@ public class GameController extends BasicController {
         gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
-        gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeight() / Model.WORLD_HEIGHT);
+        gc.scale(Settings.getGuiWidth() / this.getController().getWorldWidth(), Settings.getGuiHeight() / this.getController().getWorldHeight());
 
     }
 
