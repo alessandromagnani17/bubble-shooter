@@ -14,7 +14,7 @@ import javafx.scene.text.Font;
 /**
  * The Controller related to the gameover.fxml GUI.
  */
-public class GameOverController extends BasicController {
+public class GameOverController extends AbstractController {
 
     @FXML private Label gameOverLabel;
     @FXML private Label scoreLabel;
@@ -42,7 +42,10 @@ public class GameOverController extends BasicController {
     public final void init(final Controller controller, final View view) {
         int score, destroyedBubble;
         double gameTime;
-        super.init(controller, view);
+
+        this.setController(controller);
+        this.setView(view);
+
         this.getController().getGameEngine().stopLoop();
 
         this.gameOverLabel.setText("Game Over");

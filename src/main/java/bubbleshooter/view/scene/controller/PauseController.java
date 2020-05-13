@@ -14,7 +14,7 @@ import javafx.scene.text.TextAlignment;
 /**
  * The Controller related to the pause.fxml GUI.
  */
-public class PauseController extends BasicController {
+public class PauseController extends AbstractController {
 
     @FXML private Label titleLabel;
     @FXML private Button resumeButton;
@@ -33,7 +33,8 @@ public class PauseController extends BasicController {
 
     @Override
     public final void init(final Controller controller, final View view) {
-        super.init(controller, view);
+        this.setController(controller);
+        this.setView(view);
 
         this.titleLabel.setText("Pause");
         this.titleLabel.setFont(Font.font(TITLE_FONT_SIZE));

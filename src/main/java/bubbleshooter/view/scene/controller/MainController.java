@@ -15,7 +15,7 @@ import javafx.scene.text.TextAlignment;
 /**
  * The Controller related to the main.fxml GUI.
  */
-public final class MainController extends BasicController {
+public final class MainController extends AbstractController {
 
     @FXML private Button basicModeButton;
     @FXML private Button survivalModeButton;
@@ -34,7 +34,8 @@ public final class MainController extends BasicController {
 
     @Override
     public void init(final Controller controller, final View view) {
-        super.init(controller, view);
+        this.setController(controller);
+        this.setView(view);
 
         this.titleLabel.setText("Bubble Shooter");
         this.titleLabel.setFont(Font.font(TITLE_FONT_SIZE));
