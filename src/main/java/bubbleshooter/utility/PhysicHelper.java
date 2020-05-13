@@ -53,6 +53,13 @@ import javafx.geometry.Point2D;
         return checkAngle(Math.toDegrees(Math.asin(cathetus / hypotenuse)));
     }
 
+    /**
+     * Private method that check if ana angle is too big or too small.
+     * If it is necessary it change the angle.
+     * 
+     * @param  angle the angle to check.
+     * @return the angle.
+     */
     private static double checkAngle(final double angle) {
         if (angle > MAXANGLE) {
             return MAXANGLE;
@@ -62,15 +69,38 @@ import javafx.geometry.Point2D;
         return angle;
     }
 
+    /**
+     * Private method that calculates the angular coefficient passing two points.
+     * 
+     * @param startPointSecondLine the first point.
+     * @param endPointSecondLine   the second point.
+     * @return                     the angular coefficient.
+     */
     public static double calculateAngularCoefficient(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
         return (endPointSecondLine.getY() - startPointSecondLine.getY()) / (endPointSecondLine.getX() - startPointSecondLine.getX());
     }
 
+    /**
+     * Private method that calculates the intercepts passing two points.
+     * 
+     * @param startPointSecondLine the first point.
+     * @param endPointSecondLine   the second point.
+     * 
+     * @return the intercepts.
+     */
     public static double calculateIntercepts(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
         return (endPointSecondLine.getX() * startPointSecondLine.getY() 
               - startPointSecondLine.getX() * endPointSecondLine.getY()) / (endPointSecondLine.getX() - startPointSecondLine.getX());
     }
 
+    /**
+     * Private method that check if an angle created by two points is too high or too small.
+     * 
+     * @param startPointFirstLine  the first point.
+     * @param startPointSecondLine the second point.
+     * 
+     * @return true if the angle is correct, false otherwise.
+     */
     public static boolean angleTooHigh(final Point2D startPointFirstLine, final Point2D startPointSecondLine) {
         final double angle = PhysicHelper.calculateAngle(startPointFirstLine, startPointSecondLine);
         return !(angle > MAXANGLE - SENSIBILITY || angle < MINANGLE + SENSIBILITY);
