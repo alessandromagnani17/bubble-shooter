@@ -35,6 +35,14 @@ public class DrawCannon {
     }
 
     /**
+     * Method to get the angle of {@link Cannon} rotation.
+     * @return the angle of {@link Cannon}.
+     */
+    public final Rotate getRotation() {
+        return this.rotation;
+    }
+
+    /**
      * Method to set the position of {@link Cannon}.
      */
     private void editCannon() {
@@ -57,11 +65,4 @@ public class DrawCannon {
         this.cannon.getCannon().getTransforms().add(rotation);
     }
 
-    /**
-     * Method to get the angle of {@link Cannon} rotation.
-     * @return the angle of {@link Cannon}.
-     */
-    public final Rotate getRotation() {
-        return this.rotation;
-    }
 }
