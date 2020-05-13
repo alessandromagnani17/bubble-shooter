@@ -7,6 +7,10 @@ import bubbleshooter.view.helpline.DrawHelpLine;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Class used to test the {@link HelpLine}.
+ *
+ */
 public class TestHelpLine {
 
     @FXML private final AnchorPane pane = new AnchorPane();
