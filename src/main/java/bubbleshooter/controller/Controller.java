@@ -61,4 +61,14 @@ public interface Controller {
      * @return the HighscoreStore.
      */
     HighscoreStore getHighscoreStore();
+
+    /**
+     * @return the Width of the game.
+     */
+    double getWorldWidth();
+
+    /**
+     * @return the Height of the game.
+     */
+    double getWorldHeight();
 }
