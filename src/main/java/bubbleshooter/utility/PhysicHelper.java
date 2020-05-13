@@ -73,6 +73,6 @@ import javafx.geometry.Point2D;
 
     public static boolean angleTooHigh(final Point2D startPointFirstLine, final Point2D startPointSecondLine) {
         double angle = PhysicHelper.calculateAngle(startPointFirstLine, startPointSecondLine);
-        return !(angle > MAXANGLE - SENSIBILITY) || !(angle < MINANGLE + SENSIBILITY);
+        return !(angle > MAXANGLE - SENSIBILITY || angle < MINANGLE + SENSIBILITY);
     }
 }
