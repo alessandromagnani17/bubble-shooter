@@ -4,7 +4,7 @@ import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.controller.Controller;
 
-public abstract class AbstractController {
+public class AbstractController {
 
     private Controller controller;
     private View view;
