@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
 /**
  * The Controller related to the highscore.fxml GUI.
  */
-public class HighscoreController extends BasicController {
+public class HighscoreController extends AbstractController {
 
     @FXML private Label titleLabel;
     @FXML private Label basicModeLabel;
@@ -50,7 +50,8 @@ public class HighscoreController extends BasicController {
 
     @Override
     public final void init(final Controller controller, final View view) {
-        super.init(controller, view);
+        this.setController(controller);
+        this.setView(view);
 
         this.titleLabel.setText("Highscores");
         this.titleLabel.setFont(Font.font(TITLE_FONT_SIZE));

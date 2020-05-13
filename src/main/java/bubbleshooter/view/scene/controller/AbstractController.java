@@ -5,9 +5,9 @@ import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.controller.Controller;
 
 /**
- * Class used like a basic controller, the other controller will extends it.
+ * Abstract class used like a basic controller, the other controller will extends it.
  */
-public class BasicController {
+public abstract class AbstractController {
 
     private Controller controller;
     private View view;
@@ -19,22 +19,19 @@ public class BasicController {
      * @param controller the controller of the game.
      * @param view       the controller of the view.
      */
-    public void init(final Controller controller, final View view) {
-        this.controller = controller;
-        this.view = view;
-    }
+    public abstract void init(Controller controller, View view);
 
     /**
      * @return The {@link Controller}.
      */
-    public Controller getController() {
+    public final Controller getController() {
         return this.controller;
     }
 
     /**
      * @return The {@link View}.
      */
-    public View getView() {
+    public final View getView() {
         return this.view;
     }
 
@@ -48,7 +45,7 @@ public class BasicController {
     /**
      * Method that load the next scene.
      */
-    public void loadNextScene() {
+    public final void loadNextScene() {
         this.view.loadScene(this.nextScene);
     }
 
@@ -57,8 +54,25 @@ public class BasicController {
      * 
      * @param nextScene the scene to load.
      */
-    public void setNextScene(final FXMLPath nextScene) {
+    public final void setNextScene(final FXMLPath nextScene) {
         this.nextScene = nextScene;
     }
 
+    /**
+     * Method that set the {@link Controller}.
+     * 
+     * @param controller the controller.
+     */
+    public final void setController(final Controller controller) {
+        this.controller = controller;
+    }
+
+    /**
+     * Method that set the {@link View}.
+     * 
+     * @param view the view.
+     */
+    public final void setView(final View view) {
+        this.view = view;
+    }
 }

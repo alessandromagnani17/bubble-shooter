@@ -27,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * The Controller related to the game.fxml GUI.
  */
-public class GameController extends BasicController {
+public class GameController extends AbstractController {
 
     private static final double MAXANGLE = 74.9;
     private static final double MINANGLE = -74.9;
@@ -45,7 +45,8 @@ public class GameController extends BasicController {
 
     @Override
     public final void init(final Controller controller, final View view) {
-        super.init(controller, view);
+        this.setController(controller);
+        this.setView(view);
 
         this.drawHelpLine = new DrawHelpLine(this.pane);
 
