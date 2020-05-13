@@ -3,9 +3,7 @@ package bubbleshooter.model.highscore;
 import bubbleshooter.model.game.level.LevelType;
 
 /**
- * 
  * Class which represent a basic score with score and his game modality.
- *
  */
 public class Score {
 
@@ -16,8 +14,8 @@ public class Score {
     /**
      * Constructor for a new score specifying the modality.
      * 
-     * @param score       Score of this game.
-     * @param level    The modality of this game.
+     * @param score  score of this game.
+     * @param level  the modality of this game.
      */
     public Score(final int score, final LevelType level) {
         this.theScore = score;
@@ -25,17 +23,13 @@ public class Score {
     }
 
     /**
-     * Getter for score.
-     * 
-     * @return the Integer value of score.
+     * @return the score.
      */
     public int getScore() {
         return this.theScore;
     }
 
     /**
-     * Getter for game modality.
-     * 
      * @return the game modality of this score.
      */
     public final LevelType getGameMode() {

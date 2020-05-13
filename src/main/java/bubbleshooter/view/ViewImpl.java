@@ -7,7 +7,7 @@ import bubbleshooter.utility.Settings;
 import bubbleshooter.view.images.ImageLoader;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.view.scene.SceneLoader;
-import bubbleshooter.view.scene.controller.AbstractController;
+import bubbleshooter.view.scene.controller.BasicController;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -22,7 +22,7 @@ public class ViewImpl implements View {
     private static final double MIN_WIDTH = Settings.getGuiWidth();
     private static final double MIN_HEIGHT = Settings.getGuiHeight();
     private Controller controller;
-    private AbstractController currentSceneController;
+    private BasicController currentSceneController;
     private final Stage stage;
     private boolean viewStarted;
     private final SceneLoader sceneLoader;

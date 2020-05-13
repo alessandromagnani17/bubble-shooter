@@ -3,9 +3,7 @@ package bubbleshooter.model.highscore;
 import bubbleshooter.model.game.level.LevelType;
 
 /**
- * 
- * Class used to store a highscore with score, current game mode and the name.
- *
+ * Class used to store a {@link HighscoreStructure} with score, current game mode and the name.
  */
 public class HighscoreStructure extends Score {
 
