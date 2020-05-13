@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
-
-import bubbleshooter.model.bubble.ShootingBubble;
 import bubbleshooter.model.game.GameStatus;
 import bubbleshooter.model.game.level.BasicLevel;
 import bubbleshooter.model.game.level.Level;
