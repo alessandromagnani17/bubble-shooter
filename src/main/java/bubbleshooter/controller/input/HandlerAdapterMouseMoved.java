@@ -48,13 +48,6 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     /**
-     * @return the rotation of the cannon.
-     */
-    public final double getRotationAngle() {
-        return this.cannonRotation.getAngle();
-    }
-
-    /**
      * Private method used to calculate the direction of the bounds line and draw it by calling
      * the method drawBoundsLine of {@link DrawHelpLine}.
      * 
@@ -78,14 +71,18 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
         if (this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getLeftBounds()) 
                 && this.drawHelpLine.isHelpSelected()) {
+
             startPointSecondLine = new Point2D(0, intercepts);
-            endPointSecondLine = new Point2D(Settings.getGuiWidth(), -angularCoefficient * Settings.getGuiWidth() + intercepts);
-            flag = PhysicHelper.angleTooHigh(eventPosition, shootingBubblePosition);
+            endPointSecondLine = new Point2D(Settings.getGuiWidth(),
+                    -angularCoefficient * Settings.getGuiWidth() + intercepts);
+
+            flag = PhysicHelper.angleTooHigh(eventPosition, startPointFirstLine);
 
         } else if (this.drawHelpLine.getHelpBounds().intersects(this.drawHelpLine.getRightBounds()) 
                 && this.drawHelpLine.isHelpSelected()) {
 
-            startPointSecondLine = new Point2D(Settings.getGuiWidth(), angularCoefficient * Settings.getGuiWidth() + intercepts);
+            startPointSecondLine = new Point2D(Settings.getGuiWidth(),
+                    angularCoefficient * Settings.getGuiWidth() + intercepts);
             endPointSecondLine = new Point2D(this.drawHelpLine.getHelpLine().getStartX(), 
                     startPointFirstLine.getY() - (startPointFirstLine.getY() - startPointSecondLine.getY()) * 2);
 
@@ -93,7 +90,7 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
 
             endPointSecondLine = new Point2D(0, -angularCoefficient * 0 + intercepts);
 
-            flag = PhysicHelper.angleTooHigh(eventPosition, shootingBubblePosition);
+            flag = PhysicHelper.angleTooHigh(eventPosition, startPointFirstLine);
 
         } else {
             this.drawHelpLine.getBoundsLine().setVisible(false);
@@ -105,4 +102,10 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         } 
     }
 
+    /**
+     * @return the rotation of the cannon.
+     */
+    public final double getRotationAngle() {
+        return this.cannonRotation.getAngle();
+    }
 }
