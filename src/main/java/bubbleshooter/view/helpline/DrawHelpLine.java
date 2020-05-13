@@ -105,6 +105,8 @@ public class DrawHelpLine {
      * Method for draw the help line.
      */
     public final void drawLine() {
+        this.helpLine.getLine().setVisible(true);
+        this.boundsLine.getLine().setVisible(true);
         this.helpSelected = true;
     }
 
