@@ -1,7 +1,7 @@
 package bubbleshooter.view.scene;
 
 import java.io.IOException;
-import bubbleshooter.view.scene.controller.AbstractController;
+import bubbleshooter.view.scene.controller.BasicController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 public final class SceneLoader {
 
     private Scene scene;
-    private AbstractController controller;
+    private BasicController controller;
 
     /**
      * Load the specified scene.
@@ -40,7 +40,7 @@ public final class SceneLoader {
      * 
      * @return scene controller.
      */
-    public AbstractController getController() {
+    public BasicController getController() {
         return controller;
     }
 
