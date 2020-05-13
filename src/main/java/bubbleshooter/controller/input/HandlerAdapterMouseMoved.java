@@ -48,6 +48,13 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
     }
 
     /**
+     * @return the rotation of the cannon.
+     */
+    public final double getRotationAngle() {
+        return this.cannonRotation.getAngle();
+    }
+
+    /**
      * Private method used to calculate the direction of the bounds line and draw it by calling
      * the method drawBoundsLine of {@link DrawHelpLine}.
      * 
@@ -102,10 +109,4 @@ public class HandlerAdapterMouseMoved implements EventHandler<MouseEvent> {
         } 
     }
 
-    /**
-     * @return the rotation of the cannon.
-     */
-    public final double getRotationAngle() {
-        return this.cannonRotation.getAngle();
-    }
 }
