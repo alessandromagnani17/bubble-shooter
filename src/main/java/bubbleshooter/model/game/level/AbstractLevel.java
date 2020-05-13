@@ -14,7 +14,10 @@ import bubbleshooter.model.game.GameData;
 import bubbleshooter.model.game.GameOverChecker;
 import bubbleshooter.model.game.GameStatus;
 import javafx.geometry.Point2D;
-
+/**
+ * Class which contains the main methods of {@link Level} interface.
+ *
+ */
 public abstract class AbstractLevel implements Level {
 
     private static final int MILLISECONDS_IN_A_SECOND = 1000;
@@ -31,6 +34,9 @@ public abstract class AbstractLevel implements Level {
     private GameStatus status;
     private LevelType currentGameType;
 
+    /**
+     * Constructor used to initialize all entities of the {@link Level}.
+     */
     public AbstractLevel() {
         this.bubblesManager = new BubblesManager();
         this.bubbleGridManager = new BubbleGridManager(this);
@@ -170,14 +176,14 @@ public abstract class AbstractLevel implements Level {
     /**
      * Updates the score.
      * 
-     * @param elapsed
+     * @param elapsed The time elapsed every {@link GameLoop} cycle.
      */
     protected abstract void updateScore(double elapsed);
 
     /**
      * Check if it's time to create new row of bubbles.
      * 
-     * @param elapsed
+     * @param elapsed The time elapsed every {@link GameLoop} cycle.
      * @return true if it's time to create new row, false otherwise
      */
     protected abstract boolean isTimeToNewRow(double elapsed);

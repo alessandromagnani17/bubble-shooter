@@ -13,7 +13,7 @@ public class GameData {
     /**
      * Updates the game time.
      * 
-     * @param elapsed
+     * @param elapsed the time elapsed every {@link GameLoop} cycle.
      */
     public final void updateGameTime(final double elapsed) {
         this.gameTime += elapsed;
@@ -36,7 +36,7 @@ public class GameData {
     /**
      * Update the game score.
      * 
-     * @param score
+     * @param score the score of the player.
      */
     public final void updateScore(final int score) {
         this.score = score;

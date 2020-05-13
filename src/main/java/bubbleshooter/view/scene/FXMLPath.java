@@ -1,5 +1,9 @@
 package bubbleshooter.view.scene;
 
+/**
+ * Enumeration which contains all the controllers of the scenes.
+ *
+ */
 public enum FXMLPath {
 
     /**
@@ -29,10 +33,16 @@ public enum FXMLPath {
 
     private final String scene;
 
+    /**
+     * @param scene The path of the scene.
+     */
     FXMLPath(final String scene) {
         this.scene = scene;
     }
 
+    /**
+     * @return the path of the scene.
+     */
     public String getPath() {
         return this.scene;
     }

@@ -7,6 +7,10 @@ import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+/**
+ * Class used to generate sprites for {@link Bubble}s.
+ *
+ */
 public class BubbleSprite implements Sprite {
 
     private final GraphicsContext gc;
@@ -15,6 +19,10 @@ public class BubbleSprite implements Sprite {
     private Point2D position;
     private Image image;
 
+    /**
+     * 
+     * @param gc The graphics context of the canvas of the game.
+     */
     public BubbleSprite(final GraphicsContext gc) {
         this.gc = gc;
 
@@ -53,6 +61,10 @@ public class BubbleSprite implements Sprite {
 
     }
 
+    /**
+     * 
+     * @return The {@link Image} of the sprite.
+     */
     public final Image getSource() {
         return this.image;
 

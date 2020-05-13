@@ -1,5 +1,9 @@
 package bubbleshooter.model.game;
 
+/**
+ * Enumeration of the possibles states of the game.
+ *
+ */
 public enum GameStatus {
 
     /**

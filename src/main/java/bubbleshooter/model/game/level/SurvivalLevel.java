@@ -2,6 +2,10 @@ package bubbleshooter.model.game.level;
 
 import bubbleshooter.model.game.GameData;
 
+/**
+ * Class used to implement the time-based {@link Level}.
+ *
+ */
 public class SurvivalLevel extends AbstractLevel {
 
     private static final int ONE_SECOND_SCORE = 20;
@@ -9,6 +13,9 @@ public class SurvivalLevel extends AbstractLevel {
 
     private double timeLeft;
 
+    /**
+     * Constructor used to set the type and the time before generating a new row.
+     */
     public SurvivalLevel() {
         this.setLevelType(LevelType.SURVIVALMODE);
         this.timeLeft = TIME_BEFORE_NEXT_ROW;
