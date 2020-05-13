@@ -6,43 +6,73 @@ import bubbleshooter.controller.Controller;
 
 /**
  * Abstract class used like a basic controller, the other controller will extends it.
- * Implements the {@SceneController} interface.
  */
-public abstract class AbstractController implements SceneController {
+public abstract class AbstractController {
 
     private Controller controller;
     private View view;
     private FXMLPath nextScene;
 
-    @Override
-	public void init(final Controller controller, final View view) {
-        this.controller = controller;
-        this.view = view;
-    }
+    /**
+     * Method that initialized the controller and the view.
+     * 
+     * @param controller the controller of the game.
+     * @param view       the controller of the view.
+     */
+    public abstract void init(Controller controller, View view);
 
-    @Override
+    /**
+     * @return The {@link Controller}.
+     */
     public final Controller getController() {
         return this.controller;
     }
 
-    @Override
+    /**
+     * @return The {@link View}.
+     */
     public final View getView() {
         return this.view;
     }
 
-    @Override
+    /**
+     * Redraws the scene on the screen.
+     */
     public void render() {
         // Empty for subclasses.
     }
 
-    @Override
+    /**
+     * Method that load the next scene.
+     */
     public final void loadNextScene() {
         this.view.loadScene(this.nextScene);
     }
 
-    @Override
+    /**
+     * Method that set the next {@link GameScenes}.
+     * 
+     * @param nextScene the scene to load.
+     */
     public final void setNextScene(final FXMLPath nextScene) {
         this.nextScene = nextScene;
     }
 
+    /**
+     * Method that set the {@link Controller}.
+     * 
+     * @param controller the controller.
+     */
+    public final void setController(final Controller controller) {
+        this.controller = controller;
+    }
+
+    /**
+     * Method that set the {@link View}.
+     * 
+     * @param view the view.
+     */
+    public final void setView(final View view) {
+        this.view = view;
+    }
 }

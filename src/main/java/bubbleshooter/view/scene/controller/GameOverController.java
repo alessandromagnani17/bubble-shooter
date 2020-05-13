@@ -42,7 +42,10 @@ public class GameOverController extends AbstractController {
     public final void init(final Controller controller, final View view) {
         int score, destroyedBubble;
         double gameTime;
-        super.init(controller, view);
+
+        this.setController(controller);
+        this.setView(view);
+
         this.getController().getGameEngine().stopLoop();
 
         this.gameOverLabel.setText("Game Over");

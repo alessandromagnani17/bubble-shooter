@@ -34,7 +34,8 @@ public final class MainController extends AbstractController {
 
     @Override
     public void init(final Controller controller, final View view) {
-        super.init(controller, view);
+        this.setController(controller);
+        this.setView(view);
 
         this.titleLabel.setText("Bubble Shooter");
         this.titleLabel.setFont(Font.font(TITLE_FONT_SIZE));

@@ -45,7 +45,8 @@ public class GameController extends AbstractController {
 
     @Override
     public final void init(final Controller controller, final View view) {
-        super.init(controller, view);
+        this.setController(controller);
+        this.setView(view);
 
         this.drawHelpLine = new DrawHelpLine(this.pane);
 
