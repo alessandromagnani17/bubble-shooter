@@ -27,12 +27,12 @@ public class TestSwitchBubble {
 
     private static final double LIMITS = 3;
 
-    private Bubble testSwitchBubble = new SwitchBubble(new Point2D(0, 0), BubbleColor.GREEN);
-    private Bubble testShootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
-    private List<Bubble> bubblesManager = new LinkedList<Bubble>();
-    private SwitcherController switcherController = new SwitcherController(bubblesManager);
-    private Level basicLevel = new BasicLevel();
-    private Level survivalLevel = new SurvivalLevel();
+    private final Bubble switchBubble = new SwitchBubble(new Point2D(0, 0), BubbleColor.GREEN);
+    private final Bubble testShootingBubble = new ShootingBubble(new Point2D(0, 0), BubbleColor.BLUE);
+    private final List<Bubble> bubblesManager = new LinkedList<>();
+    private final SwitcherController switcherController = new SwitcherController(bubblesManager);
+    private final Level basicLevel = new BasicLevel();
+    private final Level survivalLevel = new SurvivalLevel();
 
 
     /**
@@ -41,13 +41,13 @@ public class TestSwitchBubble {
     @Test
     public final void testSwitch() {
         this.bubblesManager.add(this.testShootingBubble);
-        this.bubblesManager.add(this.testSwitchBubble);
+        this.bubblesManager.add(this.switchBubble);
         this.switcherController.setBubbles(bubblesManager);
         this.switcherController.switchControl();
 
-        System.out.println(this.testSwitchBubble.getColor());
+        System.out.println(this.switchBubble.getColor());
 
-        assertTrue(this.testSwitchBubble.getColor().equals(BubbleColor.BLUE));
+        assertTrue(this.switchBubble.getColor().equals(BubbleColor.BLUE));
         assertTrue(this.testShootingBubble.getColor().equals(BubbleColor.GREEN));
     }
 
@@ -58,12 +58,12 @@ public class TestSwitchBubble {
     @Test
     public final void testLimitsExceeded() {
         this.bubblesManager.add(this.testShootingBubble);
-        this.bubblesManager.add(this.testSwitchBubble);
+        this.bubblesManager.add(this.switchBubble);
         this.switcherController.setBubbles(bubblesManager);
         this.switcherController.setNumSwitch(LIMITS);
         this.switcherController.switchControl();
 
-        assertFalse(this.testSwitchBubble.getColor().equals(BubbleColor.BLUE));
+        assertFalse(this.switchBubble.getColor().equals(BubbleColor.BLUE));
         assertFalse(this.testShootingBubble.getColor().equals(BubbleColor.GREEN));
     }
 
@@ -74,7 +74,7 @@ public class TestSwitchBubble {
     @Test
     public final void testBasicSwitchAfterShot() {
         this.bubblesManager.add(testShootingBubble);
-        this.bubblesManager.add(testSwitchBubble);
+        this.bubblesManager.add(switchBubble);
         this.basicLevel.getBubblesManager().addBubbles(bubblesManager);
         this.basicLevel.loadShootingBubble();
 
@@ -88,7 +88,7 @@ public class TestSwitchBubble {
     @Test
     public final void testSurvivalSwitchAfterShot() {
         this.bubblesManager.add(testShootingBubble);
-        this.bubblesManager.add(testSwitchBubble);
+        this.bubblesManager.add(switchBubble);
         this.survivalLevel.getBubblesManager().addBubbles(bubblesManager);
         this.survivalLevel.loadShootingBubble();
 

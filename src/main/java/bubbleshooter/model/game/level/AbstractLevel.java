@@ -18,7 +18,8 @@ import javafx.geometry.Point2D;
 public abstract class AbstractLevel implements Level {
 
     private static final int MILLISECONDS_IN_A_SECOND = 1000;
-    private static final double LIMITS_SHOOTING_BUBBLE_Y = 1.08;
+    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / 1.08);
+    private static final Point2D SWITCH_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / 1.08);
 
     private final BubblesManager bubblesManager;
     private final BubbleGridManager bubbleGridManager;
@@ -84,13 +85,12 @@ public abstract class AbstractLevel implements Level {
         if (this.bubblesManager.getShootingBubble().isPresent()) {
             final Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
             shootingBubble
-                    .setPosition(new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
+                    .setPosition(SHOOTING_BUBBLE_POSITION);
             shootingBubble.setDirection(shootingBubble.getPosition());
             shootingBubble.setColor(this.bubblesManager.getSwitchBubble().get().getColor());
         } else {
             this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-                    new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y),
-                    BubbleColor.getRandomColor())));
+                    SHOOTING_BUBBLE_POSITION, BubbleColor.getRandomColor())));
         }
     }
 
@@ -99,13 +99,12 @@ public abstract class AbstractLevel implements Level {
         if (this.bubblesManager.getSwitchBubble().isPresent()) {
             final Random rand = new Random();
             final Bubble switchBubble = this.bubblesManager.getSwitchBubble().get();
-            switchBubble.setPosition(new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y));
+            switchBubble.setPosition(SWITCH_BUBBLE_POSITION);
             switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
                     .get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
         } else {
             this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-                    new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / LIMITS_SHOOTING_BUBBLE_Y),
-                    BubbleColor.getRandomColor())));
+                    SWITCH_BUBBLE_POSITION, BubbleColor.getRandomColor())));
         }
     }
 
