@@ -3,7 +3,7 @@ package bubbleshooter.utility;
 import java.awt.Toolkit;
 
 /**
- * Class used to manage the different screen resolutions in {@link View}.
+ * Class used to manage the different screen resolutions in {@link view}.
  *
  */
 public final class Settings {
