@@ -19,7 +19,6 @@ import javafx.collections.ObservableList;
 /**
  * Class used for save and read all the scores from a file.
  * Implements the {@link HighscoreStore} interface.
- *
  */
 public class HighscoreStoreImpl implements HighscoreStore {
 
@@ -136,6 +135,9 @@ public class HighscoreStoreImpl implements HighscoreStore {
         return this.file.getParentFile().mkdirs();
     }
 
+    /**
+     * Private method used for delete the file.
+     */
     private boolean deleteFile() {
         return this.file.delete();
     }
@@ -208,7 +210,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
      * @param stringa line read from file.
      * @param gameMode the game modality.
      * 
-     * @return the {@link HighscoreStructure}.
+     * @return the {@link HighscoreStructure} created.
      */
     private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
         final StringBuilder nameBuilder = new StringBuilder("");

@@ -3,10 +3,8 @@ package bubbleshooter.model.highscore;
 import bubbleshooter.model.game.GameData;
 
 /**
- * 
  * Class called by {@link ControllerImpl} used to get information about the score.
  * The informations are taken by calling the {@link GameData}.
- *
  */
 public class ScoreManager {
 

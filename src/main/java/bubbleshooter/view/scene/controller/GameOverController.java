@@ -13,9 +13,8 @@ import javafx.scene.text.Font;
 
 /**
  * The Controller related to the gameover.fxml GUI.
- *
  */
-public class GameOverController extends AbstractController {
+public class GameOverController extends BasicController {
 
     @FXML private Label gameOverLabel;
     @FXML private Label scoreLabel;

@@ -8,9 +8,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
 
 /**
- * 
  * Class used for draw the help line if the 'help' CheckBox in {@link GameController} is selected.
- *
  */
 public class DrawHelpLine {
 

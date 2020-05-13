@@ -18,9 +18,8 @@ import javafx.scene.text.Font;
 
 /**
  * The Controller related to the highscore.fxml GUI.
- *
  */
-public class HighscoreController extends AbstractController {
+public class HighscoreController extends BasicController {
 
     @FXML private Label titleLabel;
     @FXML private Label basicModeLabel;

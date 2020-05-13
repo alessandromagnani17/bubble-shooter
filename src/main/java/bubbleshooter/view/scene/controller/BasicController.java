@@ -4,7 +4,10 @@ import bubbleshooter.view.View;
 import bubbleshooter.view.scene.FXMLPath;
 import bubbleshooter.controller.Controller;
 
-public class AbstractController {
+/**
+ * Class used like a basic controller, the other controller will extends it.
+ */
+public class BasicController {
 
     private Controller controller;
     private View view;
