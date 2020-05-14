@@ -13,7 +13,7 @@ import javafx.scene.transform.Rotate;
 public class DrawCannon {
 
     private static final double CANNON_FIT_WIDTH = 10;
-    private static final double CANNON_FIT_HEIGTH = 5;
+    private static final double CANNON_FIT_HEIGTH = 6;
 
     private final Rotate rotation = new Rotate();
     private final Cannon cannon;
@@ -63,8 +63,8 @@ public class DrawCannon {
      * Method to set the angle of {@link Cannon} rotation.
      */
     private void setRotation() {
-        this.rotation.setPivotX(this.cannon.getCannon().getFitWidth() - (this.controller.getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                .findFirst().get().getWidth() * (Settings.getGuiWidth() / this.controller.getWorldWidth())));
+        this.rotation.setPivotX((this.cannon.getCannon().getFitWidth() - this.controller.getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getWidth()) * (Settings.getGuiWidth() / this.controller.getWorldWidth()));
         this.rotation.setPivotY(this.cannon.getCannon().getFitHeight());
 
         this.cannon.getCannon().getTransforms().add(rotation);
