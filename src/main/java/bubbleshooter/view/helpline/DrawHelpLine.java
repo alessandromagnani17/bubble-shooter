@@ -12,7 +12,7 @@ import javafx.scene.transform.Rotate;
  */
 public class DrawHelpLine {
 
-    private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeight() / 1.08);
+    private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeight() / 1.10);
     private final HelpLine helpLine;
     private final HelpLine boundsLine;
     private final Line borderRight;
