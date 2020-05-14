@@ -14,6 +14,7 @@ import bubbleshooter.model.game.GameData;
 import bubbleshooter.model.game.GameOverChecker;
 import bubbleshooter.model.game.GameStatus;
 import javafx.geometry.Point2D;
+
 /**
  * Class which contains the main methods of {@link Level} interface.
  *
@@ -21,7 +22,8 @@ import javafx.geometry.Point2D;
 public abstract class AbstractLevel implements Level {
 
     private static final int MILLISECONDS_IN_A_SECOND = 1000;
-    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / 1.10);
+    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 2,
+            Model.WORLD_HEIGHT / 1.10);
     private static final Point2D SWITCH_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / 1.10);
 
     private final BubblesManager bubblesManager;
@@ -57,7 +59,7 @@ public abstract class AbstractLevel implements Level {
         if (this.isTimeToNewRow(elapsed / MILLISECONDS_IN_A_SECOND)) {
             this.createNewRow();
         }
-        if (this.checkGameOver()) {
+        if (this.checkGameOver() || this.checkVictory()) {
             this.status = GameStatus.GAMEOVER;
         }
     }
@@ -90,13 +92,12 @@ public abstract class AbstractLevel implements Level {
     public final void loadShootingBubble() {
         if (this.bubblesManager.getShootingBubble().isPresent()) {
             final Bubble shootingBubble = this.bubblesManager.getShootingBubble().get();
-            shootingBubble
-                    .setPosition(SHOOTING_BUBBLE_POSITION);
+            shootingBubble.setPosition(SHOOTING_BUBBLE_POSITION);
             shootingBubble.setDirection(shootingBubble.getPosition());
             shootingBubble.setColor(this.bubblesManager.getSwitchBubble().get().getColor());
         } else {
-            this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createShootingBubble(
-                    SHOOTING_BUBBLE_POSITION, BubbleColor.getRandomColor())));
+            this.bubblesManager.addBubbles(Collections.singletonList(
+                    this.bubbleFactory.createShootingBubble(SHOOTING_BUBBLE_POSITION, BubbleColor.getRandomColor())));
         }
     }
 
@@ -109,8 +110,8 @@ public abstract class AbstractLevel implements Level {
             switchBubble.setColor(this.bubbleGridHelper.getRemainingColors()
                     .get(rand.nextInt(this.bubbleGridHelper.getRemainingColors().size() - 1)));
         } else {
-            this.bubblesManager.addBubbles(Collections.singletonList(this.bubbleFactory.createSwitchBubble(
-                    SWITCH_BUBBLE_POSITION, BubbleColor.getRandomColor())));
+            this.bubblesManager.addBubbles(Collections.singletonList(
+                    this.bubbleFactory.createSwitchBubble(SWITCH_BUBBLE_POSITION, BubbleColor.getRandomColor())));
         }
     }
 
@@ -187,5 +188,12 @@ public abstract class AbstractLevel implements Level {
      * @return true if it's time to create new row, false otherwise
      */
     protected abstract boolean isTimeToNewRow(double elapsed);
+
+    /**
+     * Check if the player has won.
+     * 
+     * @return True if is victory
+     */
+    protected abstract boolean checkVictory();
 
 }
