@@ -15,7 +15,7 @@ import bubbleshooter.model.highscore.ScoreManager;
 public interface Controller {
 
      /**
-     * The method called by the {@link View} to start the Game in the {@link Model}.
+     * The method to start the game and the {@link Level}.
      * @param levelType The type of the level that the player choose.
      */
     void startGame(LevelType levelType);
@@ -25,7 +25,7 @@ public interface Controller {
      */
     List<Bubble> getBubbles();
 
-    /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
+    /**
      * @return The Engine of the Game.
      */
     GameLoop getGameEngine();
@@ -52,7 +52,7 @@ public interface Controller {
      */
     ScoreManager getScoreManager();
 
-    /**It's called by the {@link View} to return the {@link SwitcherController}.
+    /**Method to get the controller of switch function.
      * @return the Controller of Switch.
      */
     SwitcherController getSwitcherController();
