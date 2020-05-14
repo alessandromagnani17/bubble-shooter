@@ -38,7 +38,7 @@ public class SurvivalLevel extends AbstractLevel {
     }
 
     @Override
-    protected final boolean checkVictory() {
+    public final boolean checkVictory() {
         return false;
     }
 }
