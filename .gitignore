@@ -4,11 +4,5 @@ bin/
 out/
 doc/
 .idea/
-reports
 # Ignored, as Gradle Buildship generates it on import / refresh
 .classpath
-.settings/
-.DS_Store
-resources/.DS_Store
-resources/view/.DS_Store
-resources/view/background/.DS_Store
