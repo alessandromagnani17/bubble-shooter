@@ -40,6 +40,11 @@ public class ModelImpl implements Model {
     }
 
     @Override
+    public final void setGameStatus(GameStatus gameStatus){
+        this.level.setGameStatus(gameStatus); 
+    }
+
+    @Override
     public final BubblesManager getBubblesManager() {
         return this.level.getBubblesManager();
     }

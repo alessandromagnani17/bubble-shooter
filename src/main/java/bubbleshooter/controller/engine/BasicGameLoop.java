@@ -83,6 +83,7 @@ public class BasicGameLoop extends Thread implements GameLoop  {
     @Override
     public final synchronized void pauseLoop() {
         this.isPaused = true;
+        this.model.setGameStatus(GameStatus.PAUSE); 
     }
 
     /**
