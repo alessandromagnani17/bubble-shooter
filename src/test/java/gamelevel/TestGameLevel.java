@@ -1,7 +1,7 @@
-package level;
+package gamelevel;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import bubbleshooter.model.game.GameStatus;
@@ -12,10 +12,10 @@ import bubbleshooter.model.game.level.SurvivalLevel;
 /**
  * JUnit Test class to test the {@link Level} of the Game.
  */
-public class TestLevel {
+public class TestGameLevel {
 
     private static final double ELAPSED = 1;
-    private static final double LONG_ELAPSED = 20000;
+    private static final double LONG_ELAPSED = 20_000;
 
     /**
      * Tests the status of the game before and after start the {@link BasicLevel}.
@@ -23,10 +23,10 @@ public class TestLevel {
     @Test
     public final void testStartBasicLevel() {
         final Level level = new BasicLevel();
-        assertTrue(level.getGameStatus().equals(GameStatus.PAUSE));
+        assertEquals(level.getGameStatus(), GameStatus.PAUSE);
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGameStatus().equals(GameStatus.RUNNING));
+        assertEquals(level.getGameStatus(), GameStatus.RUNNING);
     }
 
     /**
@@ -36,10 +36,10 @@ public class TestLevel {
     @Test
     public final void testStartSurvivalLevel() {
         final Level level = new SurvivalLevel();
-        assertTrue(level.getGameStatus().equals(GameStatus.PAUSE));
+        assertEquals(level.getGameStatus(), GameStatus.PAUSE);
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGameStatus().equals(GameStatus.RUNNING));
+        assertEquals(level.getGameStatus(), GameStatus.RUNNING);
     }
 
     /**
@@ -48,10 +48,10 @@ public class TestLevel {
     @Test
     public final void testLoadShootingBubble() {
         final Level level = new BasicLevel();
-        assertTrue(level.getBubblesManager().getShootingBubble().equals(Optional.empty()));
+        assertEquals(level.getBubblesManager().getShootingBubble(), Optional.empty());
         level.start();
         level.update(ELAPSED);
-        assertFalse(level.getBubblesManager().getShootingBubble().equals(Optional.empty()));
+        assertNotEquals(level.getBubblesManager().getShootingBubble(), Optional.empty());
     }
 
     /**
@@ -62,9 +62,9 @@ public class TestLevel {
         final SurvivalLevel level = new SurvivalLevel();
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
         level.update(LONG_ELAPSED);
-        assertFalse(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertNotEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
     }
 
     /**
@@ -75,13 +75,12 @@ public class TestLevel {
         final BasicLevel level = new BasicLevel();
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.update(ELAPSED);
-        assertFalse(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
-    }
+        assertNotEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);    }
 }

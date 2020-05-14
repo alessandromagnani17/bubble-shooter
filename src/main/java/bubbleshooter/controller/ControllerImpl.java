@@ -39,8 +39,8 @@ public class ControllerImpl implements Controller {
     }
 
     /**
-    * The method called by the {@link View} to start the Game in the {@link Model}.
-    * @param levelType
+    * The method to start the game and the {@link Level}.
+    * @param levelType The type of the level.
     */
     @Override
     public final void startGame(final LevelType levelType) {
@@ -69,7 +69,7 @@ public class ControllerImpl implements Controller {
 
 
     /**
-     * Method used for save the scores in the highscores.
+     * Method used to save the scores in the highscores.
      * 
      * @param username the name of the player.
      */
@@ -108,7 +108,7 @@ public class ControllerImpl implements Controller {
         return this.model.getLevel().getLevelType();
     }
 
-    /**It's called by the {@link View} to stop the {@link GameLoop} of the Game.
+    /**
      * @return The Engine of the Game.
      */
     @Override
@@ -116,7 +116,7 @@ public class ControllerImpl implements Controller {
         return this.engine;
     }
 
-    /**It's called by the {@link View} to return the {@link SwitcherController}.
+    /**Method used to get the controller of switch function.
      * @return the Controller of Switch.
      */
     @Override
@@ -124,7 +124,7 @@ public class ControllerImpl implements Controller {
         return this.switcherController;
     }
 
-    /**It's called by the {@link View} to return the width of the game.
+    /**
      * @return the width of the game.
      */
     @Override
@@ -132,7 +132,7 @@ public class ControllerImpl implements Controller {
         return Model.WORLD_WIDTH;
     }
 
-    /**It's called by the {@link View} to return the heigth of the game.
+    /**
      * @return the height of the game.
      */
     @Override

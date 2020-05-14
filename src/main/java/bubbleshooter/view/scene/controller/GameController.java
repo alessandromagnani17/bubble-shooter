@@ -150,7 +150,9 @@ public class GameController extends AbstractController {
         return !(angle > MAXANGLE || angle < MINANGLE);
     }
 
-    // Clear the canvas after every render. It avoids ghosting effect.
+     /* 
+     * Resets the canvas.
+     */
     private void resetCanvas() {
         final GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.restore();

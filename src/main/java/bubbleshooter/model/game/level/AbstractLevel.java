@@ -21,8 +21,8 @@ import javafx.geometry.Point2D;
 public abstract class AbstractLevel implements Level {
 
     private static final int MILLISECONDS_IN_A_SECOND = 1000;
-    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / 1.08);
-    private static final Point2D SWITCH_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / 1.08);
+    private static final Point2D SHOOTING_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 2, Model.WORLD_HEIGHT / 1.10);
+    private static final Point2D SWITCH_BUBBLE_POSITION = new Point2D(Model.WORLD_WIDTH / 4, Model.WORLD_HEIGHT / 1.10);
 
     private final BubblesManager bubblesManager;
     private final BubbleGridManager bubbleGridManager;
