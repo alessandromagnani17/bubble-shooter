@@ -158,7 +158,7 @@ public class GameController extends AbstractController {
         gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
-        gc.scale(Settings.getGuiWidth() / this.getController().getWorldWidth(), Settings.getGuiHeight()/ this.getController().getWorldHeight());
+        gc.scale(Settings.getGuiWidth() / this.getController().getWorldWidth(), Settings.getGuiHeight() / this.getController().getWorldHeight());
 
     }
 
