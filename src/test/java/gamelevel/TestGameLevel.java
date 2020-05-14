@@ -1,11 +1,7 @@
-package level;
+package gamelevel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import bubbleshooter.model.game.GameStatus;
@@ -16,7 +12,7 @@ import bubbleshooter.model.game.level.SurvivalLevel;
 /**
  * JUnit Test class to test the {@link Level} of the Game.
  */
-public class TestLevel {
+public class TestGameLevel {
 
     private static final double ELAPSED = 1;
     private static final double LONG_ELAPSED = 20_000;
@@ -27,10 +23,10 @@ public class TestLevel {
     @Test
     public final void testStartBasicLevel() {
         final Level level = new BasicLevel();
-        assertTrue(level.getGameStatus().equals(GameStatus.PAUSE));
+        assertEquals(level.getGameStatus(), GameStatus.PAUSE);
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGameStatus().equals(GameStatus.RUNNING));
+        assertEquals(level.getGameStatus(), GameStatus.RUNNING);
     }
 
     /**
@@ -40,10 +36,10 @@ public class TestLevel {
     @Test
     public final void testStartSurvivalLevel() {
         final Level level = new SurvivalLevel();
-        assertTrue(level.getGameStatus().equals(GameStatus.PAUSE));
+        assertEquals(level.getGameStatus(), GameStatus.PAUSE);
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGameStatus().equals(GameStatus.RUNNING));
+        assertEquals(level.getGameStatus(), GameStatus.RUNNING);
     }
 
     /**
@@ -52,10 +48,10 @@ public class TestLevel {
     @Test
     public final void testLoadShootingBubble() {
         final Level level = new BasicLevel();
-        assertTrue(level.getBubblesManager().getShootingBubble().equals(Optional.empty()));
+        assertEquals(level.getBubblesManager().getShootingBubble(), Optional.empty());
         level.start();
         level.update(ELAPSED);
-        assertFalse(level.getBubblesManager().getShootingBubble().equals(Optional.empty()));
+        assertNotEquals(level.getBubblesManager().getShootingBubble(), Optional.empty());
     }
 
     /**
