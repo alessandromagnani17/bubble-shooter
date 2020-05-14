@@ -10,7 +10,7 @@ import bubbleshooter.model.game.level.Level;
  */
 public class GameOverChecker {
 
-    private static final double LIMITS = Model.WORLD_HEIGHT / 1.4;
+    private static final double LIMITS = Model.WORLD_HEIGHT / 1.3;
     private final Level level;
 
     /**
