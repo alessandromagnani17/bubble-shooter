@@ -69,7 +69,7 @@ public class ControllerImpl implements Controller {
 
 
     /**
-     * Method used for save the scores in the highscores.
+     * Method used to save the scores in the highscores.
      * 
      * @param username the name of the player.
      */
@@ -124,7 +124,7 @@ public class ControllerImpl implements Controller {
         return this.switcherController;
     }
 
-    /**It's called by the {@link View} to return the width of the game.
+    /**Returns the width of the Game in the Model.
      * @return the width of the game.
      */
     @Override
@@ -132,7 +132,7 @@ public class ControllerImpl implements Controller {
         return Model.WORLD_WIDTH;
     }
 
-    /**It's called by the {@link View} to return the heigth of the game.
+    /**Returns the heigth of the game.
      * @return the height of the game.
      */
     @Override
