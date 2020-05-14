@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import bubbleshooter.view.helpline.DrawHelpLine;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -20,7 +21,7 @@ public class TestHelpLine {
      */
     @Test
     public final void testVisibilityHelpLine() {
-        final DrawHelpLine drawHelpLine = new DrawHelpLine(this.pane);
+        final DrawHelpLine drawHelpLine = new DrawHelpLine(this.pane, new Point2D(0, 0));
 
         assertFalse(drawHelpLine.getHelpLine().isVisible());
         assertFalse(drawHelpLine.getBoundsLine().isVisible());
