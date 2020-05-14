@@ -12,8 +12,7 @@ public class ScoreManager {
 
     /**
      * Constructor for a new ScoreManager.
-     * 
-     * @param scoresInfo the {@link GameData}.
+     * @param scoresInfo The {@link GameData}.
      */
     public ScoreManager(final GameData scoresInfo) {
         this.scoresInfo = scoresInfo;

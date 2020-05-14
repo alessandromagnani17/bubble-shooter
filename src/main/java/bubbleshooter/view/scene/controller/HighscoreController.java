@@ -107,8 +107,7 @@ public class HighscoreController extends AbstractController {
 
     /**
      * Private method that calls the {@link Controller} for have a list of scores.
-     * 
-     * @param gameMode the game modality.
+     * @param gameMode The game modality.
      * @return the list of scores.
      */
     private ObservableList<HighscoreStructure> getScores(final LevelType gameMode) {

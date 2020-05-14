@@ -16,9 +16,8 @@ public class HelpLine {
 
     /**
      * Constructor for a new Line passing the start and end point.
-     * 
-     * @param startPoint the start point.
-     * @param endPoint   the end point.
+     * @param startPoint The start point.
+     * @param endPoint   The end point.
      */
     public HelpLine(final Point2D startPoint, final Point2D endPoint) {
         this.line = new Line();

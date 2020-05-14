@@ -13,9 +13,8 @@ public class Score {
 
     /**
      * Constructor for a new score specifying the modality.
-     * 
-     * @param score  score of this game.
-     * @param level  the modality of this game.
+     * @param score  The score of this game.
+     * @param level  The modality of this game.
      */
     public Score(final int score, final LevelType level) {
         this.theScore = score;

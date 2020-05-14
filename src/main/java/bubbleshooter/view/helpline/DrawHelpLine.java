@@ -22,8 +22,7 @@ public class DrawHelpLine {
 
     /**
      * Constructor for a new DrawHelpLine.
-     * 
-     * @param pane the pane where draw the help line.
+     * @param pane The pane where draw the help line.
      */
     public DrawHelpLine(final AnchorPane pane) {
         this.helpLine = new HelpLine(START_POINT_FIRST_LINE, new Point2D(START_POINT_FIRST_LINE.getX(), 0));
@@ -120,9 +119,8 @@ public class DrawHelpLine {
     /**
      * Method called by {@link HandlerAdapterMouseMoved} for draw the bounds line 
      * passing start point and end point.
-     * 
-     * @param startPointSecondLine the start point.
-     * @param endPointSecondLine   the end point.
+     * @param startPointSecondLine The start point.
+     * @param endPointSecondLine   The end point.
      */
     public final void drawBoundsLine(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
         this.boundsLine.getLine().setStartX(startPointSecondLine.getX());

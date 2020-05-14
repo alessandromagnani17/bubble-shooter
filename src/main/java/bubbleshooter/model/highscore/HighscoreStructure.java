@@ -11,10 +11,9 @@ public class HighscoreStructure extends Score {
 
     /**
      * Constructor for a new HighscoreStructure.
-     * 
-     * @param name      the player name.
-     * @param score     the score made by the player.
-     * @param gameMode  the current game modality.
+     * @param name      The player name.
+     * @param score     The score made by the player.
+     * @param gameMode  The current game modality.
      */
     public HighscoreStructure(final String name, final int score, final LevelType gameMode) {
         super(score, gameMode);
@@ -22,8 +21,6 @@ public class HighscoreStructure extends Score {
     }
 
     /**
-     * Getter for the name.
-     * 
      * @return the String value of the player name.
      */
     public final String getName() {

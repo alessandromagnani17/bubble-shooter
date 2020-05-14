@@ -63,7 +63,6 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Method for get the file where scores are saved.
-     * 
      * @return the file where the scores are saved.
      */
     @Override
@@ -84,8 +83,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Method to have a list of scores for a specific game modality.
-     * 
-     * @param gameMode game modality which we want the scores.
+     * @param gameMode The game modality which we want the scores.
      * @return the scores for a game modality.
      */
     @Override
@@ -100,8 +98,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Method for add a score for a game modality.
-     * 
-     * @param score the current {@link HighscoreStructure} to save.
+     * @param score The current {@link HighscoreStructure} to save.
      */
     @Override
     public final void addScore(final HighscoreStructure score) {
@@ -144,7 +141,6 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Private method used for put in map every the type of scores saved.
-     * 
      * @return the map contains the different scores.
      */
     private Map<LevelType, List<HighscoreStructure>> readFile() {
@@ -157,9 +153,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Private method used for read from file a list of scores for a specific game modality.
-     * 
-     * @param gameMode the game modality.
-     * 
+     * @param gameMode The game modality.
      * @return the list of scores for the specific game modality.
      */
     private List<HighscoreStructure> readFromFile(final LevelType gameMode) {
@@ -188,9 +182,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Private method used for convert the @param gameMode to a String.
-     * 
-     * @param gameMode the game modality we want to convert.
-     * 
+     * @param gameMode The game modality we want to convert.
      * @return the String for the game modality.
      */
     private String whichMod(final LevelType gameMode) {
@@ -206,10 +198,8 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Private method used for generate a {@link HighscoreStructure} for add into a list.
-     * 
-     * @param stringa line read from file.
-     * @param gameMode the game modality.
-     * 
+     * @param stringa  Thw line read from file.
+     * @param gameMode The game modality.
      * @return the {@link HighscoreStructure} created.
      */
     private HighscoreStructure generateHighscore(final String readString, final LevelType gameMode) {
@@ -235,8 +225,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Private method used for sort a list of {@link HighscoreStructure}.
-     * 
-     * @param itemsSet a list of {@link HighscoreStructure}.
+     * @param itemsSet The list of {@link HighscoreStructure}.
      */
     private void sort(final List<HighscoreStructure> itemsSet) {
         final Comparator<HighscoreStructure> comp = new Comparator<>() {
@@ -250,8 +239,7 @@ public class HighscoreStoreImpl implements HighscoreStore {
 
     /**
      * Private method used for clean a list if necessary.
-     * 
-     * @param itemsSet the list to clean.
+     * @param itemsSet The list to clean.
      */
     private void clean(final List<HighscoreStructure> itemsSet) {
         for (int i = 0; i < itemsSet.size(); i++) {

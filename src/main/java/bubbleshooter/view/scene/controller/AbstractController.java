@@ -15,9 +15,8 @@ public abstract class AbstractController {
 
     /**
      * Method that initialized the controller and the view.
-     * 
-     * @param controller the controller of the game.
-     * @param view       the controller of the view.
+     * @param controller The controller of the game.
+     * @param view       The controller of the view.
      */
     public abstract void init(Controller controller, View view);
 
@@ -51,8 +50,7 @@ public abstract class AbstractController {
 
     /**
      * Method that set the next {@link GameScenes}.
-     * 
-     * @param nextScene the scene to load.
+     * @param nextScene The scene to load.
      */
     public final void setNextScene(final FXMLPath nextScene) {
         this.nextScene = nextScene;
@@ -60,8 +58,7 @@ public abstract class AbstractController {
 
     /**
      * Method that set the {@link Controller}.
-     * 
-     * @param controller the controller.
+     * @param controller The controller.
      */
     public final void setController(final Controller controller) {
         this.controller = controller;
@@ -69,8 +66,7 @@ public abstract class AbstractController {
 
     /**
      * Method that set the {@link View}.
-     * 
-     * @param view the view.
+     * @param view The view.
      */
     public final void setView(final View view) {
         this.view = view;
