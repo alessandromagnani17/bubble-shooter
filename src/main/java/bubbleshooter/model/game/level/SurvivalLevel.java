@@ -9,7 +9,7 @@ import bubbleshooter.model.game.GameData;
 public class SurvivalLevel extends AbstractLevel {
 
     private static final int ONE_SECOND_SCORE = 20;
-    private static final int TIME_BEFORE_NEXT_ROW = 10;
+    private static final int TIME_BEFORE_NEXT_ROW = 15;
 
     private double timeLeft;
 
