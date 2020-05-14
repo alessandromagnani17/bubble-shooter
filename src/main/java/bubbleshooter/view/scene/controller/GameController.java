@@ -48,17 +48,22 @@ public class GameController extends AbstractController {
         this.setView(view);
 
         this.shootingBubblePosition = new Point2D(
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                        .findFirst().get().getPosition().getX(),
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                        .findFirst().get().getPosition().getY());
+                this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                        .findFirst().get().getPosition().getX() * (Settings.getGuiWidth() / this.getController().getWorldWidth()),
+                this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                        .findFirst().get().getPosition().getY() * (Settings.getGuiHeight() / this.getController().getWorldHeight()));
 
-        this.drawHelpLine = new DrawHelpLine(this.pane,  this.getController(), this.shootingBubblePosition);
+        this.drawHelpLine = new DrawHelpLine(this.pane, this.shootingBubblePosition);
  
-        this.handlerAdapter = new HandlerAdapterMouseMoved(new DrawCannon(this.pane, new Cannon(new Image(ImagePath.CANNON.getPath())), 
-                this.getController(), this.shootingBubblePosition,  getController().getBubbles().stream()
-                .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                .findFirst().get().getRadius()).getRotation(),
+        final DrawCannon drawCannon = new DrawCannon(
+                this.pane, 
+                new Cannon(new Image(ImagePath.CANNON.getPath())), 
+                this.getController(), this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getPosition(), 
+                this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getRadius());
+
+        this.handlerAdapter = new HandlerAdapterMouseMoved(drawCannon.getRotation(),
                 this.drawHelpLine.getRotation(), new Point2D(this.drawHelpLine.getHelpLine().getStartX(),
                 this.drawHelpLine.getHelpLine().getStartY()), this.drawHelpLine);
 
@@ -74,7 +79,8 @@ public class GameController extends AbstractController {
             @Override
             public void handle(final MouseEvent event) {
                 if (getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                        .findFirst().get().getPosition().getX() == shootingBubblePosition.getX()
+                        .findFirst().get().getPosition().getX() == getController().getBubbles().stream()
+                        .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)) .findFirst().get().getPosition().getX()
                         && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
 
                     getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))

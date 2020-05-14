@@ -1,6 +1,5 @@
 package bubbleshooter.view.helpline;
 
-import bubbleshooter.controller.Controller;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -13,26 +12,21 @@ import javafx.scene.transform.Rotate;
  */
 public class DrawHelpLine {
 
-    private Point2D startPointFirstLine;
+    private final Point2D startPointFirstLine;
     private final HelpLine helpLine;
     private final HelpLine boundsLine;
     private final Line borderRight;
     private final Line borderLeft;
     private final Rotate rotation = new Rotate();
-    private final Controller controller;
     private boolean helpSelected;
 
     /**
      * Constructor for a new DrawHelpLine. 
      * @param pane                   The panel where draw the {@link HelpLine}.
-     * @param controller             The {@link Controller} used to dialogue with {@link Model} and {@link view}.
      * @param shootingBubblePosition The position of {@link ShootingBubble}.
      */
-    public DrawHelpLine(final AnchorPane pane, final Controller controller, final Point2D shootingBubblePosition) {
-        this.controller = controller;
-        this.startPointFirstLine = new Point2D(shootingBubblePosition.getX() * (Settings.getGuiWidth() / this.controller.getWorldWidth()), 
-               shootingBubblePosition.getY() * (Settings.getGuiHeight() / this.controller.getWorldHeight()));
-
+    public DrawHelpLine(final AnchorPane pane, final Point2D shootingBubblePosition) {
+        this.startPointFirstLine = shootingBubblePosition;
         this.helpLine = new HelpLine(this.startPointFirstLine, new Point2D(this.startPointFirstLine.getX(), 0));
         this.boundsLine = new HelpLine(new Point2D(0, 0), new Point2D(0, 0));
         this.borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeight());
