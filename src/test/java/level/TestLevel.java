@@ -1,6 +1,8 @@
 package level;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -64,9 +66,9 @@ public class TestLevel {
         final SurvivalLevel level = new SurvivalLevel();
         level.start();
         level.update(ELAPSED);
-        assertSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
+        assertEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
         level.update(LONG_ELAPSED);
-        assertNotSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
+        assertNotEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
     }
 
     /**
@@ -77,13 +79,12 @@ public class TestLevel {
         final BasicLevel level = new BasicLevel();
         level.start();
         level.update(ELAPSED);
-        assertSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
+        assertEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.update(ELAPSED);
-        assertNotSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
-    }
+        assertNotEquals(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);    }
 }
