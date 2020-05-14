@@ -19,8 +19,8 @@ import javafx.stage.Stage;
 public class ViewImpl implements View {
 
     private static final String TITLE = "BUBBLE SHOOTER";
-    private static final double MIN_WIDTH = Settings.getGuiWidth();
-    private static final double MIN_HEIGHT = Settings.getGuiHeight();
+    private static final double WIDTH = Settings.getGuiWidth();
+    private static final double HEIGHT = Settings.getGuiHeight();
     private Controller controller;
     private AbstractController currentSceneController;
     private final Stage stage;
@@ -48,8 +48,8 @@ public class ViewImpl implements View {
     private void initialize() {
         ImageLoader.loadAll();
         this.stage.setTitle(TITLE);
-        this.stage.setMinHeight(MIN_HEIGHT);
-        this.stage.setMinWidth(MIN_WIDTH);
+        this.stage.setMinHeight(HEIGHT);
+        this.stage.setMinWidth(WIDTH);
         this.stage.setOnCloseRequest(e -> Runtime.getRuntime().exit(0));
         this.loadScene(FXMLPath.MAIN);
     }

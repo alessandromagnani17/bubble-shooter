@@ -15,7 +15,7 @@ public interface Model {
     /**
      * The width of the game used by Model.
      */
-    double WORLD_WIDTH = 705;
+    double WORLD_WIDTH = 700;
 
     /**
      * The Height of the game used by Model.
