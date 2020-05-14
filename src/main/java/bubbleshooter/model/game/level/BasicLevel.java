@@ -35,7 +35,7 @@ public class BasicLevel extends AbstractLevel {
     }
 
     @Override
-    protected final boolean checkVictory() {
+    public final boolean checkVictory() {
         return this.getBubblesManager().getBubbleGrid().isEmpty();
     }
 }
