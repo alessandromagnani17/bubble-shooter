@@ -13,7 +13,7 @@ import javafx.scene.transform.Rotate;
 public class DrawCannon {
 
     private static final double CANNON_FIT_WIDTH = 10;
-    private static final double CANNON_FIT_HEIGTH = 6;
+    private static final double CANNON_FIT_HEIGTH = 5;
 
     private final Rotate rotation = new Rotate();
     private final Cannon cannon;
