@@ -44,16 +44,9 @@ public class GameController extends AbstractController {
     @Override
     public final void init(final Controller controller, final View view) {
         final DrawCannon drawCannon;
-        final Point2D shootingBubblePosition;
         final Point2D shootingBubbleInitialPosition;
         this.setController(controller);
         this.setView(view);
-
-        shootingBubblePosition = new Point2D(
-                this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                        .findFirst().get().getPosition().getX() * (Settings.getGuiWidth() / this.getController().getWorldWidth()),
-                this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                        .findFirst().get().getPosition().getY() * (Settings.getGuiHeight() / this.getController().getWorldHeight()));
 
         shootingBubbleInitialPosition = new Point2D(
                 this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
@@ -61,7 +54,8 @@ public class GameController extends AbstractController {
                 this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                 .findFirst().get().getPosition().getY());
 
-        this.drawHelpLine = new DrawHelpLine(this.pane, shootingBubblePosition);
+        this.drawHelpLine = new DrawHelpLine(this.pane, new Point2D(shootingBubbleInitialPosition.getX() * (Settings.getGuiWidth() / this.getController().getWorldWidth()),
+                shootingBubbleInitialPosition.getY() * (Settings.getGuiHeight() / this.getController().getWorldHeight())));
  
         drawCannon = new DrawCannon(
                 this.pane, 
