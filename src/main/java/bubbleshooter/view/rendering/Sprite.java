@@ -19,29 +19,29 @@ public interface Sprite {
     /**
      * Sets the position.
      * 
-     * @param coordinate
+     * @param coordinate The position of the sprite.
      */
     void setPosition(Point2D coordinate);
 
     /**
      * Sets the image.
      * 
-     * @param source
-     * @throws FileNotFoundException
+     * @param source The path of the image.
+     * @throws FileNotFoundException The loading of the image may fail.
      */
     void setSource(ImagePath source) throws FileNotFoundException;
 
     /**
      * Sets the height.
      * 
-     * @param height
+     * @param height The height of the sprite.
      */
     void setHeight(double height);
 
     /**
      * Sets the width.
      * 
-     * @param width
+     * @param width The width of the sprite.
      */
     void setWidth(double width);
 

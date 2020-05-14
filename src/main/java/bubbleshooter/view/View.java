@@ -12,7 +12,7 @@ public interface View {
      * Sets the controller to be used, loads all images and sets stage size and
      * title.
      * 
-     * @param controller
+     * @param controller The {@link Controller} of the game.
      */
     void launch(Controller controller);
 

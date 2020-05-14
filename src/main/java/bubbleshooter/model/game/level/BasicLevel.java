@@ -2,11 +2,18 @@ package bubbleshooter.model.game.level;
 
 import bubbleshooter.model.game.GameData;
 
+/**
+ * Class that represent the basic level of the game.
+ *
+ */
 public class BasicLevel extends AbstractLevel {
 
     private static final int BUBBLE_SCORE = 20;
     private static final int WRONG_SHOOTS_BEFORE_NEW_ROW = 5;
 
+    /**
+     * Constructor used to set the level type.
+     */
     public BasicLevel() {
         this.setLevelType(LevelType.BASICMODE);
     }

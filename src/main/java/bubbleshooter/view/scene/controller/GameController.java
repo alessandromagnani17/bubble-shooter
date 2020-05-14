@@ -92,11 +92,17 @@ public class GameController extends AbstractController {
         canvasDrawer.draw(this.getController().getBubbles());
     }
 
+    /**
+     * Method used to switch the {@link ShootingBubble}.
+     */
     public final void switchBall() {
         this.getController().getSwitcherController().switchControl();
         this.controlSwitchButton();
     }
 
+    /**
+     * Method used to manage the button for the switch function.
+     */
     public final void controlSwitchButton() {
         if (this.getController().getSwitcherController().isSwitchEnd()) {
             this.switchButton.setText("Ended");
@@ -104,6 +110,9 @@ public class GameController extends AbstractController {
         }
     }
 
+    /**
+     * Method used to manage the {@link HelpLine}.
+     */
     public final void helpSelected() {
         if (this.helpCheckBox.isSelected()) {
             this.drawHelpLine.drawLine();
@@ -112,12 +121,18 @@ public class GameController extends AbstractController {
         }
     }
 
+    /**
+     * Method to pause the game and load the pause scene.
+     */
     public final void pause() {
         this.getController().getGameEngine().pauseLoop();
         this.setNextScene(FXMLPath.PAUSE);
         this.loadNextScene();
     }
 
+    /**
+     * Method used to restart the level.
+     */
     public final void restart() {
         this.getController().getGameEngine().pauseLoop();
         this.getController().startGame(this.getController().getCurrentLevel());
@@ -127,6 +142,10 @@ public class GameController extends AbstractController {
         this.switchButton.setMouseTransparent(false);
     }
 
+    /**
+     * @param angle The angle of rotation of the cannon.
+     * @return false if the cannon goes below shooting bubble position.
+     */
     public final boolean checkAngle(final double angle) {
         return !(angle > MAXANGLE || angle < MINANGLE);
     }

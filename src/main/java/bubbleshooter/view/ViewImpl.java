@@ -27,6 +27,9 @@ public class ViewImpl implements View {
     private boolean viewStarted;
     private final SceneLoader sceneLoader;
 
+    /**
+     * @param startingStage The starting stage of the GUI.
+     */
     public ViewImpl(final Stage startingStage) {
         this.stage = startingStage;
         this.viewStarted = false;
