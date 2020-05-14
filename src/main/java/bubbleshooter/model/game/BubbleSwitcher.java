@@ -9,16 +9,16 @@ import bubbleshooter.model.bubble.BubbleType;
  * Class that switches the {@link SwitchBubble} with the {@link ShootingBubble}.
  * Used by {@link SwitcherController}.
  */
-public class GameSwitcher {
+public class BubbleSwitcher {
 
     private final List<Bubble> bubbles;
 
     /**
-     * Constructor for a new GameSwitcher.
+     * Constructor for a new BubbleSwitcher.
      * 
      * @param bubbles , the list of all {@link Bubble}s.
      */
-    public GameSwitcher(final List<Bubble> bubbles) {
+    public BubbleSwitcher(final List<Bubble> bubbles) {
         this.bubbles = bubbles;
     }
 
@@ -41,3 +41,4 @@ public class GameSwitcher {
                     .setColor(bubbleColor);
     }
 }
+

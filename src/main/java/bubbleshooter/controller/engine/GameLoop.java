@@ -2,7 +2,7 @@ package bubbleshooter.controller.engine;
 
 /**
  * Interface of the {@link GameLoop} of the Game.
- * It's used to render the {@link View} and update the {@link Model}.
+ * It's used to render the {@link view} and update the {@link Model}.
  */
 public interface GameLoop {
 

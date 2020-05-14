@@ -69,7 +69,7 @@ public class ControllerImpl implements Controller {
 
 
     /**
-     * Method used for save the scores in the highscores.
+     * Method used to save the scores in the highscores.
      * 
      * @param username the name of the player.
      */

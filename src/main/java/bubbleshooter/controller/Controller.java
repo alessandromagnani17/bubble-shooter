@@ -9,12 +9,12 @@ import bubbleshooter.model.highscore.HighscoreStore;
 import bubbleshooter.model.highscore.ScoreManager;
 
 /**
- * Interface Controller used to dialogue with {@link Model} and {@link View} in order to respect MVC design pattern.
+ * Interface Controller used to dialogue with {@link Model} and {@link view} in order to respect MVC design pattern.
  *
  */
 public interface Controller {
 
-     /**
+    /**
      * The method to start the game and the {@link Level}.
      * @param levelType The type of the level that the player choose.
      */
@@ -26,6 +26,7 @@ public interface Controller {
     List<Bubble> getBubbles();
 
     /**
+    /**It's called by the {@link view} to stop the {@link GameLoop} of the Game.
      * @return The Engine of the Game.
      */
     GameLoop getGameEngine();
