@@ -40,8 +40,8 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public final void setGameStatus(GameStatus gameStatus){
-        this.level.setGameStatus(gameStatus); 
+    public final void setGameStatus(final GameStatus gameStatus) {
+        this.level.setGameStatus(gameStatus);
     }
 
     @Override

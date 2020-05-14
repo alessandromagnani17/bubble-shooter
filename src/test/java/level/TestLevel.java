@@ -1,6 +1,8 @@
 package level;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
@@ -15,7 +17,7 @@ import bubbleshooter.model.game.level.SurvivalLevel;
 public class TestLevel {
 
     private static final double ELAPSED = 1;
-    private static final double LONG_ELAPSED = 20000;
+    private static final double LONG_ELAPSED = 20_000;
 
     /**
      * Tests the status of the game before and after start the {@link BasicLevel}.
@@ -62,9 +64,9 @@ public class TestLevel {
         final SurvivalLevel level = new SurvivalLevel();
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
         level.update(LONG_ELAPSED);
-        assertFalse(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertNotSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
     }
 
     /**
@@ -75,13 +77,13 @@ public class TestLevel {
         final BasicLevel level = new BasicLevel();
         level.start();
         level.update(ELAPSED);
-        assertTrue(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.getGameData().addWrongShoot();
         level.update(ELAPSED);
-        assertFalse(level.getGridManager().getCreatedRows() == Level.NUM_ROWS);
+        assertNotSame(level.getGridManager().getCreatedRows(), Level.NUM_ROWS);
     }
 }

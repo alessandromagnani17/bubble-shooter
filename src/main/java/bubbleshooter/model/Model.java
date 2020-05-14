@@ -62,7 +62,7 @@ public interface Model {
     BubblesManager getBubblesManager();
 
     /**
-     * Sets the current gameStatus.
+     * Sets the gameStatus.
      * @param gameStatus
      */
     void setGameStatus(GameStatus gameStatus);
