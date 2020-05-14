@@ -63,7 +63,7 @@ public interface Model {
 
     /**
      * Sets the gameStatus.
-     * @param gameStatus
+     * @param gameStatus The status of the game.
      */
     void setGameStatus(GameStatus gameStatus);
 }
