@@ -25,7 +25,7 @@ public class DrawCannon {
      * 
      * @param pane       the panel where draw the {@link Cannon}.
      * @param cannon     the {@link Cannon} to draw.
-     * @param controller the {@link Controller} used to dialogue with {@link Model} and {@link View}.
+     * @param controller the {@link Controller} used to dialogue with {@link Model} and {@link view}.
      */
     public DrawCannon(final AnchorPane pane, final Cannon cannon, final Controller controller) {
         this.cannon = cannon;

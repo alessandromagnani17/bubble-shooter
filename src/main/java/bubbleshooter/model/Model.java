@@ -60,4 +60,10 @@ public interface Model {
      * @return the {@link BubblesManager} of the Game.
      */
     BubblesManager getBubblesManager();
+
+    /**
+     * Sets the gameStatus.
+     * @param gameStatus
+     */
+    void setGameStatus(GameStatus gameStatus);
 }
