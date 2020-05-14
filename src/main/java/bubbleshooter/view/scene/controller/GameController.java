@@ -40,25 +40,23 @@ public class GameController extends AbstractController {
     private BubbleDrawer canvasDrawer;
     private DrawHelpLine drawHelpLine;
     private HandlerAdapterMouseMoved handlerAdapter;
-    private Point2D shootingBubbleInitialPosition;
+    private Point2D shootingBubblePosition;
 
     @Override
     public final void init(final Controller controller, final View view) {
         this.setController(controller);
         this.setView(view);
 
-        
-
-        this.shootingBubbleInitialPosition = new Point2D(
+        this.shootingBubblePosition = new Point2D(
                 getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                         .findFirst().get().getPosition().getX(),
                 getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                         .findFirst().get().getPosition().getY());
 
-        this.drawHelpLine = new DrawHelpLine(this.pane, this.shootingBubbleInitialPosition);
-        
+        this.drawHelpLine = new DrawHelpLine(this.pane,  this.getController(), this.shootingBubblePosition);
+ 
         this.handlerAdapter = new HandlerAdapterMouseMoved(new DrawCannon(this.pane, new Cannon(new Image(ImagePath.CANNON.getPath())), 
-                this.getController(), this.shootingBubbleInitialPosition,  getController().getBubbles().stream()
+                this.getController(), this.shootingBubblePosition,  getController().getBubbles().stream()
                 .filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                 .findFirst().get().getRadius()).getRotation(),
                 this.drawHelpLine.getRotation(), new Point2D(this.drawHelpLine.getHelpLine().getStartX(),
@@ -76,7 +74,7 @@ public class GameController extends AbstractController {
             @Override
             public void handle(final MouseEvent event) {
                 if (getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
-                        .findFirst().get().getPosition().getX() == shootingBubbleInitialPosition.getX()
+                        .findFirst().get().getPosition().getX() == shootingBubblePosition.getX()
                         && checkAngle(handlerAdapter.getRotationAngle()) && event.getY() < LIMITS) {
 
                     getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))

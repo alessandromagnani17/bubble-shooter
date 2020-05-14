@@ -1,5 +1,6 @@
 package bubbleshooter.view.helpline;
 
+import bubbleshooter.controller.Controller;
 import bubbleshooter.utility.Settings;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -12,23 +13,27 @@ import javafx.scene.transform.Rotate;
  */
 public class DrawHelpLine {
 
-    //private static final Point2D START_POINT_FIRST_LINE = new Point2D(Settings.getGuiWidth() / 2, Settings.getGuiHeight() / 1.10);
-	private Point2D START_POINT_FIRST_LINE;
-	private final HelpLine helpLine;
+    private Point2D startPointFirstLine;
+    private final HelpLine helpLine;
     private final HelpLine boundsLine;
     private final Line borderRight;
     private final Line borderLeft;
     private final Rotate rotation = new Rotate();
+    private final Controller controller;
     private boolean helpSelected;
 
     /**
-     * Constructor for a new DrawHelpLine.
-     * @param pane The pane where draw the help line.
-     * @param shootingBubbleInitialPosition 
+     * Constructor for a new DrawHelpLine. 
+     * @param pane                   The panel where draw the {@link HelpLine}.
+     * @param controller             The {@link Controller} used to dialogue with {@link Model} and {@link view}.
+     * @param shootingBubblePosition The position of {@link ShootingBubble}.
      */
-    public DrawHelpLine(final AnchorPane pane, Point2D shootingBubbleInitialPosition) {
-    	START_POINT_FIRST_LINE = shootingBubbleInitialPosition;
-        this.helpLine = new HelpLine(START_POINT_FIRST_LINE, new Point2D(START_POINT_FIRST_LINE.getX(), 0));
+    public DrawHelpLine(final AnchorPane pane, final Controller controller, final Point2D shootingBubblePosition) {
+        this.controller = controller;
+        this.startPointFirstLine = new Point2D(shootingBubblePosition.getX() * (Settings.getGuiWidth() / this.controller.getWorldWidth()), 
+               shootingBubblePosition.getY() * (Settings.getGuiHeight() / this.controller.getWorldHeight()));
+
+        this.helpLine = new HelpLine(this.startPointFirstLine, new Point2D(this.startPointFirstLine.getX(), 0));
         this.boundsLine = new HelpLine(new Point2D(0, 0), new Point2D(0, 0));
         this.borderRight = new Line(Settings.getGuiWidth(), 0, Settings.getGuiWidth(), Settings.getGuiHeight());
         this.borderRight.setVisible(false);
@@ -47,8 +52,8 @@ public class DrawHelpLine {
      * Private method for set the rotation of help line.
      */
     private void setRotation() {
-        this.rotation.setPivotX(START_POINT_FIRST_LINE.getX());
-        this.rotation.setPivotY(START_POINT_FIRST_LINE.getY());
+        this.rotation.setPivotX(this.startPointFirstLine.getX());
+        this.rotation.setPivotY(this.startPointFirstLine.getY());
         this.helpLine.getLine().getTransforms().add(this.rotation);
     }
 
