@@ -40,22 +40,23 @@ public class GameController extends AbstractController {
     private BubbleDrawer canvasDrawer;
     private DrawHelpLine drawHelpLine;
     private HandlerAdapterMouseMoved handlerAdapter;
-    private Point2D shootingBubblePosition;
 
     @Override
     public final void init(final Controller controller, final View view) {
+        final DrawCannon drawCannon;
+        final Point2D shootingBubblePosition;
         this.setController(controller);
         this.setView(view);
 
-        this.shootingBubblePosition = new Point2D(
+        shootingBubblePosition = new Point2D(
                 this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                         .findFirst().get().getPosition().getX() * (Settings.getGuiWidth() / this.getController().getWorldWidth()),
                 this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                         .findFirst().get().getPosition().getY() * (Settings.getGuiHeight() / this.getController().getWorldHeight()));
 
-        this.drawHelpLine = new DrawHelpLine(this.pane, this.shootingBubblePosition);
+        this.drawHelpLine = new DrawHelpLine(this.pane, shootingBubblePosition);
  
-        final DrawCannon drawCannon = new DrawCannon(
+        drawCannon = new DrawCannon(
                 this.pane, 
                 new Cannon(new Image(ImagePath.CANNON.getPath())), 
                 this.getController(), this.getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
