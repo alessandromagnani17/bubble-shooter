@@ -33,7 +33,7 @@ public interface Level {
     /**
      * Updates the game.
      * 
-     * @param elapsed
+     * @param elapsed The time elapsed every {@link GameLoop} cycle.
      */
     void update(double elapsed);
 
@@ -57,14 +57,14 @@ public interface Level {
     /**
      * Sets current {@link LevelType}.
      * 
-     * @param levelType
+     * @param levelType The type of the level.
      */
     void setLevelType(LevelType levelType);
 
     /**
      * Sets the {@link GameStatus}.
      * 
-     * @param status
+     * @param status The status of the game.
      */
     void setGameStatus(GameStatus status);
 

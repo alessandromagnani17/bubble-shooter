@@ -34,7 +34,7 @@ import javafx.geometry.Point2D;
 
     /**
      * Method to make the {@link Bubble} bounce.
-     * @param shootingBubble
+     * @param shootingBubble The bubble to bounce.
      */
     public static void bounce(final Bubble shootingBubble) {
         shootingBubble.setDirection(new Point2D(shootingBubble.getDirection().get().getX() * -1, shootingBubble.getDirection().get().getY()));
@@ -70,23 +70,20 @@ import javafx.geometry.Point2D;
     }
 
     /**
-     * Private method that calculates the angular coefficient passing two points.
-     * 
-     * @param startPointSecondLine the first point.
-     * @param endPointSecondLine   the second point.
-     * @return                     the angular coefficient.
+     * Method to calculate the angular coefficient used for the {@link} HelpLine}.
+     * @param startPointSecondLine The starting point of the second line.
+     * @param endPointSecondLine The ending point of the second line.
+     * @return the angular coefficient between the two points.
      */
     public static double calculateAngularCoefficient(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
         return (endPointSecondLine.getY() - startPointSecondLine.getY()) / (endPointSecondLine.getX() - startPointSecondLine.getX());
     }
 
     /**
-     * Private method that calculates the intercepts passing two points.
-     * 
-     * @param startPointSecondLine the first point.
-     * @param endPointSecondLine   the second point.
-     * 
-     * @return the intercepts.
+     * Private method that calculates the intercepts passing two points.     * 
+     * @param startPointSecondLine The starting point of the second line.
+     * @param endPointSecondLine The ending point of the second line.
+     * @return The point of intersection of the lines.
      */
     public static double calculateIntercepts(final Point2D startPointSecondLine, final Point2D endPointSecondLine) {
         return (endPointSecondLine.getX() * startPointSecondLine.getY() 
@@ -95,11 +92,9 @@ import javafx.geometry.Point2D;
 
     /**
      * Private method that check if an angle created by two points is too high or too small.
-     * 
-     * @param startPointFirstLine  the first point.
-     * @param startPointSecondLine the second point.
-     * 
-     * @return true if the angle is correct, false otherwise.
+     * @param startPointFirstLine The starting point of the first line.
+     * @param startPointSecondLine The starting point of the second line.
+     * @return True if the angle is lower than {@link ShootingBubble} position.
      */
     public static boolean angleTooHigh(final Point2D startPointFirstLine, final Point2D startPointSecondLine) {
         final double angle = PhysicHelper.calculateAngle(startPointFirstLine, startPointSecondLine);

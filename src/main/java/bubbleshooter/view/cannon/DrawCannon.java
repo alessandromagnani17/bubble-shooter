@@ -1,8 +1,8 @@
 package bubbleshooter.view.cannon;
 
-import bubbleshooter.model.Model;
+import bubbleshooter.controller.Controller;
+import bubbleshooter.model.bubble.BubbleType;
 import bubbleshooter.utility.Settings;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Rotate;
 
@@ -17,26 +17,19 @@ public class DrawCannon {
 
     private final Rotate rotation = new Rotate();
     private final Cannon cannon;
-    private final Point2D shootingBubblePosition;
-    private final double shootingBubbleRadius;
-    private final double shootingBubbleWidth;
+    private final Controller controller;
 
 
     /**
      * Constructor for a new DrawCannon.
      * 
-     * @param pane                   the panel where draw the {@link Cannon}.
-     * @param cannon                 the {@link Cannon} to draw.
-     * @param shootingBubblePosition the position of {@link ShootingBubble}.
-     * @param shootingBubbleRadius   the radius of {@link ShootingBubble}.
-     * @param shootingBubbleWidth    the width of {@link ShootingBubble}.
+     * @param pane       the panel where draw the {@link Cannon}.
+     * @param cannon     the {@link Cannon} to draw.
+     * @param controller the {@link Controller} used to dialogue with {@link Model} and {@link view}.
      */
-    public DrawCannon(final AnchorPane pane, final Cannon cannon, final Point2D shootingBubblePosition,
-            final double shootingBubbleRadius, final double shootingBubbleWidth) {
+    public DrawCannon(final AnchorPane pane, final Cannon cannon, final Controller controller) {
         this.cannon = cannon;
-        this.shootingBubblePosition = shootingBubblePosition;
-        this.shootingBubbleRadius = shootingBubbleRadius;
-        this.shootingBubbleWidth = shootingBubbleWidth;
+        this.controller = controller;
         this.editCannon();
         this.setRotation();
         pane.getChildren().add(this.cannon.getCannon());
@@ -54,10 +47,13 @@ public class DrawCannon {
      * Method to set the position of {@link Cannon}.
      */
     private void editCannon() {
-        this.cannon.getCannon().setLayoutX((this.shootingBubblePosition.getX() - this.cannon.getCannon().getImage().getWidth() / 2)
-                * (Settings.getGuiWidth() / Model.WORLD_WIDTH));
-        this.cannon.getCannon().setLayoutY((this.shootingBubblePosition.getY() - this.cannon.getCannon().getImage().getHeight() 
-                - this.shootingBubbleRadius) * (Settings.getGuiHeight() / Model.WORLD_HEIGHT));
+        this.cannon.getCannon().setLayoutX((this.controller.getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getPosition().getX() - this.cannon.getCannon().getImage().getWidth() / 2)
+                * (Settings.getGuiWidth() / this.controller.getWorldWidth()));
+        this.cannon.getCannon().setLayoutY((this.controller.getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getPosition().getY() - this.cannon.getCannon().getImage().getHeight() 
+                - this.controller.getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getRadius()) * (Settings.getGuiHeight() / this.controller.getWorldHeight()));
 
         this.cannon.getCannon().setFitWidth(Settings.getGuiWidth() / CANNON_FIT_WIDTH);
         this.cannon.getCannon().setFitHeight(Settings.getGuiHeight() / CANNON_FIT_HEIGTH);
@@ -67,7 +63,8 @@ public class DrawCannon {
      * Method to set the angle of {@link Cannon} rotation.
      */
     private void setRotation() {
-        this.rotation.setPivotX(this.cannon.getCannon().getFitWidth() - (this.shootingBubbleWidth * (Settings.getGuiWidth() / Model.WORLD_WIDTH)));
+        this.rotation.setPivotX(this.cannon.getCannon().getFitWidth() - (this.controller.getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
+                .findFirst().get().getWidth() * (Settings.getGuiWidth() / this.controller.getWorldWidth())));
         this.rotation.setPivotY(this.cannon.getCannon().getFitHeight());
 
         this.cannon.getCannon().getTransforms().add(rotation);

@@ -2,17 +2,17 @@ package bubbleshooter.controller.input;
 
 import java.util.List;
 import bubbleshooter.model.bubble.Bubble;
-import bubbleshooter.model.game.GameSwitcher;
+import bubbleshooter.model.game.BubbleSwitcher;
 
 /**
  * Class that checks whether the {@link SwitchBubble} and the {@link ShootingBubble} can swapped.
- * Used to communicate with {@link GameController} and {@link GameSwitcher}.
+ * Used to communicate with {@link GameController} and {@link BubbleSwitcher}.
  */
 public class SwitcherController {
 
     private static final double LIMITS_SWITCH = 3;
     private double numSwitch;
-    private GameSwitcher gameSwitcher;
+    private BubbleSwitcher bubbleSwitcher;
     private List<Bubble> bubbles;
 
     /**
@@ -22,7 +22,7 @@ public class SwitcherController {
      */
     public SwitcherController(final List<Bubble> bubbles) {
         this.bubbles = bubbles;
-        this.gameSwitcher = new GameSwitcher(this.bubbles);
+        this.bubbleSwitcher = new BubbleSwitcher(this.bubbles);
         this.setInitialNumSwitch();
     }
 
@@ -32,7 +32,7 @@ public class SwitcherController {
     public final void switchControl() {
         if (!isSwitchEnd()) {
             this.increasesNumSwitch();
-            this.gameSwitcher.switchBall();
+            this.bubbleSwitcher.switchBall();
         }
     }
 
@@ -72,7 +72,7 @@ public class SwitcherController {
      */
     public final void setBubbles(final List<Bubble> bubbles) {
         this.bubbles = bubbles;
-        this.gameSwitcher = new GameSwitcher(this.bubbles);
+        this.bubbleSwitcher = new BubbleSwitcher(this.bubbles);
     }
 
     /**

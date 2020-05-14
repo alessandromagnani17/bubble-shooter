@@ -18,7 +18,7 @@ public final class SceneLoader {
      * Load the specified scene.
      * 
      * @param scene to load
-     * @throws IOException
+     * @throws IOException The FXMLLoader can fail the load of the scene.
      */
     public void loadScene(final FXMLPath scene) throws IOException {
         final FXMLLoader loader = new FXMLLoader();

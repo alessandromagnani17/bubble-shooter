@@ -2,7 +2,6 @@ package bubbleshooter.view.scene.controller;
 
 import bubbleshooter.controller.Controller;
 import bubbleshooter.controller.input.HandlerAdapterMouseMoved;
-import bubbleshooter.model.Model;
 import bubbleshooter.model.bubble.BubbleType;
 import bubbleshooter.utility.PhysicHelper;
 import bubbleshooter.utility.Settings;
@@ -57,9 +56,7 @@ public class GameController extends AbstractController {
                         .findFirst().get().getPosition().getY());
 
         this.handlerAdapter = new HandlerAdapterMouseMoved(new DrawCannon(this.pane, new Cannon(new Image(ImagePath.CANNON.getPath())), 
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getPosition(),
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getRadius(),
-                getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE)).findFirst().get().getWidth()).getRotation(),
+                this.getController()).getRotation(),
                 this.drawHelpLine.getRotation(), new Point2D(this.drawHelpLine.getHelpLine().getStartX(),
                 this.drawHelpLine.getHelpLine().getStartY()), this.drawHelpLine);
 
@@ -80,8 +77,8 @@ public class GameController extends AbstractController {
 
                     getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                     .findFirst().get().setDirection(PhysicHelper.calculateShootingDirection(
-                            new Point2D(event.getX() * (Model.WORLD_WIDTH / Settings.getGuiWidth()),
-                                    event.getY() * (Model.WORLD_HEIGHT / Settings.getGuiHeight())),
+                            new Point2D(event.getX() * (getController().getWorldWidth() / Settings.getGuiWidth()),
+                                    event.getY() * (getController().getWorldHeight() / Settings.getGuiHeight())),
                             getController().getBubbles().stream().filter(a -> a.getType().equals(BubbleType.SHOOTING_BUBBLE))
                             .findFirst().get().getPosition()));
                 }
@@ -95,11 +92,17 @@ public class GameController extends AbstractController {
         canvasDrawer.draw(this.getController().getBubbles());
     }
 
+    /**
+     * Method used to switch the {@link ShootingBubble}.
+     */
     public final void switchBall() {
         this.getController().getSwitcherController().switchControl();
         this.controlSwitchButton();
     }
 
+    /**
+     * Method used to manage the button for the switch function.
+     */
     public final void controlSwitchButton() {
         if (this.getController().getSwitcherController().isSwitchEnd()) {
             this.switchButton.setText("Ended");
@@ -107,6 +110,9 @@ public class GameController extends AbstractController {
         }
     }
 
+    /**
+     * Method used to manage the {@link HelpLine}.
+     */
     public final void helpSelected() {
         if (this.helpCheckBox.isSelected()) {
             this.drawHelpLine.drawLine();
@@ -115,12 +121,18 @@ public class GameController extends AbstractController {
         }
     }
 
+    /**
+     * Method to pause the game and load the pause scene.
+     */
     public final void pause() {
         this.getController().getGameEngine().pauseLoop();
         this.setNextScene(FXMLPath.PAUSE);
         this.loadNextScene();
     }
 
+    /**
+     * Method used to restart the level.
+     */
     public final void restart() {
         this.getController().getGameEngine().pauseLoop();
         this.getController().startGame(this.getController().getCurrentLevel());
@@ -130,6 +142,10 @@ public class GameController extends AbstractController {
         this.switchButton.setMouseTransparent(false);
     }
 
+    /**
+     * @param angle The angle of rotation of the cannon.
+     * @return false if the cannon goes below shooting bubble position.
+     */
     public final boolean checkAngle(final double angle) {
         return !(angle > MAXANGLE || angle < MINANGLE);
     }
@@ -140,7 +156,7 @@ public class GameController extends AbstractController {
         gc.restore();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
-        gc.scale(Settings.getGuiWidth() / Model.WORLD_WIDTH, Settings.getGuiHeight() / Model.WORLD_HEIGHT);
+        gc.scale(Settings.getGuiWidth() / this.getController().getWorldWidth(), Settings.getGuiHeight() / this.getController().getWorldHeight());
 
     }
 

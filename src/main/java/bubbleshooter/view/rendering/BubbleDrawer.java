@@ -11,6 +11,10 @@ import bubbleshooter.view.images.ImagePath;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
+/**
+ * Class used to draw {@link Bubble} images in the {@link View}.
+ *
+ */
 public class BubbleDrawer {
 
     private final Canvas canvas;
@@ -19,6 +23,10 @@ public class BubbleDrawer {
             ImagePath.RED_BUBBLE, BubbleColor.LIGHT_BLUE, ImagePath.LIGHT_BLUE_BUBBLE, BubbleColor.YELLOW,
             ImagePath.YELLOW_BUBBLE);
 
+    /**
+     * 
+     * @param canvas The canvas of the game scene.
+     */
     public BubbleDrawer(final Canvas canvas) {
         this.canvas = canvas;
     }
@@ -26,7 +34,7 @@ public class BubbleDrawer {
     /**
      * Draw all {@link Sprite}s.
      * 
-     * @param bubbles
+     * @param bubbles The {@link Bubble}s of the game.
      */
     public final void draw(final List<Bubble> bubbles) {
         final GraphicsContext gc = this.canvas.getGraphicsContext2D();
