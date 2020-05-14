@@ -33,4 +33,9 @@ public class BasicLevel extends AbstractLevel {
         }
         return false;
     }
+
+    @Override
+    protected final boolean checkVictory() {
+        return this.getBubblesManager().getBubbleGrid().isEmpty();
+    }
 }
